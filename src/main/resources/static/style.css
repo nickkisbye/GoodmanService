@@ -1,11 +1,52 @@
-* { padding: 0; margin: 0; }
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+* { padding: 0; margin: 0; font-family: 'Roboto', sans-serif; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-.navbar { background: #000; color: white; padding: 10px 10px; font-family: Helvetica; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+.navbar { color: white; padding: 10px 10px; position: absolute; top: 0; left: 0; width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; font-family: "Arial Black"; }
 
-.navbar p { font-size: 35px; }
+.navbar h1 { font-size: 35px; line-height: 40px; }
 
-.navbar .menu-items { padding: 10px 10px; width: 20%; margin-rigt: 5%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+.navbar h1 span { color: #ff3531; }
 
-.navbar a { text-decoration: none; color: white; margin-right: 2%; }
+.navbar .menu-items { width: 20%; margin-right: 5%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
 
-.navbar a:hover { text-decoration: none; color: white; background: red; }
+.navbar .menu-items .menu-item { line-height: 40px; }
+
+.navbar .menu-items .menu-item a { text-decoration: none; color: white; margin-right: 2%; }
+
+.navbar .menu-items .menu-item a:hover { text-decoration: none; color: #ff3531; }
+
+.section-gray { background: #f6f6f6; padding: 30px 0; }
+
+.section-white { background: #fff; padding: 30px 0; }
+
+.container { width: 720px; margin: 0 auto; }
+
+.container h2 { text-align: center; margin-bottom: 20px; }
+
+.section-content { font-size: 13px; }
+
+.about { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+
+.about .image, .about .tekst { width: 49%; text-align: justify; }
+
+.about .image img, .about .tekst img { width: 100%; -webkit-filter: grayscale(100%); filter: grayscale(100%); }
+
+.opgaver { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+.opgaver .opgave { width: 220px; height: 200px; margin-bottom: 20px; background: aquamarine; }
+
+.kontakt form label { line-height: 20px; }
+
+.kontakt form input, .kontakt form textarea { max-width: 100%; min-width: 100%; padding: 10px 15px; border: 1px solid #e6e6e6; border-radius: 5px; margin-bottom: 5px; }
+
+.kontakt form button { background: #ff3531; color: white; border: 1px solid #e6e6e6; border-radius: 5px; padding: 10px 15px; width: 100%; }
+
+.top-banner { background: url("http://www.triotrae.dk/wp-content/uploads/2014/04/Billede-13.jpg") no-repeat center center fixed; height: 50vh; }
+
+.top-banner h1 { padding-top: 11%; text-align: center; font-size: 50px; color: white; }
+
+.footer { background: #2a2a2a; color: white; height: 400px; }
+
+.footer .footer-content { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; width: 80%; margin-left: 10%; }
+
+.footer .footer-item { padding-top: 3%; font-size: 20px; }

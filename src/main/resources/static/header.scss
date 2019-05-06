@@ -1,47 +1,38 @@
+@import "color";
+
 .navbar {
-  background: #000;
   color: white;
   padding: 10px 10px;
-  font-family: Helvetica;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-}
-
-.navbar {
-  p {
+  font-family: "Arial Black";
+  h1 {
     font-size: 35px;
-  }
-}
-
-.navbar {
-   .menu-items {
-     padding: 10px 10px;
-     width: 20%;
-     margin-rigt: 5%;
-     display: flex;
-     justify-content: space-between;
-   }
-}
-
-.navbar {
-  .menu-items {
-    .menu-item {
+    line-height: 40px;
+    span {
+      color: $primary-color;
     }
   }
-}
-
-.navbar {
-  a {
-    text-decoration: none;
-    color: white;
-    margin-right: 2%;
-  }
-}
-
-.navbar {
-  a:hover {
-    text-decoration: none;
-    color: white;
-    background: red;
+  .menu-items {
+    width: 20%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    .menu-item {
+      line-height: 40px;
+      a {
+        text-decoration: none;
+        color: white;
+        margin-right: 2%;
+        &:hover {
+          text-decoration: none;
+          color: $primary-color;
+        }
+      }
+    }
   }
 }
