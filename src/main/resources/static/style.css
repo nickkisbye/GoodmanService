@@ -1,5 +1,11 @@
 * { padding: 0; margin: 0; }
 
-.navbar { background: #000; color: white; padding: 10px 10px; font-family: Helvetica; }
+.navbar { background: #000; color: white; padding: 10px 10px; font-family: Helvetica; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
 
 .navbar p { font-size: 35px; }
+
+.navbar .menu-items { padding: 10px 10px; width: 20%; margin-rigt: 5%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+
+.navbar a { text-decoration: none; color: white; margin-right: 2%; }
+
+.navbar a:hover { text-decoration: none; color: white; background: red; }

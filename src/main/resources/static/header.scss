@@ -3,6 +3,8 @@
   color: white;
   padding: 10px 10px;
   font-family: Helvetica;
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar {
@@ -13,6 +15,33 @@
 
 .navbar {
    .menu-items {
-
+     padding: 10px 10px;
+     width: 20%;
+     margin-rigt: 5%;
+     display: flex;
+     justify-content: space-between;
    }
+}
+
+.navbar {
+  .menu-items {
+    .menu-item {
+    }
+  }
+}
+
+.navbar {
+  a {
+    text-decoration: none;
+    color: white;
+    margin-right: 2%;
+  }
+}
+
+.navbar {
+  a:hover {
+    text-decoration: none;
+    color: white;
+    background: red;
+  }
 }
