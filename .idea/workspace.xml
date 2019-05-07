@@ -2,18 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bcb930df-6d99-4a77-b6d3-dcc1cbd960e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/ExpenceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/InvoiceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/OfferController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Appointment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Case.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Expence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Invoice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Offer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/AppointmentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/ExpenceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/InvoiceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/OfferRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/Repository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/AppointmentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/CaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/ExpenceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/InvoiceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/OfferService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prepros-6.config" beforeDir="false" afterPath="$PROJECT_DIR$/prepros-6.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/menuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/adminstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/adminstyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/body.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/body.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/color.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/color.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/default.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/default.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/footer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/header.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,42 +43,52 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-290666257">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="42" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="42" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="15" />
+          <entry key="java" value="948" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="948" />
+          <entry key="PLAIN_TEXT" value="15" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6308836">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/header.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="65" selection-start-column="65" selection-end-column="65" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/static/default.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="62" selection-start-column="62" selection-end-column="62" />
+                <state relative-caret-position="96">
+                  <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/static/body.scss">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="464">
@@ -77,6 +107,69 @@
             </entry>
           </file>
         </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/User.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="176">
+                  <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#312#313#0" expanded="true" />
+                    <element signature="e#345#346#0" expanded="true" />
+                    <element signature="e#373#374#0" expanded="true" />
+                    <element signature="e#409#410#0" expanded="true" />
+                    <element signature="e#441#442#0" expanded="true" />
+                    <element signature="e#491#492#0" expanded="true" />
+                    <element signature="e#533#534#0" expanded="true" />
+                    <element signature="e#568#569#0" expanded="true" />
+                    <element signature="e#599#600#0" expanded="true" />
+                    <element signature="e#647#648#0" expanded="true" />
+                    <element signature="e#687#688#0" expanded="true" />
+                    <element signature="e#719#720#0" expanded="true" />
+                    <element signature="e#747#748#0" expanded="true" />
+                    <element signature="e#789#790#0" expanded="true" />
+                    <element signature="e#823#824#0" expanded="true" />
+                    <element signature="e#861#862#0" expanded="true" />
+                    <element signature="e#895#896#0" expanded="true" />
+                    <element signature="e#949#950#0" expanded="true" />
+                    <element signature="e#995#996#0" expanded="true" />
+                    <element signature="e#1026#1027#0" expanded="true" />
+                    <element signature="e#1053#1054#0" expanded="true" />
+                    <element signature="e#1093#1094#0" expanded="true" />
+                    <element signature="e#1125#1126#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="160">
+                  <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#411#412#0" expanded="true" />
+                    <element signature="e#438#439#0" expanded="true" />
+                    <element signature="e#488#489#0" expanded="true" />
+                    <element signature="e#515#516#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/Repository.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="160">
+                  <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
       </split-second>
     </splitter>
   </component>
@@ -84,8 +177,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="SCSS File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -119,8 +213,27 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/default.scss" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/body.scss" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Appointment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Case.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Offer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Expence.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Invoice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/Repository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/AppointmentRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/ExpenceRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/InvoiceRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/OfferRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -135,40 +248,41 @@
     <option name="width" value="1365" />
     <option name="height" value="1010" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -176,78 +290,54 @@
               <item name="goodmanservice" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="goodmanservice" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="goodmanservice" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="adminstyle.scss" type="620a8d5e:NestingTreeNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="goodmanservice" type="462c0819:PsiDirectoryNode" />
+              <item name="Repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="style.scss" type="620a8d5e:NestingTreeNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="goodmanservice" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1SemesterProjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="goodmanservice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="1SemesterProjekt" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -258,7 +348,8 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557176420089" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557216274111" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -303,6 +394,7 @@
       <workItem from="1557135558273" duration="530000" />
       <workItem from="1557137254686" duration="1468000" />
       <workItem from="1557167840323" duration="8326000" />
+      <workItem from="1557213071723" duration="3160000" />
     </task>
     <task id="LOCAL-00001" summary="setup">
       <created>1556790738720</created>
@@ -357,13 +449,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15917000" />
+    <option name="totallyTimeSpent" value="19077000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18724832" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18923241" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -373,7 +465,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.11756374" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.11713666" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -383,9 +475,10 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="14" />
+      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -401,6 +494,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="setup" />
     <MESSAGE value="css opsætning" />
@@ -408,13 +504,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="header" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/GoodmanserviceApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/calc.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -459,7 +548,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/menuController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
@@ -538,17 +627,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="65" selection-start-column="65" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/header.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="65" selection-start-column="65" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -559,17 +648,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/default.scss">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="62" selection-start-column="62" selection-end-column="62" />
+        <state relative-caret-position="300">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/GoodmanserviceApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
+        <state relative-caret-position="176">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/InvoiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/OfferController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/ExpenceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/InvoiceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/CaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/OfferService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/AppointmentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/ExpenceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -577,6 +743,294 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
           <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Case.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" selection-start-line="7" selection-end-line="81" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#685#686#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#765#766#0" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#1015#1016#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1199#1200#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1278#1279#0" expanded="true" />
+            <element signature="e#1305#1306#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
+            <element signature="e#1454#1455#0" expanded="true" />
+            <element signature="e#1515#1516#0" expanded="true" />
+            <element signature="e#1557#1558#0" expanded="true" />
+            <element signature="e#1586#1587#0" expanded="true" />
+            <element signature="e#1614#1615#0" expanded="true" />
+            <element signature="e#1653#1654#0" expanded="true" />
+            <element signature="e#1687#1688#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Offer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#680#681#0" expanded="true" />
+            <element signature="e#718#719#0" expanded="true" />
+            <element signature="e#780#781#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#874#875#0" expanded="true" />
+            <element signature="e#910#911#0" expanded="true" />
+            <element signature="e#968#969#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1058#1059#0" expanded="true" />
+            <element signature="e#1094#1095#0" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1202#1203#0" expanded="true" />
+            <element signature="e#1231#1232#0" expanded="true" />
+            <element signature="e#1258#1259#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1328#1329#0" expanded="true" />
+            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#1407#1408#0" expanded="true" />
+            <element signature="e#1468#1469#0" expanded="true" />
+            <element signature="e#1510#1511#0" expanded="true" />
+            <element signature="e#1539#1540#0" expanded="true" />
+            <element signature="e#1567#1568#0" expanded="true" />
+            <element signature="e#1606#1607#0" expanded="true" />
+            <element signature="e#1640#1641#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Appointment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#609#610#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#670#671#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#767#768#0" expanded="true" />
+            <element signature="e#795#796#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#887#888#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Invoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#194#195#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Expence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#288#289#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#618#619#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="true" />
+            <element signature="e#685#686#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/AppointmentRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#453#454#0" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#537#538#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/Repository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/ExpenceRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/InvoiceRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding>
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#409#410#0" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#491#492#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+            <element signature="e#568#569#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+            <element signature="e#687#688#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+            <element signature="e#747#748#0" expanded="true" />
+            <element signature="e#789#790#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#895#896#0" expanded="true" />
+            <element signature="e#949#950#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
+            <element signature="e#1125#1126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/OfferRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#443#444#0" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#438#439#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/default.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
