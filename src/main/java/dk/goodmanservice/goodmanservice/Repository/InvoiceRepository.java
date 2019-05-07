@@ -5,6 +5,7 @@ import dk.goodmanservice.goodmanservice.Model.Invoice;
 import java.util.List;
 
 public class InvoiceRepository implements Repository<Invoice>{
+
     @Override
     public void create(Invoice obj) {
 
