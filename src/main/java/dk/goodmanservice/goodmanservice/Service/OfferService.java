@@ -2,6 +2,7 @@ package dk.goodmanservice.goodmanservice.Service;
 
 import dk.goodmanservice.goodmanservice.Model.Offer;
 import dk.goodmanservice.goodmanservice.Repository.IRepository;
+import dk.goodmanservice.goodmanservice.Repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
