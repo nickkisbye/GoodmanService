@@ -1,13 +1,13 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
-import java.util.List;
+import java.sql.ResultSet;
 
-public interface Repository<T> {
+public interface IRepository<T> {
 
     void create(T obj);
     void edit(T obj);
     void delete(int id);
-    List<T> fetchAll();
-    T findById(int id);
+    ResultSet fetchAll();
+    ResultSet findById(int id);
 
 }

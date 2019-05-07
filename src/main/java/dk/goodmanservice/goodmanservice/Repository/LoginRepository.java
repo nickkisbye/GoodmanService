@@ -1,18 +1,17 @@
 package dk.goodmanservice.goodmanservice.Repository;
+
 import dk.goodmanservice.goodmanservice.Model.User;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
 @Repository
-@Component("UR")
-public class UserRepository implements IRepository<User> {
+public class LoginRepository {
 
     private Connection con;
     private PreparedStatement preparedStatement;
 
-    public UserRepository() {
+    public LoginRepository() {
         try {
             this.con = DriverManager.getConnection(
                     "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
@@ -23,28 +22,17 @@ public class UserRepository implements IRepository<User> {
         }
     }
 
-    @Override
-    public void create(User obj) {
-
-    }
-
-    @Override
-    public void edit(User obj) {
-
-    }
-
-    @Override
-    public void delete(int id) {
-
-    }
-
-    @Override
-    public ResultSet fetchAll() {
+    public ResultSet login(User obj) {
+        String sql = "SELECT * FROM users WHERE username=? AND password=?";
+        try {
+            con.prepareStatement(sql);
+            preparedStatement.setString(1, obj.getUsername());
+            preparedStatement.setString(2, obj.getPassword());
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
-    @Override
-    public ResultSet findById(int id) {
-        return null;
-    }
 }

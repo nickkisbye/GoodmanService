@@ -1,10 +1,14 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Appointment;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.sql.ResultSet;
 
-public class AppointmentRepository implements Repository<Appointment> {
+@Repository
+@Component("AR")
+public class AppointmentRepository implements IRepository<Appointment> {
     @Override
     public void create(Appointment obj) {
 
@@ -21,12 +25,12 @@ public class AppointmentRepository implements Repository<Appointment> {
     }
 
     @Override
-    public List<Appointment> fetchAll() {
+    public ResultSet fetchAll() {
         return null;
     }
 
     @Override
-    public Appointment findById(int id) {
+    public ResultSet findById(int id) {
         return null;
     }
 }

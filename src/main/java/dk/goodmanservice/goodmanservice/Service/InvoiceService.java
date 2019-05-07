@@ -1,10 +1,20 @@
 package dk.goodmanservice.goodmanservice.Service;
 
 import dk.goodmanservice.goodmanservice.Model.Invoice;
+import dk.goodmanservice.goodmanservice.Repository.IRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class InvoiceService implements Service<Invoice> {
+@Service
+@Component("IS")
+public class InvoiceService implements IService<Invoice> {
+
+    @Autowired
+    private IRepository<Invoice> IR;
+
     @Override
     public void create(Invoice obj) {
 

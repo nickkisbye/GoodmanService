@@ -1,10 +1,14 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Case;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.sql.ResultSet;
 
-public class CaseRepository implements Repository<Case>{
+@Repository
+@Component("CR")
+public class CaseRepository implements IRepository<Case> {
     @Override
     public void create(Case obj) {
 
@@ -21,12 +25,12 @@ public class CaseRepository implements Repository<Case>{
     }
 
     @Override
-    public List<Case> fetchAll() {
+    public ResultSet fetchAll() {
         return null;
     }
 
     @Override
-    public Case findById(int id) {
+    public ResultSet findById(int id) {
         return null;
     }
 }

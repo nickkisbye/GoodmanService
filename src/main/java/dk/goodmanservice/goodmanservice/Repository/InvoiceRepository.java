@@ -1,10 +1,14 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Invoice;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.sql.ResultSet;
 
-public class InvoiceRepository implements Repository<Invoice>{
+@Repository
+@Component("IR")
+public class InvoiceRepository implements IRepository<Invoice> {
 
     @Override
     public void create(Invoice obj) {
@@ -22,12 +26,12 @@ public class InvoiceRepository implements Repository<Invoice>{
     }
 
     @Override
-    public List<Invoice> fetchAll() {
+    public ResultSet fetchAll() {
         return null;
     }
 
     @Override
-    public Invoice findById(int id) {
+    public ResultSet findById(int id) {
         return null;
     }
 }

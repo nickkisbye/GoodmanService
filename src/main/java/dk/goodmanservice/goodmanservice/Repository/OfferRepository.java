@@ -1,10 +1,14 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Offer;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.sql.ResultSet;
 
-public class OfferRepository implements Repository<Offer>{
+@Repository
+@Component("OR")
+public class OfferRepository implements IRepository<Offer> {
     @Override
     public void create(Offer obj) {
 
@@ -21,12 +25,12 @@ public class OfferRepository implements Repository<Offer>{
     }
 
     @Override
-    public List<Offer> fetchAll() {
+    public ResultSet fetchAll() {
         return null;
     }
 
     @Override
-    public Offer findById(int id) {
+    public ResultSet findById(int id) {
         return null;
     }
 }

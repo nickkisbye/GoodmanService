@@ -2,7 +2,7 @@ package dk.goodmanservice.goodmanservice.Service;
 
 import java.util.List;
 
-public interface Service<T> {
+public interface IService<T> {
 
     void create(T obj);
     void edit(T obj);

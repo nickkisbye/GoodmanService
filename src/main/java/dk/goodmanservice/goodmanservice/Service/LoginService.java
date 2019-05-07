@@ -1,0 +1,36 @@
+package dk.goodmanservice.goodmanservice.Service;
+
+import dk.goodmanservice.goodmanservice.Model.User;
+import dk.goodmanservice.goodmanservice.Repository.LoginRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+@Service
+public class LoginService {
+
+    @Autowired
+    private LoginRepository loginRepository;
+
+    public boolean login(User user) {
+        try {
+            ResultSet rs = loginRepository.login(user);
+            if(rs.next()) {
+                user.setId(rs.getInt("id"));
+                user.setEmail(rs.getString("email"));
+                user.setFirstName(rs.getString("firstname"));
+                user.setLastName(rs.getString("lastname"));
+                user.setPhoneNumber(rs.getString("phone_number"));
+                user.setRole(rs.getString("role"));
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+}
