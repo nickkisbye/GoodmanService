@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
+<header>
+    <div th:replace="fragments/header :: header"></div>
+</header>
+<main>
+    <section>
+        <div class="top-banner">
+            <h1>Nice overskrift <br> med en masse tekst</h1>
+        </div>
+    </section>
 
+    <section class="section-gray">
+        <div class="container">
+            <h2>Login</h2>
+            <div class="section-content login">
+                <form action="/login" method="post">
+                    <input type="text" name="username" placeholder="Brugernavn">
+                    <input type="password" name="password" placeholder="Password">
+                    <button type="submit">Log ind</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
 </body>
 </html>

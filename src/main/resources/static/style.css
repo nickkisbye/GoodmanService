@@ -35,11 +35,11 @@
 
 .opgaver .opgave { width: 220px; height: 200px; margin-bottom: 20px; background: aquamarine; }
 
-.kontakt form label { line-height: 20px; }
+.kontakt form label, .login form label { line-height: 20px; }
 
-.kontakt form input, .kontakt form textarea { max-width: 100%; min-width: 100%; padding: 10px 15px; border: 1px solid #e6e6e6; border-radius: 5px; margin-bottom: 5px; }
+.kontakt form input, .kontakt form textarea, .login form input, .login form textarea { max-width: 100%; min-width: 100%; padding: 10px 15px; border: 1px solid #e6e6e6; border-radius: 5px; margin-bottom: 5px; }
 
-.kontakt form button { background: #ff3531; color: white; border: 1px solid #e6e6e6; border-radius: 5px; padding: 10px 15px; width: 100%; }
+.kontakt form button, .login form button { background: #ff3531; color: white; border: 1px solid #e6e6e6; border-radius: 5px; padding: 10px 15px; width: 100%; }
 
 .top-banner { background: url("http://www.triotrae.dk/wp-content/uploads/2014/04/Billede-13.jpg") no-repeat center center fixed; height: 50vh; }
 
