@@ -5,42 +5,12 @@ import java.util.Date;
 public class Appointment {
 
     private int id;
-    private String name;
+    private int employeeId;
+    private int customerId;
     private Date date;
-    private Case obj;
+    private String description;
 
     public Appointment() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Case getObj() {
-        return obj;
-    }
-
-    public void setObj(Case obj) {
-        this.obj = obj;
-    }
 }

@@ -21,7 +21,7 @@ public class ExpenceService implements IService<Expence> {
     }
 
     @Override
-    public void edit(Expence obj) {
+    public void edit(Expence obj, String option) {
 
     }
 
@@ -31,7 +31,7 @@ public class ExpenceService implements IService<Expence> {
     }
 
     @Override
-    public List<Expence> fetchAll() {
+    public List<Expence> fetch(String option) {
         return null;
     }
 

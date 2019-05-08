@@ -21,7 +21,7 @@ public class AppointmentService implements IService<Appointment> {
     }
 
     @Override
-    public void edit(Appointment obj) {
+    public void edit(Appointment obj, String option) {
 
     }
 
@@ -31,7 +31,7 @@ public class AppointmentService implements IService<Appointment> {
     }
 
     @Override
-    public List<Appointment> fetchAll() {
+    public List<Appointment> fetch(String option) {
         return null;
     }
 

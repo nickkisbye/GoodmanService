@@ -6,13 +6,14 @@ import java.util.Date;
 public class Case {
 
     private int id;
-    private String customerName;
-    private String customerAddress;
-    private String customerEmail;
-    private String customerPhone;
-    private Date date;
-    private ArrayList<String> imageList;
+    private int customerId;
+    private String description;
     private int price;
+    private Date creationDate;
+    private String startDate;
+    private String endDate;
+    private int mode;
+    private ArrayList<String> imageList;
 
     public Case() {
     }
@@ -25,44 +26,52 @@ public class Case {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getCustomerAddress() {
-        return customerAddress;
+    public int getPrice() {
+        return price;
     }
 
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public String getCustomerEmail() {
-        return customerEmail;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public String getCustomerPhone() {
-        return customerPhone;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getDate() {
-        return date;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
     }
 
     public ArrayList<String> getImageList() {
@@ -73,11 +82,11 @@ public class Case {
         this.imageList = imageList;
     }
 
-    public int getPrice() {
-        return price;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public int getCustomerId() {
+        return customerId;
     }
 }

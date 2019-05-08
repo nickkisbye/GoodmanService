@@ -24,7 +24,7 @@ public class UserService implements IService<User> {
     }
 
     @Override
-    public void edit(User obj) {
+    public void edit(User obj, String option) {
 
     }
 
@@ -34,7 +34,7 @@ public class UserService implements IService<User> {
     }
 
     @Override
-    public List<User> fetchAll() {
+    public List<User> fetch(String option) {
         return null;
     }
 

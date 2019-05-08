@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 public interface IRepository<T> {
 
     void create(T obj);
-    void edit(T obj);
+    void edit(T obj, String option);
     void delete(int id);
-    ResultSet fetchAll();
+    ResultSet fetch(String option);
     ResultSet findById(int id);
 
 }

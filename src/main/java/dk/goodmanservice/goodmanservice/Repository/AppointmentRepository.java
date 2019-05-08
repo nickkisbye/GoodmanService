@@ -15,7 +15,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
     }
 
     @Override
-    public void edit(Appointment obj) {
+    public void edit(Appointment obj, String option) {
 
     }
 
@@ -25,7 +25,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
     }
 
     @Override
-    public ResultSet fetchAll() {
+    public ResultSet fetch(String option) {
         return null;
     }
 

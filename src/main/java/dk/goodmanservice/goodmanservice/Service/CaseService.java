@@ -21,7 +21,7 @@ public class CaseService implements IService<Case> {
     }
 
     @Override
-    public void edit(Case obj) {
+    public void edit(Case obj, String option) {
 
     }
 
@@ -31,7 +31,7 @@ public class CaseService implements IService<Case> {
     }
 
     @Override
-    public List<Case> fetchAll() {
+    public List<Case> fetch(String option) {
         return null;
     }
 

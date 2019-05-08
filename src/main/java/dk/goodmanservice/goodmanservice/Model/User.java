@@ -3,13 +3,13 @@ package dk.goodmanservice.goodmanservice.Model;
 public class User {
 
     private int id;
-    private String username;
     private String password;
+    private String address;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
-    private String role;
+    private int roleId;
 
     public User() {
     }
@@ -54,20 +54,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getRole() {
-        return role;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRole(int roleId) {
+        this.roleId = roleId;
     }
 
     public String getPassword() {
@@ -76,5 +68,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
