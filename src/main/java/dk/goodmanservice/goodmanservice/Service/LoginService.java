@@ -23,7 +23,7 @@ public class LoginService {
                 user.setFirstName(rs.getString("firstname"));
                 user.setLastName(rs.getString("lastname"));
                 user.setPhoneNumber(rs.getString("phone_number"));
-                user.setRole(rs.getString("role"));
+                user.setRole(rs.getInt("role"));
                 return true;
             }
         } catch (SQLException e) {

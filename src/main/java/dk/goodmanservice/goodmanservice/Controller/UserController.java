@@ -22,11 +22,11 @@ public class UserController {
     @PostMapping("/login")
     public String login(@ModelAttribute User user, HttpSession session) {
         if (loginService.login(user)) {
-            session.setAttribute("username", user.getUsername());
+            session.setAttribute("email", user.getEmail());
             session.setAttribute("firstname", user.getFirstName());
             session.setAttribute("lastname", user.getLastName());
             session.setAttribute("phone", user.getPhoneNumber());
-            session.setAttribute("role", user.getRole());
+            session.setAttribute("role", user.getRoleId());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("id", user.getId());
             return "dashboard/index";
