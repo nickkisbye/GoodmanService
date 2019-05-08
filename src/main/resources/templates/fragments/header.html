@@ -1,10 +1,15 @@
 <div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
-<nav class="navbar">
-    <h1>Good<span>man</span>Service<span>:::</span></h1>
-    <div class="menu-items">
-       <div class="menu-item"><a href="/">Forside</a></div>
-        <div class="menu-item"><a href="/calc">Beregner</a></div>
-        <div class="menu-item"><a href="/login">Login</a></div>
-    </div>
-</nav>
+    <nav class="navbar">
+        <a th:href="@{/}" class="logo">
+            <h1>GOOD<span>MAN</span>SERVICE<span class="dot">:::</span></h1>
+        </a>
+        <div class="menu-items">
+            <ul>
+                <a th:href="@{/}"><li>FORSIDE</li></a>
+                <a th:href="@{/beregner}"><li>BEREGNER</li></a>
+                <a th:href="@{/#kontakt}"><li>KONTAKT</li></a>
+                <a th:href="@{/login}"><li class="login">LOGIN</li></a>
+            </ul>
+        </div>
+    </nav>
 </div>

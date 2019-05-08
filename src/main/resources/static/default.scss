@@ -1,7 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "color";
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Proxima-Nova-Bold", "Proxima-Nova-Black", 'Roboto', sans-serif;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  background: $dark-gray;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "Proxima-Nova-Black";
+  src: url(Proxima-Nova-Black.otf);
+}
+
+@font-face {
+  font-family: "Proxima-Nova-Bold";
+  src: url(Proxima-Nova-Bold.otf);
+}
+
+@font-face {
+  font-family: "Proxima-Nova-Regular";
+  src: url(Promixa-Nova-Regular.ttf);
 }

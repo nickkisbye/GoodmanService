@@ -11,9 +11,9 @@ public class MenuController {
         return "index";
     }
 
-    @GetMapping("/calc")
-    public String calc() {
-        return "calc";
+    @GetMapping("/beregner")
+    public String beregner() {
+        return "beregner";
     }
 
     @GetMapping("/login")
@@ -21,4 +21,8 @@ public class MenuController {
         return "login";
     }
 
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "dashboard/index";
+    }
 }

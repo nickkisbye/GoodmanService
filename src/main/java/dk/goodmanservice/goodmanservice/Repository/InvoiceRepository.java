@@ -34,4 +34,8 @@ public class InvoiceRepository implements IRepository<Invoice> {
     public ResultSet findById(int id) {
         return null;
     }
+
+    public ResultSet imageUpload() {
+        return null;
+    }
 }

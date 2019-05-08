@@ -1,52 +1,559 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-* { padding: 0; margin: 0; font-family: 'Roboto', sans-serif; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.navbar {
+  color: white;
+  position: absolute;
+  padding: 30px 30px 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
 
-.navbar { color: white; padding: 10px 10px; position: absolute; top: 0; left: 0; width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; font-family: "Arial Black"; }
+.navbar .logo {
+  color: white;
+  text-decoration: none;
+}
 
-.navbar h1 { font-size: 35px; line-height: 40px; }
+.navbar .logo h1 {
+  font-size: 28px;
+  line-height: 40px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  font-family: "Proxima-Nova-Black", 'Roboto', sans-serif;
+}
 
-.navbar h1 span { color: #ff3531; }
+.navbar .logo h1 .dot {
+  font-size: 37px;
+}
 
-.navbar .menu-items { width: 20%; margin-right: 5%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+.navbar .logo h1 span {
+  color: #c2171d;
+  font-family: "Proxima-Nova-Black", 'Roboto', sans-serif;
+}
 
-.navbar .menu-items .menu-item { line-height: 40px; }
+.navbar .logo h1:hover {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
 
-.navbar .menu-items .menu-item a { text-decoration: none; color: white; margin-right: 2%; }
+.navbar .menu-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 
-.navbar .menu-items .menu-item a:hover { text-decoration: none; color: #ff3531; }
+.navbar .menu-items ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 
-.section-gray { background: #f6f6f6; padding: 30px 0; }
+.navbar .menu-items ul a {
+  color: white;
+  text-decoration: none;
+}
 
-.section-white { background: #fff; padding: 30px 0; }
+.navbar .menu-items ul a li {
+  font-size: 18px;
+  padding: 10px 15px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  font-family: "Proxima-Nova-Black", 'Roboto', sans-serif;
+}
 
-.container { width: 720px; margin: 0 auto; }
+.navbar .menu-items ul a li:hover {
+  opacity: 0.8;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
 
-.container h2 { text-align: center; margin-bottom: 20px; }
+.navbar .menu-items ul a .login {
+  border: 2px solid white;
+  margin-top: -2px;
+}
 
-.section-content { font-size: 13px; }
+.navbar .menu-items ul a .login:hover {
+  background: white;
+  opacity: 0.8;
+  color: #5a5a5a;
+}
 
-.about { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+.section-gray {
+  background: #f6f6f6;
+  padding: 100px 0;
+}
 
-.about .image, .about .tekst { width: 49%; text-align: justify; }
+.section-white {
+  background: #fff;
+  padding: 100px 0;
+}
 
-.about .image img, .about .tekst img { width: 100%; -webkit-filter: grayscale(100%); filter: grayscale(100%); }
+.hello {
+  height: 4px;
+  width: 70px;
+  background: #c2171d;
+  margin: 17px 10px 0 0;
+}
 
-.opgaver { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+.container {
+  width: 90%;
+  max-width: 1670px;
+  margin: 0 auto;
+}
 
-.opgaver .opgave { width: 220px; height: 200px; margin-bottom: 20px; background: aquamarine; }
+.container .head-tekst {
+  border-left: 5px solid #c2171d;
+  padding-left: 20px;
+  margin: 0 auto 100px;
+  width: 620px;
+}
 
-.kontakt form label, .login form label { line-height: 20px; }
+.container .head-tekst p {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
 
-.kontakt form input, .kontakt form textarea, .login form input, .login form textarea { max-width: 100%; min-width: 100%; padding: 10px 15px; border: 1px solid #e6e6e6; border-radius: 5px; margin-bottom: 5px; }
+.container .head-tekst h2 {
+  line-height: 70px;
+  font-size: 50px;
+}
 
-.kontakt form button, .login form button { background: #ff3531; color: white; border: 1px solid #e6e6e6; border-radius: 5px; padding: 10px 15px; width: 100%; }
+.section-content {
+  font-size: 13px;
+}
 
-.top-banner { background: url("http://www.triotrae.dk/wp-content/uploads/2014/04/Billede-13.jpg") no-repeat center center fixed; height: 50vh; }
+.top-banner {
+  background: url("bg.jpg") no-repeat center center fixed;
+  height: 80vh;
+  max-height: 1000px;
+  text-align: center;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
 
-.top-banner h1 { padding-top: 11%; text-align: center; font-size: 50px; color: white; }
+.top-banner .center-text {
+  width: 875px;
+  margin: 0 auto;
+}
 
-.footer { background: #2a2a2a; color: white; height: 400px; }
+.top-banner .center-text a {
+  color: white;
+}
 
-.footer .footer-content { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; width: 80%; margin-left: 10%; }
+.top-banner .center-text a i {
+  font-size: 40px;
+}
 
-.footer .footer-item { padding-top: 3%; font-size: 20px; }
+.top-banner .linesplit {
+  width: 100px;
+  height: 1px;
+  background: white;
+  margin: 0 auto;
+}
+
+.top-banner p {
+  font-size: 1.2em;
+  line-height: 1.15;
+  padding: 1rem;
+}
+
+.top-banner h2 {
+  font-size: 80px;
+  line-height: 1.15;
+  margin: 1rem;
+}
+
+.about {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.about .tekst .h3 {
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.about .tekst .h3 h3 {
+  font-size: 35px;
+  line-height: 40px;
+}
+
+.about .tekst p {
+  line-height: 30px;
+  font-size: 20px;
+  font-family: Proxima-Nova-Regular;
+}
+
+.about .image, .about .tekst {
+  width: 49%;
+  max-width: 825px;
+  text-align: justify;
+}
+
+.about .image img, .about .tekst img {
+  width: 100%;
+  max-width: 825px;
+  margin-top: 5px;
+}
+
+.task h2 {
+  font-size: 100px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.task .tasks .single-task {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 100px;
+}
+
+.task .tasks .single-task:last-of-type {
+  margin-bottom: 0;
+}
+
+.task .tasks .single-task .pic {
+  background: url("profile.jpg") no-repeat;
+  height: 78%;
+  top: 0;
+  left: 0;
+}
+
+.task .tasks .single-task .information-tekst {
+  width: 60%;
+  left: 0;
+  height: 270px;
+  bottom: 0;
+  background: #181818;
+  margin-top: -161px;
+  margin-left: 40%;
+  color: white;
+  padding: 30px;
+}
+
+.task .tasks .single-task .information-tekst .h3 {
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.task .tasks .single-task .information-tekst .h3 h3 {
+  font-size: 35px;
+  line-height: 40px;
+}
+
+.task .tasks .single-task .information-tekst p {
+  line-height: 30px;
+  font-size: 20px;
+  font-family: Proxima-Nova-Regular;
+}
+
+.task .tasks .reverse .pic {
+  margin-left: 845px;
+  margin-right: 0;
+}
+
+.task .tasks .reverse .information-tekst {
+  margin-right: 40%;
+  margin-left: 0;
+}
+
+.contact {
+  margin: 0 auto;
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.place {
+  width: 35%;
+  background-color: #f6f6f6;
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.place .icon-row {
+  width: 15%;
+}
+
+.place .text-row {
+  width: 85%;
+  margin-bottom: 60px;
+}
+
+.place i {
+  font-size: 38px;
+  color: #c2171d;
+}
+
+.place h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.place p {
+  font-family: Proxima-Nova-Regular;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.place .email {
+  margin-top: 30px;
+}
+
+.place .email a {
+  color: #c2171d;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.place .phone {
+  font-size: 20px;
+  color: #c2171d;
+}
+
+.kontakt {
+  width: 60%;
+}
+
+.kontakt h3 {
+  font-size: 35px;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
+.kontakt p {
+  line-height: 30px;
+  font-size: 20px;
+  font-family: Proxima-Nova-Regular;
+  margin-bottom: 65px;
+}
+
+.kontakt form label {
+  line-height: 20px;
+}
+
+.kontakt form input, .kontakt form textarea {
+  max-width: 100%;
+  min-width: 100%;
+  padding: 10px 15px 10px 0;
+  border: none;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.kontakt form ::-webkit-input-placeholder {
+  color: #cdcdcd;
+}
+
+.kontakt form :-ms-input-placeholder {
+  color: #cdcdcd;
+}
+
+.kontakt form ::-ms-input-placeholder {
+  color: #cdcdcd;
+}
+
+.kontakt form ::placeholder {
+  color: #cdcdcd;
+}
+
+.kontakt form textarea {
+  height: 100px;
+}
+
+.kontakt form button {
+  background: #c2171d;
+  color: white;
+  border: none;
+  padding: 20px 15px;
+  width: 20%;
+  margin-left: 80%;
+  font-size: 20px;
+}
+
+.login-page {
+  margin-top: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.calc-page {
+  margin-top: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.footer {
+  background: #0f0f0f;
+  color: white;
+}
+
+.footer .social {
+  height: 100px;
+  padding: 30px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.footer .social .social-icons a {
+  color: #c2171d;
+}
+
+.footer .social .social-icons a i {
+  line-height: 40px;
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+.footer .social h4 {
+  line-height: 40px;
+  font-size: 30px;
+  font-family: "Proxima-Nova-Black", 'Roboto', sans-serif;
+}
+
+.footer .social h4 span {
+  color: #c2171d;
+  font-family: "Proxima-Nova-Black", 'Roboto', sans-serif;
+}
+
+.footer .social h4 .dot {
+  font-size: 39px;
+}
+
+.footer .info-footer {
+  width: 100%;
+  background: #181818;
+}
+
+.footer .info-footer .footer-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 50px 0;
+}
+
+.footer .info-footer .footer-grid .left, .footer .info-footer .footer-grid .right {
+  width: 24%;
+}
+
+.footer .info-footer .footer-grid div i {
+  margin-right: 10px;
+  color: #c2171d;
+}
+
+.footer .info-footer .footer-grid div p {
+  font-family: Promixa-Nova-Regular, sans-serif;
+  font-size: 18px;
+  margin-bottom: 10px;
+  line-height: 25px;
+}
+
+.footer .info-footer .footer-grid div h3 {
+  font-size: 25px;
+  margin-bottom: 25px;
+  color: #c2171d;
+}
+
+.footer .info-footer .footer-grid div a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer hr {
+  border: 0.5px solid #484848;
+}
+
+.footer .designer {
+  padding: 40px;
+  color: #484848;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Proxima-Nova-Bold", "Proxima-Nova-Black", 'Roboto', sans-serif;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #181818;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "Proxima-Nova-Black";
+  src: url(Proxima-Nova-Black.otf);
+}
+
+@font-face {
+  font-family: "Proxima-Nova-Bold";
+  src: url(Proxima-Nova-Bold.otf);
+}
+
+@font-face {
+  font-family: "Proxima-Nova-Regular";
+  src: url(Promixa-Nova-Regular.ttf);
+}

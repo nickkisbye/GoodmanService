@@ -1,15 +1,76 @@
+@import "color";
 .footer {
-  background: #2a2a2a;
+  background: #0f0f0f;
   color: white;
-  height: 400px;
-  .footer-content {
+  .social {
+    height: 100px;
+    padding: 30px 0;
     display: flex;
     justify-content: space-between;
-    width: 80%;
-    margin-left: 10%;
+
+    .social-icons {
+      a {
+        color: $primary-color;
+        i {
+          line-height: 40px;
+          font-size: 30px;
+          margin-left: 30px;
+        }
+      }
+    }
+    h4 {
+      line-height: 40px;
+      font-size: 30px;
+      font-family: "Proxima-Nova-Black", 'Roboto', sans-serif;
+      span {
+        color: $primary-color;
+        font-family: "Proxima-Nova-Black", 'Roboto', sans-serif;
+      }
+      .dot {
+        font-size: 39px;
+      }
+    }
   }
-  .footer-item {
-    padding-top: 3%;
-    font-size: 20px;
+  .info-footer {
+    width: 100%;
+    background: $dark-gray;
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      padding: 50px 0;
+      .left, .right {
+        width: 24%;
+      }
+      div {
+        i {
+          margin-right: 10px;
+          color: $primary-color;
+        }
+        p {
+          font-family: Promixa-Nova-Regular, sans-serif;
+          font-size: 18px;
+          margin-bottom: 10px;
+          line-height: 25px;
+        }
+        h3 {
+          font-size: 25px;
+          margin-bottom: 25px;
+          color: $primary-color;
+        }
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  hr {
+    border: 0.5px solid #484848;
+  }
+  .designer {
+    padding: 40px;
+    color: #484848;
+    display: flex;
+    justify-content: space-between;
   }
 }

@@ -2,6 +2,23 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Proxima-Nova-Bold", "Proxima-Nova-Black", 'Roboto', sans-serif;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  scroll-behavior: smooth; }
+
+body {
+  background: #000;
+  scroll-behavior: smooth; }
+
+@font-face {
+  font-family: "Proxima-Nova-Black";
+  src: url(Proxima-Nova-Black.otf); }
+
+@font-face {
+  font-family: "Proxima-Nova-Bold";
+  src: url(Proxima-Nova-Bold.otf); }
+
+@font-face {
+  font-family: "Proxima-Nova-Regular";
+  src: url(Promixa-Nova-Regular.ttf); }
