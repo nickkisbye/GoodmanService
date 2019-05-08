@@ -79,13 +79,15 @@ public class UserService implements IService<User> {
         User user = new User();
         ResultSet rs = UR.findById(id);
         try {
-            user.setPhoneNumber(rs.getString("phone"));
-            user.setFirstName(rs.getString("first_name"));
-            user.setLastName(rs.getString("last_name"));
-            user.setEmail(rs.getString("email"));
-            user.setAddress(rs.getString("address"));
-            user.setRole(rs.getInt("fk_role"));
-            user.setId(rs.getInt("id"));
+            if (rs.next()) {
+                user.setPhoneNumber(rs.getString("phone"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setAddress(rs.getString("address"));
+                user.setRole(rs.getInt("fk_role"));
+                user.setId(rs.getInt("id"));
+            }
             return user;
         } catch (SQLException e) {
             e.printStackTrace();
