@@ -19,13 +19,15 @@ public class UserService implements IService<User> {
     private IRepository<User> UR;
 
     @Override
-    public void create(User obj) {
-
+    public String create(User obj) {
+        UR.create(obj);
+        return "success";
     }
 
     @Override
-    public void edit(User obj, String option) {
-
+    public String edit(User obj, String option) {
+        UR.edit(obj,"all");
+        return "success";
     }
 
     @Override

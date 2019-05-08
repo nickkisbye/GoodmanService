@@ -16,13 +16,13 @@ public class AppointmentService implements IService<Appointment> {
     private IRepository<Appointment> AR;
 
     @Override
-    public void create(Appointment obj) {
-
+    public String create(Appointment obj) {
+        return "";
     }
 
     @Override
-    public void edit(Appointment obj, String option) {
-
+    public String edit(Appointment obj, String option) {
+        return "";
     }
 
     @Override

@@ -16,13 +16,13 @@ public class ExpenceService implements IService<Expence> {
     private IRepository<Expence> ER;
 
     @Override
-    public void create(Expence obj) {
-
+    public String create(Expence obj) {
+        return "";
     }
 
     @Override
-    public void edit(Expence obj, String option) {
-
+    public String edit(Expence obj, String option) {
+        return "";
     }
 
     @Override

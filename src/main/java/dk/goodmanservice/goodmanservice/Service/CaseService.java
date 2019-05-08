@@ -16,13 +16,13 @@ public class CaseService implements IService<Case> {
     private IRepository<Case> CR;
 
     @Override
-    public void create(Case obj) {
-
+    public String create(Case obj) {
+        return "";
     }
 
     @Override
-    public void edit(Case obj, String option) {
-
+    public String edit(Case obj, String option) {
+        return "";
     }
 
     @Override
