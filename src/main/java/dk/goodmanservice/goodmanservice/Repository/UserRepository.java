@@ -73,10 +73,10 @@ public class UserRepository implements IRepository<User> {
             case "all":
                 sql = "SELECT * FROM users";
                 break;
-            case "employee":
+            case "employees":
                 sql = "SELECT * FROM users WHERE fk_role=3";
                 break;
-            case "customer":
+            case "customers":
                 sql = "SELECT * FROM users WHERE fk_role=4";
                 break;
             case "boss":
