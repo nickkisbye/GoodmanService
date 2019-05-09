@@ -52,6 +52,7 @@ public class AppointmentService implements IService<Appointment> {
                 appointment.setEmployeeId(resultSet.getInt("fk_employee"));
                 appointment.setCustomerId(resultSet.getInt("fk_customer"));
 
+                //Below does not work, Concated to name
                 employee.setFirstName(resultSet.getString("firstName"));
                 employee.setLastName(resultSet.getString("lastName"));
 
@@ -60,7 +61,7 @@ public class AppointmentService implements IService<Appointment> {
 
                 appointment.setEmployee(employee);
                 appointment.setCustomer(customer);
-
+                //
                 appointmentList.add(appointment);
             }
         return appointmentList;
