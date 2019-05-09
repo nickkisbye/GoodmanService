@@ -24,6 +24,7 @@ public class LoginService {
                 user.setLastName(rs.getString("lastname"));
                 user.setPhoneNumber(rs.getString("phone_number"));
                 user.setRole(rs.getInt("role"));
+                user.setRoleName(rs.getString("roles.name"));
                 return true;
             }
         } catch (SQLException e) {

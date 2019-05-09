@@ -10,6 +10,7 @@ public class User {
     private String email;
     private String phoneNumber;
     private int roleId;
+    private String roleName;
 
     public User() {
     }
@@ -76,5 +77,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

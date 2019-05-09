@@ -23,6 +23,8 @@ public class MenuController {
 
     @GetMapping("/dashboard")
     public String dashboard() {
-        return "dashboard/index";
+        return "dashboard/employee";
     }
+
+
 }

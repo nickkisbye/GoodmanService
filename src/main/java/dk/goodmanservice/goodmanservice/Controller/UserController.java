@@ -29,7 +29,13 @@ public class UserController {
             session.setAttribute("role", user.getRoleId());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("id", user.getId());
-            return "dashboard/index";
+
+            if (user.getRoleName().equals("customer")) {
+                return "dashboard/customer";
+            } else {
+                return "dashboard/employee";
+            }
+
         } else {
             session.invalidate();
             return "index";

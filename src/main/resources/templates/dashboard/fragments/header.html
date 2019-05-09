@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav class="navbar">
+        Welcome, <p th:text="${session.firstname}"></p>
+    </nav>
+</div>

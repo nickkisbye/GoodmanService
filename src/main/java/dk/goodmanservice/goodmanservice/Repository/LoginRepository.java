@@ -23,7 +23,7 @@ public class LoginRepository {
     }
 
     public ResultSet login(User obj) {
-        String sql = "SELECT * FROM users WHERE email=? AND password=?";
+        String sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE email=? AND password=?";
         try {
             con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getEmail());
