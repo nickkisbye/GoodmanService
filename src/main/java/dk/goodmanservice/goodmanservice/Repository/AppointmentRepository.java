@@ -26,28 +26,22 @@ public class AppointmentRepository implements IRepository<Appointment> {
     }
 
     @Override
-    public void create(Appointment obj) {
+    public void create(Appointment obj) throws SQLException {
         sql = "INSERT INTO appointments (description, date, fk_employee, fk_costumer) " +
                 "VALUES (?, ?, ?, ?)";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             executeAppointment(obj);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
-    public void edit(Appointment obj) {
+    public void edit(Appointment obj) throws SQLException {
         sql = "UPDATE appointments " +
                 "SET description = ?, date = ?, fk_employee = ?, fk_customer = ? " +
                 "WHERE id = '" + obj.getId() + "'";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             executeAppointment(obj);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     private void executeAppointment(Appointment obj) throws SQLException {
@@ -59,18 +53,15 @@ public class AppointmentRepository implements IRepository<Appointment> {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws SQLException {
         sql = "DELETE FROM appointments WHERE id = ?";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
-    public ResultSet fetch(String option, int id) {
+    public ResultSet fetch(String option, int id) throws SQLException {
         switch (option) {
             case "customers":
                 sql = "SELECT * FROM appointments WHERE fk_costumer = '" + id + "'";
@@ -83,25 +74,16 @@ public class AppointmentRepository implements IRepository<Appointment> {
                 break;
         }
 
-        try {
             preparedStatement = con.prepareStatement(sql);
             return preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @Override
-    public ResultSet findById(int id) {
+    public ResultSet findById(int id) throws SQLException {
         sql = "SELECT * FROM appointments WHERE id = ?";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }
