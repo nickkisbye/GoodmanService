@@ -25,24 +25,20 @@ public class UserRepository implements IRepository<User> {
     }
 
     @Override
-    public void create(User obj) {
+    public void create(User obj) throws SQLException {
         String sql = "INSERT INTO users (first_name, last_name, email, address, phone, fk_role, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        preparedStatement = con.prepareStatement(sql);
         executeUser(sql, obj);
     }
 
     @Override
-    public void edit(User obj, String option) {
-        switch (option) {
-           case "all":
-               sql = "UPDATE users SET first_name=?, last_name=?, email=?, address=?, phone=?, fk_role=?, password=? WHERE id = '" + obj.getId() + "'";
-           break;
-        }
+    public void edit(User obj) throws SQLException {
+        sql = "UPDATE users SET first_name=?, last_name=?, email=?, address=?, phone=?, fk_role=?, password=? WHERE id = '" + obj.getId() + "'";
+        preparedStatement = con.prepareStatement(sql);
         executeUser(sql, obj);
     }
 
-    private void executeUser(String sql, User obj) {
-        try {
-            preparedStatement = con.prepareStatement(sql);
+    private void executeUser(String sql, User obj) throws SQLException {
             preparedStatement.setString(1, obj.getFirstName());
             preparedStatement.setString(2, obj.getLastName());
             preparedStatement.setString(3, obj.getEmail());
@@ -51,24 +47,18 @@ public class UserRepository implements IRepository<User> {
             preparedStatement.setInt(6, obj.getRoleId());
             preparedStatement.setString(7, obj.getPassword());
             preparedStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws SQLException {
         sql = "DELETE FROM users WHERE id=?";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
-    public ResultSet fetch(String option, int id) {
+    public ResultSet fetch(String option, int id) throws SQLException {
         switch (option) {
             case "all":
                 sql = "SELECT * FROM users";
@@ -86,25 +76,17 @@ public class UserRepository implements IRepository<User> {
                 sql = "SELECT * FROM users WHERE fk_role=4";
                 break;
         }
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             return preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @Override
-    public ResultSet findById(int id) {
+    public ResultSet findById(int id) throws SQLException {
         sql = "SELECT * FROM users WHERE id=?";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

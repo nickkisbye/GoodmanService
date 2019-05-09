@@ -38,7 +38,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
     }
 
     @Override
-    public void edit(Appointment obj, String option) {
+    public void edit(Appointment obj) {
         sql = "UPDATE appointments " +
                 "SET description = ?, date = ?, fk_employee = ?, fk_customer = ? " +
                 "WHERE id = '" + obj.getId() + "'";
@@ -71,7 +71,6 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
     @Override
     public ResultSet fetch(String option, int id) {
-        //Needs id attribute, add to interface???
         switch (option) {
             case "customers":
                 sql = "SELECT * FROM appointments WHERE fk_costumer = '" + id + "'";
@@ -79,7 +78,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
             case "employees":
                 sql = "SELECT * FROM appointments WHERE fk_employee '" + id + "'";
                 break;
-            case "appointments":
+            case "all":
                 sql = "SELECT * FROM appointments";
                 break;
         }

@@ -1,13 +1,14 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public interface IRepository<T> {
 
-    void create(T obj);
-    void edit(T obj, String option);
-    void delete(int id);
-    ResultSet fetch(String option, int id);
-    ResultSet findById(int id);
+    void create(T obj) throws SQLException;
+    void edit(T obj) throws SQLException;
+    void delete(int id) throws SQLException;
+    ResultSet fetch(String option, int id) throws SQLException;
+    ResultSet findById(int id) throws SQLException;
 
 }

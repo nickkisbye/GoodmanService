@@ -31,10 +31,10 @@ public class CaseRepository implements IRepository<Case> {
 
 
     @Override
-    public void create(Case obj) {
+    public void create(Case obj) throws SQLException {
 
         sql = "INSERT INTO cases (description, price, creationDate, startDate, endDate, fk_mode, fk_customer) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try {
+
             Calendar cal = Calendar.getInstance();
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getDescription());
@@ -44,42 +44,31 @@ public class CaseRepository implements IRepository<Case> {
             preparedStatement.setString(5, obj.getEndDate());
             preparedStatement.setInt(6, obj.getMode());
             preparedStatement.setInt(7, obj.getCustomerId());
-            preparedStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
-    public void edit(Case obj, String option) {
+    public void edit(Case obj) throws SQLException {
 
         sql = "UPDATE cases SET description=?, price=?, startDate=?, endDate=?, fk_mode WHERE id = '" + obj.getId() + "'";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getDescription());
             preparedStatement.setInt(2, obj.getPrice());
             preparedStatement.setString(3, obj.getStartDate());
             preparedStatement.setString(4, obj.getEndDate());
             preparedStatement.setInt(5, obj.getMode());
-            preparedStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws SQLException {
         sql = "DELETE FROM cases WHERE id=?";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
-    public ResultSet fetch(String option, int id) {
+    public ResultSet fetch(String option, int id) throws SQLException {
 
         switch (option) {
             case "customers":
@@ -93,25 +82,16 @@ public class CaseRepository implements IRepository<Case> {
                 break;
         }
 
-        try {
             preparedStatement = con.prepareStatement(sql);
             return preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @Override
-    public ResultSet findById(int id) {
+    public ResultSet findById(int id) throws SQLException {
         sql = "SELECT * FROM cases WHERE id=?";
-        try {
+
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }
