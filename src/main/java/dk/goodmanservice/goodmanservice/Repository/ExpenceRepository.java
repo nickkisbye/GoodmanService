@@ -33,7 +33,7 @@ public class ExpenceRepository implements IRepository<Expence> {
 
     @Override
     public void edit(Expence obj, String option) {
-        String sql = "UPDATE expenses SET price=?, description=?, fk_employee=?";
+        String sql = "UPDATE expenses SET price=?, description=?, fk_employee=? WHERE id = '" + obj.getId() + "'";
         executeExpense(sql, obj);
     }
 

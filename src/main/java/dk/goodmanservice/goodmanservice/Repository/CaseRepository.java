@@ -53,7 +53,7 @@ public class CaseRepository implements IRepository<Case> {
     @Override
     public void edit(Case obj, String option) {
 
-        sql = "UPDATE cases SET description=?, price=?, startDate=?, endDate=?, fk_mode";
+        sql = "UPDATE cases SET description=?, price=?, startDate=?, endDate=?, fk_mode WHERE id = '" + obj.getId() + "'";
         try {
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getDescription());

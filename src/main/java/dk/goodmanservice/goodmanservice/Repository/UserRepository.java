@@ -34,7 +34,7 @@ public class UserRepository implements IRepository<User> {
     public void edit(User obj, String option) {
         switch (option) {
            case "all":
-               sql = "UPDATE users SET first_name=?, last_name=?, email=?, address=?, phone=?, fk_role=?, password=?";
+               sql = "UPDATE users SET first_name=?, last_name=?, email=?, address=?, phone=?, fk_role=?, password=? WHERE id = '" + obj.getId() + "'";
            break;
         }
         executeUser(sql, obj);
