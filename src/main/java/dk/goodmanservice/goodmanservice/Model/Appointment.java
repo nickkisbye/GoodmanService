@@ -7,6 +7,8 @@ public class Appointment {
     private int customerId;
     private String date;
     private String description;
+    private User employee;
+    private User customer;
 
     public Appointment() {
     }
@@ -49,5 +51,21 @@ public class Appointment {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(User employee) {
+        this.employee = employee;
+    }
+
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
     }
 }

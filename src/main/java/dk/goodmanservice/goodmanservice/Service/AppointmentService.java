@@ -1,6 +1,7 @@
 package dk.goodmanservice.goodmanservice.Service;
 
 import dk.goodmanservice.goodmanservice.Model.Appointment;
+import dk.goodmanservice.goodmanservice.Model.User;
 import dk.goodmanservice.goodmanservice.Repository.IRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -41,11 +42,28 @@ public class AppointmentService implements IService<Appointment> {
     public List<Appointment> fetch(String option, int id) throws SQLException {
         resultSet = AR.fetch(option, id);
         List<Appointment> appointmentList = new ArrayList<>();
+
         while (resultSet.next()) {
             Appointment appointment = new Appointment();
+            User employee = new User();
+            User customer = new User();
+                appointment.setId(resultSet.getInt("id"));
+                appointment.setDescription(resultSet.getString("description"));
+                appointment.setEmployeeId(resultSet.getInt("fk_employee"));
+                appointment.setCustomerId(resultSet.getInt("fk_customer"));
 
-        }
-        return null;
+                employee.setFirstName(resultSet.getString("firstName"));
+                employee.setLastName(resultSet.getString("lastName"));
+
+                customer.setFirstName(resultSet.getString("firstName"));
+                customer.setLastName(resultSet.getString("lastName"));
+
+                appointment.setEmployee(employee);
+                appointment.setCustomer(customer);
+
+                appointmentList.add(appointment);
+            }
+        return appointmentList;
     }
 
     @Override
