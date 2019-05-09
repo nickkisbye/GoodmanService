@@ -31,7 +31,7 @@ public class ExpenceService implements IService<Expence> {
     }
 
     @Override
-    public List<Expence> fetch(String option) {
+    public List<Expence> fetch(String option, int id) {
         return null;
     }
 

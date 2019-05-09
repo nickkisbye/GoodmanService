@@ -52,8 +52,8 @@ public class UserService implements IService<User> {
     }
 
     @Override
-    public List<User> fetch(String option) {
-        ResultSet rs = UR.fetch(option);
+    public List<User> fetch(String option, int id) {
+        ResultSet rs = UR.fetch(option, id);
         List<User> userList = new ArrayList<>();
         try {
             while (rs.next()) {

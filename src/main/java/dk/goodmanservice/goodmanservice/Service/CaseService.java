@@ -32,7 +32,7 @@ public class CaseService implements IService<Case> {
     }
 
     @Override
-    public List<Case> fetch(String option) {
+    public List<Case> fetch(String option, int id) {
         return null;
     }
 

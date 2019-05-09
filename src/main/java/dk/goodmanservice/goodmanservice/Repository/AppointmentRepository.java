@@ -70,15 +70,16 @@ public class AppointmentRepository implements IRepository<Appointment> {
     }
 
     @Override
-    public ResultSet fetch(String option) {
+    public ResultSet fetch(String option, int id) {
+        //Needs id attribute, add to interface???
         switch (option) {
             case "customers":
-                sql = "SELECT * FROM appointments WHERE fk_employee = 1";
+                sql = "SELECT * FROM appointments WHERE fk_costumer = '" + id + "'";
                 break;
             case "employees":
-                sql = "SELECT * FROM appointments WHERE fk_customer > 2";
+                sql = "SELECT * FROM appointments WHERE fk_employee '" + id + "'";
                 break;
-            case "cases":
+            case "appointments":
                 sql = "SELECT * FROM appointments";
                 break;
         }

@@ -31,7 +31,7 @@ public class AppointmentService implements IService<Appointment> {
     }
 
     @Override
-    public List<Appointment> fetch(String option) {
+    public List<Appointment> fetch(String option, int id) {
         return null;
     }
 

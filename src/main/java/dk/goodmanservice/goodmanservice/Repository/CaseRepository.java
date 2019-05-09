@@ -79,7 +79,7 @@ public class CaseRepository implements IRepository<Case> {
     }
 
     @Override
-    public ResultSet fetch(String option) {
+    public ResultSet fetch(String option, int id) {
 
         switch (option) {
             case "customers":
