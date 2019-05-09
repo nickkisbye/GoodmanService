@@ -17,7 +17,8 @@ public class CaseService implements IService<Case> {
 
     @Override
     public String create(Case obj) {
-        return "";
+        CR.create(obj);
+        return "Success";
     }
 
     @Override
