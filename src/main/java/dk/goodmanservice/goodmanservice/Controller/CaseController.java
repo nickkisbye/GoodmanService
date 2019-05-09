@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.swing.text.SimpleAttributeSet;
+import java.sql.SQLException;
 
 @Controller
 public class CaseController {
@@ -29,7 +30,11 @@ public class CaseController {
     }
     @PostMapping("/dashboard/tilbud/ny")
     public String createOfferForm(Model model, Case cases) {
-        model.addAttribute("error", CS.create(cases));
+        try {
+            model.addAttribute("error", CS.create(cases));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return "dashboard/offerCreate";
     }
 
