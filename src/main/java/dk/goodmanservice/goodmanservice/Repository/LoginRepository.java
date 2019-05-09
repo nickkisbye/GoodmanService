@@ -25,7 +25,7 @@ public class LoginRepository {
     public ResultSet login(User obj) {
         String sql = "SELECT * FROM users WHERE email=? AND password=?";
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getEmail());
             preparedStatement.setString(2, obj.getPassword());
             return preparedStatement.executeQuery();

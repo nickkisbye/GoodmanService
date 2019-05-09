@@ -1,7 +1,7 @@
 package dk.goodmanservice.goodmanservice.Model;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Case {
 
@@ -9,7 +9,7 @@ public class Case {
     private int customerId;
     private String description;
     private int price;
-    private Date creationDate;
+    private java.sql.Date creationDate;
     private String startDate;
     private String endDate;
     private int mode;
@@ -46,7 +46,7 @@ public class Case {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(java.sql.Date creationDate) {
         this.creationDate = creationDate;
     }
 
