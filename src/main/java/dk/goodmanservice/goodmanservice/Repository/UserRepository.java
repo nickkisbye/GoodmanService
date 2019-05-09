@@ -40,9 +40,9 @@ public class UserRepository implements IRepository<User> {
         executeUser(sql, obj);
     }
 
-    public void executeUser(String sql, User obj) {
+    private void executeUser(String sql, User obj) {
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getFirstName());
             preparedStatement.setString(2, obj.getLastName());
             preparedStatement.setString(3, obj.getEmail());
@@ -60,7 +60,7 @@ public class UserRepository implements IRepository<User> {
     public void delete(int id) {
         sql = "DELETE FROM users WHERE id=?";
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class UserRepository implements IRepository<User> {
                 break;
         }
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,7 +99,7 @@ public class UserRepository implements IRepository<User> {
     public ResultSet findById(int id) {
         sql = "SELECT * FROM users WHERE id=?";
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
         } catch (SQLException e) {

@@ -39,7 +39,7 @@ public class ExpenceRepository implements IRepository<Expence> {
 
     public void executeExpense(String sql, Expence obj) {
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);;
             preparedStatement.setInt(1, obj.getPrice());
             preparedStatement.setString(2, obj.getDescription());
             preparedStatement.setInt(3, obj.getEmployeeId());
@@ -53,7 +53,7 @@ public class ExpenceRepository implements IRepository<Expence> {
     public void delete(int id) {
         String sql = "DELETE FROM expenses WHERE id=?";
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);;
             preparedStatement.setInt(1, id);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class ExpenceRepository implements IRepository<Expence> {
     public ResultSet fetch(String option) {
         String sql = "SELECT * FROM expenses";
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);;
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class ExpenceRepository implements IRepository<Expence> {
     public ResultSet findById(int id) {
         String sql = "SELECT * FROM expenses WHERE id=?";
         try {
-            con.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);;
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
