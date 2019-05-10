@@ -71,8 +71,6 @@ public class AppointmentService implements IService<Appointment> {
     public Appointment findById(int id) throws SQLException {
         resultSet = AR.findById(id);
         Appointment appointment = new Appointment();
-        User employee = new User();
-        User customer = new User();
 
         while (resultSet.next()) {
             appointment.setId(resultSet.getInt("id"));
@@ -80,15 +78,6 @@ public class AppointmentService implements IService<Appointment> {
             appointment.setDate(resultSet.getString("date"));
             appointment.setEmployeeId(resultSet.getInt("fk_employee"));
             appointment.setCustomerId(resultSet.getInt("fk_customer"));
-
-            employee.setFirstName(resultSet.getString("eFirstName"));
-            employee.setLastName(resultSet.getString("eLastName"));
-
-            customer.setFirstName(resultSet.getString("cFirstName"));
-            customer.setLastName(resultSet.getString("cLastName"));
-
-            appointment.setEmployee(employee);
-            appointment.setCustomer(customer);
         }
         return appointment;
     }
