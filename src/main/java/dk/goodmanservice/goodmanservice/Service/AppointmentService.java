@@ -49,19 +49,19 @@ public class AppointmentService implements IService<Appointment> {
             User customer = new User();
                 appointment.setId(resultSet.getInt("id"));
                 appointment.setDescription(resultSet.getString("description"));
+                appointment.setDate(resultSet.getString("date"));
                 appointment.setEmployeeId(resultSet.getInt("fk_employee"));
                 appointment.setCustomerId(resultSet.getInt("fk_customer"));
 
-                //Below does not work, Concated to name
-                employee.setFirstName(resultSet.getString("firstName"));
-                employee.setLastName(resultSet.getString("lastName"));
+                employee.setFirstName(resultSet.getString("eFirstName"));
+                employee.setLastName(resultSet.getString("eLastName"));
 
-                customer.setFirstName(resultSet.getString("firstName"));
-                customer.setLastName(resultSet.getString("lastName"));
+                customer.setFirstName(resultSet.getString("cFirstName"));
+                customer.setLastName(resultSet.getString("cLastName"));
 
                 appointment.setEmployee(employee);
                 appointment.setCustomer(customer);
-                //
+
                 appointmentList.add(appointment);
             }
         return appointmentList;

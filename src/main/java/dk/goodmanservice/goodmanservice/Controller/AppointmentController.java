@@ -16,10 +16,10 @@ public class AppointmentController {
     @Autowired
     private IService<Appointment> AS;
 
-    @GetMapping("/appointments/{id}")
-    public String appointments(@PathVariable(value = "id") int id, Model model) throws SQLException {
+    @GetMapping("/appointments")
+    public String appointments(Model model) throws SQLException {
         model.addAttribute("appointments", AS.fetch("All"));
-        return "kalender";
+        return "dashboard/kalender";
     }
 
 }
