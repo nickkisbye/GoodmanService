@@ -62,26 +62,21 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
-        sql = "SELECT appointments.*, group_concat(users.firstName, users.lastName) AS name " +
-                "FROM appointments, users " +
-                "WHERE appointments.fk_employee = users.id OR appointments.fk_customer = users.id " +
-                "GROUP BY appointments.id ";
-        switch (option) {
-            case "customer":
-                sql += "WHERE fk_costumer = '" + 0 + "' ";
-                break;
-            case "employee":
-                sql += "WHERE fk_employee '" + 0 + "' ";
-                break;
-        }
+        sql = "SELECT appointments.*, u1.firstName, u1.lastName, u2.firstName, u2.lastName FROM appointments " +
+                "LEFT JOIN users as u1 ON appointments.fk_customer = u1.id " +
+                "LEFT JOIN users as u2 ON appointments.fk_employee = u2.id ";
 
-            preparedStatement = con.prepareStatement(sql);
+        preparedStatement = con.prepareStatement(sql);
             return preparedStatement.executeQuery();
     }
 
     @Override
     public ResultSet findById(int id) throws SQLException {
-        sql = "SELECT * FROM appointments WHERE id = ?";
+        sql = " SELECT appointments.*, u1.firstName, u1.lastName, u2.firstName, u2.lastName FROM appointments " +
+                " LEFT JOIN users as u1 ON appointments.fk_customer = u1.id " +
+                " LEFT JOIN users as u2 ON appointments.fk_employee = u2.id " +
+                " WHERE  appointments.fk_employee = " + id +
+                " OR appointments.fk_customer = " + id;
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
