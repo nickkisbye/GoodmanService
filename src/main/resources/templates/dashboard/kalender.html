@@ -27,13 +27,14 @@
 
         <section class="dashboard-container">
             <div class="dashboard-item"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div>
+
                 <table class="table consultation overviewTable">
                     <tr>
-                        <th>Description</th>
-                        <th>Date</th>
-                        <th>Employee</th>
-                        <th>Customer</th>
-                        <th>Options</th>
+                        <th>Beskrivelse</th>
+                        <th>Dato</th>
+                        <th>Medarbejder</th>
+                        <th>Kunde</th>
+                        <th>Muligheder</th>
                     </tr>
                     <div th:each="a:${appointments}">
                         <div th:if="${a.employeeId == session.id OR a.customerId == session.id OR session.level >= 80}">
@@ -43,9 +44,9 @@
                                 <td th:text="${a.employee.firstName} + ' ' + ${a.employee.lastName}"></td>
                                 <td th:text="${a.customer.firstName} + ' ' + ${a.customer.lastName}"></td>
                                 <td>
-                                    <a th:href="@{/appointments/{id}(id=${a.id})}">Edit</a>
+                                    <a th:href="@{/appointments/{id}(id=${a.id})}">Rediger</a>
                                     <form th:action="@{/appointment/delete/{id}(id=${a.id})}" method="post">
-                                        <button type="submit">Delete</button>
+                                        <button type="submit">Slet</button>
                                     </form>
                                 </td>
                             </tr>

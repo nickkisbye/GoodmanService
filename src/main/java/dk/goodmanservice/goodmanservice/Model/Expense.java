@@ -1,13 +1,14 @@
 package dk.goodmanservice.goodmanservice.Model;
 
-public class Expence {
+public class Expense {
 
     private int id;
     private int price;
     private String description;
     private int employeeId;
+    private User employee;
 
-    public Expence() {
+    public Expense() {
     }
 
     public int getId() {
@@ -40,6 +41,14 @@ public class Expence {
 
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public User getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(User employee) {
+        this.employee = employee;
     }
 }
 

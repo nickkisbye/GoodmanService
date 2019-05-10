@@ -19,7 +19,7 @@ public class AppointmentService implements IService<Appointment> {
     @Autowired
     private IRepository<Appointment> AR;
 
-    ResultSet resultSet;
+    private ResultSet resultSet;
 
     @Override
     public String create(Appointment obj) throws SQLException {

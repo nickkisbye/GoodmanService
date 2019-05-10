@@ -24,12 +24,12 @@ public class AppointmentController {
 
     @GetMapping("/appointments")
     public String appointments(Model model) throws SQLException {
-        model.addAttribute("appointments", AS.fetch("All"));
+        model.addAttribute("appointments", AS.fetch("all"));
         return "dashboard/kalender";
     }
 
     @GetMapping("/appointments/{id}")
-    public String appointmentsById(@PathVariable(value = "id") int id, Model model) throws SQLException {
+    public String appointmentById(@PathVariable(value = "id") int id, Model model) throws SQLException {
         model.addAttribute("appointment", AS.findById(id));
         model.addAttribute("users", US.fetch("all"));
         return "dashboard/aftaler/aftaleEdit";

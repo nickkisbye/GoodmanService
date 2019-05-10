@@ -9,7 +9,7 @@
 <a th:href="@{/dashboard/kalender}">tilbage</a>
 
 <form th:action="@{/appointment/create}" method="post" th:object="${Appointment}">
-    <textarea placeholder="Description" name="description" id="" cols="30" rows="10"></textarea>
+    <textarea placeholder="Beskrivelse" name="description" cols="30" rows="10"></textarea>
     <input type="datetime-local" step="1" name="date">
 
     <select name="employeeId" >

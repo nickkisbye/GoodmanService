@@ -69,7 +69,7 @@ public class MenuController {
 
     @GetMapping("/dashboard/udlaeg")
     public String udlaeg() {
-        return "dashboard/udlaeg";
+        return "redirect:/expenses";
     }
 
 }

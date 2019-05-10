@@ -63,7 +63,8 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
-        sql = "SELECT appointments.*, u1.firstName AS eFirstName, u1.lastName AS eLastName, u2.firstName AS cFirstName, u2.lastName AS cLastName FROM appointments " +
+        sql = "SELECT appointments.*, u1.firstName AS eFirstName, u1.lastName AS eLastName, u2.firstName AS cFirstName, u2.lastName AS cLastName " +
+                "FROM appointments " +
                 "LEFT JOIN users as u1 ON appointments.fk_employee = u1.id " +
                 "LEFT JOIN users as u2 ON appointments.fk_customer = u2.id " +
                 "ORDER BY appointments.date";
