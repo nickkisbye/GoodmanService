@@ -17,16 +17,7 @@
                 <form th:action="@{/dashboard/expenses/create}" method="post" th:object="${Expense}">
                     <input type="number" placeholder="Pris" name="price">
                     <input type="text" placeholder="Beskrivelse" name="description">
-
-                    <select name="employeeId" >
-                        <optgroup label="Medarbejder">
-                            <div th:each="user:${users}">
-                                <div th:if="${user.level > 20}">
-                                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
-                                </div>
-                            </div>
-                        </optgroup>
-                    </select>
+                    <input type="hidden" th:value="${session.id}" name="employeeId">
 
                     <button type="submit">Opret Udlæg</button>
                 </form>
