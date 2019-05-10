@@ -105,10 +105,7 @@ public class UserController {
         return "dashboard/brugere";
     }
 
-    @GetMapping("/dashboard/kunder")
-    public String kunder() {
-        return "dashboard/kunder";
-    }
+
 
 
 
