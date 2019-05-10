@@ -40,8 +40,8 @@
                             <tr>
                                 <td th:text="${a.description}"></td>
                                 <td th:text="${a.date}"></td>
-                                <td th:text="${a.employee.firstName}"><span th:text="${a.employee.lastName}"></span> </td>
-                                <td th:text="${a.customer.firstName}"><span th:text="${a.customer.lastName}"></span></td>
+                                <td th:text="${a.employee.firstName} + ' ' + ${a.employee.lastName}"></td>
+                                <td th:text="${a.customer.firstName} + ' ' + ${a.customer.lastName}"></td>
                                 <td>
                                     <a th:href="@{/appointments/{id}(id=${a.id})}">Edit</a>
                                     <form th:action="@{/appointment/delete/{id}(id=${a.id})}" method="post">
