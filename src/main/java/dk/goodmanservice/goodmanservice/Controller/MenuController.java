@@ -26,11 +26,6 @@ public class MenuController {
         return "dashboard/employee";
     }
 
-    @GetMapping("/dashboard/tilbud")
-    public String tilbud() {
-        return "dashboard/tilbud";
-    }
-
     @GetMapping("/dashboard/opgaver")
     public String opgaver() {
         return "dashboard/opgaver";

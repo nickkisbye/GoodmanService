@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+</head>
+<body>
+
+    <div>
+
+    </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
     <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
 <body>
@@ -11,7 +26,24 @@
     <div class="main-container">
 
         <section class="dashboard-container">
-            <div class="dashboard-item"><a href="/dashboard/kalender"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div><div class="dashboard-item-body"><img th:src="@{/icons/calendar.png}"></div></a></div>
+            <div class="dashboard-item"><a href="/dashboard/kalender"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div>
+                <table class="table consultation overviewTable">
+                    <tr>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Employee</th>
+                        <th>Customer</th>
+                    </tr>
+                    <div th:each="a:${appointments}">
+                        <tr>
+                            <td th:text="${a.description}"></td>
+                            <td th:text="${a.date}"></td>
+                            <td th:text="${a.employee.firstName}"><span th:text="${a.employee.lastName}"></span></td>
+                            <td th:text="${a.customer.firstName}"><span th:text="${a.customer.lastName}"></span></td>
+                        </tr>
+                    </div>
+                </table>
+            </a></div>
         </section>
 
     </div>

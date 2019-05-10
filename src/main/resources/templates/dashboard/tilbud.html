@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
     <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
 <body>
@@ -12,9 +24,9 @@
 
         <section class="dashboard-container">
             <h2 class="dashboard-headline">Dashboard <span class="red">:::</span></h2>
-            <div class="dashboard-item"><a href="/dashboard/tilbud"><div class="dashboard-item-head bg-purple">Tilbud</div><div class="dashboard-item-body"><img th:src="@{/icons/sell.png}"></div></a></div>
+            <div class="dashboard-item"><a href="/dashboard/tilbud"><div class="dashboard-item-head bg-purple">Tilbud</div><div class="dashboard-item-body"><a th:href="@{/dashboard}">dashboard</a><br>
+                <a th:href="@{/dashboard/tilbud/ny}">nyt tilbud</a></div></a></div>
         </section>
-
     </div>
 </main>
 <footer>
