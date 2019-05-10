@@ -1,6 +1,7 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
 import dk.goodmanservice.goodmanservice.Model.Message;
+import dk.goodmanservice.goodmanservice.Model.User;
 import dk.goodmanservice.goodmanservice.Service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ public class MenuController {
 
     @Autowired
     private IService<Message> MS;
+
+    @Autowired
+    private IService<User> US;
 
     @GetMapping("/")
     public String index() {
@@ -70,6 +74,16 @@ public class MenuController {
     @GetMapping("/dashboard/udlaeg")
     public String udlaeg() {
         return "redirect:/dashboard/expenses";
+    }
+
+    @GetMapping("/dashboard/kunder")
+    public String kunder(Model model) {
+        try {
+            model.addAttribute("customers", US.fetch("customers"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "dashboard/customerlist";
     }
 
 }
