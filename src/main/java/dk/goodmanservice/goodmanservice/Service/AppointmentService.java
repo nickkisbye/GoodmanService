@@ -69,6 +69,27 @@ public class AppointmentService implements IService<Appointment> {
 
     @Override
     public Appointment findById(int id) throws SQLException {
-        return null;
+        resultSet = AR.findById(id);
+        Appointment appointment = new Appointment();
+        User employee = new User();
+        User customer = new User();
+
+        while (resultSet.next()) {
+            appointment.setId(resultSet.getInt("id"));
+            appointment.setDescription(resultSet.getString("description"));
+            appointment.setDate(resultSet.getString("date"));
+            appointment.setEmployeeId(resultSet.getInt("fk_employee"));
+            appointment.setCustomerId(resultSet.getInt("fk_customer"));
+
+            employee.setFirstName(resultSet.getString("eFirstName"));
+            employee.setLastName(resultSet.getString("eLastName"));
+
+            customer.setFirstName(resultSet.getString("cFirstName"));
+            customer.setLastName(resultSet.getString("cLastName"));
+
+            appointment.setEmployee(employee);
+            appointment.setCustomer(customer);
+        }
+        return appointment;
     }
 }
