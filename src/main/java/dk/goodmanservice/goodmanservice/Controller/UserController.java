@@ -32,9 +32,9 @@ public class UserController {
             session.setAttribute("id", user.getId());
 
             if (user.getRoleName().equals("customer")) {
-                return "dashboard/customer";
+                return "redirect: /dashboard/customer";
             } else {
-                return "dashboard/employee";
+                return "redirect: /dashboard/employee";
             }
 
         } else {

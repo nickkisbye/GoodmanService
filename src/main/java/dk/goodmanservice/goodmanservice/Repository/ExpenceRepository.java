@@ -55,7 +55,7 @@ public class ExpenceRepository implements IRepository<Expence> {
     }
 
     @Override
-    public ResultSet fetch(String option, int id) throws SQLException {
+    public ResultSet fetch(String option) throws SQLException {
         String sql = "SELECT * FROM expenses";
 
             preparedStatement = con.prepareStatement(sql);

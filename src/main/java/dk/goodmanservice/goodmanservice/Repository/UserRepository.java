@@ -58,7 +58,7 @@ public class UserRepository implements IRepository<User> {
     }
 
     @Override
-    public ResultSet fetch(String option, int id) throws SQLException {
+    public ResultSet fetch(String option) throws SQLException {
         switch (option) {
             case "all":
                 sql = "SELECT * FROM users";

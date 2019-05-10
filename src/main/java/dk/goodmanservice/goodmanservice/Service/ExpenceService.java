@@ -32,7 +32,7 @@ public class ExpenceService implements IService<Expence> {
     }
 
     @Override
-    public List<Expence> fetch(String option, int id) throws SQLException {
+    public List<Expence> fetch(String option) throws SQLException {
         return null;
     }
 

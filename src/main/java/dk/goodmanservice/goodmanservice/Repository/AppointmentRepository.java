@@ -61,17 +61,17 @@ public class AppointmentRepository implements IRepository<Appointment> {
     }
 
     @Override
-    public ResultSet fetch(String option, int id) throws SQLException {
+    public ResultSet fetch(String option) throws SQLException {
         sql = "SELECT appointments.*, group_concat(users.firstName, users.lastName) AS name " +
                 "FROM appointments, users " +
                 "WHERE appointments.fk_employee = users.id OR appointments.fk_customer = users.id " +
                 "GROUP BY appointments.id ";
         switch (option) {
             case "customer":
-                sql += "WHERE fk_costumer = '" + id + "' ";
+                sql += "WHERE fk_costumer = '" + 0 + "' ";
                 break;
             case "employee":
-                sql += "WHERE fk_employee '" + id + "' ";
+                sql += "WHERE fk_employee '" + 0 + "' ";
                 break;
         }
 

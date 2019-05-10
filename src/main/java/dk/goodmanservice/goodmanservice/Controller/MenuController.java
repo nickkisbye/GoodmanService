@@ -1,10 +1,16 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
+import dk.goodmanservice.goodmanservice.Model.Message;
+import dk.goodmanservice.goodmanservice.Service.IService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MenuController {
+
+    @Autowired
+    private IService<Message> MS;
 
     @GetMapping("/")
     public String index() {
@@ -21,9 +27,15 @@ public class MenuController {
         return "login";
     }
 
-    @GetMapping("/dashboard")
-    public String dashboard() {
+    @GetMapping("/dashboard/employee")
+    public String employee() {
+        MS.fetch("latest-5", )
         return "dashboard/employee";
+    }
+
+    @GetMapping("/dashboard/customer")
+    public String customer() {
+        return "dashboard/customer";
     }
 
     @GetMapping("/dashboard/opgaver")

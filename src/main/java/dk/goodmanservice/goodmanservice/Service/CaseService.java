@@ -33,7 +33,7 @@ public class CaseService implements IService<Case> {
     }
 
     @Override
-    public List<Case> fetch(String option, int id) throws SQLException {
+    public List<Case> fetch(String option) throws SQLException {
         return null;
     }
 

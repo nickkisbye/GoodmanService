@@ -39,8 +39,8 @@ public class AppointmentService implements IService<Appointment> {
     }
 
     @Override
-    public List<Appointment> fetch(String option, int id) throws SQLException {
-        resultSet = AR.fetch(option, id);
+    public List<Appointment> fetch(String option) throws SQLException {
+        resultSet = AR.fetch(option);
         List<Appointment> appointmentList = new ArrayList<>();
 
         while (resultSet.next()) {

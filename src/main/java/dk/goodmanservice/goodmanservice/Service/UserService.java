@@ -54,8 +54,8 @@ public class UserService implements IService<User> {
     }
 
     @Override
-    public List<User> fetch(String option, int id) throws SQLException {
-        resultSet = UR.fetch(option, id);
+    public List<User> fetch(String option) throws SQLException {
+        resultSet = UR.fetch(option);
         List<User> userList = new ArrayList<>();
 
             while (resultSet.next()) {
