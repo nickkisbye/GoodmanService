@@ -95,7 +95,6 @@ public class UserController {
 
     @GetMapping("/dashboard/brugere")
     public String brugere(Model model) {
-
         try {
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("roles", US.fetch("roles"));
@@ -103,7 +102,6 @@ public class UserController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return "dashboard/brugere";
     }
 

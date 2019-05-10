@@ -14,13 +14,15 @@
             <h2 class="dashboard-headline">Dashboard <span class="red">:::</span></h2>
             <div class="dashboard-item"><div class="dashboard-item-head bg-grey">Udlæg</div><div class="dashboard-item-body">
 
-                <form th:action="@{/dashboard/expenses/create}" method="post" th:object="${Expense}">
-                    <input type="number" placeholder="Pris" name="price">
-                    <input type="text" placeholder="Beskrivelse" name="description">
-                    <input type="hidden" th:value="${session.id}" name="employeeId">
+                <div th:if="${!edit}">
+                    <form th:action="@{/dashboard/expenses/create}" method="post" th:object="${Expense}">
+                        <input type="number" placeholder="Pris" name="price">
+                        <input type="text" placeholder="Beskrivelse" name="description">
+                        <input type="hidden" th:value="${session.id}" name="employeeId">
 
-                    <button type="submit">Opret Udlæg</button>
-                </form>
+                        <button type="submit">Opret Udlæg</button>
+                    </form>
+                </div>
 
                 <table>
                     <tr>

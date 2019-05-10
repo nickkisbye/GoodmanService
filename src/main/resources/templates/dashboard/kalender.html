@@ -28,32 +28,34 @@
         <section class="dashboard-container">
             <div class="dashboard-item"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div><div class="dashboard-item-body">
 
-                <form th:action="@{/dashboard/appointment/create}" method="post" th:object="${Appointment}">
-                    <textarea placeholder="Beskrivelse" name="description" cols="30" rows="10"></textarea>
-                    <input type="datetime-local" step="1" name="date">
+                <div th:if="${session.level > 40}">
+                    <form th:action="@{/dashboard/appointment/create}" method="post" th:object="${Appointment}">
+                        <textarea placeholder="Beskrivelse" name="description" cols="30" rows="10"></textarea>
+                        <input type="datetime-local" step="1" name="date">
 
-                    <select name="employeeId" >
-                        <optgroup label="Medarbejder">
-                            <div th:each="user:${users}">
-                                <div th:if="${user.level > 20}">
-                                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                        <select name="employeeId" >
+                            <optgroup label="Medarbejder">
+                                <div th:each="user:${users}">
+                                    <div th:if="${user.level > 20}">
+                                        <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                                    </div>
                                 </div>
-                            </div>
-                        </optgroup>
-                    </select>
+                            </optgroup>
+                        </select>
 
-                    <select name="customerId" >
-                        <optgroup label="Kunde">
-                            <div th:each="user:${users}">
-                                <div th:if="${user.level < 20}">
-                                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                        <select name="customerId" >
+                            <optgroup label="Kunde">
+                                <div th:each="user:${users}">
+                                    <div th:if="${user.level < 20}">
+                                        <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                                    </div>
                                 </div>
-                            </div>
-                        </optgroup>
-                    </select>
+                            </optgroup>
+                        </select>
 
-                    <button type="submit">Opret Aftale</button>
-                </form>
+                        <button type="submit">Opret Aftale</button>
+                    </form>
+                </div>
 
                 <table>
                     <tr>

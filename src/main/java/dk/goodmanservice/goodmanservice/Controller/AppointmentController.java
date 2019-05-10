@@ -26,6 +26,7 @@ public class AppointmentController {
     public String appointments(Model model) throws SQLException {
         model.addAttribute("appointments", AS.fetch("all"));
         model.addAttribute("users", US.fetch("all"));
+        model.addAttribute("edit", false);
         return "dashboard/kalender";
     }
 

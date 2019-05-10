@@ -8,13 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/ExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/ExpenseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/aftaler/aftaleCreate.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/aftaler/aftaleEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/aftaler/aftaleEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg/udlaeg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg/udlaegCreate.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg/udlaegEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg/udlaegEdit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,11 +27,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.51189387">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="629">
-                  <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+                <state relative-caret-position="289">
+                  <caret line="28" column="42" lean-forward="true" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
@@ -43,26 +39,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/ExpenseController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+                <state relative-caret-position="289">
+                  <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="307">
-                  <caret line="65" column="59" lean-forward="true" selection-start-line="65" selection-start-column="59" selection-end-line="65" selection-end-column="59" />
+                <state relative-caret-position="1038">
+                  <caret line="96" column="40" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -75,19 +62,10 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="26" selection-start-column="26" selection-end-column="26" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="715">
-                  <caret line="54" column="54" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
+                <state relative-caret-position="307">
+                  <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
                 </state>
               </provider>
             </entry>
@@ -95,7 +73,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/brugere.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-186">
+                <state relative-caret-position="120">
                   <caret line="14" column="99" selection-start-line="14" selection-start-column="99" selection-end-line="14" selection-end-column="99" />
                 </state>
               </provider>
@@ -106,6 +84,15 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="408">
                   <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
                 </state>
               </provider>
             </entry>
@@ -172,7 +159,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/LoginService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/employee.html" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/User.java" />
@@ -189,10 +175,11 @@
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg/udlaegCreate.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg/udlaegEdit.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/ExpenseController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -713,11 +700,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557504533101</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Updated expenses and appointments so create is on front page">
+      <created>1557507443303</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1557507443303</updated>
+    </task>
+    <task id="LOCAL-00040" summary="small update to expenses">
+      <created>1557507748121</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1557507748121</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86911000" />
+    <option name="totallyTimeSpent" value="87740000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -815,7 +816,9 @@
     <MESSAGE value="dashboard menu" />
     <MESSAGE value="Appointments create and edit working" />
     <MESSAGE value="Finished Expenses" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Expenses" />
+    <MESSAGE value="Updated expenses and appointments so create is on front page" />
+    <MESSAGE value="small update to expenses" />
+    <option name="LAST_COMMIT_MESSAGE" value="small update to expenses" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/head.html">
@@ -1145,34 +1148,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/ExpenseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="65" column="59" lean-forward="true" selection-start-line="65" selection-start-column="59" selection-end-line="65" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/brugere.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-186">
-          <caret line="14" column="99" selection-start-line="14" selection-start-column="99" selection-end-line="14" selection-end-column="99" />
         </state>
       </provider>
     </entry>
@@ -1183,24 +1162,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+        <state relative-caret-position="307">
+          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        <state relative-caret-position="289">
+          <caret line="28" column="42" lean-forward="true" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/brugere.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="54" column="54" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
+        <state relative-caret-position="120">
+          <caret line="14" column="99" selection-start-line="14" selection-start-column="99" selection-end-line="14" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/ExpenseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1038">
+          <caret line="96" column="40" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

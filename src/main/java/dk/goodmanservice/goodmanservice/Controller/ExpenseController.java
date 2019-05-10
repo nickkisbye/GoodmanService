@@ -26,6 +26,7 @@ public class ExpenseController {
     public String expenses(Model model) throws SQLException {
         model.addAttribute("expenses", ES.fetch("all"));
         model.addAttribute("users", US.fetch("all"));
+        model.addAttribute("edit", false);
         return "dashboard/udlaeg";
     }
 
