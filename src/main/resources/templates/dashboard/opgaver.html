@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="dashboard/fragments/head :: head"></div>
+</head>
+<body>
+<header>
+    <div th:replace="dashboard/fragments/header :: header"></div>
+</header>
+<main>
+    <div class="main-container">
+
+        <section class="dashboard-container">
+            <h2 class="dashboard-headline">Dashboard <span class="red">:::</span></h2>
+            <div class="dashboard-item"><a href="/dashboard/opgaver"><div class="dashboard-item-head bg-yellow">Opgaver</div><div class="dashboard-item-body"><img th:src="@{/icons/task.png}"></div></a></div>
+        </section>
+    </div>
+</main>
+<footer>
+    <div th:replace="dashboard/fragments/footer :: footer"></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="dashboard/fragments/head :: head"></div>
+</head>
+<body>
+<header>
+    <div th:replace="dashboard/fragments/header :: header"></div>
+</header>
+<main>
+    <div class="main-container">
+
+        <section class="dashboard-container">
+            <div class="dashboard-item"><a href="/dashboard/kalender"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div><div class="dashboard-item-body"><img th:src="@{/icons/calendar.png}"></div></a></div>
+        </section>
+
+    </div>
+</main>
+<footer>
+    <div th:replace="dashboard/fragments/footer :: footer"></div>
+</footer>
+</body>
+</html>

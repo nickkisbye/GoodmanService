@@ -26,5 +26,34 @@ public class MenuController {
         return "dashboard/employee";
     }
 
+    @GetMapping("/dashboard/tilbud")
+    public String tilbud() {
+        return "dashboard/tilbud";
+    }
+
+    @GetMapping("/dashboard/opgaver")
+    public String opgaver() {
+        return "dashboard/opgaver";
+    }
+
+    @GetMapping("/dashboard/faerdigeopgaver")
+    public String faerdigeopgaver() {
+        return "dashboard/faerdigeopgaver";
+    }
+
+    @GetMapping("/dashboard/kalender")
+    public String kalender() {
+        return "dashboard/kalender";
+    }
+
+    @GetMapping("/dashboard/oekonomi")
+    public String oekonomi() {
+        return "dashboard/oekonomi";
+    }
+
+    @GetMapping("/dashboard/udlaeg")
+    public String udlaeg() {
+        return "dashboard/udlaeg";
+    }
 
 }
