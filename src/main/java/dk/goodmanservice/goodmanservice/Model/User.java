@@ -9,7 +9,7 @@ public class User {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private int roleId;
+    private int rid;
     private String roleName;
     private int level;
 
@@ -56,12 +56,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public int getRid() {
+        return rid;
     }
 
-    public void setRole(int roleId) {
-        this.roleId = roleId;
+    public void setRid(int rid) {
+        this.rid = rid;
     }
 
     public String getPassword() {

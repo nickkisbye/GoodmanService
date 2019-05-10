@@ -58,7 +58,7 @@ public class UserService implements IService<User> {
         if (option.equals("roles")) {
             while (resultSet.next()) {
                 User user = new User();
-                user.setRole(resultSet.getInt("roles.id"));
+                user.setRid(resultSet.getInt("roles.id"));
                 user.setRoleName(resultSet.getString("roles.role_name"));
                 userList.add(user);
             }

@@ -23,8 +23,9 @@
                     <input type="text" name="address" th:value="${userinfo.address}">
                     <input type="text" name="phoneNumber" th:value="${userinfo.phoneNumber}">
                     <input type="password" name="password">
-                    <select name="roleId">
-                        <option th:each="role : ${roles}" th:value="${role.roleId}"><p th:text="${role.roleName}"></p></option>
+                    <input type="hidden" name="id" th:value="${userinfo.id}">
+                    <select name="rid">
+                        <option th:each="role : ${roles}" th:value="${role.rid}"><p th:text="${role.roleName}"></p></option>
                     </select>
                     <button type="submit">Ret bruger</button>
                 </form>
@@ -37,12 +38,14 @@
                         <input type="text" name="address">
                         <input type="text" name="phoneNumber">
                         <input type="password" name="password">
-                        <select name="roleId">
-                            <option th:each="role : ${roles}" th:value="${role.roleId}"><p th:text="${role.roleName}"></p></option>
+                        <select name="rid">
+                            <option th:each="role : ${roles}" th:value="${role.rid}"><p th:text="${role.roleName}"></p></option>
                         </select>
                         <button type="submit">Opret bruger</button>
                     </form>
+
                 </div>
+
                 <table>
                     <tr>
                         <th>Fornavn</th>
@@ -62,10 +65,9 @@
                         <td th:text="${user.roleName}"></td>
                         <td><a th:href="@{/dashboard/brugere/delete/{id}(id=${user.id})}">Slet bruger</a>
                             <a th:href="@{/dashboard/brugere/edit/{id}(id=${user.id})}">Ret bruger</a>
-                            </td>
+                        </td>
                     </tr>
                 </table>
-
 
             </div></div>
         </section>

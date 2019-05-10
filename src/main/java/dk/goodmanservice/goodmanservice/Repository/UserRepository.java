@@ -32,6 +32,7 @@ public class UserRepository implements IRepository<User> {
 
     @Override
     public void edit(User obj) throws SQLException {
+        System.out.print(obj.getRid());
         sql = "UPDATE users SET firstName=?, lastName=?, email=?, address=?, phone=?, fk_role=?, password=? WHERE id = '" + obj.getId() + "'";
         executeUser(sql, obj);
     }
@@ -43,7 +44,7 @@ public class UserRepository implements IRepository<User> {
             preparedStatement.setString(3, obj.getEmail());
             preparedStatement.setString(4, obj.getAddress());
             preparedStatement.setString(5, obj.getPhoneNumber());
-            preparedStatement.setInt(6, obj.getRoleId());
+            preparedStatement.setInt(6, obj.getRid());
             preparedStatement.setString(7, obj.getPassword());
             preparedStatement.execute();
 

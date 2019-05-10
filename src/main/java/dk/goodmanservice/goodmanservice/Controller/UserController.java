@@ -59,18 +59,21 @@ public class UserController {
     }
 
     @GetMapping("/dashboard/brugere/edit/{id}")
-    public String retBrugerForm(@PathVariable("id") int id, RedirectAttributes model) {
+    public String retBrugerForm(@PathVariable("id") int id, Model model) {
         try {
-            model.addFlashAttribute("user", US.findById(id));
-            model.addFlashAttribute("edit", true);
+            model.addAttribute("user", US.findById(id));
+            model.addAttribute("users", US.fetch("all"));
+            model.addAttribute("roles", US.fetch("roles"));
+            model.addAttribute("edit", true);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "redirect:/dashboard/brugere";
+        return "/dashboard/brugere";
     }
 
     @PostMapping("/dashboard/brugere/edit/")
     public String retBruger(@ModelAttribute User user, RedirectAttributes model) {
+        System.out.println(user.getRid());
         try {
             model.addFlashAttribute("user", US.edit(user));
             model.addFlashAttribute("edit", false);
