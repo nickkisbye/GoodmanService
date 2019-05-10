@@ -73,11 +73,11 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
     @Override
     public ResultSet findById(int id) throws SQLException {
-        sql = "SELECT appointments.*, u1.firstName, u1.lastName, u2.firstName, u2.lastName FROM appointments " +
-                "LEFT JOIN users as u1 ON appointments.fk_customer = u1.id " +
-                "LEFT JOIN users as u2 ON appointments.fk_employee = u2.id " +
-                "WHERE  appointments.fk_employee = " + id +
-                " OR appointments.fk_customer = " + id;
+        sql = "SELECT appointments.*, u1.firstName AS eFirstName, u1.lastName AS eLastName, u2.firstName AS cFirstName, u2.lastName AS cLastName FROM appointments " +
+                "LEFT JOIN users as u1 ON appointments.fk_employee = u1.id " +
+                "LEFT JOIN users as u2 ON appointments.fk_customer = u2.id " +
+                "WHERE  appointments.fk_employee = '" + id + "'" +
+                "OR appointments.fk_customer = '" + id + "'";
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);

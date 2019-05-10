@@ -22,4 +22,9 @@ public class AppointmentController {
         return "dashboard/kalender";
     }
 
+    @GetMapping("/appointments/{id}")
+    public String appointmentsById(@PathVariable(value = "id") int id, Model model) throws SQLException {
+        model.addAttribute("appointments", AS.findById(id));
+        return "dashboard/kalender";
+    }
 }
