@@ -21,9 +21,11 @@ public class UserService implements IService<User> {
 
     @Autowired
     private Validation validate;
+    
+    private ResultSet resultSet;
 
     @Override
-    public String create(User obj) {
+    public String create(User obj) throws SQLException {
         if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
             return "Fornavn eller efternavn må ikke være under 2 karaktere";
         } else if(validate.isNumeric(obj.getPhoneNumber())) {
@@ -35,63 +37,55 @@ public class UserService implements IService<User> {
     }
 
     @Override
-    public String edit(User obj, String option) {
+    public String edit(User obj) throws SQLException {
         if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
             return "Fornavn eller efternavn må ikke være under 2 karaktere";
         } else if(validate.isNumeric(obj.getPhoneNumber())) {
             return "Telefonnummeret skal være tal";
         } else {
-            UR.edit(obj, option);
+            UR.edit(obj);
             return "success";
         }
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws SQLException {
         UR.delete(id);
     }
 
     @Override
-    public List<User> fetch(String option) {
-        ResultSet rs = UR.fetch(option);
+    public List<User> fetch(String option, int id) throws SQLException {
+        resultSet = UR.fetch(option, id);
         List<User> userList = new ArrayList<>();
-        try {
-            while (rs.next()) {
+
+            while (resultSet.next()) {
                 User user = new User();
-                user.setPhoneNumber(rs.getString("phone"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setEmail(rs.getString("email"));
-                user.setAddress(rs.getString("address"));
-                user.setRole(rs.getInt("fk_role"));
-                user.setId(rs.getInt("id"));
+                user.setPhoneNumber(resultSet.getString("phone"));
+                user.setFirstName(resultSet.getString("first_name"));
+                user.setLastName(resultSet.getString("last_name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setAddress(resultSet.getString("address"));
+                user.setRole(resultSet.getInt("fk_role"));
+                user.setId(resultSet.getInt("id"));
                 userList.add(user);
             }
             return userList;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @Override
-    public User findById(int id) {
+    public User findById(int id) throws SQLException {
         User user = new User();
-        ResultSet rs = UR.findById(id);
-        try {
-            if (rs.next()) {
-                user.setPhoneNumber(rs.getString("phone"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setEmail(rs.getString("email"));
-                user.setAddress(rs.getString("address"));
-                user.setRole(rs.getInt("fk_role"));
-                user.setId(rs.getInt("id"));
+        resultSet = UR.findById(id);
+
+            if (resultSet.next()) {
+                user.setPhoneNumber(resultSet.getString("phone"));
+                user.setFirstName(resultSet.getString("first_name"));
+                user.setLastName(resultSet.getString("last_name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setAddress(resultSet.getString("address"));
+                user.setRole(resultSet.getInt("fk_role"));
+                user.setId(resultSet.getInt("id"));
             }
             return user;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }
