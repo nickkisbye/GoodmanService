@@ -31,9 +31,13 @@ public class MenuController {
     }
 
     @GetMapping("/dashboard/employee")
-    public String employee(Model model) throws SQLException {
+    public String employee(Model model) {
 
-            model.addAttribute("messages", MS.fetch("all"));
+        try {
+            model.addAttribute("messages", MS.fetch("latest-10"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return "dashboard/employee";
     }
