@@ -30,6 +30,7 @@
             <div class="post-item-body">
             <div th:each="message: ${messages}">
                 <p th:text="${message.username}"></p>
+                <p th:text="${message.msg}"></p>
             </div>
             </div>
             </div>
