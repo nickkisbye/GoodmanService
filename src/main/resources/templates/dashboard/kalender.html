@@ -35,12 +35,14 @@
                         <th>Customer</th>
                     </tr>
                     <div th:each="a:${appointments}">
-                        <tr>
-                            <td th:text="${a.description}"></td>
-                            <td th:text="${a.date}"></td>
-                            <td th:text="${a.employee.firstName}"><span th:text="${a.employee.lastName}"></span> </td>
-                            <td th:text="${a.customer.firstName}"><span th:text="${a.customer.lastName}"></span></td>
-                        </tr>
+                        <div th:if="${a.employeeId == session.id OR a.customerId == session.id}">
+                            <tr>
+                                <td th:text="${a.description}"></td>
+                                <td th:text="${a.date}"></td>
+                                <td th:text="${a.employee.firstName}"><span th:text="${a.employee.lastName}"></span> </td>
+                                <td th:text="${a.customer.firstName}"><span th:text="${a.customer.lastName}"></span></td>
+                            </tr>
+                        </div>
                     </div>
                 </table>
             </a></div>

@@ -23,7 +23,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/appointments/{id}")
-    public String appointments(@PathVariable(value = "id") int id, Model model) throws SQLException {
+    public String appointmentsById(@PathVariable(value = "id") int id, Model model) throws SQLException {
         model.addAttribute("appointments", AS.findById(id));
         return "dashboard/kalender";
     }
