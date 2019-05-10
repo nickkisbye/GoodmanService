@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Aftale</title>
+</head>
+<body>
+
+<a th:href="@{/dashboard/kalender}">tilbage</a>
+
+<form th:action="@{/appointment/create}" method="post" th:object="${Appointment}">
+    <textarea placeholder="Description" name="description" id="" cols="30" rows="10"></textarea>
+    <input type="datetime-local" step="1" name="date">
+
+    <select name="employeeId" >
+        <optgroup label="Medarbejder">
+            <div th:each="user:${users}">
+                <div th:if="${user.level > 20}">
+                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                </div>
+            </div>
+        </optgroup>
+    </select>
+
+    <select name="customerId" >
+        <optgroup label="Kunde">
+            <div th:each="user:${users}">
+                <div th:if="${user.level < 20}">
+                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                </div>
+            </div>
+        </optgroup>
+    </select>
+
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

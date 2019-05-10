@@ -26,26 +26,34 @@
     <div class="main-container">
 
         <section class="dashboard-container">
-            <div class="dashboard-item"><a href="/dashboard/kalender"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div>
+            <div class="dashboard-item"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div>
                 <table class="table consultation overviewTable">
                     <tr>
                         <th>Description</th>
                         <th>Date</th>
                         <th>Employee</th>
                         <th>Customer</th>
+                        <th>Options</th>
                     </tr>
                     <div th:each="a:${appointments}">
-                        <div th:if="${a.employeeId == session.id OR a.customerId == session.id}">
+                        <div th:if="${a.employeeId == session.id OR a.customerId == session.id OR session.level >= 80}">
                             <tr>
                                 <td th:text="${a.description}"></td>
                                 <td th:text="${a.date}"></td>
                                 <td th:text="${a.employee.firstName}"><span th:text="${a.employee.lastName}"></span> </td>
                                 <td th:text="${a.customer.firstName}"><span th:text="${a.customer.lastName}"></span></td>
+                                <td>
+                                    <a th:href="@{/appointments/{id}(id=${a.id})}">Edit</a>
+                                    <form th:action="@{/appointment/delete/{id}(id=${a.id})}" method="post">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         </div>
                     </div>
                 </table>
-            </a></div>
+                <a href="/appointment/create">Opret Ny Aftale</a>
+            </div>
         </section>
 
     </div>

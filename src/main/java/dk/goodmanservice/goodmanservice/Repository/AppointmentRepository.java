@@ -27,7 +27,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
     @Override
     public void create(Appointment obj) throws SQLException {
-        sql = "INSERT INTO appointments (description, date, fk_employee, fk_costumer) " +
+        sql = "INSERT INTO appointments (description, date, fk_employee, fk_customer) " +
                 "VALUES (?, ?, ?, ?)";
 
             preparedStatement = con.prepareStatement(sql);
@@ -58,6 +58,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
+            preparedStatement.execute();
     }
 
     @Override
@@ -73,11 +74,8 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
     @Override
     public ResultSet findById(int id) throws SQLException {
-        sql = "SELECT appointments.*, u1.firstName AS eFirstName, u1.lastName AS eLastName, u2.firstName AS cFirstName, u2.lastName AS cLastName FROM appointments " +
-                "LEFT JOIN users as u1 ON appointments.fk_employee = u1.id " +
-                "LEFT JOIN users as u2 ON appointments.fk_customer = u2.id " +
-                "WHERE  appointments.fk_employee = '" + id + "'" +
-                "OR appointments.fk_customer = '" + id + "'";
+        sql = "SELECT * FROM appointments " +
+                "WHERE id = ?";
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
