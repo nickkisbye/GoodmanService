@@ -46,6 +46,7 @@ public class UserRepository implements IRepository<User> {
             preparedStatement.setInt(6, obj.getRoleId());
             preparedStatement.setString(7, obj.getPassword());
             preparedStatement.execute();
+
     }
 
     @Override
