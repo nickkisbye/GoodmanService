@@ -18,6 +18,7 @@
                     <form th:action="@{/dashboard/expenses/create}" method="post" th:object="${Expense}">
                         <input type="number" placeholder="Pris" name="price">
                         <input type="text" placeholder="Beskrivelse" name="description">
+                        <input type="hidden" value="0" name="paid">
                         <input type="hidden" th:value="${session.id}" name="employeeId">
 
                         <button type="submit">Opret Udlæg</button>
@@ -28,7 +29,11 @@
                     <form th:action="@{/dashboard/expenses/edit}" method="post" th:object="${Expense}">
                         <input type="hidden" th:value="${expense.id}" name="id">
                         <input type="number" placeholder="Pris" th:value="${expense.price}" name="price">
-                        <textarea placeholder="Beskrivelse" th:text="${expense.description}" name="description" cols="30" rows="10"></textarea>
+                        <input placeholder="Beskrivelse" th:value="${expense.description}" name="description">
+
+                        <div th:if="${session.level >= 80}">
+                            <input type="checkbox" th:checked="${expense.paid}" name="paid">
+                        </div>
 
                         <button type="submit">Gem</button>
                     </form>
@@ -52,6 +57,7 @@
                                     <form th:action="@{/dashboard/expenses/delete/{id}(id=${e.id})}" method="post">
                                         <button type="submit">Slet</button>
                                     </form>
+                                    <input type="checkbox" th:checked="${e.paid}" disabled>
                                 </td>
                             </tr>
                         </div>

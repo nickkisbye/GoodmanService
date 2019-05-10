@@ -5,6 +5,7 @@ public class Expense {
     private int id;
     private int price;
     private String description;
+    private boolean paid;
     private int employeeId;
     private User employee;
 
@@ -33,6 +34,14 @@ public class Expense {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean getPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 
     public int getEmployeeId() {

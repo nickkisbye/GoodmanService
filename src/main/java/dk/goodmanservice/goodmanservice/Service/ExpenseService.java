@@ -50,6 +50,7 @@ public class ExpenseService implements IService<Expense> {
             expense.setId(resultSet.getInt("id"));
             expense.setPrice(resultSet.getInt("price"));
             expense.setDescription(resultSet.getString("description"));
+            expense.setPaid(resultSet.getBoolean("paid"));
             expense.setEmployeeId(resultSet.getInt("fk_employee"));
 
             employee.setFirstName(resultSet.getString("firstName"));
@@ -71,6 +72,7 @@ public class ExpenseService implements IService<Expense> {
             expense.setId(resultSet.getInt("id"));
             expense.setPrice(resultSet.getInt("price"));
             expense.setDescription(resultSet.getString("description"));
+            expense.setPaid(resultSet.getBoolean("paid"));
             expense.setEmployeeId(resultSet.getInt("fk_employee"));
         }
         return expense;

@@ -27,20 +27,22 @@ public class ExpenseRepository implements IRepository<Expense> {
 
     @Override
     public void create(Expense obj) throws SQLException {
-        String sql = "INSERT INTO expenses (price, description, fk_employee) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO expenses (price, description, paid, fk_employee) VALUES (?, ?, ?, ?)";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, obj.getPrice());
         preparedStatement.setString(2, obj.getDescription());
-        preparedStatement.setInt(3, obj.getEmployeeId());
+        preparedStatement.setBoolean(3, obj.getPaid());
+        preparedStatement.setInt(4, obj.getEmployeeId());
         preparedStatement.execute();
     }
 
     @Override
     public void edit(Expense obj) throws SQLException {
-        String sql = "UPDATE expenses SET price=?, description=? WHERE id = '" + obj.getId() + "'";
+        String sql = "UPDATE expenses SET price=?, description=?, paid=? WHERE id = '" + obj.getId() + "'";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, obj.getPrice());
         preparedStatement.setString(2, obj.getDescription());
+        preparedStatement.setBoolean(3, obj.getPaid());
         preparedStatement.execute();
     }
 
@@ -68,7 +70,7 @@ public class ExpenseRepository implements IRepository<Expense> {
     public ResultSet findById(int id) throws SQLException {
         String sql = "SELECT * FROM expenses WHERE id = ?";
 
-            preparedStatement = con.prepareStatement(sql);;
+            preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
     }
