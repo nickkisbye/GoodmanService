@@ -5,6 +5,7 @@ import dk.goodmanservice.goodmanservice.Service.IService;
 import dk.goodmanservice.goodmanservice.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -41,5 +42,17 @@ public class UserController {
             return "index";
         }
     }
+
+    @GetMapping("/dashboard/brugere")
+    public String brugere() {
+        return "dashboard/brugere";
+    }
+
+    @GetMapping("/dashboard/kunder")
+    public String kunder() {
+        return "dashboard/kunder";
+    }
+
+
 
 }
