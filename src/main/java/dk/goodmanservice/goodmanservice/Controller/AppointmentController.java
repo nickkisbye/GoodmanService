@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLException;
 
@@ -30,16 +31,19 @@ public class AppointmentController {
         return "dashboard/kalender";
     }
 
-    @GetMapping("/dashboard/appointments/{id}")
+    @GetMapping("/dashboard/appointments/edit/{id}")
     public String appointmentById(@PathVariable(value = "id") int id, Model model) throws SQLException {
         model.addAttribute("appointment", AS.findById(id));
+        model.addAttribute("appointments", AS.fetch("all"));
         model.addAttribute("users", US.fetch("all"));
-        return "dashboard/aftaler/aftaleEdit";
+        model.addAttribute("edit", true);
+        return "dashboard/kalender";
     }
 
     @PostMapping("/dashboard/appointment/edit")
-    public String appointmentEdit(@ModelAttribute Appointment obj) throws SQLException {
-        AS.edit(obj);
+    public String appointmentEdit(@ModelAttribute Appointment obj, RedirectAttributes model) throws SQLException {
+        model.addFlashAttribute("expense", AS.edit(obj));
+        model.addFlashAttribute("edit", false);
         return "redirect:/dashboard/appointments";
     }
 

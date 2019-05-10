@@ -29,21 +29,19 @@ public class ExpenseRepository implements IRepository<Expense> {
     public void create(Expense obj) throws SQLException {
         String sql = "INSERT INTO expenses (price, description, fk_employee) VALUES (?, ?, ?)";
         preparedStatement = con.prepareStatement(sql);
-        executeExpense(obj);
+        preparedStatement.setInt(1, obj.getPrice());
+        preparedStatement.setString(2, obj.getDescription());
+        preparedStatement.setInt(3, obj.getEmployeeId());
+        preparedStatement.execute();
     }
 
     @Override
     public void edit(Expense obj) throws SQLException {
-        String sql = "UPDATE expenses SET price=?, description=?, fk_employee=? WHERE id = '" + obj.getId() + "'";
+        String sql = "UPDATE expenses SET price=?, description=? WHERE id = '" + obj.getId() + "'";
         preparedStatement = con.prepareStatement(sql);
-        executeExpense(obj);
-    }
-
-    public void executeExpense(Expense obj) throws SQLException {
-            preparedStatement.setInt(1, obj.getPrice());
-            preparedStatement.setString(2, obj.getDescription());
-            preparedStatement.setInt(3, obj.getEmployeeId());
-            preparedStatement.execute();
+        preparedStatement.setInt(1, obj.getPrice());
+        preparedStatement.setString(2, obj.getDescription());
+        preparedStatement.execute();
     }
 
     @Override

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLException;
 
@@ -30,16 +31,19 @@ public class ExpenseController {
         return "dashboard/udlaeg";
     }
 
-    @GetMapping("/dashboard/expenses/{id}")
+    @GetMapping("/dashboard/expenses/edit/{id}")
     public String expenseById(@PathVariable(value = "id") int id, Model model) throws SQLException {
         model.addAttribute("expense", ES.findById(id));
+        model.addAttribute("expenses", ES.fetch("all"));
         model.addAttribute("users", US.fetch("all"));
-        return "dashboard/udlaeg/udlaegEdit";
+        model.addAttribute("edit", true);
+        return "dashboard/udlaeg";
     }
 
     @PostMapping("/dashboard/expenses/edit")
-    public String editExpense(@ModelAttribute Expense obj) throws SQLException {
-        ES.edit(obj);
+    public String editExpense(@ModelAttribute Expense obj, RedirectAttributes model) throws SQLException {
+        model.addFlashAttribute("expense", ES.edit(obj));
+        model.addFlashAttribute("edit", false);
         return "redirect:/dashboard/expenses";
     }
 

@@ -24,6 +24,16 @@
                     </form>
                 </div>
 
+                <div th:if="${edit}">
+                    <form th:action="@{/dashboard/expenses/edit}" method="post" th:object="${Expense}">
+                        <input type="hidden" th:value="${expense.id}" name="id">
+                        <input type="number" placeholder="Pris" th:value="${expense.price}" name="price">
+                        <textarea placeholder="Beskrivelse" th:text="${expense.description}" name="description" cols="30" rows="10"></textarea>
+
+                        <button type="submit">Gem</button>
+                    </form>
+                </div>
+
                 <table>
                     <tr>
                         <th>Pris</th>
@@ -38,7 +48,7 @@
                                 <td th:text="${e.description}"></td>
                                 <td th:text="${e.employee.firstName} + ' ' + ${e.employee.lastName}"></td>
                                 <td>
-                                    <a th:href="@{/dashboard/expenses/{id}(id=${e.id})}">Rediger</a>
+                                    <a th:href="@{/dashboard/expenses/edit/{id}(id=${e.id})}">Rediger</a>
                                     <form th:action="@{/dashboard/expenses/delete/{id}(id=${e.id})}" method="post">
                                         <button type="submit">Slet</button>
                                     </form>
@@ -47,7 +57,6 @@
                         </div>
                     </div>
                 </table>
-                <a href="/dashboard/expenses/create">Opret Udlæg</a>
             </div></div>
         </section>
 
