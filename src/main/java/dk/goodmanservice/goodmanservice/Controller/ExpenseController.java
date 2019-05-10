@@ -22,40 +22,35 @@ public class ExpenseController {
     @Autowired
     private IService<User> US;
 
-    @GetMapping("/expenses")
+    @GetMapping("/dashboard/expenses")
     public String expenses(Model model) throws SQLException {
         model.addAttribute("expenses", ES.fetch("all"));
-        return "dashboard/udlaeg/udlaeg";
+        model.addAttribute("users", US.fetch("all"));
+        return "dashboard/udlaeg";
     }
 
-    @GetMapping("/expenses/{id}")
+    @GetMapping("/dashboard/expenses/{id}")
     public String expenseById(@PathVariable(value = "id") int id, Model model) throws SQLException {
         model.addAttribute("expense", ES.findById(id));
         model.addAttribute("users", US.fetch("all"));
         return "dashboard/udlaeg/udlaegEdit";
     }
 
-    @PostMapping("/expenses/edit")
+    @PostMapping("/dashboard/expenses/edit")
     public String editExpense(@ModelAttribute Expense obj) throws SQLException {
         ES.edit(obj);
-        return "redirect:/expenses";
+        return "redirect:/dashboard/expenses";
     }
 
-    @PostMapping("/expenses/delete/{id}")
+    @PostMapping("/dashboard/expenses/delete/{id}")
     public String deleteExpense(@PathVariable(value = "id") int id) throws SQLException {
         ES.delete(id);
-        return "redirect:/expenses";
+        return "redirect:/dashboard/expenses";
     }
 
-    @GetMapping("/expenses/create")
-    public String createExpense(Model model) throws SQLException {
-        model.addAttribute("users", US.fetch("all"));
-        return "dashboard/udlaeg/udlaegCreate";
-    }
-
-    @PostMapping("/expenses/create")
+    @PostMapping("/dashboard/expenses/create")
     public String createExpense(@ModelAttribute Expense obj) throws SQLException {
         ES.create(obj);
-        return "redirect:/expenses";
+        return "redirect:/dashboard/expenses";
     }
 }

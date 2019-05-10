@@ -22,40 +22,35 @@ public class AppointmentController {
     @Autowired
     private IService<User> US;
 
-    @GetMapping("/appointments")
+    @GetMapping("/dashboard/appointments")
     public String appointments(Model model) throws SQLException {
         model.addAttribute("appointments", AS.fetch("all"));
+        model.addAttribute("users", US.fetch("all"));
         return "dashboard/kalender";
     }
 
-    @GetMapping("/appointments/{id}")
+    @GetMapping("/dashboard/appointments/{id}")
     public String appointmentById(@PathVariable(value = "id") int id, Model model) throws SQLException {
         model.addAttribute("appointment", AS.findById(id));
         model.addAttribute("users", US.fetch("all"));
         return "dashboard/aftaler/aftaleEdit";
     }
 
-    @PostMapping("/appointment/edit")
+    @PostMapping("/dashboard/appointment/edit")
     public String appointmentEdit(@ModelAttribute Appointment obj) throws SQLException {
         AS.edit(obj);
-        return "redirect:/appointments";
+        return "redirect:/dashboard/appointments";
     }
 
-    @PostMapping("/appointment/delete/{id}")
+    @PostMapping("/dashboard/appointment/delete/{id}")
     public String deleteAppointment(@PathVariable(value = "id") int id) throws SQLException {
         AS.delete(id);
-        return "redirect:/appointments";
+        return "redirect:/dashboard/appointments";
     }
 
-    @GetMapping("/appointment/create")
-    public String createAppointment(Model model) throws SQLException {
-        model.addAttribute("users", US.fetch("all"));
-        return "dashboard/aftaler/aftaleCreate";
-    }
-
-    @PostMapping("appointment/create")
+    @PostMapping("/dashboard/appointment/create")
     public String createAppointment(@ModelAttribute Appointment obj) throws SQLException {
         AS.create(obj);
-        return "redirect:/appointments";
+        return "redirect:/dashboard/appointments";
     }
 }

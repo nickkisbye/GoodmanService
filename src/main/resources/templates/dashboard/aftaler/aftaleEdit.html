@@ -7,7 +7,7 @@
 <body>
 <a th:href="@{/dashboard/kalender}">tilbage</a>
 
-    <form th:action="@{/appointment/edit}" method="post" th:object="${Appointment}">
+    <form th:action="@{/dashboard/appointment/edit}" method="post" th:object="${Appointment}">
         <input type="hidden" th:value="${appointment.id}" name="id">
         <textarea placeholder="Beskrivelse" th:text="${appointment.description}" name="description" cols="30" rows="10"></textarea>
         <input type="datetime-local" step="1" th:value="${appointment.date}" name="date">

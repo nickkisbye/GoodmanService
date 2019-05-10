@@ -59,7 +59,7 @@ public class MenuController {
 
     @GetMapping("/dashboard/kalender")
     public String kalender() {
-        return "redirect:/appointments";
+        return "redirect:/dashboard/appointments";
     }
 
     @GetMapping("/dashboard/oekonomi")
@@ -69,7 +69,7 @@ public class MenuController {
 
     @GetMapping("/dashboard/udlaeg")
     public String udlaeg() {
-        return "redirect:/expenses";
+        return "redirect:/dashboard/expenses";
     }
 
 }

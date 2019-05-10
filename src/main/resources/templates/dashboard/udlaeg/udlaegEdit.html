@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <form th:action="@{/expenses/edit}" method="post" th:object="${Expense}">
+    <form th:action="@{/dashboard/expenses/edit}" method="post" th:object="${Expense}">
         <input type="hidden" th:value="${expense.id}" name="id">
         <input type="number" placeholder="Pris" th:value="${expense.price}" name="price">
         <textarea placeholder="Beskrivelse" th:text="${expense.description}" name="description" cols="30" rows="10"></textarea>

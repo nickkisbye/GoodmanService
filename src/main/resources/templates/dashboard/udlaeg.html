@@ -12,9 +12,26 @@
 
         <section class="dashboard-container">
             <h2 class="dashboard-headline">Dashboard <span class="red">:::</span></h2>
-            <div class="dashboard-item"><div class="dashboard-item-head bg-grey">Udlæg</div>
+            <div class="dashboard-item"><div class="dashboard-item-head bg-grey">Udlæg</div><div class="dashboard-item-body">
 
-                <table class="table consultation overviewTable">
+                <form th:action="@{/dashboard/expenses/create}" method="post" th:object="${Expense}">
+                    <input type="number" placeholder="Pris" name="price">
+                    <input type="text" placeholder="Beskrivelse" name="description">
+
+                    <select name="employeeId" >
+                        <optgroup label="Medarbejder">
+                            <div th:each="user:${users}">
+                                <div th:if="${user.level > 20}">
+                                    <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                                </div>
+                            </div>
+                        </optgroup>
+                    </select>
+
+                    <button type="submit">Opret Udlæg</button>
+                </form>
+
+                <table>
                     <tr>
                         <th>Pris</th>
                         <th>Beskrivelse</th>
@@ -28,8 +45,8 @@
                                 <td th:text="${e.description}"></td>
                                 <td th:text="${e.employee.firstName} + ' ' + ${e.employee.lastName}"></td>
                                 <td>
-                                    <a th:href="@{/expenses/{id}(id=${e.id})}">Rediger</a>
-                                    <form th:action="@{/expenses/delete/{id}(id=${e.id})}" method="post">
+                                    <a th:href="@{/dashboard/expenses/{id}(id=${e.id})}">Rediger</a>
+                                    <form th:action="@{/dashboard/expenses/delete/{id}(id=${e.id})}" method="post">
                                         <button type="submit">Slet</button>
                                     </form>
                                 </td>
@@ -37,8 +54,8 @@
                         </div>
                     </div>
                 </table>
-                <a href="/expenses/create">Opret Udlæg</a>
-            </div>
+                <a href="/dashboard/expenses/create">Opret Udlæg</a>
+            </div></div>
         </section>
 
     </div>
