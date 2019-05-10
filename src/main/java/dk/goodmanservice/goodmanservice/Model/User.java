@@ -11,6 +11,7 @@ public class User {
     private String phoneNumber;
     private int roleId;
     private String roleName;
+    private int level;
 
     public User() {
     }
@@ -85,5 +86,13 @@ public class User {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }
