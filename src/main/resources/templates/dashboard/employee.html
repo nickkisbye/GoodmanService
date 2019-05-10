@@ -34,7 +34,7 @@
             </div>
                 <form action="/message/create" method="post" th:object="${Message}">
                     <input type="text" name="msg" placeholder="Skriv besked..">
-                    <input type="hidden" name="userId" value="1">
+                    <input type="hidden" name="userId" th:value="${session.id}">
                     <button type="submit">Send besked</button>
                 </form>
             </div>

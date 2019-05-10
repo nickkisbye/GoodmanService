@@ -27,7 +27,7 @@ public class UserController {
             session.setAttribute("firstname", user.getFirstName());
             session.setAttribute("lastname", user.getLastName());
             session.setAttribute("phone", user.getPhoneNumber());
-            session.setAttribute("role", user.getRoleId());
+            session.setAttribute("role", user.getRoleName());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("id", user.getId());
 
