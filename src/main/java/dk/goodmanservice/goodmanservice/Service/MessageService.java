@@ -45,7 +45,7 @@ public class MessageService implements IService<Message> {
 
     @Override
     public List<Message> fetch(String option) throws SQLException {
-        ResultSet rs = MR.fetch("latest-5");
+        ResultSet rs = MR.fetch(option);
         List<Message> messageList = new ArrayList<>();
         while (rs.next()) {
             Message message = new Message();

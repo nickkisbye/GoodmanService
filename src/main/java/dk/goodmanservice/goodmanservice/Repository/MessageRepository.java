@@ -49,14 +49,7 @@ public class MessageRepository implements IRepository<Message> {
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
-        switch (option) {
-            case "all":
-                sql = "SELECT * FROM posts INNER JOIN users ON posts.fk_user = users.id";
-                break;
-            case "latest-5":
-                sql = "SELECT * FROM posts INNER JOIN users ON posts.fk_user = users.id LIMIT 5";
-                break;
-        }
+        sql = "SELECT * FROM posts INNER JOIN users ON posts.fk_user = users.id";
         con.prepareStatement(sql);
         return preparedStatement.executeQuery();
     }

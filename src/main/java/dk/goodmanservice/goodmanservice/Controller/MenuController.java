@@ -4,7 +4,10 @@ import dk.goodmanservice.goodmanservice.Model.Message;
 import dk.goodmanservice.goodmanservice.Service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.sql.SQLException;
 
 @Controller
 public class MenuController {
@@ -28,8 +31,12 @@ public class MenuController {
     }
 
     @GetMapping("/dashboard/employee")
-    public String employee() {
-        MS.fetch("latest-5", )
+    public String employee(Model model) {
+        try {
+            model.addAttribute("messages", MS.fetch("latest-5"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return "dashboard/employee";
     }
 
