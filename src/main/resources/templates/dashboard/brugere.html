@@ -15,19 +15,34 @@
             <div class="dashboard-item"><div class="dashboard-item-head bg-lightred">Brugere</div><div class="dashboard-item-body">
 
                 <p th:text="${message}"></p>
-                <form action="/dashboard/brugere/create" method="post" th:object="${User}">
-                    <input type="text" name="firstName">
-                    <input type="text" name="lastName">
-                    <input type="email" name="email">
-                    <input type="text" name="address">
-                    <input type="text" name="phoneNumber">
+                <div th:if="${edit}">
+                <form action="/dashboard/brugere/edit/" method="post" th:object="${User}" th:each="userinfo : ${user}">
+                    <input type="text" name="firstName" th:value="${userinfo.firstName}">
+                    <input type="text" name="lastName" th:value="${userinfo.lastName}">
+                    <input type="email" name="email" th:value="${userinfo.email}">
+                    <input type="text" name="address" th:value="${userinfo.address}">
+                    <input type="text" name="phoneNumber" th:value="${userinfo.phoneNumber}">
                     <input type="password" name="password">
                     <select name="roleId">
                         <option th:each="role : ${roles}" th:value="${role.roleId}"><p th:text="${role.roleName}"></p></option>
                     </select>
-                    <button type="submit">Opret bruger</button>
+                    <button type="submit">Ret bruger</button>
                 </form>
-
+                </div>
+                <div th:if="${!edit}">
+                    <form action="/dashboard/brugere/create" method="post" th:object="${User}">
+                        <input type="text" name="firstName">
+                        <input type="text" name="lastName">
+                        <input type="email" name="email">
+                        <input type="text" name="address">
+                        <input type="text" name="phoneNumber">
+                        <input type="password" name="password">
+                        <select name="roleId">
+                            <option th:each="role : ${roles}" th:value="${role.roleId}"><p th:text="${role.roleName}"></p></option>
+                        </select>
+                        <button type="submit">Opret bruger</button>
+                    </form>
+                </div>
                 <table>
                     <tr>
                         <th>Fornavn</th>
@@ -45,7 +60,9 @@
                         <td th:text="${user.address}"></td>
                         <td th:text="${user.phoneNumber}"></td>
                         <td th:text="${user.roleName}"></td>
-                        <td><a th:href="@{/dashboard/brugere/delete/{id}(id=${user.id})}">Slet bruger</a></td>
+                        <td><a th:href="@{/dashboard/brugere/delete/{id}(id=${user.id})}">Slet bruger</a>
+                            <a th:href="@{/dashboard/brugere/edit/{id}(id=${user.id})}">Ret bruger</a>
+                            </td>
                     </tr>
                 </table>
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
@@ -57,8 +58,30 @@ public class UserController {
         return "redirect:/dashboard/brugere";
     }
 
+    @GetMapping("/dashboard/brugere/edit/{id}")
+    public String retBrugerForm(@PathVariable("id") int id, RedirectAttributes model) {
+        try {
+            model.addFlashAttribute("user", US.findById(id));
+            model.addFlashAttribute("edit", true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/dashboard/brugere";
+    }
+
+    @PostMapping("/dashboard/brugere/edit/")
+    public String retBruger(@ModelAttribute User user, RedirectAttributes model) {
+        try {
+            model.addFlashAttribute("user", US.edit(user));
+            model.addFlashAttribute("edit", false);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/dashboard/brugere";
+    }
+
     @GetMapping("/dashboard/brugere/delete/{id}")
-    public String opretBruger(@PathVariable("id") int id, Model model) {
+    public String sletBruger(@PathVariable("id") int id, Model model) {
         try {
            US.delete(id);
         } catch (SQLException e) {
@@ -73,6 +96,7 @@ public class UserController {
         try {
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("roles", US.fetch("roles"));
+            model.addAttribute("edit", false);
         } catch (SQLException e) {
             e.printStackTrace();
         }

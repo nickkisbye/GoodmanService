@@ -85,11 +85,10 @@ public class UserService implements IService<User> {
 
             if (resultSet.next()) {
                 user.setPhoneNumber(resultSet.getString("phone"));
-                user.setFirstName(resultSet.getString("first_name"));
-                user.setLastName(resultSet.getString("last_name"));
+                user.setFirstName(resultSet.getString("firstName"));
+                user.setLastName(resultSet.getString("lastName"));
                 user.setEmail(resultSet.getString("email"));
                 user.setAddress(resultSet.getString("address"));
-                user.setRole(resultSet.getInt("fk_role"));
                 user.setId(resultSet.getInt("id"));
             }
             return user;
