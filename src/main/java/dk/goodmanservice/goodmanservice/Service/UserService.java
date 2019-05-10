@@ -28,8 +28,6 @@ public class UserService implements IService<User> {
     public String create(User obj) throws SQLException {
         if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
             return "Fornavn eller efternavn må ikke være under 2 karaktere";
-        } else if(validate.isNumeric(obj.getPhoneNumber())) {
-            return "Telefonnummeret skal være tal";
         } else {
             UR.create(obj);
             return "success";
@@ -40,9 +38,8 @@ public class UserService implements IService<User> {
     public String edit(User obj) throws SQLException {
         if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
             return "Fornavn eller efternavn må ikke være under 2 karaktere";
-        } else if(validate.isNumeric(obj.getPhoneNumber())) {
-            return "Telefonnummeret skal være tal";
-        } else {
+        }
+         else {
             UR.edit(obj);
             return "success";
         }
@@ -58,17 +55,26 @@ public class UserService implements IService<User> {
         resultSet = UR.fetch(option);
         List<User> userList = new ArrayList<>();
 
+        if (option.equals("roles")) {
+            while (resultSet.next()) {
+                User user = new User();
+                user.setRole(resultSet.getInt("roles.id"));
+                user.setRoleName(resultSet.getString("roles.role_name"));
+                userList.add(user);
+            }
+        } else {
             while (resultSet.next()) {
                 User user = new User();
                 user.setPhoneNumber(resultSet.getString("phone"));
-                user.setFirstName(resultSet.getString("first_name"));
-                user.setLastName(resultSet.getString("last_name"));
+                user.setFirstName(resultSet.getString("firstName"));
+                user.setLastName(resultSet.getString("lastName"));
                 user.setEmail(resultSet.getString("email"));
                 user.setAddress(resultSet.getString("address"));
-                user.setRole(resultSet.getInt("fk_role"));
+                user.setRoleName(resultSet.getString("roles.role_name"));
                 user.setId(resultSet.getInt("id"));
                 userList.add(user);
             }
+        }
             return userList;
     }
 

@@ -5,11 +5,14 @@ import dk.goodmanservice.goodmanservice.Service.IService;
 import dk.goodmanservice.goodmanservice.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 
 @Controller
 public class UserController {
@@ -44,8 +47,36 @@ public class UserController {
         }
     }
 
+    @PostMapping("/dashboard/brugere/create")
+    public String opretBruger(@ModelAttribute User user, Model model) {
+        try {
+            model.addAttribute("message", US.create(user));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/dashboard/brugere";
+    }
+
+    @GetMapping("/dashboard/brugere/delete/{id}")
+    public String opretBruger(@PathVariable("id") int id, Model model) {
+        try {
+           US.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/dashboard/brugere";
+    }
+
     @GetMapping("/dashboard/brugere")
-    public String brugere() {
+    public String brugere(Model model) {
+
+        try {
+            model.addAttribute("users", US.fetch("all"));
+            model.addAttribute("roles", US.fetch("roles"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return "dashboard/brugere";
     }
 

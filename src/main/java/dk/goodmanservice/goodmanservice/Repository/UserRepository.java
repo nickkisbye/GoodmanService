@@ -26,19 +26,18 @@ public class UserRepository implements IRepository<User> {
 
     @Override
     public void create(User obj) throws SQLException {
-        String sql = "INSERT INTO users (first_name, last_name, email, address, phone, fk_role, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        preparedStatement = con.prepareStatement(sql);
+        String sql = "INSERT INTO users (firstName, lastName, email, address, phone, fk_role, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
         executeUser(sql, obj);
     }
 
     @Override
     public void edit(User obj) throws SQLException {
         sql = "UPDATE users SET first_name=?, last_name=?, email=?, address=?, phone=?, fk_role=?, password=? WHERE id = '" + obj.getId() + "'";
-        preparedStatement = con.prepareStatement(sql);
         executeUser(sql, obj);
     }
 
     private void executeUser(String sql, User obj) throws SQLException {
+            preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getFirstName());
             preparedStatement.setString(2, obj.getLastName());
             preparedStatement.setString(3, obj.getEmail());
@@ -55,13 +54,14 @@ public class UserRepository implements IRepository<User> {
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
+            preparedStatement.execute();
     }
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
         switch (option) {
             case "all":
-                sql = "SELECT * FROM users";
+                sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id";
                 break;
             case "employees":
                 sql = "SELECT * FROM users WHERE fk_role=3";
@@ -74,6 +74,9 @@ public class UserRepository implements IRepository<User> {
                 break;
             case "manager":
                 sql = "SELECT * FROM users WHERE fk_role=4";
+                break;
+            case "roles":
+                sql = "SELECT * FROM roles";
                 break;
         }
 

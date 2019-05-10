@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
 <body>
+<header>
+    <div th:replace="dashboard/fragments/header :: header"></div>
+</header>
+<main>
+    <div class="main-container">
 
+        <section class="dashboard-container">
+            <h2 class="dashboard-headline">Dashboard <span class="red">:::</span></h2>
+            <div class="dashboard-item"><div class="dashboard-item-head bg-lightred">Brugere</div><div class="dashboard-item-body">
+
+                <p th:text="${message}"></p>
+                <form action="/dashboard/brugere/create" method="post" th:object="${User}">
+                    <input type="text" name="firstName">
+                    <input type="text" name="lastName">
+                    <input type="email" name="email">
+                    <input type="text" name="address">
+                    <input type="text" name="phoneNumber">
+                    <input type="password" name="password">
+                    <select name="roleId">
+                        <option th:each="role : ${roles}" th:value="${role.roleId}"><p th:text="${role.roleName}"></p></option>
+                    </select>
+                    <button type="submit">Opret bruger</button>
+                </form>
+
+                <table>
+                    <tr>
+                        <th>Fornavn</th>
+                        <th>Efternavn</th>
+                        <th>Email</th>
+                        <th>Addresse</th>
+                        <th>Telefon</th>
+                        <th>Rolle</th>
+                        <th></th>
+                    </tr>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.address}"></td>
+                        <td th:text="${user.phoneNumber}"></td>
+                        <td th:text="${user.roleName}"></td>
+                        <td><a th:href="@{/dashboard/brugere/delete/{id}(id=${user.id})}">Slet bruger</a></td>
+                    </tr>
+                </table>
+
+
+            </div></div>
+        </section>
+    </div>
+</main>
+<footer>
+    <div th:replace="dashboard/fragments/footer :: footer"></div>
+</footer>
 </body>
 </html>
