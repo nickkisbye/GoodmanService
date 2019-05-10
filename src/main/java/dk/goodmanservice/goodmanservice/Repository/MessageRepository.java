@@ -28,7 +28,7 @@ public class MessageRepository implements IRepository<Message> {
     @Override
     public void create(Message message) throws SQLException {
         sql = "INSERT INTO posts (msg, fk_user) VALUES (?,?)";
-        con.prepareStatement(sql);
+        preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1,message.getMsg());
         preparedStatement.setInt(2, message.getUserId());
         preparedStatement.execute();
@@ -42,15 +42,22 @@ public class MessageRepository implements IRepository<Message> {
     @Override
     public void delete(int id) throws SQLException {
         sql = "DELETE FROM posts WHERE id=?";
-        con.prepareStatement(sql);
+        preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
     }
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
-        sql = "SELECT * FROM posts INNER JOIN users ON posts.fk_user = users.id";
-        con.prepareStatement(sql);
+        switch (option) {
+            case "all":
+                sql = "SELECT * FROM posts INNER JOIN users ON posts.fk_user = users.id";
+                break;
+            case "latest-10":
+                sql = "SELECT * FROM posts INNER JOIN users ON posts.fk_user = users.id ORDER BY posts.id DESC LIMIT 10";
+                break;
+        }
+        preparedStatement = con.prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 

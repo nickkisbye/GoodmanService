@@ -30,7 +30,13 @@
             <div class="post-item-body">
             <div th:each="message: ${messages}">
                 <p th:text="${message.username}"></p>
+                <p th:text="${message.msg}"></p>
             </div>
+                <form action="/message/create" method="post" th:object="${Message}">
+                    <input type="text" name="msg" placeholder="Skriv besked..">
+                    <input type="hidden" name="userId" value="1">
+                    <button type="submit">Send besked</button>
+                </form>
             </div>
             </div>
         </section>
