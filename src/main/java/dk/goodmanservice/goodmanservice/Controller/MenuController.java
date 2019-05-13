@@ -1,5 +1,6 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
+import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.Message;
 import dk.goodmanservice.goodmanservice.Model.User;
 import dk.goodmanservice.goodmanservice.Service.IService;
@@ -18,6 +19,9 @@ public class MenuController {
 
     @Autowired
     private IService<User> US;
+
+    @Autowired
+    private IService<Case> CS;
 
     @GetMapping("/")
     public String index() {
