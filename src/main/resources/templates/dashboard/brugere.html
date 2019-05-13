@@ -21,25 +21,29 @@
                     <input type="text" placeholder="Efternavn" name="lastName" th:value="${userinfo.lastName}">
                     <input type="email" placeholder="Email" name="email" th:value="${userinfo.email}">
                     <input type="text" placeholder="Adresse" name="address" th:value="${userinfo.address}">
+                    <input type="text" placeholder="By" name="city" th:value="${userinfo.city}">
+                    <input type="text" placeholder="Postnummer" name="zip" th:value="${userinfo.zip}">
                     <input type="text" placeholder="Telefon Nr." name="phoneNumber" th:value="${userinfo.phoneNumber}">
                     <input type="password" placeholder="Kodeord" name="password">
                     <input type="hidden" name="id" th:value="${userinfo.id}">
                     <select name="rid">
-                        <option th:each="role : ${roles}" th:value="${role.rid}"><p th:text="${role.roleName}"></p></option>
+                        <option th:each="role : ${roles}" th:value="${role.rid}" th:selected="${userinfo.id}"></option>
                     </select>
                     <button type="submit">Ret bruger</button>
                 </form>
                 </div>
                 <div th:if="${!edit}">
                     <form action="/dashboard/brugere/create" method="post" th:object="${User}">
-                        <input type="text" name="firstName">
-                        <input type="text" name="lastName">
-                        <input type="email" name="email">
-                        <input type="text" name="address">
-                        <input type="text" name="phoneNumber">
-                        <input type="password" name="password">
+                        <input type="text" placeholder="Fornavn" name="firstName">
+                        <input type="text" placeholder="Efternavn" name="lastName">
+                        <input type="email" placeholder="Email" name="email">
+                        <input type="text" placeholder="Adresse" name="address">
+                        <input type="text" placeholder="By" name="city">
+                        <input type="text" placeholder="Postnummer" name="zip">
+                        <input type="text" placeholder="Telefon Nr." name="phoneNumber">
+                        <input type="password" placeholder="Kodeord" name="password">
                         <select name="rid">
-                            <option th:each="role : ${roles}" th:value="${role.rid}"><p th:text="${role.roleName}"></p></option>
+                            <option th:each="role : ${roles}" th:value="${role.rid}"></option>
                         </select>
                         <button type="submit">Opret bruger</button>
                     </form>
