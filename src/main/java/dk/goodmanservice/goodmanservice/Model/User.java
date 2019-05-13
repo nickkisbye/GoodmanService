@@ -9,6 +9,8 @@ public class User {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private int zip;
+    private String city;
     private int rid;
     private String roleName;
     private int level;
@@ -94,5 +96,21 @@ public class User {
 
     public int getLevel() {
         return level;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

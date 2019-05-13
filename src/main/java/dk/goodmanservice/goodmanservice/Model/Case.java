@@ -13,6 +13,8 @@ public class Case {
     private String startDate;
     private String endDate;
     private int mode;
+    private User customer;
+    private ArrayList<User> employeeList;
     private ArrayList<String> imageList;
 
     public Case() {
@@ -24,6 +26,14 @@ public class Case {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getDescription() {
@@ -46,7 +56,7 @@ public class Case {
         return creationDate;
     }
 
-    public void setCreationDate(java.sql.Date creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -74,19 +84,27 @@ public class Case {
         this.mode = mode;
     }
 
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
+
+    public ArrayList<User> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(User employee) {
+        employeeList.add(employee);
+    }
+
     public ArrayList<String> getImageList() {
         return imageList;
     }
 
     public void setImageList(ArrayList<String> imageList) {
         this.imageList = imageList;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public int getCustomerId() {
-        return customerId;
     }
 }

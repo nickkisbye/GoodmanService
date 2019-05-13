@@ -51,16 +51,6 @@ public class MenuController {
         return "dashboard/customer";
     }
 
-    @GetMapping("/dashboard/opgaver")
-    public String opgaver() {
-        return "dashboard/opgaver";
-    }
-
-    @GetMapping("/dashboard/faerdigeopgaver")
-    public String faerdigeopgaver() {
-        return "dashboard/faerdigeopgaver";
-    }
-
     @GetMapping("/dashboard/kalender")
     public String kalender() {
         return "redirect:/dashboard/appointments";

@@ -35,63 +35,77 @@ public class CaseRepository implements IRepository<Case> {
 
         sql = "INSERT INTO cases (description, price, creationDate, startDate, endDate, fk_mode, fk_customer) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-            Calendar cal = Calendar.getInstance();
-            preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, obj.getDescription());
-            preparedStatement.setInt(2, obj.getPrice());
-            preparedStatement.setString(3, sdf.format(cal.getTime()));
-            preparedStatement.setString(4, obj.getStartDate());
-            preparedStatement.setString(5, obj.getEndDate());
-            preparedStatement.setInt(6, obj.getMode());
-            preparedStatement.setInt(7, obj.getCustomerId());
+        Calendar cal = Calendar.getInstance();
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setString(1, obj.getDescription());
+        preparedStatement.setInt(2, obj.getPrice());
+        preparedStatement.setString(3, sdf.format(cal.getTime()));
+        preparedStatement.setString(4, obj.getStartDate());
+        preparedStatement.setString(5, obj.getEndDate());
+        preparedStatement.setInt(6, obj.getMode());
+        preparedStatement.setInt(7, obj.getCustomerId());
+        preparedStatement.execute();
     }
 
     @Override
     public void edit(Case obj) throws SQLException {
 
-        sql = "UPDATE cases SET description=?, price=?, startDate=?, endDate=?, fk_mode WHERE id = '" + obj.getId() + "'";
+        sql = "UPDATE cases SET description=?, price=?, startDate=?, endDate=?, fk_mode=?, fk_customer=? WHERE id = '" + obj.getId() + "'";
 
-            preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, obj.getDescription());
-            preparedStatement.setInt(2, obj.getPrice());
-            preparedStatement.setString(3, obj.getStartDate());
-            preparedStatement.setString(4, obj.getEndDate());
-            preparedStatement.setInt(5, obj.getMode());
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setString(1, obj.getDescription());
+        preparedStatement.setInt(2, obj.getPrice());
+        preparedStatement.setString(3, obj.getStartDate());
+        preparedStatement.setString(4, obj.getEndDate());
+        preparedStatement.setInt(5, obj.getMode());
+        preparedStatement.setInt(6, obj.getCustomerId());
+        preparedStatement.execute();
     }
 
     @Override
     public void delete(int id) throws SQLException {
         sql = "DELETE FROM cases WHERE id=?";
 
-            preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        preparedStatement.execute();
     }
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
 
         switch (option) {
-            case "customers":
-                sql = "SELECT * FROM users WHERE fk_role = 1";
+            case "users":
+                sql =   "SELECT * FROM users " +
+                        "LEFT JOIN roles ON users.fk_role = roles.id";
                 break;
             case "employees":
                 sql = "SELECT * FROM users WHERE fk_role > 2";
                 break;
+            case "offer":
+                sql = "SELECT * FROM cases " +
+                        "LEFT JOIN users ON cases.fk_customer = users.id " +
+                        "LEFT JOIN roles ON users.fk_role = roles.id " +
+                        "WHERE fk_mode = 1";
+                break;
             case "cases":
-                sql = "SELECT * FROM cases";
+                sql = "SELECT * FROM cases WHERE fk_mode = 2";
+                break;
+            case "finished":
+                sql = "SELECT * FROM cases WHERE fk_mode = 3";
                 break;
         }
 
-            preparedStatement = con.prepareStatement(sql);
-            return preparedStatement.executeQuery();
+        preparedStatement = con.prepareStatement(sql);
+        return preparedStatement.executeQuery();
     }
 
     @Override
     public ResultSet findById(int id) throws SQLException {
-        sql = "SELECT * FROM cases WHERE id=?";
+        sql = "SELECT * FROM cases INNER JOIN users ON cases.fk_customer = users.id WHERE cases.id = ?";
 
-            preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-            return preparedStatement.executeQuery();
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        return preparedStatement.executeQuery();
     }
 }
