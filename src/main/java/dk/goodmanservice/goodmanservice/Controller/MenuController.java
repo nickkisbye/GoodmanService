@@ -44,9 +44,9 @@ public class MenuController {
         try {
             model.addAttribute("messages", MS.fetch("latest-10"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
-
         return "dashboard/employee";
     }
 
@@ -75,7 +75,8 @@ public class MenuController {
         try {
             model.addAttribute("customers", US.fetch("customers"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
         return "dashboard/customerlist";
     }
