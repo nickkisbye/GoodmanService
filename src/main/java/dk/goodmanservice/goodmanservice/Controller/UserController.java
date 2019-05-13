@@ -79,6 +79,8 @@ public class UserController {
             model.addFlashAttribute("edit", false);
         } catch (SQLException e) {
             e.printStackTrace();
+            model.addAttribute("error", e.getErrorCode());
+            return "error";
         }
         return "redirect:/dashboard/brugere";
     }
