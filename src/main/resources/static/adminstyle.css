@@ -74,7 +74,6 @@ body {
   -ms-flex-pack: justify;
   justify-content: space-between; }
   .main-container .dashboard-container {
-    margin-top: 4%;
     width: 70%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -118,7 +117,6 @@ body {
       padding: 15px 3px 3px 15px;
       min-height: 200px; }
   .main-container .post-container {
-    margin-top: 6.1%;
     width: 29%; }
     .main-container .post-container .post-item .post-item-head {
       width: 100%;

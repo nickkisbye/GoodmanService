@@ -75,13 +75,6 @@ public class CaseRepository implements IRepository<Case> {
     public ResultSet fetch(String option) throws SQLException {
 
         switch (option) {
-            case "users":
-                sql =   "SELECT * FROM users " +
-                        "LEFT JOIN roles ON users.fk_role = roles.id";
-                break;
-            case "employees":
-                sql = "SELECT * FROM users WHERE fk_role > 2";
-                break;
             case "offer":
                 sql = "SELECT * FROM cases " +
                         "LEFT JOIN users ON cases.fk_customer = users.id " +
