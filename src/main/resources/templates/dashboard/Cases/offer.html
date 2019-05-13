@@ -28,7 +28,7 @@
 </div>
 
 <div th:if="${edit}">
-    <form th:action="@{/dashboard/TOF/redigere/{id}(id=${findById.id})}" method="POST" th:object="${Case}">
+    <form th:action="@{/dashboard/TOF/redigere}" method="POST" th:object="${Case}">
         <textarea name="description" cols="30" rows="10" placeholder="description"><span th:text="${findById.description}" th:remove="tag"></span></textarea><br>
         <input type="number"         name="price"        placeholder="price"        th:value="${findById.price}"><br>
         <input type="datetime-local" name="startDate"    placeholder="startDate"    value=""><br>

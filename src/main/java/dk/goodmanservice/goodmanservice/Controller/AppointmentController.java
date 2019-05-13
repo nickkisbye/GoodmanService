@@ -24,38 +24,63 @@ public class AppointmentController {
     private IService<User> US;
 
     @GetMapping("/dashboard/appointments")
-    public String appointments(Model model) throws SQLException {
-        model.addAttribute("appointments", AS.fetch("all"));
-        model.addAttribute("users", US.fetch("all"));
-        model.addAttribute("edit", false);
+    public String appointments(Model model) {
+        try {
+            model.addAttribute("appointments", AS.fetch("all"));
+            model.addAttribute("users", US.fetch("all"));
+            model.addAttribute("edit", false);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "dashboard/kalender";
     }
 
     @GetMapping("/dashboard/appointments/edit/{id}")
-    public String appointmentById(@PathVariable(value = "id") int id, Model model) throws SQLException {
-        model.addAttribute("appointment", AS.findById(id));
-        model.addAttribute("appointments", AS.fetch("all"));
-        model.addAttribute("users", US.fetch("all"));
-        model.addAttribute("edit", true);
+    public String appointmentById(@PathVariable("id") int id, Model model) {
+        try {
+            model.addAttribute("appointment", AS.findById(id));
+            model.addAttribute("appointments", AS.fetch("all"));
+            model.addAttribute("users", US.fetch("all"));
+            model.addAttribute("edit", true);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "dashboard/kalender";
     }
 
     @PostMapping("/dashboard/appointment/edit")
-    public String appointmentEdit(@ModelAttribute Appointment obj, RedirectAttributes model) throws SQLException {
-        model.addFlashAttribute("expense", AS.edit(obj));
-        model.addFlashAttribute("edit", false);
+    public String appointmentEdit(@ModelAttribute Appointment obj, RedirectAttributes model) {
+        try {
+            model.addFlashAttribute("expense", AS.edit(obj));
+            model.addFlashAttribute("edit", false);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "redirect:/dashboard/appointments";
     }
 
     @PostMapping("/dashboard/appointment/delete/{id}")
-    public String deleteAppointment(@PathVariable(value = "id") int id) throws SQLException {
-        AS.delete(id);
+    public String deleteAppointment(@PathVariable("id") int id, Model model) {
+        try {
+            AS.delete(id);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "redirect:/dashboard/appointments";
     }
 
     @PostMapping("/dashboard/appointment/create")
-    public String createAppointment(@ModelAttribute Appointment obj) throws SQLException {
-        AS.create(obj);
+    public String createAppointment(@ModelAttribute Appointment obj, Model model) {
+        try {
+            AS.create(obj);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "redirect:/dashboard/appointments";
     }
 }

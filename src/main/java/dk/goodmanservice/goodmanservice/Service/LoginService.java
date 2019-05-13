@@ -14,8 +14,7 @@ public class LoginService {
     @Autowired
     private LoginRepository loginRepository;
 
-    public boolean login(User user) {
-        try {
+    public boolean login(User user) throws SQLException {
             ResultSet rs = loginRepository.login(user);
             if(rs.next()) {
                 user.setId(rs.getInt("id"));
@@ -27,10 +26,6 @@ public class LoginService {
                 user.setLevel(rs.getInt("roles.level"));
                 return true;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
         return false;
     }
 

@@ -14,15 +14,11 @@ public class MessageRepository implements IRepository<Message> {
     private Connection con;
     private String sql;
 
-    public MessageRepository() {
-        try {
+    public MessageRepository() throws SQLException {
             this.con = DriverManager.getConnection(
                     "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
                     "goodmanservicedb",
                     "Ly02_scr-4ds");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

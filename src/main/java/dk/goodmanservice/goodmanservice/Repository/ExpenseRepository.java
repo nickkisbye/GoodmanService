@@ -14,15 +14,11 @@ public class ExpenseRepository implements IRepository<Expense> {
     private Connection con;
     private PreparedStatement preparedStatement;
 
-    public ExpenseRepository() {
-        try {
+    public ExpenseRepository() throws SQLException {
             this.con = DriverManager.getConnection(
                     "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
                     "goodmanservicedb",
                     "Ly02_scr-4ds");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

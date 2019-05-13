@@ -28,31 +28,45 @@ public class CaseController {
      * TILBUD ONLY
      **/
     @GetMapping("/dashboard/tilbud")
-    public String offer(Model model) throws SQLException { // husk catch
-        model.addAttribute("case", CS.fetch("offer"));
-        model.addAttribute("users", US.fetch("customers"));
-        model.addAttribute("edit", false);
-
+    public String offer(Model model) {
+        try {
+            model.addAttribute("case", CS.fetch("offer"));
+            model.addAttribute("users", US.fetch("customers"));
+            model.addAttribute("edit", false);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "dashboard/Cases/offer";
     }
     /**
      * OPGAVER ONLY
      **/
     @GetMapping("/dashboard/opgaver")
-    public String cases(Model model) throws SQLException {
-        model.addAttribute("case", CS.fetch("offer"));
-        model.addAttribute("users", US.fetch("customers"));
-        model.addAttribute("edit", false);
+    public String cases(Model model) {
+        try {
+            model.addAttribute("case", CS.fetch("offer"));
+            model.addAttribute("users", US.fetch("customers"));
+            model.addAttribute("edit", false);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "dashboard/Cases/cases";
     }
     /**
      * FÆRDIGE OPGAVER ONLY
      **/
     @GetMapping("/dashboard/faerdigeopgaver")
-    public String done(Model model) throws SQLException {
-        model.addAttribute("case", CS.fetch("offer"));
-        model.addAttribute("users", US.fetch("customers"));
-        model.addAttribute("edit", false);
+    public String done(Model model) {
+        try {
+            model.addAttribute("case", CS.fetch("offer"));
+            model.addAttribute("users", US.fetch("customers"));
+            model.addAttribute("edit", false);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "dashboard/Cases/done";
     }
 
@@ -60,66 +74,92 @@ public class CaseController {
      * ALL COMBINED
      **/
     @GetMapping("/dashboard/TOF/vis/{id}")
-    public String viewTOF(@PathVariable("id") int id, Model model) throws SQLException {
-        model.addAttribute("case", CS.findById(id));
+    public String viewTOF(@PathVariable("id") int id, Model model) {
+        try {
+            model.addAttribute("case", CS.findById(id));
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "dashboard/Cases/vis";
     }
 
     @GetMapping("/dashboard/TOF/redigere/{id}")
-    public String editTOF(@PathVariable("id") int id,  Model model) throws SQLException { // husk catch
-        model.addAttribute("case", CS.fetch("offer"));
-        model.addAttribute("findById", CS.findById(id));
-        model.addAttribute("users", US.fetch("customers"));
-        model.addAttribute("edit", true);
+    public String editTOF(@PathVariable("id") int id,  Model model) {
+        try {
+            model.addAttribute("case", CS.fetch("offer"));
+            model.addAttribute("findById", CS.findById(id));
+            model.addAttribute("users", US.fetch("customers"));
+            model.addAttribute("edit", true);
 
-        switch (CS.findById(id).getMode()) {
-            case 1:
-                return "dashboard/Cases/offer";
-            case 2:
-                return "dashboard/Cases/cases";
-            case 3:
-                return "dashboard/Cases/done";
-            default:
-                return "dashboard/Cases/no";
+            switch (CS.findById(id).getMode()) {
+                case 1:
+                    return "dashboard/Cases/offer";
+                case 2:
+                    return "dashboard/Cases/cases";
+                case 3:
+                    return "dashboard/Cases/done";
+                default:
+                    return "dashboard/Cases/no";
+            }
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
-
     }
 
-    @PostMapping("/dashboard/TOF/redigere/{id}")
-    public String editTOFFORM(@PathVariable("id") int id, @ModelAttribute Case obj, RedirectAttributes ra) throws SQLException { // husk catch
-        ra.addFlashAttribute("msg", CS.edit(obj));
-        ra.addFlashAttribute("edit", false);
+    @PostMapping("/dashboard/TOF/redigere")
+    public String editTOFFORM(@ModelAttribute Case obj, RedirectAttributes ra, Model model) {
+        try {
+            ra.addFlashAttribute("msg", CS.edit(obj));
+            ra.addFlashAttribute("edit", false);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "redirect:/dashboard/tilbud";
     }
 
     @PostMapping("/dashboard/TOF/upgrade/{id}")
-    public String upgradeTOF(@PathVariable("id") int id, @ModelAttribute Case obj, RedirectAttributes ra) throws SQLException { // husk catch
+    public String upgradeTOF(@PathVariable("id") int id, @ModelAttribute Case obj, RedirectAttributes ra, Model model) {
+        try {
+            ra.addFlashAttribute("msg", CS.edit(obj));
+            ra.addFlashAttribute("edit", false);
 
-        ra.addFlashAttribute("msg", CS.edit(obj));
-        ra.addFlashAttribute("edit", false);
-
-        switch (CS.findById(id).getMode()) {
-            case 1:
-                return "redirect:/dashboard/tilbud";
-            case 2:
-                return "redirect:/dashboard/opgaver";
-            case 3:
-                return "redirect:/dashboard/faerdigeopgaver";
-            default:
-                return "redirect:/dashboard/error";
+            switch (CS.findById(id).getMode()) {
+                case 1:
+                    return "redirect:/dashboard/tilbud";
+                case 2:
+                    return "redirect:/dashboard/opgaver";
+                case 3:
+                    return "redirect:/dashboard/faerdigeopgaver";
+                default:
+                    return "redirect:/dashboard/error";
+            }
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
     }
 
     @PostMapping("/dashboard/TOF/slet/{id}")
-    public String deleteTOF(@PathVariable("id") int id, RedirectAttributes ra) throws SQLException { // husk catch
-        CS.delete(id);
-
+    public String deleteTOF(@PathVariable("id") int id, Model model) {
+        try {
+            CS.delete(id);
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "redirect:/dashboard/tilbud";
     }
     @PostMapping("/dashboard/TOF")
-    public String createTOF(Case cases, RedirectAttributes ra) throws SQLException { // husk catch
-        ra.addFlashAttribute("error", CS.create(cases));
-
+    public String createTOF(Case cases, RedirectAttributes ra, Model model) {
+        try {
+            ra.addFlashAttribute("error", CS.create(cases));
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "redirect:/dashboard/tilbud";
     }
 

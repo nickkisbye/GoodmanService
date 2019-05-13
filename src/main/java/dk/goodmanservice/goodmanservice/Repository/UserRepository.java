@@ -13,15 +13,11 @@ public class UserRepository implements IRepository<User> {
     private PreparedStatement preparedStatement;
     private String sql;
 
-    public UserRepository() {
-        try {
+    public UserRepository() throws SQLException {
             this.con = DriverManager.getConnection(
                     "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
                     "goodmanservicedb",
                     "Ly02_scr-4ds");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

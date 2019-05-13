@@ -25,26 +25,31 @@ public class UserController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user, HttpSession session) {
-        if (loginService.login(user)) {
-            session.setAttribute("email", user.getEmail());
-            session.setAttribute("firstname", user.getFirstName());
-            session.setAttribute("lastname", user.getLastName());
-            session.setAttribute("phone", user.getPhoneNumber());
-            session.setAttribute("role", user.getRoleName());
-            session.setAttribute("email", user.getEmail());
-            session.setAttribute("id", user.getId());
-            session.setAttribute("level", user.getLevel());
+    public String login(@ModelAttribute User user, HttpSession session, Model model) {
+        try {
+            if (loginService.login(user)) {
+                session.setAttribute("email", user.getEmail());
+                session.setAttribute("firstname", user.getFirstName());
+                session.setAttribute("lastname", user.getLastName());
+                session.setAttribute("phone", user.getPhoneNumber());
+                session.setAttribute("role", user.getRoleName());
+                session.setAttribute("email", user.getEmail());
+                session.setAttribute("id", user.getId());
+                session.setAttribute("level", user.getLevel());
 
-            if (user.getRoleName().equals("customer")) {
-                return "redirect:/dashboard/customer";
+                if (user.getRoleName().equals("customer")) {
+                    return "redirect:/dashboard/customer";
+                } else {
+                    return "redirect:/dashboard/employee";
+                }
+
             } else {
-                return "redirect:/dashboard/employee";
+                session.invalidate();
+                return "index";
             }
-
-        } else {
-            session.invalidate();
-            return "index";
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
     }
 
@@ -53,7 +58,8 @@ public class UserController {
         try {
             model.addAttribute("message", US.create(user));
         } catch (SQLException e) {
-            e.printStackTrace();
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
         return "redirect:/dashboard/brugere";
     }
@@ -66,7 +72,8 @@ public class UserController {
             model.addAttribute("roles", US.fetch("roles"));
             model.addAttribute("edit", true);
         } catch (SQLException e) {
-            e.printStackTrace();
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
         return "/dashboard/brugere";
     }
@@ -78,7 +85,6 @@ public class UserController {
             model.addFlashAttribute("user", US.edit(user));
             model.addFlashAttribute("edit", false);
         } catch (SQLException e) {
-            e.printStackTrace();
             model.addAttribute("errorCode", e.getErrorCode());
             return "error";
         }
@@ -90,7 +96,8 @@ public class UserController {
         try {
            US.delete(id);
         } catch (SQLException e) {
-            e.printStackTrace();
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
         return "redirect:/dashboard/brugere";
     }
@@ -102,7 +109,8 @@ public class UserController {
             model.addAttribute("roles", US.fetch("roles"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
-            e.printStackTrace();
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
         }
         return "dashboard/brugere";
     }

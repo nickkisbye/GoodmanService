@@ -18,15 +18,11 @@ public class CaseRepository implements IRepository<Case> {
     private String sql;
     private DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-    public CaseRepository() {
-        try {
+    public CaseRepository() throws SQLException {
             this.con = DriverManager.getConnection(
                     "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
                     "goodmanservicedb",
                     "Ly02_scr-4ds");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 
