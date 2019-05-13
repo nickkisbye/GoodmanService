@@ -17,12 +17,12 @@
                 <p th:text="${message}"></p>
                 <div th:if="${edit}">
                 <form action="/dashboard/brugere/edit/" method="post" th:object="${User}" th:each="userinfo : ${user}">
-                    <input type="text" name="firstName" th:value="${userinfo.firstName}">
-                    <input type="text" name="lastName" th:value="${userinfo.lastName}">
-                    <input type="email" name="email" th:value="${userinfo.email}">
-                    <input type="text" name="address" th:value="${userinfo.address}">
-                    <input type="text" name="phoneNumber" th:value="${userinfo.phoneNumber}">
-                    <input type="password" name="password">
+                    <input type="text" placeholder="Fornavn" name="firstName" th:value="${userinfo.firstName}">
+                    <input type="text" placeholder="Efternavn" name="lastName" th:value="${userinfo.lastName}">
+                    <input type="email" placeholder="Email" name="email" th:value="${userinfo.email}">
+                    <input type="text" placeholder="Adresse" name="address" th:value="${userinfo.address}">
+                    <input type="text" placeholder="Telefon Nr." name="phoneNumber" th:value="${userinfo.phoneNumber}">
+                    <input type="password" placeholder="Kodeord" name="password">
                     <input type="hidden" name="id" th:value="${userinfo.id}">
                     <select name="rid">
                         <option th:each="role : ${roles}" th:value="${role.rid}"><p th:text="${role.roleName}"></p></option>

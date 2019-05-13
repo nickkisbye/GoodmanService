@@ -37,7 +37,7 @@
                             <optgroup label="Medarbejder">
                                 <div th:each="user:${users}">
                                     <div th:if="${user.level > 20}">
-                                        <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                                        <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}"></option>
                                     </div>
                                 </div>
                             </optgroup>
@@ -47,7 +47,7 @@
                             <optgroup label="Kunde">
                                 <div th:each="user:${users}">
                                     <div th:if="${user.level < 20}">
-                                        <option th:text="${user.firstName}" th:value="${user.id}"></option>
+                                        <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}"></option>
                                     </div>
                                 </div>
                             </optgroup>
