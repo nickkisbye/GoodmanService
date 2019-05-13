@@ -83,6 +83,21 @@ public class CaseRepository implements IRepository<Case> {
             case "finished":
                 sql = "SELECT * FROM cases WHERE fk_mode = 3";
                 break;
+            case "total":
+                sql = "SELECT SUM(price) FROM cases WHERE fk_mode = 3";
+                break;
+            case "monthly":
+                sql = "";
+                break;
+            case "yearly":
+                break;
+            case "average":
+                sql = "SELECT AVG(price) from cases WHERE fk_mode = 3";
+                break;
+            case "employee-sale-list":
+                break;
+            case "top-employee":
+                break;
         }
 
         preparedStatement = con.prepareStatement(sql);
