@@ -6,7 +6,6 @@ public class Statistic {
     private String monthName;
     private int monthNumber;
     private int yearNumber;
-    private int averageSales;
     private String employeeFirstName;
     private String employeeLastName;
 
@@ -43,14 +42,6 @@ public class Statistic {
 
     public void setYearNumber(int yearNumber) {
         this.yearNumber = yearNumber;
-    }
-
-    public int getAverageSales() {
-        return averageSales;
-    }
-
-    public void setAverageSales(int averageSales) {
-        this.averageSales = averageSales;
     }
 
     public String getEmployeeFirstName() {

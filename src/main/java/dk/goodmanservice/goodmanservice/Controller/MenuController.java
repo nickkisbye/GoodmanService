@@ -73,8 +73,8 @@ public class MenuController {
             model.addAttribute("monthly", SS.fetch("monthly"));
             model.addAttribute("yearly", SS.fetch("yearly"));
             model.addAttribute("average", SS.fetch("average"));
-            model.addAttribute("employee-top10", SS.fetch("employee-top10"));
-            model.addAttribute("top-employee", SS.fetch("top-employee"));
+            model.addAttribute("employeelist", SS.fetch("employee-top10"));
+            model.addAttribute("employee", SS.fetch("top-employee"));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
             return "error";

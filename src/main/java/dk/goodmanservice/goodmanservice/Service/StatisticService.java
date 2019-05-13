@@ -19,13 +19,13 @@ public class StatisticService {
 
     public List<Statistic> fetch(String option) throws SQLException {
         List<Statistic> sList = new ArrayList<>();
-        Statistic statistic = new Statistic();
         ResultSet rs = null;
 
         switch (option) {
             case "total":
                 rs = SR.totalPriceSum();
                 while (rs.next()) {
+                    Statistic statistic = new Statistic();
                     statistic.setPriceSum(rs.getInt("total_price"));
                     sList.add(statistic);
                 }
@@ -33,6 +33,7 @@ public class StatisticService {
             case "monthly":
                 rs = SR.totalMonthlyEarnings();
                 while (rs.next()) {
+                    Statistic statistic = new Statistic();
                     statistic.setMonthName(rs.getString("MonthName"));
                     statistic.setMonthNumber(rs.getInt("MonthNumber"));
                     statistic.setPriceSum(rs.getInt("total_price"));
@@ -42,6 +43,7 @@ public class StatisticService {
             case "yearly":
                 rs = SR.totalYearlyEarnings();
                 while (rs.next()) {
+                    Statistic statistic = new Statistic();
                     statistic.setYearNumber(rs.getInt("YearNumber"));
                     statistic.setPriceSum(rs.getInt("total_price"));
                     sList.add(statistic);
@@ -50,13 +52,15 @@ public class StatisticService {
             case "average":
                 rs = SR.averageEarnings();
                 while (rs.next()) {
-                    statistic.setAverageSales(rs.getInt("average_price"));
+                    Statistic statistic = new Statistic();
+                    statistic.setPriceSum(rs.getInt("average_price"));
                     sList.add(statistic);
                 }
                 break;
             case "employee-top10":
                 rs = SR.employeeSaleList();
                 while (rs.next()) {
+                    Statistic statistic = new Statistic();
                     statistic.setEmployeeFirstName(rs.getString("U.firstName"));
                     statistic.setEmployeeLastName(rs.getString("U.lastname"));
                     statistic.setPriceSum(rs.getInt("total_price"));
@@ -66,6 +70,7 @@ public class StatisticService {
             case "top-employee":
                 rs = SR.topEmployee();
                 while (rs.next()) {
+                    Statistic statistic = new Statistic();
                     statistic.setEmployeeFirstName(rs.getString("U.firstName"));
                     statistic.setEmployeeLastName(rs.getString("U.lastname"));
                     statistic.setPriceSum(rs.getInt("total_price"));

@@ -7,7 +7,35 @@
 </header>
 <main>
 
+<div th:each="t : ${total}">
+    <strong>Total omsætning:</strong>
+    <p th:text="${t.priceSum}"></p>
+</div>
+    <strong>Omsætning måneder:</strong>
+<div th:each="m : ${monthly}">
 
+    <p th:text="${m.monthName} + ' ' + ${m.priceSum}"></p>
+</div>
+<div th:each="y : ${yearly}">
+    <strong>Omsætning år:</strong>
+    <p th:text="${y.yearNumber} + ' ' + ${y.priceSum}"></p>
+</div>
+<div th:each="a : ${average}">
+    <strong>Gennemsnitspris pr. ordre:</strong>
+    <p th:text="${a.priceSum}"></p>
+</div>
+    <strong>Top 10:</strong>
+<div th:each="employee : ${employeelist}">
+    <p th:text="${employee.employeeFirstName}"></p>
+    <p th:text="${employee.employeeLastName}"></p>
+    <p th:text="${employee.priceSum}"></p>
+</div>
+<div th:each="e : ${employee}">
+    <strong>Bedste medarbejder:</strong>
+    <p th:text="${e.employeeFirstName}"></p>
+    <p th:text="${e.employeeLastName}"></p>
+    <p th:text="${e.priceSum}"></p>
+</div>
 
 </main>
 <footer>
