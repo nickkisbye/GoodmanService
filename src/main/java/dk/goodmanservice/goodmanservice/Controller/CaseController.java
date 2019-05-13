@@ -109,12 +109,12 @@ public class CaseController {
     }
 
     @PostMapping("/dashboard/TOF/redigere")
-    public String editTOFFORM(@ModelAttribute Case obj, RedirectAttributes ra, Model model) {
+    public String editTOFFORM(@ModelAttribute Case obj, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("msg", CS.edit(obj));
             ra.addFlashAttribute("edit", false);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            ra.addAttribute("errorCode", e.getErrorCode());
             return "error";
         }
         return "redirect:/dashboard/tilbud";
