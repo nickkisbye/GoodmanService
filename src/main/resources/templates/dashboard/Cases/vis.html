@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/dashboard/tilbud}">tilbage til dashboard</a><br>
+<table>
+    <div th:each="case : ${case}" th:remove="tag">
+
+        <div th:if="${case.mode} == 1" th:remove="tag">
+            <a th:href="@{/dashboard/tilbud}">TILBAGE</a><br>
+            <h2>TILBUD</h2>
+        </div>
+        <div th:if="${case.mode} == 2" th:remove="tag">
+            <a th:href="@{/dashboard/opgaver}">TILBAGE</a><br>
+            <h2>OPGAVE</h2>
+        </div>
+        <div th:if="${case.mode} == 3" th:remove="tag">
+            <a th:href="@{/dashboard/faerdigeopgaver}">TILBAGE</a><br>
+            <h2>FÆRDIG OPGAVE</h2>
+        </div>
+
+        <tr>
+            <th>Start Dato: </th>
+            <td><span th:text="${case.startDate}"></span></td>
+        </tr>
+        <tr>
+            <th>Slut Dato: </th>
+            <td><span th:text="${case.endDate}"></span></td>
+        </tr>
+        <tr>
+            <th>Description: </th>
+            <td><span th:text="${case.description}"></span></td>
+        </tr>
+        <tr>
+            <th>Kunde Navn: </th>
+            <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
+        </tr>
+        <tr>
+            <th>Email / Telefon nr.: </th>
+            <td><span th:text="${case.customer.email}"></span> / <span th:text="${case.customer.phoneNumber}"></span></td>
+        </tr>
+        <tr>
+            <th>Addresse: </th>
+            <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
+        </tr>
+    </div>
+</table>
+BILLEDER:
+</body>
+</html>
