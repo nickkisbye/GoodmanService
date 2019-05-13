@@ -4,6 +4,7 @@ import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.Message;
 import dk.goodmanservice.goodmanservice.Model.User;
 import dk.goodmanservice.goodmanservice.Service.IService;
+import dk.goodmanservice.goodmanservice.Service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,9 @@ import java.sql.SQLException;
 public class MenuController {
 
     @Autowired
+    private StatisticService SS;
+
+    @Autowired
     private IService<Message> MS;
 
     @Autowired
@@ -22,6 +26,8 @@ public class MenuController {
 
     @Autowired
     private IService<Case> CS;
+
+
 
     @GetMapping("/")
     public String index() {
@@ -61,7 +67,19 @@ public class MenuController {
     }
 
     @GetMapping("/dashboard/oekonomi")
-    public String oekonomi() {
+    public String oekonomi(Model model) {
+        try {
+            model.addAttribute("total", SS.fetch("total"));
+            model.addAttribute("monthly", SS.fetch("monthly"));
+            model.addAttribute("yearly", SS.fetch("yearly"));
+            model.addAttribute("average", SS.fetch("average"));
+            model.addAttribute("employee-top10", SS.fetch("employee-top10"));
+            model.addAttribute("top-employee", SS.fetch("top-employee"));
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
+
         return "dashboard/oekonomi";
     }
 
