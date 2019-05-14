@@ -71,6 +71,7 @@ public class UserService implements IService<User> {
                 user.setLastName(resultSet.getString("lastName"));
                 user.setEmail(resultSet.getString("email"));
                 user.setAddress(resultSet.getString("address"));
+                user.setRid(resultSet.getInt("fk_role"));
                 user.setRoleName(resultSet.getString("roles.role_name"));
                 user.setLevel(resultSet.getInt("level"));
                 user.setId(resultSet.getInt("id"));
@@ -91,6 +92,7 @@ public class UserService implements IService<User> {
                 user.setLastName(resultSet.getString("lastName"));
                 user.setEmail(resultSet.getString("email"));
                 user.setAddress(resultSet.getString("address"));
+                user.setRid(resultSet.getInt("fk_role"));
                 user.setId(resultSet.getInt("id"));
                 user.setCity(resultSet.getString("city"));
                 user.setZip(resultSet.getInt("zip"));
