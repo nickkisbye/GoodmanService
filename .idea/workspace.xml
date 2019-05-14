@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcb930df-6d99-4a77-b6d3-dcc1cbd960e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Jobs.java" afterDir="false" />
+    <list default="true" id="bcb930df-6d99-4a77-b6d3-dcc1cbd960e5" name="Default Changelist" comment="Opgaver">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/JobRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/JobRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/JobService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,11 +21,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="440">
-                  <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+                <state relative-caret-position="540">
+                  <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -38,7 +33,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="465">
+                <state relative-caret-position="1680">
                   <caret line="100" column="64" selection-start-line="100" selection-start-column="64" selection-end-line="100" selection-end-column="64" />
                 </state>
               </provider>
@@ -47,7 +42,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/JobService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-15">
+                <state relative-caret-position="360">
                   <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -56,11 +51,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/JobRepository.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="805">
-                  <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
+                <state relative-caret-position="1060">
+                  <caret line="53" column="65" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -71,8 +66,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/AppointmentRepository.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="764">
-                  <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+                <state relative-caret-position="1380">
+                  <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -83,51 +78,21 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Jobs.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="260">
-                  <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#270#271#0" expanded="true" />
-                    <element signature="e#303#304#0" expanded="true" />
-                    <element signature="e#331#332#0" expanded="true" />
-                    <element signature="e#361#362#0" expanded="true" />
-                    <element signature="e#390#391#0" expanded="true" />
-                    <element signature="e#431#432#0" expanded="true" />
-                    <element signature="e#467#468#0" expanded="true" />
-                    <element signature="e#501#502#0" expanded="true" />
-                    <element signature="e#534#535#0" expanded="true" />
-                    <element signature="e#583#584#0" expanded="true" />
-                    <element signature="e#627#628#0" expanded="true" />
-                    <element signature="e#661#662#0" expanded="true" />
-                    <element signature="e#693#694#0" expanded="true" />
-                    <element signature="e#741#742#0" expanded="true" />
-                    <element signature="e#783#784#0" expanded="true" />
-                    <element signature="e#813#814#0" expanded="true" />
-                    <element signature="e#841#842#0" expanded="true" />
-                    <element signature="e#881#882#0" expanded="true" />
-                    <element signature="e#915#916#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/MessageService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="668">
-                  <caret line="53" column="48" lean-forward="true" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+                <state relative-caret-position="880">
+                  <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/CaseService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="265">
-                  <caret line="52" column="28" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="28" />
+                <state relative-caret-position="425">
+                  <caret line="60" column="33" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
                 </state>
               </provider>
             </entry>
@@ -135,7 +100,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="491">
+                <state relative-caret-position="960">
                   <caret line="52" selection-start-line="52" selection-end-line="56" selection-end-column="40" />
                 </state>
               </provider>
@@ -144,7 +109,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1105">
+                <state relative-caret-position="1660">
                   <caret line="91" column="22" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
                 </state>
               </provider>
@@ -286,10 +251,10 @@
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Case.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Model/Jobs.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/JobService.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/JobRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html" />
       </list>
     </option>
   </component>
@@ -302,17 +267,7 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="Patientsystemet" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="Patientsystemet" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-      </expand>
+      <expand />
       <select />
     </treeState>
   </component>
@@ -331,6 +286,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -414,14 +370,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="1SemesterProjekt2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="1SemesterProjekt2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -440,8 +388,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="Cases" type="462c0819:PsiDirectoryNode" />
+              <item name="ErrorHandling" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="1SemesterProjekt2" type="b2602c69:ProjectViewProjectNode" />
@@ -450,14 +397,12 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -469,7 +414,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557844564033" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557844696014" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -499,7 +444,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GoodmanserviceApplication">
+  <component name="RunManager" selected="Spring Boot.GoodmanserviceApplication">
     <configuration name="GoodmanserviceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -529,7 +474,7 @@
       </method>
     </configuration>
     <configuration name="GoodmanserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="1SemesterProjekt" />
+      <module name="1SemesterProjekt2" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="dk.goodmanservice.goodmanservice.GoodmanserviceApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
@@ -576,7 +521,9 @@
       <workItem from="1557490761352" duration="1203000" />
       <workItem from="1557695885341" duration="1118000" />
       <workItem from="1557734502394" duration="2163000" />
-      <workItem from="1557824716477" duration="16800000" />
+      <workItem from="1557824716477" duration="17101000" />
+      <workItem from="1557844758131" duration="57000" />
+      <workItem from="1557844822515" duration="252000" />
     </task>
     <task id="LOCAL-00001" summary="setup">
       <created>1556790738720</created>
@@ -907,17 +854,31 @@
       <option name="project" value="LOCAL" />
       <updated>1557826532158</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Tilbud, Opgaver og Færdigeopgaver kan nu CRUD">
+      <created>1557844620356</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1557844620356</updated>
+    </task>
+    <task id="LOCAL-00049" summary="kan tilføje jobs nu">
+      <created>1557845002297</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1557845002297</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115980000" />
+    <option name="totallyTimeSpent" value="116590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14149444" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14387918" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -927,23 +888,23 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32931727" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.18561485" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.18561485" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39829853" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32869297" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32946634" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32869297" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.11713666" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32946634" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32869297" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.32791957" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.32942432" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.3290938" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -979,16 +940,10 @@
     <MESSAGE value="PUSHER DET HER FØRST SMALL CHANGES" />
     <MESSAGE value="error msg" />
     <MESSAGE value="Tilbud, Opgaver og Færdigeopgaver kan nu CRUD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tilbud, Opgaver og Færdigeopgaver kan nu CRUD" />
+    <MESSAGE value="kan tilføje jobs nu" />
+    <option name="LAST_COMMIT_MESSAGE" value="kan tilføje jobs nu" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/fragments/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/IRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1173,13 +1128,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/error.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/error.html" />
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1380">
@@ -1231,6 +1180,85 @@
             <element signature="e#2062#2063#0" expanded="true" />
             <element signature="e#2094#2095#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/IService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/StatisticRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-320">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/StatisticService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/MessageRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="56" column="48" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="100" column="64" selection-start-line="100" selection-start-column="64" selection-end-line="100" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/JobService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/JobRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1060">
+          <caret line="53" column="65" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/AppointmentRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="52" selection-start-line="52" selection-end-line="56" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1660">
+          <caret line="91" column="22" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1287,45 +1315,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/IService.java">
+    <entry file="file://$PROJECT_DIR$/mvnw">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        <state relative-caret-position="640">
+          <caret line="116" column="4" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/StatisticRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="540">
+          <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/StatisticService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/CaseService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/MessageRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1040">
-          <caret line="56" column="48" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/MessageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="53" column="48" lean-forward="true" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="52" selection-start-line="52" selection-end-line="56" selection-end-column="40" />
+        <state relative-caret-position="425">
+          <caret line="60" column="33" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1357,61 +1364,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/AppointmentRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/CaseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="91" column="22" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="100" column="64" selection-start-line="100" selection-start-column="64" selection-end-line="100" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/JobService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Service/CaseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="52" column="28" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/JobRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="805">
-          <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="880">
+          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
         </state>
       </provider>
     </entry>

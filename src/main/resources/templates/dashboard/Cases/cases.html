@@ -26,7 +26,7 @@
         <button type="submit">ok</button>
     </form>
 </div>
-
+<div></div>
 <div th:if="${edit}">
     <form th:action="@{/dashboard/TOF/redigere}" method="POST" th:object="${Case}">
         <input type="hidden" th:value="${findById.id}" name="id">
