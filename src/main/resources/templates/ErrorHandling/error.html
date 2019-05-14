@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR PAGE</title>
+</head>
+<body>
+<h1>You hit the Error Page</h1>
+
+<div th:if="${errorCode == null}">
+    <h3>Occurred:</h3>
+    <p th:text="${timestamp}"></p>
+
+    <h3>Response Status:</h3>
+    <p th:text="${status}"></p>
+
+    <h3>Error Code:</h3>
+    <p th:text="${error}"></p>
+
+    <h3>Error Message as Follows:</h3>
+    <p th:text="${message}"></p>
+</div>
+
+<div th:if="${errorCode != null}">
+    <p>SQL Error Code: <span th:text="${errorCode}"></span></p>
+</div>
+
+</body>
+</html>
