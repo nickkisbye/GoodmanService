@@ -1,5 +1,7 @@
 <div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
     <nav class="navbar">
-        Velkommen, <p th:text="${session.firstname}"></p>
+        <a th:if="${session.level > 20}" href="/dashboard/employee">
+            Velkommen, <p th:text="${session.firstname}"></p>
+        </a>
     </nav>
 </div>
