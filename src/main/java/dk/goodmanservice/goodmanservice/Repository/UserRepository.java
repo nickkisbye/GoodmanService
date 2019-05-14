@@ -75,6 +75,9 @@ public class UserRepository implements IRepository<User> {
             case "manager":
                 sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE fk_role=3";
                 break;
+            case "allEmployees":
+                sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE fk_role=2 OR fk_role=3 OR fk_role=4";
+            break;
             case "roles":
                 sql = "SELECT * FROM roles";
                 break;

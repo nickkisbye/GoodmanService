@@ -1,9 +1,11 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
 import dk.goodmanservice.goodmanservice.Model.Case;
+import dk.goodmanservice.goodmanservice.Model.Jobs;
 import dk.goodmanservice.goodmanservice.Model.User;
 import dk.goodmanservice.goodmanservice.Service.CaseService;
 import dk.goodmanservice.goodmanservice.Service.IService;
+import dk.goodmanservice.goodmanservice.Service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 @Controller
@@ -23,6 +26,9 @@ public class CaseController {
 
     @Autowired
     private IService<User> US;
+
+    @Autowired
+    private JobService JS;
 
     /**
      * TILBUD ONLY
@@ -85,12 +91,15 @@ public class CaseController {
     }
 
     @GetMapping("/dashboard/TOF/redigere/{id}")
-    public String editTOF(@PathVariable("id") int id,  Model model) {
+    public String editTOF(@PathVariable("id") int id, Model model) {
         try {
             model.addAttribute("case", CS.fetch("offer"));
             model.addAttribute("findById", CS.findById(id));
             model.addAttribute("users", US.fetch("customers"));
             model.addAttribute("edit", true);
+
+            model.addAttribute("employees", JS.fetchEmployees(id));
+            model.addAttribute("jobs", JS.findByIdJobs(id));
 
             switch (CS.findById(id).getMode()) {
                 case 1:
@@ -193,9 +202,26 @@ public class CaseController {
 
     }
 
-
-
-
+    @PostMapping("/dashboard/TOF/NytJob")
+    public String createJob(@ModelAttribute Jobs jobs, RedirectAttributes ra, Model model) {
+        try {
+            ra.addFlashAttribute("error", JS.createJob(jobs));
+            return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
+    }
+    @PostMapping("/dashboard/TOF/fjernJob")
+    public String removeJob(@ModelAttribute Jobs jobs, RedirectAttributes ra, Model model) {
+        try {
+            ra.addFlashAttribute("error", JS.deleteJob(jobs.getId()));
+            return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
+    }
 
 
 

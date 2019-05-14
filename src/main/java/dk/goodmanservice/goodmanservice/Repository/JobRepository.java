@@ -1,31 +1,60 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import dk.goodmanservice.goodmanservice.Model.Jobs;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-public class JobRepository implements IRepository {
-    @Override
-    public void create(Object obj) throws SQLException {
+import java.sql.*;
+import java.util.Calendar;
 
+@Repository
+public class JobRepository {
+
+    private Connection con;
+    private PreparedStatement preparedStatement;
+    private String sql;
+
+    public JobRepository() throws SQLException {
+        this.con = DriverManager.getConnection(
+                "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
+                "goodmanservicedb",
+                "Ly02_scr-4ds");
     }
 
-    @Override
-    public void edit(Object obj) throws SQLException {
-
+    public void createJob(Jobs obj) throws SQLException {
+        sql = "INSERT INTO junc_jobs (fk_case, fk_employee) VALUES (?, ?)";
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, obj.getCaseId());
+        preparedStatement.setInt(2, obj.getEmployeeId());
+        preparedStatement.execute();
     }
 
-    @Override
-    public void delete(int id) throws SQLException {
 
+    public ResultSet findByIdJobs(int id) throws SQLException {
+        sql = "SELECT * FROM junc_jobs " +
+                "INNER JOIN users ON junc_jobs.fk_employee = users.id " +
+                "WHERE junc_jobs.fk_case = ?";
+
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        return preparedStatement.executeQuery();
     }
 
-    @Override
-    public ResultSet fetch(String option) throws SQLException {
-        return null;
+    public void deleteJob(int id) throws SQLException {
+        sql = "DELETE FROM junc_jobs WHERE id=?";
+
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        preparedStatement.execute();
     }
 
-    @Override
-    public ResultSet findById(int id) throws SQLException {
-        return null;
+    public ResultSet fetchEmployees(int id) throws SQLException {
+        sql =   "SELECT * FROM users " +
+                "LEFT JOIN junc_jobs ON users.id = junc_jobs.fk_employee " +
+                "WHERE junc_jobs.fk_case IS NULL OR fk_case != ? ";
+
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        return preparedStatement.executeQuery();
     }
 }

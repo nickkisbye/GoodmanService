@@ -47,7 +47,36 @@
     </form>
 </div>
 
-<br><br><br>
+<div th:if="${edit}">
+    <br><br><br>
+    <form th:action="@{/dashboard/TOF/NytJob}" method="POST" th:object="${Jobs}">
+        <input type="hidden" th:value="${findById.id}" name="caseId">
+        <select name="employeeId">
+            <div th:each="e : ${employees}" th:remove="tag">
+                <option th:value="${e.id}"><span th:text="${e.firstName}"></span> <span th:text="${e.lastName}"></span></option>
+
+            </div>
+        </select>
+        <button type="submit">tilføj</button>
+    </form>
+    <table>
+        <tr>
+            <th>Folk på jobbet</th>
+        </tr>
+        <tr th:each="j : ${jobs}">
+            <td th:text="${j.employees.firstName}"></td>
+            <td th:text="${j.employees.lastName}"></td>
+            <td>
+                <form th:action="@{/dashboard/TOF/fjernJob}" method="POST" th:object="${Jobs}">
+                    <input type="hidden" th:value="${j.id}" name="id">
+                    <button type="submit">delete</button>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+    <br><br><br>
+</div>
 
 <table>
     <tr>
