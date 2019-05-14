@@ -27,7 +27,7 @@
                     <input type="password" placeholder="Kodeord" name="password">
                     <input type="hidden" name="id" th:value="${userinfo.id}">
                     <select name="rid">
-                        <option th:each="role : ${roles}" th:value="${role.rid}" th:selected="${userinfo.id}"></option>
+                        <option th:each="role : ${roles}" th:value="${role.rid}"><p th:text="${role.roleName}"></p></option>
                     </select>
                     <button type="submit">Ret bruger</button>
                 </form>
@@ -43,7 +43,7 @@
                         <input type="text" placeholder="Telefon Nr." name="phoneNumber">
                         <input type="password" placeholder="Kodeord" name="password">
                         <select name="rid">
-                            <option th:each="role : ${roles}" th:value="${role.rid}"></option>
+                            <option th:each="role : ${roles}" th:value="${role.rid}"><p th:text="${role.roleName}"></p></option>
                         </select>
                         <button type="submit">Opret bruger</button>
                     </form>
