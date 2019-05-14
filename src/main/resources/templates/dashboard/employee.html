@@ -30,6 +30,7 @@
             <div th:each="message: ${messages}">
                 <p th:text="${message.username}"></p>
                 <p th:text="${message.msg}"></p>
+                <a th:if="${message.userId == session.id}" th:href="@{/message/delete/{id}(id=${message.id})}">Slet besked</a>
             </div>
                 <form action="/message/create" method="post" th:object="${Message}">
                     <input type="text" name="msg" placeholder="Skriv besked..">

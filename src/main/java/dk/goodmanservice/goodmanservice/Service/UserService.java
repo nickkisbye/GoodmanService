@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,9 +19,6 @@ public class UserService implements IService<User> {
 
     @Autowired
     private IRepository<User> UR;
-
-    @Autowired
-    private Validation validate;
     
     private ResultSet resultSet;
 
@@ -28,6 +26,8 @@ public class UserService implements IService<User> {
     public String create(User obj) throws SQLException {
         if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
             return "Fornavn eller efternavn må ikke være under 2 karaktere";
+        } else if(obj.getPassword().length() < 8) {
+            return "Kodeordet skal være mindst 8 karaktere";
         } else {
             UR.create(obj);
             return "success";
@@ -38,8 +38,9 @@ public class UserService implements IService<User> {
     public String edit(User obj) throws SQLException {
         if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
             return "Fornavn eller efternavn må ikke være under 2 karaktere";
-        }
-         else {
+        } else if(obj.getPassword().length() < 8) {
+            return "Kodeordet skal være mindst 8 karaktere";
+        } else {
             UR.edit(obj);
             return "success";
         }

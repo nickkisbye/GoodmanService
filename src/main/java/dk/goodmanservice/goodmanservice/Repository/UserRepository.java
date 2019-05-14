@@ -22,14 +22,14 @@ public class UserRepository implements IRepository<User> {
 
     @Override
     public void create(User obj) throws SQLException {
-        String sql = "INSERT INTO users (firstName, lastName, email, address, phone, fk_role, password, city, zip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (firstName, lastName, email, address, phone, fk_role, password, city, zip) VALUES (?, ?, ?, ?, ?, ?, md5(?), ?, ?)";
         executeUser(sql, obj);
     }
 
     @Override
     public void edit(User obj) throws SQLException {
         System.out.print(obj.getRid());
-        sql = "UPDATE users SET firstName=?, lastName=?, email=?, address=?, phone=?, fk_role=?, password=?, city=?, zip=? WHERE id = '" + obj.getId() + "'";
+        sql = "UPDATE users SET firstName=?, lastName=?, email=?, address=?, phone=?, fk_role=?, password=md5(?), city=?, zip=? WHERE id = '" + obj.getId() + "'";
         executeUser(sql, obj);
     }
 
