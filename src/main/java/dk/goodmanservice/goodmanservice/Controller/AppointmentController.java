@@ -31,7 +31,7 @@ public class AppointmentController {
             model.addAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/kalender";
     }
@@ -45,7 +45,7 @@ public class AppointmentController {
             model.addAttribute("edit", true);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/kalender";
     }
@@ -57,7 +57,7 @@ public class AppointmentController {
             model.addFlashAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/appointments";
     }
@@ -68,19 +68,21 @@ public class AppointmentController {
             AS.delete(id);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/appointments";
     }
 
     @PostMapping("/dashboard/appointment/create")
-    public String createAppointment(@ModelAttribute Appointment obj, Model model) {
+    public String createAppointment(@ModelAttribute Appointment obj, RedirectAttributes redirect) {
         try {
             AS.create(obj);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            redirect.addAttribute("errorCode", e.getErrorCode());
+            return "redirect:/error";
         }
         return "redirect:/dashboard/appointments";
     }
 }
+
+//Test class for ErrorController
