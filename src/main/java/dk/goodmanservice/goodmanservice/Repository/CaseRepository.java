@@ -78,10 +78,16 @@ public class CaseRepository implements IRepository<Case> {
                         "WHERE fk_mode = 1";
                 break;
             case "cases":
-                sql = "SELECT * FROM cases WHERE fk_mode = 2";
+                sql = "SELECT * FROM cases " +
+                        "LEFT JOIN users ON cases.fk_customer = users.id " +
+                        "LEFT JOIN roles ON users.fk_role = roles.id " +
+                        "WHERE fk_mode = 2";
                 break;
             case "finished":
-                sql = "SELECT * FROM cases WHERE fk_mode = 3";
+                sql = "SELECT * FROM cases " +
+                        "LEFT JOIN users ON cases.fk_customer = users.id " +
+                        "LEFT JOIN roles ON users.fk_role = roles.id " +
+                        "WHERE fk_mode = 3";
                 break;
         }
 

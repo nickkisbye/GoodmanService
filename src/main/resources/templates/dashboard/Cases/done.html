@@ -5,9 +5,75 @@
     <title>Title</title>
 </head>
 <body>
-    <a th:href="@{/dashboard/tilbud}">TILBUD</a><br>
-    <a th:href="@{/dashboard/opgaver}">OGPAVER</a><br>
-    <a th:href="@{/dashboard/faerdigeopgaver}">FÆRDIGE OPGAVER</a><br>
-    <h1>FÆRDIGE OPGAVER</h1>
+<a th:href="@{/dashboard/employee}">tilbage til dashboard</a><br>
+<a th:href="@{/dashboard/tilbud}">TILBUD</a><br>
+<a th:href="@{/dashboard/opgaver}">OGPAVER</a><br>
+<a th:href="@{/dashboard/faerdigeopgaver}">FÆRDIGE OPGAVER</a><br>
+
+<h1>FÆRDIGE OPGAVER</h1>
+<div th:if="${!edit}">
+    <form th:action="@{/dashboard/TOF}" method="POST" th:object="${Case}">
+        <textarea name="description" cols="30" rows="10" placeholder="description"></textarea><br>
+        <input type="number"         name="price"        placeholder="price"        value=""><br>
+        <input type="datetime-local" name="startDate"    placeholder="startDate"    value=""><br>
+        <input type="datetime-local" name="endDate"      placeholder="endDate"      value=""><br>
+        <input type="hidden"         name="mode"         placeholder=""             value="3">
+        <select name="customerId">
+            <div th:each="u : ${users}" th:remove="tag">
+                <option th:value="${u.id}"><span th:text="${u.firstName}"></span> <span th:text="${u.lastName}"></span></option>
+            </div>
+        </select><br>
+        <button type="submit">ok</button>
+    </form>
+</div>
+
+<div th:if="${edit}">
+    <form th:action="@{/dashboard/TOF/redigere}" method="POST" th:object="${Case}">
+        <input type="hidden" th:value="${findById.id}" name="id">
+        <textarea name="description" cols="30" rows="10" placeholder="description"><span th:text="${findById.description}" th:remove="tag"></span></textarea><br>
+        <input type="number"         name="price"        placeholder="price"        th:value="${findById.price}"><br>
+        <input type="datetime-local" name="startDate"    placeholder="startDate"    value=""><br>
+        <input type="datetime-local" name="endDate"      placeholder="endDate"      value=""><br>
+        <input type="hidden"         name="mode"         placeholder=""             th:value="${findById.mode}">
+
+        <select name="customerId">
+            <div th:each="u : ${users}" th:remove="tag">
+                <p th:text="${findById.customer.id}"></p>
+                <p th:text="${u.id}"></p>
+                <option th:value="${u.id}" th:selected="${findById.customer.id == u.id}"><span th:text="${u.firstName}"></span> <span th:text="${u.lastName}" ></span></option>
+            </div>
+        </select><br>
+        <button type="submit">ok</button>
+    </form>
+</div>
+
+<br><br><br>
+
+<table>
+    <tr>
+        <th>Dato</th>
+        <th>Adresse</th>
+        <th>Kunde navn</th>
+    </tr>
+    <div th:each="case : ${case}" th:remove="tag">
+
+        <tr>
+            <td><span th:text="${case.startDate}"></span></td>
+            <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
+            <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
+            <td><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
+            <td>
+                <form th:action="@{/dashboard/TOF/slet/{id}(id=${case.id})}" method="POST" th:object="${Case}">
+                    <button type="submit">Slet</button>
+                </form>
+            </td>
+            <td>
+                <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}">Redigere</a>
+            </td>
+        </tr>
+
+    </div>
+
+</table>
 </body>
 </html>

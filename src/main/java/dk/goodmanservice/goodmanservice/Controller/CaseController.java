@@ -45,7 +45,7 @@ public class CaseController {
     @GetMapping("/dashboard/opgaver")
     public String cases(Model model) {
         try {
-            model.addAttribute("case", CS.fetch("offer"));
+            model.addAttribute("case", CS.fetch("cases"));
             model.addAttribute("users", US.fetch("customers"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
@@ -60,7 +60,7 @@ public class CaseController {
     @GetMapping("/dashboard/faerdigeopgaver")
     public String done(Model model) {
         try {
-            model.addAttribute("case", CS.fetch("offer"));
+            model.addAttribute("case", CS.fetch("finished"));
             model.addAttribute("users", US.fetch("customers"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
@@ -117,7 +117,16 @@ public class CaseController {
             ra.addAttribute("errorCode", e.getErrorCode());
             return "error";
         }
-        return "redirect:/dashboard/tilbud";
+        switch (obj.getMode()) {
+            case 1:
+                return "redirect:/dashboard/tilbud";
+            case 2:
+                return "redirect:/dashboard/opgaver";
+            case 3:
+                return "redirect:/dashboard/faerdigeopgaver";
+            default:
+                return "redirect:/dashboard/no";
+        }
     }
 
     @PostMapping("/dashboard/TOF/upgrade/{id}")
@@ -146,21 +155,42 @@ public class CaseController {
     public String deleteTOF(@PathVariable("id") int id, Model model) {
         try {
             CS.delete(id);
+            switch (CS.findById(id).getMode()) {
+                case 1:
+                    return "redirect:/dashboard/tilbud";
+                case 2:
+                    return "redirect:/dashboard/opgaver";
+                case 3:
+                    return "redirect:/dashboard/faerdigeopgaver";
+                default:
+                    return "redirect:/dashboard/error";
+            }
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
             return "error";
         }
-        return "redirect:/dashboard/tilbud";
+
     }
     @PostMapping("/dashboard/TOF")
-    public String createTOF(Case cases, RedirectAttributes ra, Model model) {
+    public String createTOF(@ModelAttribute Case obj, Case cases, RedirectAttributes ra, Model model) {
         try {
             ra.addFlashAttribute("error", CS.create(cases));
+
+            switch (obj.getMode()) {
+                case 1:
+                    return "redirect:/dashboard/tilbud";
+                case 2:
+                    return "redirect:/dashboard/opgaver";
+                case 3:
+                    return "redirect:/dashboard/faerdigeopgaver";
+                default:
+                    return "redirect:/dashboard/error";
+            }
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
             return "error";
         }
-        return "redirect:/dashboard/tilbud";
+
     }
 
 
