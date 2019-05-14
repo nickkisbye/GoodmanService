@@ -5,9 +5,10 @@
     <title>ERROR PAGE</title>
 </head>
 <body>
-<h1>You hit the Error Page</h1>
+<h1>Oops Looks Like Something Went Wrong</h1>
+<h3>Due To An Error You Hit This Page</h3>
 
-<div th:if="${errorCode == null}">
+<!--<div th:if="${errorCode == null}">
     <h3>Occurred:</h3>
     <p th:text="${timestamp}"></p>
 
@@ -19,11 +20,13 @@
 
     <h3>Error Message as Follows:</h3>
     <p th:text="${message}"></p>
-</div>
+</div>-->
 
 <div th:if="${errorCode != null}">
     <p>SQL Error Code: <span th:text="${errorCode}"></span></p>
 </div>
+
+<a href="/">Go Home</a>
 
 </body>
 </html>

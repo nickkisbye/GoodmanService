@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>404 Not Found</title>
 </head>
 <body>
 
-<h1>404</h1>
-<p>The Page You're Looking For Does Not Exist</p>
+    <h1>404 Error</h1>
+    <h3>The Page You're Looking For Does Not Exist</h3>
+
+    <p>Due to an error you hit this page, see the image below for a detailed explanation</p>
+
+    <img th:src="@{404.png}" alt="">
+        <br>
+    <a href="/">Go Home</a>
 
 </body>
 </html>
