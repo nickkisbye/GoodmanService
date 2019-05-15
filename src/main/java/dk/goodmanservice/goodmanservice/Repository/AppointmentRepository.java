@@ -16,7 +16,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
     public AppointmentRepository() throws SQLException {
             this.con = DriverManager.getConnection(
-                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
+                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb?serverTimezone=CET",
                     "goodmanservicedb",
                     "Ly02_scr-4ds");
     }
