@@ -11,33 +11,129 @@
     <div class="main-container">
 
         <section class="dashboard-container">
-            <div class="dashboard-item"><a href="/dashboard/tilbud"><div class="dashboard-item-head bg-purple">Tilbud</div><div class="dashboard-item-body"><img th:src="@{/icons/sell.png}"></div></a></div>
-            <div class="dashboard-item"><a href="/dashboard/opgaver"><div class="dashboard-item-head bg-yellow">Opgaver</div><div class="dashboard-item-body"><img th:src="@{/icons/task.png}"></div></a></div>
-            <div class="dashboard-item"><a href="/dashboard/faerdigeopgaver"><div class="dashboard-item-head bg-lightgreen">Færdige opgaver</div><div class="dashboard-item-body"><img th:src="@{/icons/complete.png}"></div></a></div>
-            <div class="dashboard-item"><a href="/dashboard/kalender"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div><div class="dashboard-item-body"><img th:src="@{/icons/calendar.png}"></div></a></div>
-            <div class="dashboard-item"><a href="/dashboard/oekonomi"><div class="dashboard-item-head bg-lightblue">Økonomi</div><div class="dashboard-item-body"><img th:src="@{/icons/chart.png}"></div></a></div>
-            <div class="dashboard-item"><a href="/dashboard/udlaeg"><div class="dashboard-item-head bg-grey">Udlæg</div><div class="dashboard-item-body"><img th:src="@{/icons/money.png}"></div></a></div>
-            <div class="dashboard-item"><a href="/dashboard/kunder"><div class="dashboard-item-head bg-pink">Kunder</div><div class="dashboard-item-body"><img th:src="@{/icons/money.png}"></div></a></div>
-            <div class="dashboard-item"><a href="/dashboard/brugere"><div class="dashboard-item-head bg-lightred">Brugere</div><div class="dashboard-item-body"><img th:src="@{/icons/money.png}"></div></a></div>
-        </section>
+            <div class="dashboard-item">
+                <a href="/dashboard/tilbud">
+                    <div class="dashboard-item-head bg-purple">Tilbud</div>
+                    <div class="dashboard-item-body">
+                        <div class="img-container">
+                            <img th:src="@{/icons/sell.png}">
+                        </div>
+                        <div class="item-splider"></div>
+                        <p>Se hvilke tidbuder der er aktive lige nu</p>
+                    </div>
+                </a>
+            </div>
+            <div class="dashboard-item">
+                <a href="/dashboard/opgaver">
+                    <div class="dashboard-item-head bg-yellow">Opgaver</div>
+                    <div class="dashboard-item-body">
+                        <div class="img-container">
+                            <img th:src="@{/icons/task.png}">
+                        </div>
+                        <div class="item-splider"></div>
+                        <p>Se hvilke tidbuder der er aktive lige nu</p>
+                    </div>
+                </a>
+            </div>
+            <div class="dashboard-item">
+                <a href="/dashboard/faerdigeopgaver">
+                    <div class="dashboard-item-head bg-lightgreen">Færdige Opgaver</div>
+                    <div class="dashboard-item-body">
+                        <div class="img-container">
+                            <img th:src="@{/icons/complete.png}">
+                        </div>
+                        <div class="item-splider"></div>
+                        <p>Se hvilke tidbuder der er aktive lige nu</p>
+                    </div>
+                </a>
+            </div>
+            <div class="dashboard-item">
+                <a href="/dashboard/kalender">
+                    <div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div>
+                    <div class="dashboard-item-body">
+                        <div class="img-container">
+                            <img th:src="@{/icons/calendar.png}">
+                        </div>
+                        <div class="item-splider"></div>
+                        <p>Se hvilke tidbuder der er aktive lige nu</p>
+                    </div>
+                </a>
+            </div>
+            <div class="dashboard-item">
+                <a href="/dashboard/oekonomi">
+                    <div class="dashboard-item-head bg-lightblue">Økonomi</div>
+                    <div class="dashboard-item-body">
+                        <div class="img-container">
+                            <img th:src="@{/icons/chart.png}">
+                        </div>
+                        <div class="item-splider"></div>
+                        <p>Se hvilke tidbuder der er aktive lige nu</p>
+                    </div>
+                </a>
+            </div>
+            <div class="dashboard-item">
+                <a href="/dashboard/udlaeg">
+                    <div class="dashboard-item-head bg-grey">Udlæg</div>
+                    <div class="dashboard-item-body">
+                        <div class="img-container">
+                            <img th:src="@{/icons/money.png}">
+                        </div>
+                        <div class="item-splider"></div>
+                        <p>Se hvilke tidbuder der er aktive lige nu</p>
+                    </div>
+                </a>
+            </div>
+            <div class="dashboard-item">
+                <a href="/dashboard/kunder">
+                    <div class="dashboard-item-head bg-pink">Kunder</div>
+                    <div class="dashboard-item-body">
+                        <div class="img-container">
+                            <img th:src="@{/icons/customers.png}">
+                        </div>
+                        <div class="item-splider"></div>
+                        <p>Se hvilke tidbuder der er aktive lige nu</p>
+                    </div>
+                </a>
+            </div>
+            <div class="dashboard-item">
+                <a href="/dashboard/brugere">
+                    <div class="dashboard-item-head bg-lightred">Brugere</div>
+                    <div class="dashboard-item-body">
+                        <div class="img-container">
+                            <img th:src="@{/icons/users.png}">
+                        </div>
+                        <div class="item-splider"></div>
+                        <p>Se hvilke tidbuder der er aktive lige nu</p>
+                    </div>
+                </a>
+            </div>
+            </section>
 
-        <section class="post-container">
-            <div class="post-item">
-            <div class="post-item-head bg-greyblue">
-                Opslag
-            </div>
-            <div class="post-item-body">
-            <div th:each="message: ${messages}">
-                <p th:text="${message.username}"></p>
-                <p th:text="${message.msg}"></p>
-                <a th:if="${message.userId == session.id}" th:href="@{/message/delete/{id}(id=${message.id})}">Slet besked</a>
-            </div>
-                <form action="/message/create" method="post" th:object="${Message}">
+        <section class="post-container border">
+            <div class="dashboard-item-head bg-greyblue">Opslag</div>
+            <div class="dashboard-msg-body">
+                <div th:each="message: ${messages}" class="msg-item-container">
+                    <div class="sender">
+                        <div>
+                            <h6 th:text="${message.username}"></h6>
+                        </div>
+                        <div class="delete-button-container">
+                            <a th:if="${message.userId == session.id}" th:href="@{/message/delete/{id}(id=${message.id})}">
+                                <div class="delete-button"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="msg">
+                        <p th:text="${message.msg}"></p>
+                    </div>
+
+
+                     </div>
+                <form action="/message/create" method="post" th:object="${Message}" class="msg-form">
                     <input type="text" name="msg" placeholder="Skriv besked..">
                     <input type="hidden" name="userId" th:value="${session.id}">
                     <button type="submit">Send besked</button>
                 </form>
-            </div>
             </div>
         </section>
     </div>

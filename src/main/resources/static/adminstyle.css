@@ -1,4 +1,29 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+input {
+  width: 100%;
+  display: block;
+  padding: 10px 15px;
+  line-height: 15px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  margin: 10px 0; }
+
+button {
+  padding: 10px 15px;
+  line-height: 15px;
+  border-radius: 10px;
+  margin: 0px 0px 10px;
+  border: none;
+  cursor: pointer; }
+
+a {
+  color: #495057;
+  text-decoration: none; }
+
+.border {
+  border: 1px solid rgba(0, 0, 0, 0.0625); }
+
 * {
   padding: 0;
   margin: 0;
@@ -106,39 +131,76 @@ body {
     grid-row-gap: 20px;
     -ms-grid-columns: (1.5fr)[3];
     grid-template-columns: repeat(3, 1.5fr); }
-    .main-container .dashboard-container .dashboard-headline {
-      width: 100%;
-      font-size: 40px; }
-    .main-container .dashboard-container .dashboard-item {
-      border: 1px solid rgba(0, 0, 0, 0.0625); }
-    .main-container .dashboard-container .dashboard-item-head {
-      width: 100%;
-      color: white;
-      padding: 15px;
-      line-height: 40px;
-      font-size: 25px; }
-    .main-container .dashboard-container .dashboard-item-body {
-      background-color: #fff;
-      width: 100%;
-      color: #000;
-      padding: 15px 3px 3px 15px;
-      min-height: 200px; }
   .main-container .post-container {
-    width: 29%; }
-    .main-container .post-container .post-item .post-item-head {
+    width: calc(30% - 20px);
+    height: 100%; }
+  .main-container .dashboard-headline {
+    width: 100%;
+    font-size: 40px; }
+  .main-container .dashboard-item {
+    border: 1px solid rgba(0, 0, 0, 0.0625);
+    height: 340px; }
+  .main-container .dashboard-item-head {
+    width: 100%;
+    color: white;
+    padding: 15px;
+    line-height: 40px;
+    font-size: 25px; }
+  .main-container .dashboard-item-body {
+    background-color: #fff;
+    width: 100%;
+    color: #000;
+    padding: 30px;
+    min-height: calc(100% - 70px);
+    color: #505050; }
+    .main-container .dashboard-item-body .img-container {
       width: 100%;
-      color: white;
-      padding: 15px 15px 15px 15px;
-      line-height: 40px;
-      font-size: 25px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px; }
-    .main-container .post-container .post-item .post-item-body {
-      background-color: #f6f6f6;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      padding: 0px 0 30px; }
+    .main-container .dashboard-item-body p {
+      font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif; }
+    .main-container .dashboard-item-body .item-splider {
+      height: 2px;
+      border-radius: 1px;
       width: 100%;
-      color: #000;
-      padding: 15px 3px 3px 15px;
-      min-height: 520px; }
+      margin-bottom: 30px;
+      background: #f3f3f3; }
+  .main-container .dashboard-msg-body {
+    background-color: #fff;
+    width: 100%;
+    color: #000; }
+    .main-container .dashboard-msg-body .sender {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+      .main-container .dashboard-msg-body .sender div {
+        width: 50%; }
+      .main-container .dashboard-msg-body .sender .delete-button-container {
+        text-align: right; }
+        .main-container .dashboard-msg-body .sender .delete-button-container .delete-button {
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          background-color: #f55e5e;
+          float: right;
+          border: 1px solid rgba(0, 0, 0, 0.0625); }
+    .main-container .dashboard-msg-body h6 {
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #525252; }
+    .main-container .dashboard-msg-body .msg-item-container {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.0625);
+      padding: 20px; }
+    .main-container .dashboard-msg-body .msg-form {
+      padding: 10px 20px; }
 
 .customer-dashboard-container {
   display: -webkit-box;
@@ -166,25 +228,3 @@ body {
   color: #495057;
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.0625); }
-
-input {
-  width: 100%;
-  display: block;
-  padding: 10px 15px;
-  line-height: 15px;
-  color: #495057;
-  border: 1px solid #ced4da;
-  border-radius: 10px;
-  margin: 10px 0; }
-
-button {
-  padding: 10px 15px;
-  line-height: 15px;
-  border-radius: 10px;
-  margin: 0px 0px 10px;
-  border: none;
-  cursor: pointer; }
-
-a {
-  color: #495057;
-  text-decoration: none; }
