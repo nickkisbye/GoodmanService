@@ -31,7 +31,8 @@
                 <div th:if="${session.level > 40 and !edit}">
                     <form th:action="@{/dashboard/appointment/create}" method="post" th:object="${Appointment}">
                         <textarea placeholder="Beskrivelse" name="description" cols="30" rows="10"></textarea>
-                        <input type="datetime-local" step="1" name="date">
+                        <input type="date" name="date">
+                        <input type="time" step="1" name="time">
 
                         <select name="employeeId" >
                             <optgroup label="Medarbejder">
@@ -61,7 +62,8 @@
                     <form th:action="@{/dashboard/appointment/edit}" method="post" th:object="${Appointment}">
                         <input type="hidden" th:value="${appointment.id}" name="id">
                         <textarea placeholder="Beskrivelse" th:text="${appointment.description}" name="description" cols="30" rows="10"></textarea>
-                        <input type="datetime-local" step="1" th:value="${appointment.date}" name="date">
+                        <input type="date" th:value="${appointment.date}" name="date">
+                        <input type="time" step="1" th:value="${appointment.time}" name="time">
 
                         <select name="employeeId" >
                             <optgroup label="Medarbejder">
@@ -91,6 +93,7 @@
                     <tr>
                         <th>Beskrivelse</th>
                         <th>Dato</th>
+                        <th>Tidspunkt</th>
                         <th>Medarbejder</th>
                         <th>Kunde</th>
                         <th>Muligheder</th>
@@ -100,6 +103,7 @@
                             <tr>
                                 <td th:text="${a.description}"></td>
                                 <td th:text="${a.date}"></td>
+                                <td th:text="${a.time}"></td>
                                 <td th:text="${a.employee.firstName} + ' ' + ${a.employee.lastName}"></td>
                                 <td th:text="${a.customer.firstName} + ' ' + ${a.customer.lastName}"></td>
                                 <td>

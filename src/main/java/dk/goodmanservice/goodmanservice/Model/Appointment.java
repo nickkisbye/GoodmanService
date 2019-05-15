@@ -1,14 +1,22 @@
 package dk.goodmanservice.goodmanservice.Model;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Appointment {
 
     private int id;
     private int employeeId;
     private int customerId;
-    private String date;
+    private Date date;
+    private Time time;
     private String description;
     private User employee;
     private User customer;
+    private DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
 
     public Appointment() {
     }
@@ -37,12 +45,25 @@ public class Appointment {
         this.customerId = customerId;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        try {
+            java.util.Date d = dateFormat.parse(time);
+            this.time = new Time(d.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getDescription() {

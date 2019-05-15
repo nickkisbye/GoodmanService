@@ -49,7 +49,8 @@ public class AppointmentService implements IService<Appointment> {
             User customer = new User();
                 appointment.setId(resultSet.getInt("id"));
                 appointment.setDescription(resultSet.getString("description"));
-                appointment.setDate(resultSet.getString("date"));
+                appointment.setDate(resultSet.getDate("date"));
+                appointment.setTime(resultSet.getString("time"));
                 appointment.setEmployeeId(resultSet.getInt("fk_employee"));
                 appointment.setCustomerId(resultSet.getInt("fk_customer"));
 
@@ -75,7 +76,8 @@ public class AppointmentService implements IService<Appointment> {
         while (resultSet.next()) {
             appointment.setId(resultSet.getInt("id"));
             appointment.setDescription(resultSet.getString("description"));
-            appointment.setDate(resultSet.getString("date"));
+            appointment.setDate(resultSet.getDate("date"));
+            appointment.setTime(resultSet.getString("time"));
             appointment.setEmployeeId(resultSet.getInt("fk_employee"));
             appointment.setCustomerId(resultSet.getInt("fk_customer"));
         }
