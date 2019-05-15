@@ -56,62 +56,69 @@ body {
 .bg-grey {
   background: #888888; }
 
-.navbar {
-  background-color: #333333;
-  padding: 15px 15px;
-  color: white;
-  font-size: 30px; }
-
-body {
-  background: #fff !important; }
-
-.main-container {
-  width: 99%;
+.header-container {
+  width: 100%;
+  height: 55px;
+  background-color: #fff;
+  color: #495057;
+  font-size: 15px;
+  line-height: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0625);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin-bottom: 20px; }
+  .header-container .nav-left .dashboard-logo {
+    padding: 20px;
+    font-size: 20px; }
+    .header-container .nav-left .dashboard-logo:hover {
+      background-color: #f3f3f3; }
+  .header-container .nav-right {
+    height: 100%; }
+    .header-container .nav-right .welcome {
+      height: 100%;
+      padding: 20px; }
+      .header-container .nav-right .welcome:hover {
+        background-color: #f3f3f3; }
+
+body {
+  background: #f3f3f3 !important; }
+
+.main-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0 20px 20px 20px; }
   .main-container .dashboard-container {
     width: 70%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between; }
-    .main-container .dashboard-container .red {
-      color: #c2171d; }
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    -ms-grid-columns: (1.5fr)[3];
+    grid-template-columns: repeat(3, 1.5fr); }
     .main-container .dashboard-container .dashboard-headline {
       width: 100%;
-      margin-left: 1%;
       font-size: 40px; }
     .main-container .dashboard-container .dashboard-item {
-      margin-bottom: 30px;
-      margin-left: 1%;
-      -webkit-box-flex: 2;
-      -ms-flex-positive: 2;
-      flex-grow: 2;
-      min-width: 250px;
-      max-width: 461px;
-      -ms-flex-preferred-size: 32%;
-      flex-basis: 32%; }
-      .main-container .dashboard-container .dashboard-item a {
-        text-decoration: none; }
+      border: 1px solid rgba(0, 0, 0, 0.0625); }
     .main-container .dashboard-container .dashboard-item-head {
       width: 100%;
-      margin-top: 20px;
       color: white;
-      padding: 15px 15px 15px 15px;
+      padding: 15px;
       line-height: 40px;
-      font-size: 25px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px; }
+      font-size: 25px; }
     .main-container .dashboard-container .dashboard-item-body {
-      background-color: #f6f6f6;
+      background-color: #fff;
       width: 100%;
       color: #000;
       padding: 15px 3px 3px 15px;
@@ -120,7 +127,6 @@ body {
     width: 29%; }
     .main-container .post-container .post-item .post-item-head {
       width: 100%;
-      margin-top: 20px;
       color: white;
       padding: 15px 15px 15px 15px;
       line-height: 40px;
@@ -153,13 +159,32 @@ body {
       text-align: center; }
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  height: 50px;
+  padding: 20px 0;
+  height: 55px;
   width: 100%;
-  background-color: rgba(24, 24, 24, 0.67);
-  color: white;
-  text-align: center; }
+  background-color: #fff;
+  color: #495057;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.0625); }
+
+input {
+  width: 100%;
+  display: block;
+  padding: 10px 15px;
+  line-height: 15px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  margin: 10px 0; }
+
+button {
+  padding: 10px 15px;
+  line-height: 15px;
+  border-radius: 10px;
+  margin: 0px 0px 10px;
+  border: none;
+  cursor: pointer; }
+
+a {
+  color: #495057;
+  text-decoration: none; }

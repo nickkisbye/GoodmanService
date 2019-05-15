@@ -1,7 +1,18 @@
-<div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
-    <nav class="navbar">
-        <a th:if="${session.level > 20}" href="/dashboard/employee">
-            Velkommen, <p th:text="${session.firstname}"></p>
-        </a>
+<div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml" th:remove="tag">
+    <nav class="header-container">
+        <div class="nav-left">
+            <a th:href="@{/dashboard/employee}">
+                <div class="dashboard-logo">
+                    <h1>Dashboard</h1>
+                </div>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a th:if="${session.level > 20}" href="/dashboard/employee">
+                <div class="welcome">
+                    <p><i class=""></i><span th:text="${session.firstname}" th:remove="tag"></span> <span th:text="${session.lastName}" th:remove="tag"></span></p>
+                </div>
+            </a>
+        </div>
     </nav>
 </div>

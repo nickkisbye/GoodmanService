@@ -1,0 +1,23 @@
+input {
+  width: 100%;
+  display: block;
+  padding: 10px 15px;
+  line-height: 15px;
+  color: $text;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 15px;
+  line-height: 15px;
+  border-radius: 10px;
+  margin: 0px 0px 10px;
+  border: none;
+  cursor: pointer;
+}
+a {
+  color: $text;
+  text-decoration: none;
+}

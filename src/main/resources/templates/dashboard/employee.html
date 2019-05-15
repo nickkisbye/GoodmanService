@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <div th:replace="dashboard/fragments/head :: head"></div>
+    <div th:replace="dashboard/fragments/head :: head" th:remove="tag"></div>
 </head>
 <body>
 <header>
@@ -43,7 +43,7 @@
     </div>
 </main>
 <footer>
-    <div th:replace="dashboard/fragments/footer :: footer"></div>
+    <div th:replace="dashboard/fragments/footer :: footer" th:remove="tag"></div>
 </footer>
 </body>
 </html>

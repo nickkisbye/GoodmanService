@@ -1,12 +1,9 @@
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  height: 50px;
+  padding: 20px 0;
+  height: 55px;
   width: 100%;
-  background-color: $dark-gray;
-  color: white;
+  background-color: $ui-color;
+  color: $text;
   text-align: center;
+  border-top: 1px solid $border-color;
 }
