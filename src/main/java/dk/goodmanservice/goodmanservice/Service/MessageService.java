@@ -52,6 +52,7 @@ public class MessageService implements IService<Message> {
             message.setId(rs.getInt("id"));
             message.setUserId(rs.getInt("users.id"));
             message.setMsg(rs.getString("msg"));
+            message.setCreatedAt(rs.getString("created_at"));
             message.setUsername(rs.getString("users.firstName") + ' ' + rs.getString("users.lastName"));
             messageList.add(message);
         }

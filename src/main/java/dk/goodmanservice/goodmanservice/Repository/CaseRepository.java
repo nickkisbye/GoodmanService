@@ -4,7 +4,6 @@ import dk.goodmanservice.goodmanservice.Model.Case;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

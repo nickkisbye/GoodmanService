@@ -6,6 +6,7 @@ public class Message {
     private int userId;
     private String msg;
     private String username;
+    private String createdAt;
 
     public Message() {
     }
@@ -40,5 +41,13 @@ public class Message {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }

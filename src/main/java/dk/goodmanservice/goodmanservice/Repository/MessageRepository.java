@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 @Repository
 @Component("MR")
@@ -13,6 +16,7 @@ public class MessageRepository implements IRepository<Message> {
     private PreparedStatement preparedStatement;
     private Connection con;
     private String sql;
+    private DateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
     public MessageRepository() throws SQLException {
             this.con = DriverManager.getConnection(
@@ -23,10 +27,14 @@ public class MessageRepository implements IRepository<Message> {
 
     @Override
     public void create(Message message) throws SQLException {
-        sql = "INSERT INTO posts (msg, fk_user) VALUES (?,?)";
+        sql = "INSERT INTO posts (msg, fk_user, created_at) VALUES (?,?,?)";
+
+        Calendar calender = Calendar.getInstance();
+
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1,message.getMsg());
         preparedStatement.setInt(2, message.getUserId());
+        preparedStatement.setString(3, dateformat.format(calender.getTime()));
         preparedStatement.execute();
     }
 
