@@ -9,7 +9,7 @@ public class Case {
     private int customerId;
     private String description;
     private int price;
-    private java.sql.Date creationDate;
+    private Date creationDate;
     private String startDate;
     private String endDate;
     private int mode;
