@@ -1,0 +1,30 @@
+.case-main {
+  width: 100%;
+  padding: 20px;
+  background-color: $bg-color;
+
+}
+.case {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(2, 1.5fr);
+  .case-create-case, .case-edit-case {
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border: 1px solid $border-color;
+    button {
+      color: white;
+    }
+    h1 {
+      font-size: 25px;
+      margin: 0 0 30px 0;
+    }
+  }
+  .case-edit-employees {
+
+  }
+}

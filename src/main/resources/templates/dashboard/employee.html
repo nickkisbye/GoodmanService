@@ -119,13 +119,14 @@
                         </div>
                         <div class="delete-button-container">
                             <a th:if="${message.userId == session.id}" th:href="@{/message/delete/{id}(id=${message.id})}">
-                                <div class="delete-button"></div>
+                                <img th:src="@{/icons/delete.png}" alt="delete button" class="delete-button">
                             </a>
+                            <h6 th:text="${message.createdAt}" class="msg-date"></h6>
                         </div>
                     </div>
                     <div class="msg">
                         <p th:text="${message.msg}"></p>
-                        <p th:text="${message.createdAt}"></p>
+
                     </div>
 
 
@@ -133,7 +134,7 @@
                 <form action="/message/create" method="post" th:object="${Message}" class="msg-form">
                     <input type="text" name="msg" placeholder="Skriv besked..">
                     <input type="hidden" name="userId" th:value="${session.id}">
-                    <button type="submit">Send besked</button>
+                    <button type="submit">Send</button>
                 </form>
             </div>
         </section>

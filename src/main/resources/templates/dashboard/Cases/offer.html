@@ -15,8 +15,10 @@
     <form th:action="@{/dashboard/TOF}" method="POST" th:object="${Case}">
         <textarea name="description" cols="30" rows="10" placeholder="description"></textarea><br>
         <input type="number"         name="price"        placeholder="price"        value=""><br>
-        <input type="datetime-local" name="startDate"    placeholder="startDate"    value=""><br>
-        <input type="datetime-local" name="endDate"      placeholder="endDate"      value=""><br>
+        <input type="date" name="startDate"    placeholder="startDate"    value=""><br>
+        <input type="date" name="endDate"      placeholder="endDate"      value=""><br>
+        <input type="time" name="startTime"    placeholder="startTime"    value=""><br>
+        <input type="time" name="endTime"      placeholder="endTime"      value=""><br>
         <input type="hidden"         name="mode"         placeholder=""             value="1">
         <select name="customerId">
             <div th:each="u : ${users}" th:remove="tag">
@@ -32,8 +34,10 @@
         <input type="hidden" th:value="${findById.id}" name="id">
         <textarea name="description" cols="30" rows="10" placeholder="description"><span th:text="${findById.description}" th:remove="tag"></span></textarea><br>
         <input type="number"         name="price"        placeholder="price"        th:value="${findById.price}"><br>
-        <input type="datetime-local" name="startDate"    placeholder="startDate"    value=""><br>
-        <input type="datetime-local" name="endDate"      placeholder="endDate"      value=""><br>
+        <input type="date" name="startDate"    placeholder="startDate"    th:value="${findById.startDate}"><br>
+        <input type="date" name="endDate"      placeholder="endDate"      th:value="${findById.endDate}"><br>
+        <input type="time" name="startTime"    placeholder="startTime"    th:value="${findById.startTime}"><br>
+        <input type="time" name="endTime"      placeholder="endTime"      th:value="${findById.endTime}"><br>
         <input type="hidden"         name="mode"         placeholder=""             th:value="${findById.mode}">
 
         <select name="customerId">

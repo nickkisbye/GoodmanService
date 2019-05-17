@@ -9,6 +9,29 @@ input {
   margin: 10px 0;
 }
 
+textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100px;
+  max-height: 150px;
+  display: block;
+  padding: 10px 15px;
+  line-height: 15px;
+  color: $text;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+select {
+  display: block;
+  padding: 10px 15px;
+  line-height: 15px;
+  color: $text;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
 button {
   padding: 10px 15px;
   line-height: 15px;

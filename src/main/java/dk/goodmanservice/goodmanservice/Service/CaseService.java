@@ -52,6 +52,8 @@ public class CaseService implements IService<Case>{
             c.setDescription(rs.getString("cases.description"));
             c.setPrice(rs.getInt("cases.price"));
             c.setMode(rs.getInt("cases.fk_mode"));
+            c.setStartTime(rs.getString("cases.startTime"));
+            c.setEndTime(rs.getString("cases.endTime"));
             user.setId(rs.getInt("users.id"));
             user.setFirstName(rs.getString("firstName"));
             user.setLastName(rs.getString("lastName"));
@@ -80,6 +82,8 @@ public class CaseService implements IService<Case>{
             c.setDescription(rs.getString("cases.description"));
             c.setPrice(rs.getInt("cases.price"));
             c.setMode(rs.getInt("cases.fk_mode"));
+            c.setStartTime(rs.getString("cases.startTime"));
+            c.setEndTime(rs.getString("cases.endTime"));
             user.setId(rs.getInt("users.id"));
             user.setFirstName(rs.getString("firstName"));
             user.setPhoneNumber(rs.getString("phone"));

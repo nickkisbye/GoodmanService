@@ -9,6 +9,28 @@ input {
   border-radius: 10px;
   margin: 10px 0; }
 
+textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100px;
+  max-height: 150px;
+  display: block;
+  padding: 10px 15px;
+  line-height: 15px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  margin: 10px 0; }
+
+select {
+  display: block;
+  padding: 10px 15px;
+  line-height: 15px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  margin: 10px 0; }
+
 button {
   padding: 10px 15px;
   line-height: 15px;
@@ -174,28 +196,51 @@ body {
     background-color: #fff;
     width: 100%;
     color: #000; }
-    .main-container .dashboard-msg-body .sender {
+    .main-container .dashboard-msg-body .msg-form {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-pack: justify;
       -ms-flex-pack: justify;
       justify-content: space-between; }
+      .main-container .dashboard-msg-body .msg-form input {
+        width: 85%;
+        display: block;
+        padding: 10px 15px;
+        line-height: 15px;
+        color: #495057;
+        border: 1px solid #ced4da;
+        border-radius: 10px 0 0 10px; }
+      .main-container .dashboard-msg-body .msg-form button {
+        margin: 10px 0;
+        border-radius: 0 10px 10px 0;
+        width: 15%; }
+    .main-container .dashboard-msg-body .sender {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      margin-bottom: 10px; }
       .main-container .dashboard-msg-body .sender div {
         width: 50%; }
       .main-container .dashboard-msg-body .sender .delete-button-container {
         text-align: right; }
         .main-container .dashboard-msg-body .sender .delete-button-container .delete-button {
-          width: 15px;
-          height: 15px;
-          border-radius: 50%;
-          background-color: #f55e5e;
-          float: right;
-          border: 1px solid rgba(0, 0, 0, 0.0625); }
+          width: 19px;
+          height: 19px;
+          display: block;
+          margin-top: -4px;
+          float: right; }
+    .main-container .dashboard-msg-body .msg-date {
+      float: right;
+      margin-right: 5px; }
     .main-container .dashboard-msg-body h6 {
       margin-bottom: 5px;
       font-size: 14px;
-      color: #525252; }
+      color: #525252;
+      line-height: 15px; }
     .main-container .dashboard-msg-body .msg-item-container {
       border-bottom: 1px solid rgba(0, 0, 0, 0.0625);
       padding: 20px; }
@@ -228,3 +273,29 @@ body {
   color: #495057;
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.0625); }
+
+.case-main {
+  width: 100%;
+  padding: 20px;
+  background-color: #f3f3f3; }
+
+.case {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  -ms-grid-columns: (1.5fr)[2];
+  grid-template-columns: repeat(2, 1.5fr); }
+  .case .case-create-case, .case .case-edit-case {
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.0625); }
+    .case .case-create-case button, .case .case-edit-case button {
+      color: white; }
+    .case .case-create-case h1, .case .case-edit-case h1 {
+      font-size: 25px;
+      margin: 0 0 30px 0; }

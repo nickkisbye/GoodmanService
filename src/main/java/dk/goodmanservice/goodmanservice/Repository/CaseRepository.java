@@ -20,7 +20,7 @@ public class CaseRepository implements IRepository<Case> {
 
     public CaseRepository() throws SQLException {
             this.con = DriverManager.getConnection(
-                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
+                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb?serverTimezone=CET",
                     "goodmanservicedb",
                     "Ly02_scr-4ds");
     }
@@ -29,7 +29,7 @@ public class CaseRepository implements IRepository<Case> {
     @Override
     public void create(Case obj) throws SQLException {
 
-        sql = "INSERT INTO cases (description, price, creationDate, startDate, endDate, fk_mode, fk_customer) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        sql = "INSERT INTO cases (description, price, creationDate, startDate, endDate, startTime, endTime, fk_mode, fk_customer) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Calendar cal = Calendar.getInstance();
         preparedStatement = con.prepareStatement(sql);
@@ -38,23 +38,27 @@ public class CaseRepository implements IRepository<Case> {
         preparedStatement.setString(3, sdf.format(cal.getTime()));
         preparedStatement.setString(4, obj.getStartDate());
         preparedStatement.setString(5, obj.getEndDate());
-        preparedStatement.setInt(6, obj.getMode());
-        preparedStatement.setInt(7, obj.getCustomerId());
+        preparedStatement.setString(6, obj.getStartTime());
+        preparedStatement.setString(7, obj.getEndTime());
+        preparedStatement.setInt(8, obj.getMode());
+        preparedStatement.setInt(9, obj.getCustomerId());
         preparedStatement.execute();
     }
 
     @Override
     public void edit(Case obj) throws SQLException {
 
-        sql = "UPDATE cases SET description=?, price=?, startDate=?, endDate=?, fk_mode=?, fk_customer=? WHERE id = '" + obj.getId() + "'";
+        sql = "UPDATE cases SET description=?, price=?, startDate=?, endDate=?, startTime=?, endTime=?, fk_mode=?, fk_customer=? WHERE id = '" + obj.getId() + "'";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1, obj.getDescription());
         preparedStatement.setInt(2, obj.getPrice());
         preparedStatement.setString(3, obj.getStartDate());
         preparedStatement.setString(4, obj.getEndDate());
-        preparedStatement.setInt(5, obj.getMode());
-        preparedStatement.setInt(6, obj.getCustomerId());
+        preparedStatement.setString(5, obj.getStartTime());
+        preparedStatement.setString(6, obj.getEndTime());
+        preparedStatement.setInt(7, obj.getMode());
+        preparedStatement.setInt(8, obj.getCustomerId());
         preparedStatement.execute();
     }
 

@@ -73,28 +73,51 @@ body {
     background-color: $ui-color;
     width: 100%;
     color: #000;
+    .msg-form {
+      display: flex;
+      justify-content: space-between;
+      input {
+        width: 85%;
+        display: block;
+        padding: 10px 15px;
+        line-height: 15px;
+        color: #495057;
+        border: 1px solid #ced4da;
+        border-radius: 10px 0 0 10px;
+      }
+      button {
+        margin: 10px 0;
+        border-radius: 0 10px 10px 0;
+        width: 15%;
+      }
+    }
     .sender {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 10px;
       div {
         width: 50%;
       }
       .delete-button-container {
         text-align: right;
         .delete-button {
-          width: 15px;
-          height: 15px;
-          border-radius: 50%;
-          background-color: #f55e5e;
+          width: 19px;
+          height: 19px;
+          display: block;
+          margin-top: -4px;
           float: right;
-          border: 1px solid rgba(0, 0, 0, 0.0625);
         }
       }
+    }
+    .msg-date {
+      float: right;
+      margin-right: 5px;
     }
     h6 {
       margin-bottom: 5px;
       font-size: 14px;
       color: #525252;
+      line-height: 15px;
     }
     .msg-item-container {
       border-bottom: 1px solid $border-color;
