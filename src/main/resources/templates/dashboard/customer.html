@@ -11,7 +11,24 @@
     <section class="customer-dashboard-container">
         <div class="customer-dashboard-item">
             <h2>Tilbud</h2>
-            Tilbud her
+            <table>
+                <tr>
+                    <th>
+                    Beskrivelse
+                    </th>
+                    <th>
+                    Pris
+                    </th>
+                    <th>
+                    Start dato
+                    </th>
+                </tr>
+                <tr th:each="offer : ${offers}">
+                    <td th:text="${offer.description}"></td>
+                    <td th:text="${offer.price}"></td>
+                    <td th:text="${offer.startDate}"></td>
+                </tr>
+            </table>
         </div>
         <div class="customer-dashboard-item">
             <h2>Faktura</h2>

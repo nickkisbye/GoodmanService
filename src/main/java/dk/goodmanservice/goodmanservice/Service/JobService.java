@@ -64,4 +64,18 @@ public class JobService {
         return uList;
 
     }
+
+    public List<Case> customerOffers(int id) throws SQLException {
+        rs = JR.customerOffers(id);
+        List<Case> caseList = new ArrayList<>();
+        while (rs.next()) {
+            Case c = new Case();
+            c.setId(rs.getInt("id"));
+            c.setDescription(rs.getString("description"));
+            c.setPrice(rs.getInt("price"));
+            c.setStartDate(rs.getString("startDate"));
+            caseList.add(c);
+        }
+        return caseList;
+    }
 }

@@ -4,12 +4,14 @@ import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.Message;
 import dk.goodmanservice.goodmanservice.Model.User;
 import dk.goodmanservice.goodmanservice.Service.IService;
+import dk.goodmanservice.goodmanservice.Service.JobService;
 import dk.goodmanservice.goodmanservice.Service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 @Controller
@@ -27,6 +29,8 @@ public class MenuController {
     @Autowired
     private IService<Case> CS;
 
+    @Autowired
+    private JobService JS;
 
 
     @GetMapping("/")
@@ -57,7 +61,14 @@ public class MenuController {
     }
 
     @GetMapping("/dashboard/customer")
-    public String customer() {
+    public String customer(HttpSession session, Model model) {
+        int id = (int) session.getAttribute("id");
+        try {
+            model.addAttribute("offers", JS.customerOffers(id));
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "error";
+        }
         return "dashboard/customer";
     }
 
