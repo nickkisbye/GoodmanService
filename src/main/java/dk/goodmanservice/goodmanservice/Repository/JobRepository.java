@@ -59,7 +59,7 @@ public class JobRepository {
     }
 
     public ResultSet customerOffers(int id) throws SQLException {
-        sql = "SELECT * FROM cases WHERE fk_mode = 1 AND fk_customer = ?";
+        sql = "SELECT id, description, price, startDate FROM cases WHERE fk_mode = 1 AND fk_customer = ?";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
