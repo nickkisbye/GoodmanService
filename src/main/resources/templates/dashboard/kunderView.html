@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <div th:each="info : ${kunde}">
+
+        <p th:text="${kunde.firstName}"></p>
+        <p th:text="${kunde.lastName}"></p>
+        <p th:text="${kunde.email}"></p>
+        <p th:text="${kunde.address}"></p>
+        <p th:text="${kunde.city}"></p>
+        <p th:text="${kunde.zip}"></p>
+
+    </div>
+    <div th:each="job : ${jobs}">
+
+        <p th:text="${job.description}"></p>
+        <p th:text="${job.price}"></p>
+        <p th:text="${job.startDate}"></p>
+
+    </div>
+</head>
+<body>
+
+</body>
+
+</html>
