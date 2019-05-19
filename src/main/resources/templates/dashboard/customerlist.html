@@ -7,33 +7,27 @@
 <header>
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
-<main>
-    <div class="main-container">
-
-        <section class="dashboard-container">
-            <h2 class="dashboard-headline">Dashboard <span class="red">:::</span></h2>
-            <div class="dashboard-item"><div class="dashboard-item-head bg-pink">Kunder</div><div class="dashboard-item-body"><h2>Kunder</h2>
-
-                <table>
-                    <tr>
-                        <th>Fornavn</th>
-                        <th>Efternavn</th>
-                        <th>Email</th>
-                        <th>Addresse</th>
-                        <th>Telefon</th>
-                    </tr>
-                    <tr th:each="customer : ${customers}">
-                        <td th:text="${customer.firstName}"></td>
-                        <td th:text="${customer.lastName}"></td>
-                        <td th:text="${customer.email}"></td>
-                        <td th:text="${customer.address}"></td>
-                        <td th:text="${customer.phoneNumber}"></td>
-                    </tr>
-                </table>
-
-            </div></div>
-        </section>
-
+<main class="main">
+    <div class="container-table nomargin">
+        <div class="container-header bg-pink">
+            <h1>Kundeliste</h1>
+        </div>
+        <table>
+            <tr>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>Email</th>
+                <th>Addresse</th>
+                <th>Telefon</th>
+            </tr>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.firstName}"></td>
+                <td th:text="${customer.lastName}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.address}"></td>
+                <td th:text="${customer.phoneNumber}"></td>
+            </tr>
+        </table>
     </div>
 </main>
 <footer>

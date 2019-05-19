@@ -1,124 +1,116 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Appointments</title>
-</head>
-<body>
-
-    <div>
-
-    </div>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
     <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
 <body>
 <header>
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
-<main>
-    <div class="main-container">
+<main class="main">
+    <div class="container">
 
-        <section class="dashboard-container">
-            <div class="dashboard-item"><div class="dashboard-item-head bg-brownred">Kalender & Aftaler</div><div class="dashboard-item-body">
-
-                <div th:if="${session.level > 40 and !edit}">
-                    <form th:action="@{/dashboard/appointment/create}" method="post" th:object="${Appointment}">
-                        <textarea placeholder="Beskrivelse" name="description" cols="30" rows="10"></textarea>
-                        <input type="date" name="date">
-                        <input type="time" step="1" name="time">
-
-                        <select name="employeeId" >
-                            <optgroup label="Medarbejder">
-                                <div th:each="user:${users}">
-                                    <div th:if="${user.level > 20}">
-                                        <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}"></option>
-                                    </div>
-                                </div>
-                            </optgroup>
-                        </select>
-
-                        <select name="customerId" >
-                            <optgroup label="Kunde">
-                                <div th:each="user:${users}">
-                                    <div th:if="${user.level < 20}">
-                                        <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}"></option>
-                                    </div>
-                                </div>
-                            </optgroup>
-                        </select>
-
-                        <button type="submit">Opret Aftale</button>
-                    </form>
-                </div>
-
-                <div th:if="${edit}">
-                    <form th:action="@{/dashboard/appointment/edit}" method="post" th:object="${Appointment}">
-                        <input type="hidden" th:value="${appointment.id}" name="id">
-                        <textarea placeholder="Beskrivelse" th:text="${appointment.description}" name="description" cols="30" rows="10"></textarea>
-                        <input type="date" th:value="${appointment.date}" name="date">
-                        <input type="time" step="1" th:value="${appointment.time}" name="time">
-
-                        <select name="employeeId" >
-                            <optgroup label="Medarbejder">
-                                <div th:each="user:${users}">
-                                    <div th:if="${user.level > 20}">
-                                        <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}" th:selected="${appointment.employeeId == user.id}"></option>
-                                    </div>
-                                </div>
-                            </optgroup>
-                        </select>
-
-                        <select name="customerId" >
-                            <optgroup label="Kunde">
-                                <div th:each="user:${users}">
-                                    <div th:if="${user.level < 20}">
-                                        <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}" th:selected="${appointment.customerId == user.id}"></option>
-                                    </div>
-                                </div>
-                            </optgroup>
-                        </select>
-
-                        <button type="submit">Gem</button>
-                    </form>
-                </div>
-
-                <table>
-                    <tr>
-                        <th>Beskrivelse</th>
-                        <th>Dato</th>
-                        <th>Tidspunkt</th>
-                        <th>Medarbejder</th>
-                        <th>Kunde</th>
-                        <th>Muligheder</th>
-                    </tr>
-                    <div th:each="a:${appointments}">
-                        <div th:if="${a.employeeId == session.id OR a.customerId == session.id OR session.level >= 80}">
-                            <tr>
-                                <td th:text="${a.description}"></td>
-                                <td th:text="${a.date}"></td>
-                                <td th:text="${a.time}"></td>
-                                <td th:text="${a.employee.firstName} + ' ' + ${a.employee.lastName}"></td>
-                                <td th:text="${a.customer.firstName} + ' ' + ${a.customer.lastName}"></td>
-                                <td>
-                                    <a th:href="@{/dashboard/appointments/edit/{id}(id=${a.id})}">Rediger</a>
-                                    <form th:action="@{/dashboard/appointment/delete/{id}(id=${a.id})}" method="post">
-                                        <button type="submit">Slet</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </div>
+        <section class="container-grid">
+            <div class="container-header bg-lightred">
+                <h1>Kalender & Aftaler</h1>
+            </div>
+            <div th:if="${session.level > 40 and !edit}">
+                <form th:action="@{/dashboard/appointment/create}" method="post" th:object="${Appointment}">
+                    <label>Beskrivelse</label>
+                    <textarea placeholder="Beskrivelse" name="description" cols="30" rows="10"></textarea>
+                    <label>Dato & Tidspunkt</label>
+                    <div class="flex">
+                        <input type="date" name="date" class="date">
+                        <input type="time" name="time" class="time">
                     </div>
-                </table>
-            </div></div>
+                    <label>Medarbejder</label>
+                    <select name="employeeId" >
+                        <optgroup label="Medarbejder">
+                            <div th:each="user:${users}">
+                                <div th:if="${user.level > 20}">
+                                    <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}"></option>
+                                </div>
+                            </div>
+                        </optgroup>
+                    </select>
+                    <label>Kunde</label>
+                    <select name="customerId" >
+                        <optgroup label="Kunde">
+                            <div th:each="user:${users}">
+                                <div th:if="${user.level < 20}">
+                                    <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}"></option>
+                                </div>
+                            </div>
+                        </optgroup>
+                    </select>
+                    <button type="submit" class="bg-lightgreen cwhite">Opret Aftale</button>
+                </form>
+            </div>
+            <div th:if="${edit}">
+                <form th:action="@{/dashboard/appointment/edit}" method="post" th:object="${Appointment}">
+                    <label>Beskrivelse</label>
+                    <input type="hidden" th:value="${appointment.id}" name="id">
+                    <textarea placeholder="Beskrivelse" th:text="${appointment.description}" name="description" cols="30" rows="10"></textarea>
+                    <label>Dato & Tidspunkt</label>
+                    <div class="flex">
+                        <input type="date" th:value="${appointment.date}" name="date" class="date">
+                        <input type="time" th:value="${appointment.time}" name="time" class="time">
+                    </div>
+                    <label>Medarbejder</label>
+                    <select name="employeeId" >
+                        <optgroup label="Medarbejder">
+                            <div th:each="user:${users}">
+                                <div th:if="${user.level > 20}">
+                                    <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}" th:selected="${appointment.employeeId == user.id}"></option>
+                                </div>
+                            </div>
+                        </optgroup>
+                    </select>
+                    <label>Kunde</label>
+                    <select name="customerId" >
+                        <optgroup label="Kunde">
+                            <div th:each="user:${users}">
+                                <div th:if="${user.level < 20}">
+                                    <option th:text="${user.firstName} + ' ' + ${user.lastName}" th:value="${user.id}" th:selected="${appointment.customerId == user.id}"></option>
+                                </div>
+                            </div>
+                        </optgroup>
+                    </select>
+                    <button type="submit" class="cwhite bg-lightgreen">Gem</button>
+                </form>
+            </div>
         </section>
 
+    </div>
+    <div class="container-table">
+        <table>
+            <tr>
+                <th>Beskrivelse</th>
+                <th>Dato & Tidspunkt</th>
+                <th>Medarbejder</th>
+                <th>Kunde</th>
+                <th>Muligheder</th>
+                <th></th>
+            </tr>
+            <div th:each="a:${appointments}">
+                <div th:if="${a.employeeId == session.id OR a.customerId == session.id OR session.level >= 80}">
+                    <tr>
+                        <td th:text="${a.description}"></td>
+                        <td th:text="${a.date} + ' ' + ${a.time}"></td>
+                        <td th:text="${a.employee.firstName} + ' ' + ${a.employee.lastName}"></td>
+                        <td th:text="${a.customer.firstName} + ' ' + ${a.customer.lastName}"></td>
+                        <td class="width100">
+                            <a th:href="@{/dashboard/appointments/edit/{id}(id=${a.id})}" class="redigere cwhite bg-orange">Rediger</a>
+                        </td>
+                        <td class="width100">
+                            <form th:action="@{/dashboard/appointment/delete/{id}(id=${a.id})}" method="post">
+                                <button type="submit" class="bg-lightred cwhite">Slet</button>
+                            </form>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+        </table>
     </div>
 </main>
 <footer>
