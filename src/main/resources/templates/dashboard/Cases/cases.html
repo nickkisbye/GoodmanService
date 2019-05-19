@@ -6,25 +6,53 @@
 <header>
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
-<main class="case-main">
-    <a th:href="@{/dashboard/employee}">tilbage til dashboard</a><br>
-    <a th:href="@{/dashboard/tilbud}">TILBUD</a><br>
-    <a th:href="@{/dashboard/opgaver}">OGPAVER</a><br>
-    <a th:href="@{/dashboard/faerdigeopgaver}">FÆRDIGE OPGAVER</a><br>
+<main class="main">
+    <div class="mini-menu">
+        <a th:href="@{/dashboard/employee}">
+            <div>
+                tilbage til dashboard
+            </div>
+        </a>
+        <a th:href="@{/dashboard/tilbud}">
+            <div>
+                TILBUD
+            </div>
+        </a>
+        <a th:href="@{/dashboard/opgaver}">
+            <div>
+                OGPAVER
+            </div>
+        </a>
+        <a th:href="@{/dashboard/faerdigeopgaver}">
+            <div>
+                FÆRDIGE OPGAVER
+            </div>
+        </a>
+    </div>
 
+    <div class="container">
 
-    <div class="case">
-
-        <div th:if="${!edit}" class="case-create-case">
-            <h1>Opret ny opgave</h1>
+        <div th:if="${!edit}" class="container-grid">
+            <div class="container-header bg-orange">
+                <h1>Opret ny opgave</h1>
+            </div>
             <form th:action="@{/dashboard/TOF}" method="POST" th:object="${Case}">
+                <label>Beskrivelse</label>
                 <textarea name="description" cols="30" rows="10" placeholder="description"></textarea><br>
+                <label>Pris:</label>
                 <input type="number"         name="price"        placeholder="price"        value=""><br>
-                <input type="date" name="startDate"    placeholder="startDate"    value=""><br>
-                <input type="date" name="endDate"      placeholder="endDate"      value=""><br>
-                <input type="time" name="startTime"    placeholder="startTime"    value=""><br>
-                <input type="time" name="endTime"      placeholder="endTime"      value=""><br>
+                <label>Start Dato</label>
+                <div class="flex">
+                    <input type="date" name="startDate"    placeholder="startDate"    class="date">
+                    <input type="time" name="startTime"    placeholder="startTime"    class="time"><br>
+                </div>
+                <label>Slut Dato</label>
+                <div class="flex">
+                    <input type="date" name="endDate"      placeholder="endDate"      class="date">
+                    <input type="time" name="endTime"      placeholder="endTime"      class="time"><br>
+                </div>
                 <input type="hidden"         name="mode"         placeholder=""             value="2">
+                <label>Kunde</label>
                 <select name="customerId">
                     <div th:each="u : ${users}" th:remove="tag">
                         <option th:value="${u.id}"><span th:text="${u.firstName}"></span> <span th:text="${u.lastName}"></span></option>
@@ -34,18 +62,27 @@
             </form>
         </div>
 
-        <div th:if="${edit}" class="case-edit-case">
+        <div th:if="${edit}" class="container-grid">
             <h1>Redigere opgaven</h1>
             <form th:action="@{/dashboard/TOF/redigere}" method="POST" th:object="${Case}">
                 <input type="hidden" th:value="${findById.id}" name="id">
+                <label>Beskrivelse</label>
                 <textarea name="description" cols="30" rows="10" placeholder="description"><span th:text="${findById.description}" th:remove="tag"></span></textarea><br>
+                <label>Pris</label>
                 <input type="number"         name="price"        placeholder="price"        th:value="${findById.price}"><br>
-                <input type="date" name="startDate"    placeholder="startDate"    th:value="${findById.startDate}"><br>
-                <input type="date" name="endDate"      placeholder="endDate"      th:value="${findById.endDate}"><br>
-                <input type="time" name="startTime"    placeholder="startTime"    th:value="${findById.startTime}"><br>
-                <input type="time" name="endTime"      placeholder="endTime"      th:value="${findById.endTime}"><br>
-                <input type="hidden"         name="mode"         placeholder=""             th:value="${findById.mode}">
+                <label>Start Dato</label>
+                <div class="flex">
+                    <input type="date" name="startDate"    placeholder="startDate"    th:value="${findById.startDate}" class="date">
+                    <input type="time" name="startTime"    placeholder="startTime"    th:value="${findById.startTime}" class="time"><br>
+                </div>
+                <label>Slut Dato</label>
+                <div class="flex">
+                    <input type="date" name="endDate"      placeholder="endDate"      th:value="${findById.endDate}" class="date">
+                    <input type="time" name="endTime"      placeholder="endTime"      th:value="${findById.endTime}" class="time"><br>
+                </div>
 
+                <input type="hidden"         name="mode"         placeholder=""             th:value="${findById.mode}">
+                <label>Kunde:</label>
                 <select name="customerId">
                     <div th:each="u : ${users}" th:remove="tag">
                         <p th:text="${findById.customer.id}"></p>
@@ -53,32 +90,32 @@
                         <option th:value="${u.id}" th:selected="${findById.customer.id == u.id}"><span th:text="${u.firstName}"></span> <span th:text="${u.lastName}" ></span></option>
                     </div>
                 </select><br>
-                <button type="submit" class="bg-lightblue">Redigere</button>
+                <button type="submit" class="bg-lightgreen">Redigere</button>
             </form>
         </div>
 
-        <div th:if="${edit}" class="case-edit-employees">
+        <div th:if="${edit}" class="container-grid">
             <form th:action="@{/dashboard/TOF/NytJob}" method="POST" th:object="${Jobs}">
                 <input type="hidden" th:value="${findById.id}" name="caseId">
-                <select name="employeeId">
+                <select name="employeeId" class="employee-select">
                     <div th:each="e : ${employees}" th:remove="tag">
                         <option th:value="${e.id}"><span th:text="${e.firstName}"></span> <span th:text="${e.lastName}"></span></option>
 
                     </div>
                 </select>
-                <button type="submit">Tilføj</button>
+                <button type="submit" class="tilfoej bg-lightgreen cwhite">Tilføj</button>
             </form>
             <table>
                 <tr>
                     <th>Folk på jobbet</th>
+                    <th></th>
                 </tr>
                 <tr th:each="j : ${jobs}">
-                    <td th:text="${j.employees.firstName}"></td>
-                    <td th:text="${j.employees.lastName}"></td>
+                    <td><span th:text="${j.employees.firstName}"></span> <span th:text="${j.employees.lastName}"></span></td>
                     <td>
                         <form th:action="@{/dashboard/TOF/fjernJob}" method="POST" th:object="${Jobs}">
                             <input type="hidden" th:value="${j.id}" name="id">
-                            <button type="submit">Delete</button>
+                            <button type="submit" class="bg-lightred float-right">Fjern</button>
                         </form>
                     </td>
 
@@ -86,44 +123,47 @@
             </table>
         </div>
     </div>
-    <table>
-        <tr>
-            <th>Dato</th>
-            <th>Adresse</th>
-            <th>Kunde navn</th>
-        </tr>
-        <div th:each="case : ${case}" th:remove="tag">
-
+    <div class="container-table">
+        <table>
             <tr>
-                <td><span th:text="${case.startDate}"></span></td>
-                <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
-                <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
-                <td><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
-                <td>
-                    <form th:action="@{/dashboard/TOF/slet/{id}(id=${case.id})}" method="POST" th:object="${Case}">
-                        <button type="submit">Slet</button>
-                    </form>
-                </td>
-
-                <td>
-                    <form th:action="@{/dashboard/TOF/upgrade/{id}(id=${case.id})}" method="POST" th:object="${Case}">
-                        <input type="hidden"         name="description"  placeholder=""    th:value="${case.description}">
-                        <input type="hidden"         name="price"        placeholder=""    th:value="${case.price}">
-                        <input type="hidden"         name="startDate"    placeholder=""    th:value="${case.startDate}">
-                        <input type="hidden"         name="endDate"      placeholder=""    th:value="${case.endDate}">
-                        <input type="hidden"         name="customerId"   placeholder=""    th:value="${case.customer.id}">
-                        <input type="hidden"         name="mode"         placeholder=""    th:value="3">
-                        <button type="submit">FÆRDIG</button>
-                    </form>
-                </td>
-                <td>
-                    <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}">Redigere</a>
-                </td>
+                <th>Dato</th>
+                <th>Adresse</th>
+                <th>Kunde navn</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
+            <div th:each="case : ${case}" th:remove="tag">
+                <tr>
+                    <td><span th:text="${case.startDate}"></span></td>
+                    <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
+                    <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
+                    <td><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
+                    <td>
+                        <form th:action="@{/dashboard/TOF/slet/{id}(id=${case.id})}" method="POST" th:object="${Case}">
+                            <button type="submit" class="bg-lightred cwhite">Slet</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}" class="redigere cwhite bg-orange">Rediger</a>
+                    </td>
+                    <td>
+                        <form th:action="@{/dashboard/TOF/upgrade/{id}(id=${case.id})}" method="POST" th:object="${Case}">
+                            <input type="hidden"         name="description"  placeholder=""    th:value="${case.description}">
+                            <input type="hidden"         name="price"        placeholder=""    th:value="${case.price}">
+                            <input type="hidden"         name="startDate"    placeholder=""    th:value="${case.startDate}">
+                            <input type="hidden"         name="endDate"      placeholder=""    th:value="${case.endDate}">
+                            <input type="hidden"         name="customerId"   placeholder=""    th:value="${case.customer.id}">
+                            <input type="hidden"         name="mode"         placeholder=""    th:value="3">
+                            <button type="submit" class="bg-lightgreen cwhite">FÆRDIG</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+        </table>
+    </div>
 
-        </div>
-
-    </table>
 </main>
 <footer>
     <div th:replace="dashboard/fragments/footer :: footer" th:remove="tag"></div>

@@ -7,65 +7,74 @@
 <header>
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
-<main>
-    <div class="main-container">
+<main class="main">
+    <div class="container">
+        <div class="container-grid">
+            <div class="container-header bg-grey">
+                <h1>Udlæg</h1>
+            </div>
+            <div th:if="${!edit}">
+                <form th:action="@{/dashboard/expenses/create}" method="post" th:object="${Expense}">
+                    <label>Pris</label>
+                    <input type="number" placeholder="Pris" name="price">
+                    <label>Beskrivelse</label>
+                    <input type="text" placeholder="Beskrivelse" name="description">
+                    <input type="hidden" value="0" name="paid">
+                    <input type="hidden" th:value="${session.id}" name="employeeId">
 
-        <section class="dashboard-container">
-            <h2 class="dashboard-headline">Dashboard <span class="red">:::</span></h2>
-            <div class="dashboard-item"><div class="dashboard-item-head bg-grey">Udlæg</div><div class="dashboard-item-body">
+                    <button type="submit" class="bg-lightgreen cwhite">Opret Udlæg</button>
+                </form>
+            </div>
 
-                <div th:if="${!edit}">
-                    <form th:action="@{/dashboard/expenses/create}" method="post" th:object="${Expense}">
-                        <input type="number" placeholder="Pris" name="price">
-                        <input type="text" placeholder="Beskrivelse" name="description">
-                        <input type="hidden" value="0" name="paid">
-                        <input type="hidden" th:value="${session.id}" name="employeeId">
+            <div th:if="${edit}">
+                <form th:action="@{/dashboard/expenses/edit}" method="post" th:object="${Expense}">
+                    <input type="hidden" th:value="${expense.id}" name="id">
+                    <label>Pris</label>
+                    <input type="number" placeholder="Pris" th:value="${expense.price}" name="price">
+                    <label>Beskrivelse</label>
+                    <input placeholder="Beskrivelse" th:value="${expense.description}" name="description">
 
-                        <button type="submit">Opret Udlæg</button>
-                    </form>
-                </div>
-
-                <div th:if="${edit}">
-                    <form th:action="@{/dashboard/expenses/edit}" method="post" th:object="${Expense}">
-                        <input type="hidden" th:value="${expense.id}" name="id">
-                        <input type="number" placeholder="Pris" th:value="${expense.price}" name="price">
-                        <input placeholder="Beskrivelse" th:value="${expense.description}" name="description">
-
-                        <div th:if="${session.level >= 80}">
-                            <input type="checkbox" th:checked="${expense.paid}" name="paid">
-                        </div>
-
-                        <button type="submit">Gem</button>
-                    </form>
-                </div>
-
-                <table>
-                    <tr>
-                        <th>Pris</th>
-                        <th>Beskrivelse</th>
-                        <th>Medarbejder</th>
-                        <th>Muligheder</th>
-                    </tr>
-                    <div th:each="e:${expenses}">
-                        <div th:if="${e.employeeId == session.id OR session.level >= 80}">
-                            <tr>
-                                <td th:text="${e.price}"></td>
-                                <td th:text="${e.description}"></td>
-                                <td th:text="${e.employee.firstName} + ' ' + ${e.employee.lastName}"></td>
-                                <td>
-                                    <a th:href="@{/dashboard/expenses/edit/{id}(id=${e.id})}">Rediger</a>
-                                    <form th:action="@{/dashboard/expenses/delete/{id}(id=${e.id})}" method="post">
-                                        <button type="submit">Slet</button>
-                                    </form>
-                                    <input type="checkbox" th:checked="${e.paid}" disabled>
-                                </td>
-                            </tr>
-                        </div>
+                    <div th:if="${session.level >= 80}">
+                        <label>Betalt</label>
+                        <input type="checkbox" th:checked="${expense.paid}" name="paid">
                     </div>
-                </table>
-            </div></div>
-        </section>
 
+                    <button type="submit" class="bg-lightgreen cwhite">Gem</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container-table">
+        <table>
+            <tr>
+                <th>Pris</th>
+                <th>Beskrivelse</th>
+                <th>Medarbejder</th>
+                <th>Muligheder</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <div th:each="e:${expenses}">
+                <div th:if="${e.employeeId == session.id OR session.level >= 80}">
+                    <tr>
+                        <td th:text="${e.price}"></td>
+                        <td th:text="${e.description}"></td>
+                        <td th:text="${e.employee.firstName} + ' ' + ${e.employee.lastName}"></td>
+                        <td class="width100"><a th:href="@{/dashboard/expenses/edit/{id}(id=${e.id})}" class="redigere cwhite bg-orange">Rediger</a></td>
+                        <td class="width100">
+                            <form th:action="@{/dashboard/expenses/delete/{id}(id=${e.id})}" method="post">
+                                <button type="submit" class="bg-lightred cwhite">Slet</button>
+                            </form>
+                        </td>
+                        <td class="width100">
+                            <input type="checkbox" th:checked="${e.paid}" disabled>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+        </table>
     </div>
 </main>
 <footer>

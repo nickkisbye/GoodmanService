@@ -9,6 +9,14 @@ input {
   border-radius: 10px;
   margin: 10px 0; }
 
+input[type="checkbox"] {
+  width: 30px;
+  /*Desired width*/
+  height: 30px;
+  /*Desired height*/
+  cursor: pointer;
+  margin: 10px 0; }
+
 textarea {
   max-width: 100%;
   min-width: 100%;
@@ -23,6 +31,7 @@ textarea {
   margin: 10px 0; }
 
 select {
+  width: 100%;
   display: block;
   padding: 10px 15px;
   line-height: 15px;
@@ -35,7 +44,6 @@ button {
   padding: 10px 15px;
   line-height: 15px;
   border-radius: 10px;
-  margin: 0px 0px 10px;
   border: none;
   cursor: pointer; }
 
@@ -45,6 +53,49 @@ a {
 
 .border {
   border: 1px solid rgba(0, 0, 0, 0.0625); }
+
+.container-header {
+  width: calc(100% + 60px);
+  margin: -30px 0 20px -30px;
+  height: 70px;
+  line-height: 70px;
+  padding-left: 30px;
+  color: white; }
+
+.container-table {
+  width: 100%;
+  padding: 30px;
+  background-color: #fff;
+  margin-top: 20px; }
+
+table {
+  width: 100%;
+  border-spacing: inherit;
+  border: none; }
+  table tr:nth-child(even) {
+    background-color: #f2f2f2; }
+  table th, table td {
+    padding: 10px 15px; }
+  table th {
+    text-align: left;
+    background-color: #c3c3c3; }
+
+.float-right {
+  float: right; }
+
+.float-left {
+  float: left; }
+
+.cwhite {
+  color: white; }
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.width100 {
+  width: 100px; }
 
 * {
   padding: 0;
@@ -274,12 +325,12 @@ body {
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.0625); }
 
-.case-main {
+.main {
   width: 100%;
   padding: 20px;
   background-color: #f3f3f3; }
 
-.case {
+.container {
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -289,13 +340,56 @@ body {
   grid-row-gap: 20px;
   -ms-grid-columns: (1.5fr)[2];
   grid-template-columns: repeat(2, 1.5fr); }
-  .case .case-create-case, .case .case-edit-case {
+  .container .container-grid {
     width: 100%;
     background: #fff;
     padding: 30px;
     border: 1px solid rgba(0, 0, 0, 0.0625); }
-    .case .case-create-case button, .case .case-edit-case button {
+    .container .container-grid .date {
+      width: 30%;
+      border-radius: 10px 0 0 10px; }
+    .container .container-grid .time {
+      width: 70%;
+      border-radius: 0 10px 10px 0; }
+    .container .container-grid button {
       color: white; }
-    .case .case-create-case h1, .case .case-edit-case h1 {
+    .container .container-grid h1 {
       font-size: 25px;
       margin: 0 0 30px 0; }
+  .container .employee-select {
+    width: 80%;
+    float: left;
+    margin-top: 0; }
+  .container .tilfoej {
+    width: 18%;
+    float: right;
+    line-height: 18px; }
+
+.redigere {
+  padding: 10px 15px;
+  line-height: 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer; }
+
+.mini-menu {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  -ms-grid-columns: (1.5fr)[4];
+  grid-template-columns: repeat(4, 1.5fr);
+  margin-top: -20px;
+  margin-bottom: 20px; }
+  .mini-menu a {
+    color: black; }
+    .mini-menu a div {
+      height: 80px;
+      line-height: 25px;
+      text-align: center;
+      background-color: #fff;
+      padding: 30px;
+      border: 1px solid rgba(0, 0, 0, 0.0625); }
