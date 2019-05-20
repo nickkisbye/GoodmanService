@@ -25,7 +25,7 @@ public class MessageController {
             MS.create(message);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/employee";
     }
@@ -36,7 +36,7 @@ public class MessageController {
             MS.delete(id);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/employee";
     }
