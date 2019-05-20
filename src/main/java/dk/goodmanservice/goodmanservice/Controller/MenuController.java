@@ -56,7 +56,7 @@ public class MenuController {
             model.addAttribute("messages", MS.fetch("latest-10"));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/employee";
     }
@@ -68,7 +68,7 @@ public class MenuController {
             model.addAttribute("offers", JS.customerOffers(id));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/customer";
     }
@@ -89,7 +89,7 @@ public class MenuController {
             model.addAttribute("employee", SS.fetch("top-employee"));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
 
         return "dashboard/oekonomi";
@@ -106,7 +106,7 @@ public class MenuController {
             model.addAttribute("customers", US.fetch("customers"));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/customerlist";
     }
@@ -118,7 +118,7 @@ public class MenuController {
             model.addAttribute("jobs", JS.customerOffers(id));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/kunderView";
     }

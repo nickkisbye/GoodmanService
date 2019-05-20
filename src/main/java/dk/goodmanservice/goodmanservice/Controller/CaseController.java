@@ -41,7 +41,7 @@ public class CaseController {
             model.addAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/Cases/offer";
     }
@@ -56,7 +56,7 @@ public class CaseController {
             model.addAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/Cases/cases";
     }
@@ -71,7 +71,7 @@ public class CaseController {
             model.addAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/Cases/done";
     }
@@ -85,7 +85,7 @@ public class CaseController {
             model.addAttribute("case", CS.findById(id));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/Cases/vis";
     }
@@ -113,7 +113,7 @@ public class CaseController {
             }
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
     }
 
@@ -124,7 +124,7 @@ public class CaseController {
             ra.addFlashAttribute("edit", false);
         } catch (SQLException e) {
             ra.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         switch (obj.getMode()) {
             case 1:
@@ -156,7 +156,7 @@ public class CaseController {
             }
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
     }
 
@@ -176,7 +176,7 @@ public class CaseController {
             }
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
 
     }
@@ -197,7 +197,7 @@ public class CaseController {
             }
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
 
     }
@@ -209,7 +209,7 @@ public class CaseController {
             return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
     }
     @PostMapping("/dashboard/TOF/fjernJob")
@@ -219,7 +219,7 @@ public class CaseController {
             return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
     }
 

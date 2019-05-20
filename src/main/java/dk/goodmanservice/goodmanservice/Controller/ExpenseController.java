@@ -31,7 +31,7 @@ public class ExpenseController {
             model.addAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/udlaeg";
     }
@@ -45,7 +45,7 @@ public class ExpenseController {
             model.addAttribute("edit", true);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/udlaeg";
     }
@@ -57,7 +57,7 @@ public class ExpenseController {
             model.addFlashAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/expenses";
     }
@@ -68,7 +68,7 @@ public class ExpenseController {
             ES.delete(id);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/expenses";
     }
@@ -79,7 +79,7 @@ public class ExpenseController {
             ES.create(obj);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/expenses";
     }

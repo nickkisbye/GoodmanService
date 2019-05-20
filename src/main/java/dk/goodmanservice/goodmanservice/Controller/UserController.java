@@ -49,7 +49,7 @@ public class UserController {
             }
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
     }
 
@@ -59,7 +59,7 @@ public class UserController {
             model.addAttribute("message", US.create(user));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
     }
@@ -73,7 +73,7 @@ public class UserController {
             model.addAttribute("edit", true);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "/dashboard/brugere";
     }
@@ -86,7 +86,7 @@ public class UserController {
             model.addFlashAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
     }
@@ -97,7 +97,7 @@ public class UserController {
            US.delete(id);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
     }
@@ -110,7 +110,7 @@ public class UserController {
             model.addAttribute("edit", false);
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
-            return "error";
+            return "redirect:/error";
         }
         return "dashboard/brugere";
     }
