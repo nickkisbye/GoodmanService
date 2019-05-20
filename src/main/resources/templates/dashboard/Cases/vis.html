@@ -49,5 +49,8 @@
     </div>
 </table>
 BILLEDER:
+<div th:each="image : ${images}">
+    <img th:src="${image.fileUrl}" width="80" height="80">
+</div>
 </body>
 </html>

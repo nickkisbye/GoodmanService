@@ -51,6 +51,17 @@
     </form>
 </div>
 
+<div th:if="${edit}">
+    <form action="/storage/uploadFile" th:object="${Case}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" multiple >
+        <input type="hidden" th:value="${findById.id}" name="id">
+        <button type="submit">Upload</button>
+    </form>
+    <div th:each="image : ${images}">
+        <img th:src="${image.fileUrl}" width="80" height="80">
+    </div>
+</div>
+
 <br><br><br>
 
 <table>

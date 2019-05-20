@@ -1,11 +1,15 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
+import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Service.BucketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@RestController
+import java.sql.SQLException;
+
+@Controller
 @RequestMapping("/storage/")
 public class BucketController {
 
@@ -17,13 +21,14 @@ public class BucketController {
     }
 
     @PostMapping("uploadFile")
-    public String uploadFile(@RequestPart(value = "file") MultipartFile file) {
+    public String uploadFile(@RequestPart(value = "file") MultipartFile file, @ModelAttribute Case cases) {
+        try {
+            this.bucketService.uploadFile(file, cases.getId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        return this.bucketService.uploadFile(file);
+        return "redirect:/dashboard/TOF/redigere/" + cases.getId();
     }
 
-    @DeleteMapping("deleteFile")
-    public String deleteFile(@RequestPart(value = "url") String fileUrl) {
-        return this.bucketService.deleteFileFromS3Bucket(fileUrl);
-    }
 }

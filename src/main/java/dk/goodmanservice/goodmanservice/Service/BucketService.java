@@ -5,12 +5,13 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import org.springframework.beans.factory.annotation.Value;
+import dk.goodmanservice.goodmanservice.Model.Image;
+import dk.goodmanservice.goodmanservice.Repository.BucketRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,7 +19,11 @@ import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class BucketService {
@@ -26,7 +31,10 @@ public class BucketService {
 
     private AmazonS3 s3client;
 
-    private String endpointUrl = "s3-control.eu-central-1.amazonaws.com";
+    @Autowired
+    private BucketRepository bucketRepository;
+
+    private String endpointUrl = "http://s3.eu-central-1.amazonaws.com";
 
     private String bucketName = "goodmanservice";
 
@@ -57,7 +65,7 @@ public class BucketService {
                 .withCannedAcl(CannedAccessControlList.PublicRead));
     }
 
-    public String uploadFile(MultipartFile multipartFile) {
+    public void uploadFile(MultipartFile multipartFile, int id) throws SQLException {
 
         String fileUrl = "";
         try {
@@ -69,12 +77,30 @@ public class BucketService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fileUrl;
+        bucketRepository.insertImage(fileUrl, id);
     }
 
-    public String deleteFileFromS3Bucket(String fileUrl) {
+
+
+    public String deleteFileFromS3Bucket(String fileUrl, int id) throws SQLException {
+        bucketRepository.deleteImage(id);
         String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-        s3client.deleteObject(new DeleteObjectRequest(bucketName + "/", fileName));
+        s3client.deleteObject(new DeleteObjectRequest(bucketName, fileName));
         return "Successfully deleted";
     }
+
+    public List<Image> fetchImages(int id) throws SQLException {
+        ResultSet rs = bucketRepository.fetchImages(id);
+        List<Image> imageList = new ArrayList<>();
+        while (rs.next()) {
+            Image image = new Image();
+            image.setFileUrl(rs.getString("image"));
+            image.setFileId(rs.getInt("id"));
+            imageList.add(image);
+        }
+        return imageList;
+    }
+
+
+
 }

@@ -1,8 +1,10 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
 import dk.goodmanservice.goodmanservice.Model.Case;
+import dk.goodmanservice.goodmanservice.Model.Image;
 import dk.goodmanservice.goodmanservice.Model.Jobs;
 import dk.goodmanservice.goodmanservice.Model.User;
+import dk.goodmanservice.goodmanservice.Service.BucketService;
 import dk.goodmanservice.goodmanservice.Service.CaseService;
 import dk.goodmanservice.goodmanservice.Service.IService;
 import dk.goodmanservice.goodmanservice.Service.JobService;
@@ -29,6 +31,9 @@ public class CaseController {
 
     @Autowired
     private JobService JS;
+
+    @Autowired
+    private BucketService BS;
 
     /**
      * TILBUD ONLY
@@ -83,11 +88,22 @@ public class CaseController {
     public String viewTOF(@PathVariable("id") int id, Model model) {
         try {
             model.addAttribute("case", CS.findById(id));
+            model.addAttribute("images", BS.fetchImages(id));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/Cases/vis";
+    }
+
+    @PostMapping("/dashboard/TOF/fjernBillede/{id}")
+    public String deleteImage(@ModelAttribute Image image, @PathVariable("id") int id) {
+        try {
+            BS.deleteFileFromS3Bucket(image.getFileUrl(), image.getFileId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/dashboard/TOF/redigere/" + id;
     }
 
     @GetMapping("/dashboard/TOF/redigere/{id}")
@@ -97,7 +113,7 @@ public class CaseController {
             model.addAttribute("findById", CS.findById(id));
             model.addAttribute("users", US.fetch("customers"));
             model.addAttribute("edit", true);
-
+            model.addAttribute("images", BS.fetchImages(id));
             model.addAttribute("employees", JS.fetchEmployees(id));
             model.addAttribute("jobs", JS.findByIdJobs(id));
 
@@ -113,6 +129,7 @@ public class CaseController {
             }
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
+            e.printStackTrace();
             return "redirect:/error";
         }
     }
