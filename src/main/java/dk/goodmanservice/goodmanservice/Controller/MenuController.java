@@ -1,8 +1,10 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
+import dk.goodmanservice.goodmanservice.Model.Calculator;
 import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.Message;
 import dk.goodmanservice.goodmanservice.Model.User;
+import dk.goodmanservice.goodmanservice.Service.CalcService;
 import dk.goodmanservice.goodmanservice.Service.IService;
 import dk.goodmanservice.goodmanservice.Service.JobService;
 import dk.goodmanservice.goodmanservice.Service.StatisticService;
@@ -10,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
@@ -28,7 +32,7 @@ public class MenuController {
     private IService<User> US;
 
     @Autowired
-    private IService<Case> CS;
+    private CalcService CS;
 
     @Autowired
     private JobService JS;
@@ -37,11 +41,6 @@ public class MenuController {
     @GetMapping("/")
     public String index() {
         return "index";
-    }
-
-    @GetMapping("/beregner")
-    public String beregner() {
-        return "beregner";
     }
 
     @GetMapping("/login")
@@ -123,4 +122,16 @@ public class MenuController {
         return "dashboard/kunderView";
     }
 
+    @GetMapping("/beregner")
+    public String calcView(Model model) {
+        model.addAttribute("calcing", false);
+        return "beregner";
+    }
+
+    @PostMapping("/beregner")
+    public String calcCalc(Model model, @ModelAttribute Calculator obj) {
+        model.addAttribute("calcing", true);
+        model.addAttribute("price", CS.iCalc(obj));
+        return "beregner";
+    }
 }

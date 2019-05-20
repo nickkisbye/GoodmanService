@@ -10,7 +10,7 @@
 <main>
     <section>
         <div class="section-white calc-page">
-            <div th:if="${!calc}" th:remove="tag">
+            <div th:if="${!calcing}" th:remove="tag">
                 <h1>Pris på Isolering</h1><br>
                 <form th:action="@{/beregner}" method="POST">
                     <label>Hvor mange m^2 skal isoleres?</label><br>
@@ -25,7 +25,7 @@
                     <button type="submit">Beregn Pris</button>
                 </form>
             </div>
-            <div th:if="${calc}" th:remove="tag">
+            <div th:if="${calcing}" th:remove="tag">
                 <p th:text="${price}"></p>
             </div>
         </div>
