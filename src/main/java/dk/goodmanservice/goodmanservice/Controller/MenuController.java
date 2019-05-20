@@ -1,16 +1,14 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
-import dk.goodmanservice.goodmanservice.Model.Case;
-import dk.goodmanservice.goodmanservice.Model.Message;
-import dk.goodmanservice.goodmanservice.Model.User;
+import dk.goodmanservice.goodmanservice.Model.*;
+import dk.goodmanservice.goodmanservice.Service.CalcService;
 import dk.goodmanservice.goodmanservice.Service.IService;
 import dk.goodmanservice.goodmanservice.Service.JobService;
 import dk.goodmanservice.goodmanservice.Service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
@@ -28,20 +26,14 @@ public class MenuController {
     private IService<User> US;
 
     @Autowired
-    private IService<Case> CS;
-
-    @Autowired
     private JobService JS;
 
+    @Autowired
+    private CalcService CS;
 
     @GetMapping("/")
     public String index() {
         return "index";
-    }
-
-    @GetMapping("/beregner")
-    public String beregner() {
-        return "beregner";
     }
 
     @GetMapping("/login")
@@ -121,6 +113,21 @@ public class MenuController {
             return "redirect:/error";
         }
         return "dashboard/kunderView";
+    }
+
+    @GetMapping("/beregner")
+    public String calculator(Model model) {
+        model.addAttribute("calc", false);
+        return "beregner";
+
+    }
+    @PostMapping("/beregner")
+    public String calcIt(Model model, @ModelAttribute Calculator obj) {
+        
+        model.addAttribute("price", CS.iCalc(obj));
+
+        model.addAttribute("calc", true);
+        return "beregner";
     }
 
 }
