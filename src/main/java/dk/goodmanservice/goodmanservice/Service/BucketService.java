@@ -23,6 +23,7 @@ import java.util.Date;
 @Service
 public class BucketService {
 
+
     private AmazonS3 s3client;
 
     private String endpointUrl = "s3-control.eu-central-1.amazonaws.com";
