@@ -1,18 +1,24 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
 import dk.goodmanservice.goodmanservice.Model.Case;
+import dk.goodmanservice.goodmanservice.Model.File;
 import dk.goodmanservice.goodmanservice.Model.Message;
 import dk.goodmanservice.goodmanservice.Model.User;
+import dk.goodmanservice.goodmanservice.Service.FileService;
 import dk.goodmanservice.goodmanservice.Service.IService;
 import dk.goodmanservice.goodmanservice.Service.JobService;
 import dk.goodmanservice.goodmanservice.Service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 
 @Controller
@@ -28,11 +34,10 @@ public class MenuController {
     private IService<User> US;
 
     @Autowired
-    private IService<Case> CS;
-
-    @Autowired
     private JobService JS;
 
+    @Autowired
+    private FileService FS;
 
     @GetMapping("/")
     public String index() {
@@ -121,6 +126,18 @@ public class MenuController {
             return "error";
         }
         return "dashboard/kunderView";
+    }
+
+    @GetMapping("/upload")
+    public String uploadView() {
+        return "upload";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("files") MultipartFile[] files, Model model) throws IOException {
+
+        return "redirect:/upload";
+
     }
 
 }
