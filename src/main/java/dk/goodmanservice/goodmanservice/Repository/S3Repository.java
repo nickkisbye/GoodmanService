@@ -32,9 +32,9 @@ public class S3Repository {
 
     private String bucketName = "goodmanservice";
 
-    private String accessKey = "AKIAWSMRA444WWFG26XC";
+    private String accessKey = "";
 
-    private String secretKey = "C8IX35mydQ2jasct430Z7B2G5bbKtHuoVZFwYLtu";
+    private String secretKey = "";
 
     @PostConstruct
     private void initializeAmazon() {
