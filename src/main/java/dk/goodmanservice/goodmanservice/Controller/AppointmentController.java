@@ -84,5 +84,3 @@ public class AppointmentController {
         return "redirect:/dashboard/appointments";
     }
 }
-
-//Test class for ErrorController

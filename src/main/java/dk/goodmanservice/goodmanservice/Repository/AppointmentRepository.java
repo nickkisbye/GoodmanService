@@ -43,7 +43,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
     private void executeAppointment(Appointment obj) throws SQLException {
         preparedStatement.setString(1, obj.getDescription());
         preparedStatement.setDate(2, obj.getDate());
-        preparedStatement.setTime(3, obj.getTime());
+        preparedStatement.setString(3, obj.getTime());
         preparedStatement.setInt(4, obj.getEmployeeId());
         preparedStatement.setInt(5, obj.getCustomerId());
         preparedStatement.execute();

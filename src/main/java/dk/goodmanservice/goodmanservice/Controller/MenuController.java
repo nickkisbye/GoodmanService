@@ -46,7 +46,6 @@ public class MenuController {
 
     @GetMapping("/dashboard/employee")
     public String employee(Model model) {
-
         try {
             model.addAttribute("messages", MS.fetch("latest-10"));
         } catch (SQLException e) {
@@ -68,11 +67,6 @@ public class MenuController {
         return "dashboard/customer";
     }
 
-    @GetMapping("/dashboard/kalender")
-    public String kalender() {
-        return "redirect:/dashboard/appointments";
-    }
-
     @GetMapping("/dashboard/oekonomi")
     public String oekonomi(Model model) {
         try {
@@ -88,11 +82,6 @@ public class MenuController {
         }
 
         return "dashboard/oekonomi";
-    }
-
-    @GetMapping("/dashboard/udlaeg")
-    public String udlaeg() {
-        return "redirect:/dashboard/expenses";
     }
 
     @GetMapping("/dashboard/kunder")
