@@ -162,7 +162,7 @@ public class CaseController {
     }
 
     @PostMapping("/dashboard/TOF/upgrade/{id}")
-    public String upgradeTOF(@PathVariable("id") int id, @ModelAttribute Case obj, RedirectAttributes ra, Model model) {
+    public String upgradeTOF(@PathVariable("id") int id, @ModelAttribute Case obj, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("upgrade", CS.edit(obj));
             ra.addFlashAttribute("edit", false);
@@ -184,7 +184,7 @@ public class CaseController {
     }
 
     @PostMapping("/dashboard/TOF/slet/{id}")
-    public String deleteTOF(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
+    public String deleteTOF(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
             switch (CS.findById(id).getMode()) {
                 case 1:
@@ -206,7 +206,7 @@ public class CaseController {
 
     }
     @PostMapping("/dashboard/TOF")
-    public String createTOF(@ModelAttribute Case obj, Case cases, RedirectAttributes ra, Model model) {
+    public String createTOF(@ModelAttribute Case obj, Case cases, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("msg", CS.create(cases));
 
@@ -228,17 +228,17 @@ public class CaseController {
     }
 
     @PostMapping("/dashboard/TOF/NytJob")
-    public String createJob(@ModelAttribute Jobs jobs, RedirectAttributes ra, Model model, RedirectAttributes redirect) {
+    public String createJob(@ModelAttribute Jobs jobs, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("error", JS.createJob(jobs));
             return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();
         } catch (SQLException e) {
-            redirect.addFlashAttribute("errorCode", e.getErrorCode());
+            ra.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
     }
     @PostMapping("/dashboard/TOF/fjernJob")
-    public String removeJob(@ModelAttribute Jobs jobs, RedirectAttributes ra, Model model) {
+    public String removeJob(@ModelAttribute Jobs jobs, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("error", JS.deleteJob(jobs.getId()));
             return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();

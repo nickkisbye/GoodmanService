@@ -21,7 +21,7 @@ public class MessageController {
     private IService<Message> MS;
 
     @PostMapping("/message/create")
-    public String createMsg(@ModelAttribute Message message, Model model, RedirectAttributes redirect) {
+    public String createMsg(@ModelAttribute Message message, RedirectAttributes redirect) {
         try {
             MS.create(message);
         } catch (SQLException e) {
@@ -32,7 +32,7 @@ public class MessageController {
     }
 
     @GetMapping("/message/delete/{id}")
-    public String deleteMsg(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
+    public String deleteMsg(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
             MS.delete(id);
         } catch (SQLException e) {
