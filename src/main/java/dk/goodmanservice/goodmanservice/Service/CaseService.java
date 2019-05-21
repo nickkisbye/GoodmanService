@@ -20,16 +20,27 @@ public class CaseService implements IService<Case>{
     private IRepository<Case> CR;
     private ResultSet rs;
 
+    @Autowired
+    private Validation v;
+
     @Override
     public String create(Case obj) throws SQLException {
-        CR.create(obj);
-        return "Success";
+        if(v.validateCase(obj).equals("1")) {
+            CR.create(obj);
+            return "1";
+        } else {
+            return v.validateCase(obj);
+        }
     }
 
     @Override
     public String edit(Case obj) throws SQLException {
-        CR.edit(obj);
-        return "";
+        if(v.validateCase(obj).equals("1")) {
+            CR.edit(obj);
+            return "1";
+        } else {
+            return v.validateCase(obj);
+        }
     }
 
     @Override

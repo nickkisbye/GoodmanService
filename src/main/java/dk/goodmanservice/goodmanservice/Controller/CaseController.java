@@ -158,7 +158,7 @@ public class CaseController {
     @PostMapping("/dashboard/TOF/upgrade/{id}")
     public String upgradeTOF(@PathVariable("id") int id, @ModelAttribute Case obj, RedirectAttributes ra, Model model) {
         try {
-            ra.addFlashAttribute("msg", CS.edit(obj));
+            ra.addFlashAttribute("upgrade", CS.edit(obj));
             ra.addFlashAttribute("edit", false);
 
             switch (CS.findById(id).getMode()) {
@@ -180,13 +180,15 @@ public class CaseController {
     @PostMapping("/dashboard/TOF/slet/{id}")
     public String deleteTOF(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
         try {
-            CS.delete(id);
             switch (CS.findById(id).getMode()) {
                 case 1:
+                    CS.delete(id);
                     return "redirect:/dashboard/tilbud";
                 case 2:
+                    CS.delete(id);
                     return "redirect:/dashboard/opgaver";
                 case 3:
+                    CS.delete(id);
                     return "redirect:/dashboard/faerdigeopgaver";
                 default:
                     return "redirect:/dashboard/error";
@@ -200,7 +202,7 @@ public class CaseController {
     @PostMapping("/dashboard/TOF")
     public String createTOF(@ModelAttribute Case obj, Case cases, RedirectAttributes ra, Model model) {
         try {
-            ra.addFlashAttribute("error", CS.create(cases));
+            ra.addFlashAttribute("msg", CS.create(cases));
 
             switch (obj.getMode()) {
                 case 1:
