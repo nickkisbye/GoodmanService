@@ -25,7 +25,7 @@ public class UserController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user, HttpSession session, Model model, RedirectAttributes redirect) {
+    public String login(@ModelAttribute User user, HttpSession session, RedirectAttributes redirect) {
         try {
             if (loginService.login(user)) {
                 session.setAttribute("email", user.getEmail());
@@ -92,7 +92,7 @@ public class UserController {
     }
 
     @GetMapping("/dashboard/brugere/delete/{id}")
-    public String sletBruger(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
+    public String sletBruger(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
            US.delete(id);
         } catch (SQLException e) {
