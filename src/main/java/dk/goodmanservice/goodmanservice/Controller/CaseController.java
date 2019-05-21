@@ -116,7 +116,6 @@ public class CaseController {
             model.addAttribute("images", BS.fetchImages(id));
             model.addAttribute("employees", JS.fetchEmployees(id));
             model.addAttribute("jobs", JS.findByIdJobs(id));
-
             switch (CS.findById(id).getMode()) {
                 case 1:
                     return "dashboard/Cases/offer";
@@ -137,22 +136,29 @@ public class CaseController {
     @PostMapping("/dashboard/TOF/redigere")
     public String editTOFFORM(@ModelAttribute Case obj, RedirectAttributes ra) {
         try {
-            ra.addFlashAttribute("msg", CS.edit(obj));
-            ra.addFlashAttribute("edit", false);
+            if(CS.edit(obj) == "1") {
+                ra.addFlashAttribute("msg", "1");
+                ra.addFlashAttribute("edit", false);
+                switch (obj.getMode()) {
+                    case 1:
+                        return "redirect:/dashboard/tilbud";
+                    case 2:
+                        return "redirect:/dashboard/opgaver";
+                    case 3:
+                        return "redirect:/dashboard/faerdigeopgaver";
+                    default:
+                        return "redirect:/dashboard/no";
+                }
+            } else {
+                ra.addFlashAttribute("msg", CS.edit(obj));
+                return "redirect:/dashboard/TOF/redigere/"+obj.getId();
+            }
+
         } catch (SQLException e) {
             ra.addAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
-        switch (obj.getMode()) {
-            case 1:
-                return "redirect:/dashboard/tilbud";
-            case 2:
-                return "redirect:/dashboard/opgaver";
-            case 3:
-                return "redirect:/dashboard/faerdigeopgaver";
-            default:
-                return "redirect:/dashboard/no";
-        }
+
     }
 
     @PostMapping("/dashboard/TOF/upgrade/{id}")

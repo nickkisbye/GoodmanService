@@ -13,7 +13,12 @@
             <p>DIN OPGAVE ER BLEVET OPRETTET</p>
         </div>
     </div>
-    <div th:if="${msg!=null and #strings.length(msg) > 0 and msg!='1'}" th:remove="tag">
+    <div th:if="${msg == '2'}" th:remove="tag">
+        <div class="msg bg-lightgreen">
+            <p>DIN OPGAVE ER BLEVET REDIGERET</p>
+        </div>
+    </div>
+    <div th:if="${msg!=null and #strings.length(msg) > 0 and msg!='1' and msg!='2'}" th:remove="tag">
         <div class="msg bg-lightred">
             <p th:text="${msg}"></p>
         </div>
