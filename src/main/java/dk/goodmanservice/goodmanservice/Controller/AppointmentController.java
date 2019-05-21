@@ -30,7 +30,7 @@ public class AppointmentController {
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
-            redirect.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/kalender";
@@ -44,7 +44,7 @@ public class AppointmentController {
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", true);
         } catch (SQLException e) {
-            redirect.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/kalender";
@@ -56,7 +56,7 @@ public class AppointmentController {
             redirect.addFlashAttribute("expense", AS.edit(obj));
             redirect.addFlashAttribute("edit", false);
         } catch (SQLException e) {
-            redirect.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/appointments";
@@ -67,7 +67,7 @@ public class AppointmentController {
         try {
             AS.delete(id);
         } catch (SQLException e) {
-            redirect.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/appointments";
@@ -78,7 +78,7 @@ public class AppointmentController {
         try {
             AS.create(obj);
         } catch (SQLException e) {
-            redirect.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/appointments";

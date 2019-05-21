@@ -24,61 +24,61 @@ public class ExpenseController {
     private IService<User> US;
 
     @GetMapping("/dashboard/expenses")
-    public String expenses(Model model) {
+    public String expenses(Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("expenses", ES.fetch("all"));
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/udlaeg";
     }
 
     @GetMapping("/dashboard/expenses/edit/{id}")
-    public String expenseById(@PathVariable("id") int id, Model model) {
+    public String expenseById(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("expense", ES.findById(id));
             model.addAttribute("expenses", ES.fetch("all"));
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", true);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/udlaeg";
     }
 
     @PostMapping("/dashboard/expenses/edit")
-    public String editExpense(@ModelAttribute Expense obj, RedirectAttributes model) {
+    public String editExpense(@ModelAttribute Expense obj, RedirectAttributes redirect) {
         try {
-            model.addFlashAttribute("expense", ES.edit(obj));
-            model.addFlashAttribute("edit", false);
+            redirect.addFlashAttribute("expense", ES.edit(obj));
+            redirect.addFlashAttribute("edit", false);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/expenses";
     }
 
     @PostMapping("/dashboard/expenses/delete/{id}")
-    public String deleteExpense(@PathVariable("id") int id, Model model) {
+    public String deleteExpense(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
             ES.delete(id);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/expenses";
     }
 
     @PostMapping("/dashboard/expenses/create")
-    public String createExpense(@ModelAttribute Expense obj, Model model) {
+    public String createExpense(@ModelAttribute Expense obj, RedirectAttributes redirect) {
         try {
-            model.addAttribute("msg", ES.create(obj));
+            redirect.addFlashAttribute("msg", ES.create(obj));
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/expenses";
