@@ -53,7 +53,7 @@ public class AppointmentController {
     @PostMapping("/dashboard/appointment/edit")
     public String appointmentEdit(@ModelAttribute Appointment obj, RedirectAttributes redirect) {
         try {
-            redirect.addFlashAttribute("expense", AS.edit(obj));
+            redirect.addFlashAttribute("msg", AS.edit(obj));
             redirect.addFlashAttribute("edit", false);
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
@@ -76,7 +76,7 @@ public class AppointmentController {
     @PostMapping("/dashboard/appointment/create")
     public String createAppointment(@ModelAttribute Appointment obj, RedirectAttributes redirect) {
         try {
-            AS.create(obj);
+            redirect.addFlashAttribute("msg", AS.create(obj));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";

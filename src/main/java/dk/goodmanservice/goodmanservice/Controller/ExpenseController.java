@@ -53,7 +53,7 @@ public class ExpenseController {
     @PostMapping("/dashboard/expenses/edit")
     public String editExpense(@ModelAttribute Expense obj, RedirectAttributes redirect) {
         try {
-            redirect.addFlashAttribute("expense", ES.edit(obj));
+            redirect.addFlashAttribute("msg", ES.edit(obj));
             redirect.addFlashAttribute("edit", false);
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());

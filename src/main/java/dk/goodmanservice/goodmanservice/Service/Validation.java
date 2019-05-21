@@ -40,18 +40,9 @@ public class Validation {
     public String validateExpense(Expense obj) {
         if(obj.getPrice() == null || obj.getPrice() < 1) {
             return "PRIS ER FOR LAV, PRØV IGEN.";
-        } else if(obj.getDescription() == null || obj.getDescription().length() <= 3) {
+        } else if(obj.getDescription() == null || obj.getDescription().length() <= 1) {
             return "BESKRIVELSE ER FOR KORT, PRØV IGEN.";
         }
         return "1";
-    }
-
-    public boolean isNumeric(String number) {
-        try {
-            Integer.parseInt(number);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
     }
 }
