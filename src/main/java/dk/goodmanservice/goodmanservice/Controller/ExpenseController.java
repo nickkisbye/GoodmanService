@@ -76,7 +76,7 @@ public class ExpenseController {
     @PostMapping("/dashboard/expenses/create")
     public String createExpense(@ModelAttribute Expense obj, Model model) {
         try {
-            ES.create(obj);
+            model.addAttribute("msg", ES.create(obj));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";

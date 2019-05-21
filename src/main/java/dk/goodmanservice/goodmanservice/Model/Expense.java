@@ -3,7 +3,7 @@ package dk.goodmanservice.goodmanservice.Model;
 public class Expense {
 
     private int id;
-    private int price;
+    private Integer price;
     private String description;
     private boolean paid;
     private int employeeId;
@@ -20,11 +20,11 @@ public class Expense {
         this.id = id;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

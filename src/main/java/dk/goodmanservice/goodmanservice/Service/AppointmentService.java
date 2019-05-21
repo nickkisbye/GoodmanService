@@ -23,7 +23,12 @@ public class AppointmentService implements IService<Appointment> {
 
     @Override
     public String create(Appointment obj) throws SQLException {
-        AR.create(obj);
+        if(obj.getDescription().length() < 1 || obj.getDate().length() < 1) {
+            return "Error";
+        } else {
+            System.out.println(obj.getDescription());
+            AR.create(obj);
+        }
         return "success";
     }
 
@@ -49,7 +54,7 @@ public class AppointmentService implements IService<Appointment> {
             User customer = new User();
                 appointment.setId(resultSet.getInt("id"));
                 appointment.setDescription(resultSet.getString("description"));
-                appointment.setDate(resultSet.getDate("date"));
+                appointment.setDate(resultSet.getString("date"));
                 appointment.setTime(resultSet.getString("time"));
                 appointment.setEmployeeId(resultSet.getInt("fk_employee"));
                 appointment.setCustomerId(resultSet.getInt("fk_customer"));
@@ -76,7 +81,7 @@ public class AppointmentService implements IService<Appointment> {
         while (resultSet.next()) {
             appointment.setId(resultSet.getInt("id"));
             appointment.setDescription(resultSet.getString("description"));
-            appointment.setDate(resultSet.getDate("date"));
+            appointment.setDate(resultSet.getString("date"));
             appointment.setTime(resultSet.getString("time"));
             appointment.setEmployeeId(resultSet.getInt("fk_employee"));
             appointment.setCustomerId(resultSet.getInt("fk_customer"));

@@ -23,13 +23,25 @@ public class ExpenseService implements IService<Expense> {
 
     @Override
     public String create(Expense obj) throws SQLException {
-        ER.create(obj);
-        return "success";
+        String check = checker(obj);
+        if(check.equals("success")) {
+            ER.create(obj);
+        }
+        return check;
     }
 
     @Override
     public String edit(Expense obj) throws SQLException {
         ER.edit(obj);
+        return "success";
+    }
+
+    private String checker(Expense obj) {
+        if(obj.getPrice() == null || obj.getPrice() <= 0) {
+            return "Invalid Price";
+        } else if(obj.getDescription() == null) {
+            return "Invalid Description";
+        }
         return "success";
     }
 

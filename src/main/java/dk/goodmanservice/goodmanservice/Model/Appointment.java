@@ -1,13 +1,11 @@
 package dk.goodmanservice.goodmanservice.Model;
 
-import java.sql.Date;
-
 public class Appointment {
 
     private int id;
     private int employeeId;
     private int customerId;
-    private Date date;
+    private String date;
     private String time;
     private String description;
     private User employee;
@@ -40,11 +38,11 @@ public class Appointment {
         this.customerId = customerId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
