@@ -29,7 +29,7 @@ public class CaseService implements IService<Case>{
         String checkSum = V.validateCase(obj);
         if(checkSum.equals("1")) {
             CR.create(obj);
-            return "OPRETTET";
+            return "1";
         }
         return checkSum;
     }
@@ -39,7 +39,7 @@ public class CaseService implements IService<Case>{
         String checkSum = V.validateCase(obj);
         if(checkSum.equals("1")) {
             CR.edit(obj);
-            return "OPDATERET";
+            return "1";
         }
         return checkSum;
     }

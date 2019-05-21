@@ -110,7 +110,6 @@ public class CaseController {
     @GetMapping("/dashboard/TOF/redigere/{id}")
     public String editTOF(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
         try {
-            model.addAttribute("case", CS.fetch("offer"));
             model.addAttribute("findById", CS.findById(id));
             model.addAttribute("users", US.fetch("customers"));
             model.addAttribute("edit", true);
@@ -119,10 +118,13 @@ public class CaseController {
             model.addAttribute("jobs", JS.findByIdJobs(id));
             switch (CS.findById(id).getMode()) {
                 case 1:
+                    model.addAttribute("case", CS.fetch("offer"));
                     return "dashboard/Cases/offer";
                 case 2:
+                    model.addAttribute("case", CS.fetch("cases"));
                     return "dashboard/Cases/cases";
                 case 3:
+                    model.addAttribute("case", CS.fetch("finished"));
                     return "dashboard/Cases/done";
                 default:
                     return "dashboard/Cases/no";
@@ -137,7 +139,7 @@ public class CaseController {
     public String editTOFFORM(@ModelAttribute Case obj, RedirectAttributes ra) {
         try {
             if(CS.edit(obj) == "1") {
-                ra.addFlashAttribute("msg", "1");
+                ra.addFlashAttribute("msg", "2");
                 ra.addFlashAttribute("edit", false);
                 switch (obj.getMode()) {
                     case 1:
@@ -231,23 +233,22 @@ public class CaseController {
     public String createJob(@ModelAttribute Jobs jobs, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("error", JS.createJob(jobs));
+            ra.addFlashAttribute("msg", "5");
             return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();
         } catch (SQLException e) {
             ra.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
     }
-    @PostMapping("/dashboard/TOF/fjernJob")
-    public String removeJob(@ModelAttribute Jobs jobs, RedirectAttributes ra) {
+    @PostMapping("/dashboard/TOF/fjernJob/{id}")
+    public String removeJob(@PathVariable("id") int caseId, @ModelAttribute Jobs jobs, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("error", JS.deleteJob(jobs.getId()));
-            return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();
+            ra.addFlashAttribute("msg", "6");
+            return "redirect:/dashboard/TOF/redigere/"+ caseId;
         } catch (SQLException e) {
             ra.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
     }
-
-
-
 }
