@@ -3,6 +3,7 @@ package dk.goodmanservice.goodmanservice.Service;
 import dk.goodmanservice.goodmanservice.Model.Appointment;
 import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.Expense;
+import dk.goodmanservice.goodmanservice.Model.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,9 +33,8 @@ public class Validation {
             return "SLUT DATO ER UGYLDIGT, PRØV IGEN.";
         } else if(obj.getEndTime() == null || obj.getEndTime().length() <= 1) {
             return "SLUT TIDPUNKT ER UGYLDIGT, PRØV IGEN.";
-        } else {
-            return "1";
         }
+        return "1";
     }
 
     public String validateExpense(Expense obj) {
@@ -42,6 +42,15 @@ public class Validation {
             return "PRIS ER FOR LAV, PRØV IGEN.";
         } else if(obj.getDescription() == null || obj.getDescription().length() <= 1) {
             return "BESKRIVELSE ER FOR KORT, PRØV IGEN.";
+        }
+        return "1";
+    }
+
+    public String validateUser(User obj) {
+        if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
+            return "Fornavn eller efternavn må ikke være under 2 karaktere";
+        } else if(obj.getPassword().length() < 8) {
+            return "Kodeordet skal være mindst 8 karaktere langt.";
         }
         return "1";
     }

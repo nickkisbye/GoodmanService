@@ -19,7 +19,7 @@ public class StatisticService {
 
     public List<Statistic> fetch(String option) throws SQLException {
         List<Statistic> sList = new ArrayList<>();
-        ResultSet rs = null;
+        ResultSet rs;
 
         switch (option) {
             case "total":
