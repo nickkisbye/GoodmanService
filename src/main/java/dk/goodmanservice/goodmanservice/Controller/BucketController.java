@@ -20,10 +20,10 @@ public class BucketController {
         this.bucketService = bucketService;
     }
 
-    @PostMapping("uploadFile")
-    public String uploadFile(@RequestPart(value = "file") MultipartFile file, @ModelAttribute Case cases) {
+    @PostMapping("uploadImage")
+    public String uploadImage(@RequestPart(value = "file") MultipartFile file, @ModelAttribute Case cases) {
         try {
-            this.bucketService.uploadFile(file, cases.getId());
+            this.bucketService.uploadImage(file, cases.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }

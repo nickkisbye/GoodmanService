@@ -26,8 +26,13 @@ public class BucketService {
         s3Repository.deleteFileFromS3Bucket(fileUrl, id);
     }
 
-    public void uploadFile(MultipartFile multipartFile, int id) throws SQLException {
-        s3Repository.uploadFile(multipartFile, id);
+    public void uploadImage(MultipartFile multipartFile, int id) throws SQLException {
+        s3Repository.uploadImage(multipartFile, id);
+    }
+
+    public void generatePdf() throws SQLException {
+        //service tjek
+//        s3Repository.generatePdf();
     }
 
     public List<Image> fetchImages(int id) throws SQLException {

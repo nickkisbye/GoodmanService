@@ -51,7 +51,7 @@
     </form>
 </div>
 <div th:if="${edit}">
-    <form action="/storage/uploadFile" th:object="${Case}" method="post" enctype="multipart/form-data">
+    <form action="/storage/uploadImage" th:object="${Case}" method="post" enctype="multipart/form-data">
         <input type="file" name="file" multiple >
         <input type="hidden" th:value="${findById.id}" name="id">
         <button type="submit">Upload</button>
