@@ -7,10 +7,22 @@
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
 <main class="main">
+
+    <div th:if="${msg == '1'}" th:remove="tag">
+        <div class="msg bg-lightgreen">
+            <p>DIN OPGAVE ER BLEVET OPRETTET</p>
+        </div>
+    </div>
+    <div th:if="${msg!=null and #strings.length(msg) > 0 and msg!='1'}" th:remove="tag">
+        <div class="msg bg-lightred">
+            <p th:text="${msg}"></p>
+        </div>
+    </div>
+
     <div class="mini-menu">
         <a th:href="@{/dashboard/employee}">
             <div>
-                tilbage til dashboard
+                TILBAGE
             </div>
         </a>
         <a th:href="@{/dashboard/tilbud}">
@@ -38,9 +50,9 @@
             </div>
             <form th:action="@{/dashboard/TOF}" method="POST" th:object="${Case}">
                 <label>Beskrivelse</label>
-                <textarea name="description" cols="30" rows="10" placeholder="description"></textarea><br>
+                <textarea name="description" cols="30" rows="10" placeholder="Beskrivelse"></textarea><br>
                 <label>Pris:</label>
-                <input type="number"         name="price"        placeholder="price"        value=""><br>
+                <input type="number"         name="price"        placeholder="Pris"        value="0"><br>
                 <label>Start Dato</label>
                 <div class="flex">
                     <input type="date" name="startDate"    placeholder="startDate"    class="date">
@@ -164,6 +176,8 @@
                             <input type="hidden"         name="price"        placeholder=""    th:value="${case.price}">
                             <input type="hidden"         name="startDate"    placeholder=""    th:value="${case.startDate}">
                             <input type="hidden"         name="endDate"      placeholder=""    th:value="${case.endDate}">
+                            <input type="hidden"         name="startTime"    placeholder=""    th:value="${case.startTime}">
+                            <input type="hidden"         name="endTime"      placeholder=""    th:value="${case.endTime}">
                             <input type="hidden"         name="customerId"   placeholder=""    th:value="${case.customer.id}">
                             <input type="hidden"         name="mode"         placeholder=""    th:value="3">
                             <button type="submit" class="bg-lightgreen cwhite">FÆRDIG</button>

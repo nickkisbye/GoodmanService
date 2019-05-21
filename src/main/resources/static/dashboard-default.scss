@@ -1,3 +1,4 @@
+@import "color";
 input {
   width: 100%;
   display: block;
@@ -107,4 +108,16 @@ table {
 }
 .nomargin {
   margin: 0 !important;
+}
+
+.msg {
+  width: 100%;
+  line-height: 50px;
+  padding: 0 20px;
+  margin-bottom: 40px;
+  border: 1px solid $border-color;
+  p {
+    font-size: 20px;
+    color: white;
+  }
 }

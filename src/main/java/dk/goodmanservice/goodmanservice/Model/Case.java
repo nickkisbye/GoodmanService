@@ -8,7 +8,7 @@ public class Case {
     private int id;
     private int customerId;
     private String description;
-    private int price;
+    private Integer price;
     private Date creationDate;
     private String startDate;
     private String startTime;
@@ -46,11 +46,11 @@ public class Case {
         this.description = description;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -70,12 +70,28 @@ public class Case {
         this.startDate = startDate;
     }
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
     public String getEndDate() {
         return endDate;
     }
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public int getMode() {
@@ -98,8 +114,8 @@ public class Case {
         return employeeList;
     }
 
-    public void setEmployeeList(User employee) {
-        employeeList.add(employee);
+    public void setEmployeeList(ArrayList<User> employeeList) {
+        this.employeeList = employeeList;
     }
 
     public ArrayList<String> getImageList() {
@@ -108,25 +124,5 @@ public class Case {
 
     public void setImageList(ArrayList<String> imageList) {
         this.imageList = imageList;
-    }
-
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
-    public void setEmployeeList(ArrayList<User> employeeList) {
-        this.employeeList = employeeList;
     }
 }
