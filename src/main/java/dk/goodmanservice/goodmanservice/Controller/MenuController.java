@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
@@ -45,24 +46,24 @@ public class MenuController {
     }
 
     @GetMapping("/dashboard/employee")
-    public String employee(Model model) {
+    public String employee(Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("messages", MS.fetch("latest-10"));
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/employee";
     }
 
     @GetMapping("/dashboard/customer")
-    public String customer(HttpSession session, Model model) {
+    public String customer(HttpSession session, Model model, RedirectAttributes redirect) {
         int id = (int) session.getAttribute("id");
         try {
             model.addAttribute("offers", JS.customerOffers(id));
             model.addAttribute("invoices", JS.customerInvoice(id));
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/customer";
@@ -80,7 +81,7 @@ public class MenuController {
     }
 
     @GetMapping("/dashboard/oekonomi")
-    public String oekonomi(Model model) {
+    public String oekonomi(Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("total", SS.fetch("total"));
             model.addAttribute("monthly", SS.fetch("monthly"));
@@ -89,42 +90,41 @@ public class MenuController {
             model.addAttribute("employeelist", SS.fetch("employee-top10"));
             model.addAttribute("employee", SS.fetch("top-employee"));
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
-
         return "dashboard/oekonomi";
     }
 
     @GetMapping("/dashboard/kunder")
-    public String kunder(Model model) {
+    public String kunder(Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("customers", US.fetch("customers"));
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/customerlist";
     }
 
     @PostMapping("/dashboard/kunder")
-    public String soegKunde(@RequestParam("search") String search, Model model) {
+    public String soegKunde(@RequestParam("search") String search, Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("customers", userService.customerSearch(search));
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/customerlist";
     }
 
     @GetMapping("/dashboard/kunder/{id}")
-    public String kundeView(@PathVariable("id") int id, Model model) {
+    public String kundeView(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("kunde", US.findById(id));
             model.addAttribute("jobs", JS.customerOffers(id));
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/kundeView";

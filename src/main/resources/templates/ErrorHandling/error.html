@@ -25,7 +25,7 @@
 <img th:src="@{/ErrorCat.png}">
 <br>
 
-<div th:if="${errorCode != null}">
+<div th:if="${errorCode != null or errorCode != 0}">
     <p>SQL Error Code: <span th:text="${errorCode}"></span></p>
 </div>
 

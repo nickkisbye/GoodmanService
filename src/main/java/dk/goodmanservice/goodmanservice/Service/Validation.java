@@ -9,7 +9,7 @@ public class Validation {
     public String validateCase(Case obj) {
         if(obj.getDescription().length() <= 3 || obj.getDescription() == null) {
             return "BESKRIVELSE ER FORKORT, PRØV IGEN.";
-        } else if(obj.getPrice() <= 0 || obj.getPrice() == null) {
+        } else if(obj.getPrice() == null || obj.getPrice() < 1) {
             return "PRIS ER FOR LAV, PRØV IGEN.";
         } else if(obj.getStartDate().length() <= 1 || obj.getStartDate() == null) {
             return "START DATO ER UGYLDIGT, PRØV IGEN.";

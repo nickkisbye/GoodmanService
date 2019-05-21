@@ -37,7 +37,7 @@ public class CaseService implements IService<Case>{
     public String edit(Case obj) throws SQLException {
         if(v.validateCase(obj).equals("1")) {
             CR.edit(obj);
-            return "1";
+            return "2";
         } else {
             return v.validateCase(obj);
         }
