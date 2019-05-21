@@ -23,7 +23,7 @@ public class AppointmentService implements IService<Appointment> {
 
     @Override
     public String create(Appointment obj) throws SQLException {
-        if(obj.getDescription().length() < 1 || obj.getDate().length() < 1) {
+        if(obj.getDescription().length() < 1 || obj.getDate().length() < 1 || obj.getDescription() == null || obj.getDate() == null) {
             return "Error";
         } else {
             System.out.println(obj.getDescription());

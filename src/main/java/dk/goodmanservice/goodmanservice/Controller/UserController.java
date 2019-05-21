@@ -25,7 +25,7 @@ public class UserController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user, HttpSession session, Model model) {
+    public String login(@ModelAttribute User user, HttpSession session, Model model, RedirectAttributes redirect) {
         try {
             if (loginService.login(user)) {
                 session.setAttribute("email", user.getEmail());
@@ -48,31 +48,31 @@ public class UserController {
                 return "index";
             }
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
     }
 
     @PostMapping("/dashboard/brugere/create")
-    public String opretBruger(@ModelAttribute User user, Model model) {
+    public String opretBruger(@ModelAttribute User user, Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("message", US.create(user));
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
     }
 
     @GetMapping("/dashboard/brugere/edit/{id}")
-    public String retBrugerForm(@PathVariable("id") int id, Model model) {
+    public String retBrugerForm(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("user", US.findById(id));
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("roles", US.fetch("roles"));
             model.addAttribute("edit", true);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "/dashboard/brugere";
@@ -85,31 +85,31 @@ public class UserController {
             model.addFlashAttribute("user", US.edit(user));
             model.addFlashAttribute("edit", false);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            model.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
     }
 
     @GetMapping("/dashboard/brugere/delete/{id}")
-    public String sletBruger(@PathVariable("id") int id, Model model) {
+    public String sletBruger(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
         try {
            US.delete(id);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
     }
 
     @GetMapping("/dashboard/brugere")
-    public String brugere(Model model) {
+    public String brugere(Model model, RedirectAttributes redirect) {
         try {
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("roles", US.fetch("roles"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
-            model.addAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/brugere";
