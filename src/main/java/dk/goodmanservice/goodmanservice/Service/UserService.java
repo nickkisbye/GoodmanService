@@ -19,6 +19,9 @@ public class UserService implements IService<User> {
 
     @Autowired
     private IRepository<User> UR;
+
+    @Autowired
+    private UserRepository userRepository;
     
     private ResultSet resultSet;
 
@@ -98,5 +101,26 @@ public class UserService implements IService<User> {
                 user.setZip(resultSet.getInt("zip"));
             }
             return user;
+    }
+
+    public List<User> customerSearch(String search) throws SQLException {
+        resultSet = userRepository.customerSearch(search);
+        List<User> userList = new ArrayList<>();
+
+            while (resultSet.next()) {
+                User users = new User();
+                users.setPhoneNumber(resultSet.getString("phone"));
+                users.setFirstName(resultSet.getString("firstName"));
+                users.setLastName(resultSet.getString("lastName"));
+                users.setEmail(resultSet.getString("email"));
+                users.setAddress(resultSet.getString("address"));
+                users.setRid(resultSet.getInt("fk_role"));
+                users.setRoleName(resultSet.getString("roles.role_name"));
+                users.setLevel(resultSet.getInt("level"));
+                users.setId(resultSet.getInt("id"));
+                userList.add(users);
+            }
+
+        return userList;
     }
 }

@@ -1,20 +1,13 @@
 package dk.goodmanservice.goodmanservice.Controller;
 
 import dk.goodmanservice.goodmanservice.Model.Calculator;
-import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.Message;
 import dk.goodmanservice.goodmanservice.Model.User;
-import dk.goodmanservice.goodmanservice.Service.CalcService;
-import dk.goodmanservice.goodmanservice.Service.IService;
-import dk.goodmanservice.goodmanservice.Service.JobService;
-import dk.goodmanservice.goodmanservice.Service.StatisticService;
+import dk.goodmanservice.goodmanservice.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
@@ -24,6 +17,9 @@ public class MenuController {
 
     @Autowired
     private StatisticService SS;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private IService<Message> MS;
@@ -110,6 +106,17 @@ public class MenuController {
         return "dashboard/customerlist";
     }
 
+    @PostMapping("/dashboard/kunder")
+    public String soegKunde(@RequestParam("search") String search, Model model) {
+        try {
+            model.addAttribute("customers", userService.customerSearch(search));
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "redirect:/error";
+        }
+        return "dashboard/customerlist";
+    }
+
     @GetMapping("/dashboard/kunder/{id}")
     public String kundeView(@PathVariable("id") int id, Model model) {
         try {
@@ -119,7 +126,7 @@ public class MenuController {
             model.addAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
-        return "dashboard/kunderView";
+        return "dashboard/kundeView";
     }
 
     @GetMapping("/beregner")

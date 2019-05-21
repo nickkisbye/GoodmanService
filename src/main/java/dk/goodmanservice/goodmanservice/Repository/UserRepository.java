@@ -100,4 +100,17 @@ public class UserRepository implements IRepository<User> {
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
     }
+
+    public ResultSet customerSearch(String search) throws SQLException {
+        sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE " +
+                "firstName LIKE ? OR email LIKE ? OR address LIKE ? OR phone LIKE ?";
+
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + search + "%");
+        preparedStatement.setString(2, "%" + search + "%");
+        preparedStatement.setString(3, "%" + search + "%");
+        preparedStatement.setString(4, "%" + search + "%");
+
+        return preparedStatement.executeQuery();
+    }
 }
