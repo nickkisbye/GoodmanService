@@ -9,17 +9,37 @@
 <main class="main">
 
     <div th:if="${msg == '1'}" th:remove="tag">
-        <div class="msg bg-lightgreen">
-            <p>DIN OPGAVE ER BLEVET OPRETTET</p>
+        <div class="msg-n bg-lightgreen">
+            <p>OPGAVEN ER BLEVET OPRETTET</p>
         </div>
     </div>
     <div th:if="${msg == '2'}" th:remove="tag">
-        <div class="msg bg-lightgreen">
-            <p>DIN OPGAVE ER BLEVET REDIGERET</p>
+        <div class="msg-n bg-lightgreen">
+            <p>OPGAVEN ER BLEVET REDIGERET</p>
         </div>
     </div>
-    <div th:if="${msg!=null and #strings.length(msg) > 0 and msg!='1' and msg!='2'}" th:remove="tag">
-        <div class="msg bg-lightred">
+    <div th:if="${msg == '3'}" th:remove="tag">
+        <div class="msg-n bg-lightred">
+            <p>OGPAVEN ER BLEVET SLETTET</p>
+        </div>
+    </div>
+    <div th:if="${msg == '4'}" th:remove="tag">
+        <div class="msg-n bg-lightgreen">
+            <p>OPGAVEN ER BLEVET OPDATERET</p>
+        </div>
+    </div>
+    <div th:if="${msg == '5'}" th:remove="tag">
+        <div class="msg-n bg-lightgreen">
+            <p>MEDARBEJDER ER BLEVET TILFØJET</p>
+        </div>
+    </div>
+    <div th:if="${msg == '6'}" th:remove="tag">
+        <div class="msg-n bg-lightred">
+            <p>MEDARBEJDER ER BLEVET FJERNET</p>
+        </div>
+    </div>
+    <div th:if="${msg!=null and #strings.length(msg) > 0 and msg!='1' and msg!='2' and msg!='3' and msg!='4' and msg!='5' and msg!='6'}" th:remove="tag">
+        <div class="msg-n bg-lightred">
             <p th:text="${msg}"></p>
         </div>
     </div>
@@ -117,7 +137,6 @@
                 <select name="employeeId" class="employee-select">
                     <div th:each="e : ${employees}" th:remove="tag">
                         <option th:value="${e.id}"><span th:text="${e.firstName}"></span> <span th:text="${e.lastName}"></span></option>
-
                     </div>
                 </select>
                 <button type="submit" class="tilfoej bg-lightgreen cwhite">Tilføj</button>
@@ -130,7 +149,7 @@
                 <tr th:each="j : ${jobs}">
                     <td><span th:text="${j.employees.firstName}"></span> <span th:text="${j.employees.lastName}"></span></td>
                     <td>
-                        <form th:action="@{/dashboard/TOF/fjernJob}" method="POST" th:object="${Jobs}">
+                        <form th:action="@{/dashboard/TOF/fjernJob/{id}(id=${j.caseId})}" method="POST" th:object="${Jobs}">
                             <input type="hidden" th:value="${j.id}" name="id">
                             <button type="submit" class="bg-lightred float-right">Fjern</button>
                         </form>
@@ -140,13 +159,26 @@
             </table>
         </div>
         <div th:if="${edit}">
-            <form action="/storage/uploadImage" th:object="${Case}" method="post" enctype="multipart/form-data">
-                <input type="file" name="file" multiple >
-                <input type="hidden" th:value="${findById.id}" name="id">
-                <button type="submit">Upload</button>
-            </form>
-            <div th:each="image : ${images}">
-                <img th:src="${image.fileUrl}" width="80" height="80">
+            <div class="container-image-upload">
+                <form action="/storage/uploadImage" th:object="${Case}" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" multiple >
+                    <input type="hidden" th:value="${findById.id}" name="id">
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+        <div th:if="${edit}">
+            <div class="container-images">
+                <div th:each="image : ${images}">
+                    <a th:href="${image.fileUrl}" target="_blank">
+                        <img th:src="${image.fileUrl}" width="175">
+                    </a>
+                    <form th:action="@{/dashboard/TOF/fjernBillede/{id}(id=${findById.id})}" method="POST" th:object="${Image}">
+                        <input type="hidden" name="fileUrl" th:value="${image.fileUrl}">
+                        <input type="hidden" name="fileId" th:value="${image.fileId}">
+                        <button type="submit" class="slet-image-button bg-lightred cwhite">SLET</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -166,16 +198,16 @@
                     <td><span th:text="${case.startDate}"></span></td>
                     <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
                     <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
-                    <td><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
-                    <td>
+                    <td class="width100"><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
+                    <td class="width100">
                         <form th:action="@{/dashboard/TOF/slet/{id}(id=${case.id})}" method="POST" th:object="${Case}">
                             <button type="submit" class="bg-lightred cwhite">Slet</button>
                         </form>
                     </td>
-                    <td>
+                    <td class="width100">
                         <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}" class="redigere cwhite bg-orange">Rediger</a>
                     </td>
-                    <td>
+                    <td class="width100">
                         <form th:action="@{/dashboard/TOF/upgrade/{id}(id=${case.id})}" method="POST" th:object="${Case}">
                             <input type="hidden"         name="description"  placeholder=""    th:value="${case.description}">
                             <input type="hidden"         name="price"        placeholder=""    th:value="${case.price}">
