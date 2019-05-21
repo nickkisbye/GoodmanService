@@ -27,16 +27,21 @@ public class ExpenseService implements IService<Expense> {
     @Override
     public String create(Expense obj) throws SQLException {
         String checkSum = V.validateExpense(obj);
-        if(checkSum.equals("success")) {
+        if(checkSum.equals("1")) {
             ER.create(obj);
+            return "OPRETTET";
         }
         return checkSum;
     }
 
     @Override
     public String edit(Expense obj) throws SQLException {
-        ER.edit(obj);
-        return "success";
+        String checkSum = V.validateExpense(obj);
+        if(checkSum.equals("1")) {
+            ER.edit(obj);
+            return "OPDATERET";
+        }
+        return checkSum;
     }
 
     @Override

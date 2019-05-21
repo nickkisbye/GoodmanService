@@ -19,23 +19,29 @@ public class AppointmentService implements IService<Appointment> {
     @Autowired
     private IRepository<Appointment> AR;
 
+    @Autowired
+    private Validation V;
+
     private ResultSet resultSet;
 
     @Override
     public String create(Appointment obj) throws SQLException {
-        if(obj.getDescription().length() < 1 || obj.getDate().length() < 1 || obj.getDescription() == null || obj.getDate() == null) {
-            return "Error";
-        } else {
-            System.out.println(obj.getDescription());
+        String checkSum = V.validateAppointment(obj);
+        if(checkSum.equals("1")) {
             AR.create(obj);
+            return "OPRETTET";
         }
-        return "success";
+        return checkSum;
     }
 
     @Override
     public String edit(Appointment obj) throws SQLException {
-        AR.edit(obj);
-        return "success";
+        String checkSum = V.validateAppointment(obj);
+        if(checkSum.equals("1")) {
+            AR.edit(obj);
+            return "OPDATERET";
+        }
+        return checkSum;
     }
 
     @Override

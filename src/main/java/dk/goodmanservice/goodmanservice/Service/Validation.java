@@ -8,9 +8,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class Validation {
 
-    /*public String validateAppointment(Appointment obj) {
-
-    }*/
+    public String validateAppointment(Appointment obj) {
+        if(obj.getDescription() == null || obj.getDescription().length() <= 3) {
+            return "BESKRIVELSE ER FOR KORT, PRØV IGEN.";
+        } else if(obj.getDate() == null || obj.getDate().length() <= 1) {
+            return "DATO ER UGYLDIG, PRØV IGEN.";
+        } else if(obj.getTime() == null || obj.getTime().length() <= 1) {
+            return "TIDSPUNKTET ER UGYLDIGT, PRØV IGEN.";
+        }
+        return "1";
+    }
 
     public String validateCase(Case obj) {
         if(obj.getDescription() == null || obj.getDescription().length() <= 3) {
@@ -36,7 +43,7 @@ public class Validation {
         } else if(obj.getDescription() == null || obj.getDescription().length() <= 3) {
             return "BESKRIVELSE ER FOR KORT, PRØV IGEN.";
         }
-        return "success";
+        return "1";
     }
 
     public boolean isNumeric(String number) {
