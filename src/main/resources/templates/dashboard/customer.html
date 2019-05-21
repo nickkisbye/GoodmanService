@@ -32,7 +32,23 @@
         </div>
         <div class="customer-dashboard-item">
             <h2>Faktura</h2>
-            Faktura her
+            <table>
+                <tr>
+                    <th>
+                        Faktura nummer
+                    </th>
+                    <th>
+                        Pris
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <tr th:each="invoice : ${invoices}">
+                    <td th:text="${invoice.id}"></td>
+                    <td th:text="${invoice.price}"></td>
+                    <td><a th:href="@{/dashboard/customer/{id}(id=${invoice.id})}">Se mere</a></td>
+                </tr>
+            </table>
         </div>
     </section>
 </main>

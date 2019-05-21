@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="info : ${invoice}">
+    <p th:text="${info.id}"></p>
+    <p th:text="${info.description}"></p>
+    <p th:text="${info.price}"></p>
+    <p th:text="${info.startDate}"></p>
+    <p th:text="${info.endDate}"></p>
+    <p th:text="${info.customer.firstName}"></p>
+    <p th:text="${info.customer.lastName}"></p>
+    <p th:text="${info.customer.email}"></p>
+    <p th:text="${info.customer.address}"></p>
+    <p th:text="${info.customer.phoneNumber}"></p>
+    <p th:text="${info.customer.city}"></p>
+    <p th:text="${info.customer.zip}"></p>
+</div>
+</body>
+</html>

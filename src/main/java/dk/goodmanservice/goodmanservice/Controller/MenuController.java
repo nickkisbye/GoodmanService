@@ -60,11 +60,23 @@ public class MenuController {
         int id = (int) session.getAttribute("id");
         try {
             model.addAttribute("offers", JS.customerOffers(id));
+            model.addAttribute("invoices", JS.customerInvoice(id));
         } catch (SQLException e) {
             model.addAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "dashboard/customer";
+    }
+
+    @GetMapping("/dashboard/customer/{id}")
+    public String invoiceView(@PathVariable("id") int id, Model model) {
+        try {
+            model.addAttribute("invoice", JS.customerInvoiceById(id));
+        } catch (SQLException e) {
+            model.addAttribute("errorCode", e.getErrorCode());
+            return "redirect:/error";
+        }
+        return "dashboard/viewInvoice";
     }
 
     @GetMapping("/dashboard/oekonomi")

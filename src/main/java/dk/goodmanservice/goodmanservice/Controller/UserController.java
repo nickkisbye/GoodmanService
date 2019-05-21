@@ -37,7 +37,7 @@ public class UserController {
                 session.setAttribute("id", user.getId());
                 session.setAttribute("level", user.getLevel());
 
-                if (user.getRoleName().equals("customer")) {
+                if (user.getRoleName().equals("Kunde")) {
                     return "redirect:/dashboard/customer";
                 } else {
                     return "redirect:/dashboard/employee";

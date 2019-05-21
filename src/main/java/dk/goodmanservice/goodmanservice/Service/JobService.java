@@ -78,4 +78,40 @@ public class JobService {
         }
         return caseList;
     }
+
+    public List<Case> customerInvoiceById(int id) throws SQLException {
+        rs = JR.customerInvoiceById(id);
+        List<Case> caseList = new ArrayList<>();
+        while (rs.next()) {
+            Case c = new Case();
+            User user = new User();
+            c.setId(rs.getInt("id"));
+            c.setDescription(rs.getString("description"));
+            c.setPrice(rs.getInt("price"));
+            c.setStartDate(rs.getString("startDate"));
+            c.setEndDate(rs.getString("endDate"));
+            user.setFirstName(rs.getString("users.firstName"));
+            user.setLastName(rs.getString("users.lastName"));
+            user.setEmail(rs.getString("users.email"));
+            user.setAddress("users.address");
+            user.setPhoneNumber(rs.getString("users.phone"));
+            user.setCity(rs.getString("users.city"));
+            user.setZip(rs.getInt("users.zip"));
+            c.setCustomer(user);
+            caseList.add(c);
+        }
+        return caseList;
+    }
+
+    public List<Case> customerInvoice(int id) throws SQLException {
+        rs = JR.customerInvoice(id);
+        List<Case> caseList = new ArrayList<>();
+        while (rs.next()) {
+            Case c = new Case();
+            c.setId(rs.getInt("id"));
+            c.setPrice(rs.getInt("price"));
+            caseList.add(c);
+        }
+        return caseList;
+    }
 }

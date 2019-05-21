@@ -66,4 +66,22 @@ public class JobRepository {
 
         return preparedStatement.executeQuery();
     }
+
+    public ResultSet customerInvoiceById(int id) throws SQLException {
+        sql = "SELECT * FROM cases INNER JOIN users ON cases.fk_customer = users.id WHERE cases.id = ?";
+
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+
+        return preparedStatement.executeQuery();
+    }
+
+    public ResultSet customerInvoice(int id) throws SQLException {
+        sql = "SELECT id, price, description FROM cases WHERE fk_mode = 3 AND fk_customer = ?";
+
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+
+        return preparedStatement.executeQuery();
+    }
 }
