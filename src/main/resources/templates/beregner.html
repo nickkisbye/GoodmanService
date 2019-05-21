@@ -8,26 +8,45 @@
     <div th:replace="fragments/header :: header"></div>
 </header>
 <main>
-    <section>
-        <div class="section-white calc-page">
+    <section class="section-white calc-page">
+        <div class="container">
+            <div class="head-tekst" style="width: 640px">
+                <p>Beregner</p>
+                <h2>BEREGN ISOLERINGS PRIS</h2>
+            </div>
             <div th:if="${!calcing}" th:remove="tag">
-                <h1>Pris på Isolering</h1><br>
-                <form th:action="@{/beregner}" method="POST">
-                    <label>Hvor mange m^2 skal isoleres?</label><br>
-                    <input type="number" name="mTwo"><br>
-                    <label>Ny Isolering</label><br>
-                    <select name="newIsolering" id="">
-                        <option value="150">150 mm</option>
-                        <option value="200">200 mm</option>
-                        <option value="300">300 mm</option>
-                        <option value="400">400 mm</option>
-                    </select><br>
-                    <button type="submit">Beregn Pris</button>
-                </form>
+                <div class="beregner">
+                    <h3>Loftisolerings beregner</h3>
+                    <p class="p">Beregn prisen på loftisolering og få et svar på hvor meget det koster med det samme.</p>
+
+                    <form th:action="@{/beregner}" method="POST">
+                        <label>Hvor mange m² skal isoleres?</label><br>
+                        <input type="number" name="mTwo" placeholder="m²"><br>
+                        <label>Ny Isolering</label><br>
+                        <select name="newIsolering" id="">
+                            <option value="150">150 mm</option>
+                            <option value="200">200 mm</option>
+                            <option value="300">300 mm</option>
+                            <option value="400">400 mm</option>
+                        </select><br>
+                        <button type="submit">Pris &nbsp;<i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
             </div>
+
             <div th:if="${calcing}" th:remove="tag">
-                <p th:text="${price}"></p>
+
+                <div class="beregner">
+                    <h3>Loftisolerings beregner</h3>
+                    <p>Beregn prisen på loftisolering og få et svar på hvor meget det koster med det samme.</p>
+                    <h4>Estimeret pris efter fradag:</h4>
+                    <h2><span th:text="${price}"></span> kr.</h2>
+                    <p>Du kan med mere eller ny isolering spare en masse penge på opvarmning. Vi anbefaler du snakker med vores eksperter hvis du har nogle spørgsmål:
+                        <a th:href="@{/#kontakt}">Kontakt os.</a></p>
+                </div>
+
             </div>
+
         </div>
 
     </section>

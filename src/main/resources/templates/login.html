@@ -8,20 +8,22 @@
     <div th:replace="fragments/header :: header"></div>
 </header>
 <main>
-    <section>
-        <div class="section-white login-page">
+
+    <section class="login-page">
+        <div class="header-fake">
+
+        </div>
+        <div class="aside-login">
+            <h2>Login</h2>
             <form action="/login" method="POST">
+                <label>Email</label><br>
                 <input type="text" name="email" placeholder="email"><br>
+                <label>Password</label><br>
                 <input type="password" name="password" placeholder="password"><br>
-                <button type="submit">ok</button>
+                <button type="submit">Login &nbsp;<i class="fas fa-arrow-right"></i></button>
             </form>
         </div>
     </section>
-
-
 </main>
-<footer>
-    <div th:replace="fragments/footer :: footer"></div>
-</footer>
 </body>
 </html>

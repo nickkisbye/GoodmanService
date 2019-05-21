@@ -258,16 +258,101 @@
     }
   }
 }
-
+.header-fake {
+  width: 100%;
+  background-color: rgba(24, 24, 24, 0.95);
+  height: 102px;
+}
 .login-page {
-  margin-top: 100px;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: url("bg.jpg") no-repeat center center fixed;
+  .aside-login {
+    width: 33%;
+    min-width: 320px;
+    float: right;
+    height: 100%;
+    padding: 270px 50px;
+    background-color: rgba(24, 24, 24, 0.95);
+    h2 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+    label {
+      line-height: 40px;
+      font-size: 20px;
+      color: white;
+    }
+    input {
+      width: 100%;
+      padding: 10px 15px;
+      border: none;
+      border-bottom: 1px solid #6f6f6f;
+      margin-bottom: 30px;
+      font-size: 20px;
+      background-color: rgba(24, 24, 24, 0);
+      color: white;
+    }
+    button {
+      background: #c2171d;
+      color: white;
+      border: none;
+      padding: 20px 15px;
+      float: right;
+      font-size: 20px;
+    }
+  }
 }
 .calc-page {
   margin-top: 100px;
   display: flex;
   justify-content: center;
 }
-
+.beregner {
+  margin: 0 auto;
+  font-size: 20px;
+  width: 640px;
+  h3 {
+    font-size: 35px;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    line-height: 90px;
+    font-size: 50px;
+  }
+  p {
+    line-height: 30px;
+    font-size: 20px;
+    font-family: Proxima-Nova-Regular;
+  }
+  .p {
+    margin-bottom: 25px;
+  }
+  label {
+    line-height: 50px;
+  }
+  input, select {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 1px solid #d8d8d8;
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #8c8c8c;
+    ::placeholder {
+      color: #cdcdcd;
+    }
+  }
+  button {
+    background: #c2171d;
+    color: white;
+    border: none;
+    padding: 20px 15px;
+    width: 20%;
+    margin-left: 80%;
+    font-size: 20px;
+  }
+}
 
