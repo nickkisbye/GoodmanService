@@ -8,6 +8,7 @@
 </header>
 <main class="main">
 
+    <!--Success og fejl meddelse-->
     <th:block th:switch="${msg}">
         <div th:case="'OPGAVEN ER BLEVET OPRETTET'" class="msg-n bg-lightgreen">
             <p th:text="${msg}"></p>
@@ -21,6 +22,9 @@
         <div th:case="'MEDARBEJDER ER BLEVET TILFØJET'" class="msg-n bg-lightgreen">
             <p th:text="${msg}"></p>
         </div>
+        <div th:case="'BILLEDET ER BLEVET TILFØJET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
         <div th:case="*" class="msg-n bg-lightred">
             <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
                 <p th:text="${msg}"></p>
@@ -28,38 +32,6 @@
         </div>
     </th:block>
 
-
-    <!--<div th:if="${msg == 'OPGAVEN ER BLEVET OPRETTET' or msg == 'OPGAVEN ER BLEVET REDIGERET'}" th:remove="tag">
-        <div class="msg-n bg-lightgreen">
-            <p th:text="${msg}"></p>
-        </div>
-    </div>
-    <div th:if="${msg == '3'}" th:remove="tag">
-        <div class="msg-n bg-lightred">
-            <p>OGPAVEN ER BLEVET SLETTET</p>
-        </div>
-    </div>
-    <div th:if="${msg == '4'}" th:remove="tag">
-        <div class="msg-n bg-lightgreen">
-            <p>OPGAVEN ER BLEVET OPDATERET</p>
-        </div>
-    </div>
-    <div th:if="${msg == '5'}" th:remove="tag">
-        <div class="msg-n bg-lightgreen">
-            <p>MEDARBEJDER ER BLEVET TILFØJET</p>
-        </div>
-    </div>
-    <div th:if="${msg == '6'}" th:remove="tag">
-        <div class="msg-n bg-lightred">
-            <p>MEDARBEJDER ER BLEVET FJERNET</p>
-        </div>
-    </div>
-    <div th:if="${msg!=null and #strings.length(msg) > 0 and msg!='1' and msg!='2' and msg!='3' and msg!='4' and msg!='5' and msg!='6'}" th:remove="tag">
-        <div class="msg-n bg-lightred">
-            <p th:text="${msg}"></p>
-        </div>
-    </div>
--->
     <div class="mini-menu">
         <a th:href="@{/dashboard/employee}">
             <div class="bg-white">
