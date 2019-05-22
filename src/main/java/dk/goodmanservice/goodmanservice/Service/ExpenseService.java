@@ -39,7 +39,7 @@ public class ExpenseService implements IService<Expense> {
         String checkSum = V.validateExpense(obj);
         if(checkSum.equals("1")) {
             ER.edit(obj);
-            return "OPDATERET";
+            return "REDIGERET";
         }
         return checkSum;
     }

@@ -39,7 +39,7 @@ public class AppointmentService implements IService<Appointment> {
         String checkSum = V.validateAppointment(obj);
         if(checkSum.equals("1")) {
             AR.edit(obj);
-            return "OPDATERET";
+            return "REDIGERET";
         }
         return checkSum;
     }
