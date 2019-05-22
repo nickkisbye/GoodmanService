@@ -139,8 +139,9 @@ public class CaseController {
     @PostMapping("/dashboard/TOF/redigere")
     public String editTOFFORM(@ModelAttribute Case obj, RedirectAttributes ra) {
         try {
-            if(CS.edit(obj).equals("OPGAVEN ER BLEVET REDIGERET")) {
-                ra.addFlashAttribute("msg", "OPGAVEN ER BLEVET REDIGERET");
+            String msg = CS.edit(obj);
+            if(msg.equals("OPGAVEN ER BLEVET REDIGERET")) {
+                ra.addFlashAttribute("msg", msg);
                 ra.addFlashAttribute("edit", false);
                 switch (obj.getMode()) {
                     case 1:
