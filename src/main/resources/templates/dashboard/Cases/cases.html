@@ -22,7 +22,9 @@
             <p th:text="${msg}"></p>
         </div>
         <div th:case="*" class="msg-n bg-lightred">
-            <p th:text="${msg}"></p>
+            <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
+                <p th:text="${msg}"></p>
+            </div>
         </div>
     </th:block>
 

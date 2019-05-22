@@ -107,12 +107,11 @@ table {
   width: 100%;
   line-height: 50px;
   margin-top: -20px;
-  padding: 0 20px;
-  margin-bottom: 40px;
-  border: 1px solid rgba(0, 0, 0, 0.0625); }
+  padding: 0 20px; }
   .msg-n p {
     font-size: 20px;
-    color: white; }
+    color: white;
+    margin-bottom: 40px; }
 
 * {
   padding: 0;
