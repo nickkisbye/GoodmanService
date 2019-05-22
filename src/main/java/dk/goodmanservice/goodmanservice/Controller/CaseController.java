@@ -140,9 +140,9 @@ public class CaseController {
     public String editTOFFORM(@ModelAttribute Case obj, RedirectAttributes ra) {
         try {
             String msg = CS.edit(obj);
+            ra.addFlashAttribute("msg", msg);
+
             if(msg.equals("OPGAVEN ER BLEVET REDIGERET")) {
-                ra.addFlashAttribute("msg", msg);
-                ra.addFlashAttribute("edit", false);
                 switch (obj.getMode()) {
                     case 1:
                         return "redirect:/dashboard/tilbud";
@@ -154,10 +154,8 @@ public class CaseController {
                         return "redirect:/dashboard/no";
                 }
             } else {
-                ra.addFlashAttribute("msg", CS.edit(obj));
                 return "redirect:/dashboard/TOF/redigere/"+obj.getId();
             }
-
         } catch (SQLException e) {
             ra.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
