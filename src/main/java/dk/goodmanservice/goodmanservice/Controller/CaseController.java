@@ -138,8 +138,8 @@ public class CaseController {
     @PostMapping("/dashboard/TOF/redigere")
     public String editTOFFORM(@ModelAttribute Case obj, RedirectAttributes ra) {
         try {
-            if(CS.edit(obj) == "1") {
-                ra.addFlashAttribute("msg", "2");
+            if(CS.edit(obj).equals("OPGAVEN ER BLEVET REDIGERET")) {
+                ra.addFlashAttribute("msg", "OPGAVEN ER BLEVET REDIGERET");
                 ra.addFlashAttribute("edit", false);
                 switch (obj.getMode()) {
                     case 1:
@@ -168,7 +168,7 @@ public class CaseController {
         try {
             ra.addFlashAttribute("upgrade", CS.edit(obj));
             ra.addFlashAttribute("edit", false);
-
+            ra.addFlashAttribute("msg", "OPGAVEN ER BLEVET OPDATERET");
             switch (CS.findById(id).getMode()) {
                 case 1:
                     return "redirect:/dashboard/tilbud";
@@ -186,8 +186,9 @@ public class CaseController {
     }
 
     @PostMapping("/dashboard/TOF/slet/{id}")
-    public String deleteTOF(@PathVariable("id") int id, RedirectAttributes redirect) {
+    public String deleteTOF(@PathVariable("id") int id, RedirectAttributes ra) {
         try {
+            ra.addFlashAttribute("msg", "OPGAVEN ER BLEVET SLETTET");
             switch (CS.findById(id).getMode()) {
                 case 1:
                     CS.delete(id);
@@ -202,7 +203,7 @@ public class CaseController {
                     return "redirect:/dashboard/error";
             }
         } catch (SQLException e) {
-            redirect.addFlashAttribute("errorCode", e.getErrorCode());
+            ra.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
 
@@ -233,7 +234,7 @@ public class CaseController {
     public String createJob(@ModelAttribute Jobs jobs, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("error", JS.createJob(jobs));
-            ra.addFlashAttribute("msg", "5");
+            ra.addFlashAttribute("msg", "MEDARBEJDER ER BLEVET TILFØJET");
             return "redirect:/dashboard/TOF/redigere/"+jobs.getCaseId();
         } catch (SQLException e) {
             ra.addFlashAttribute("errorCode", e.getErrorCode());
@@ -244,7 +245,7 @@ public class CaseController {
     public String removeJob(@PathVariable("id") int caseId, @ModelAttribute Jobs jobs, RedirectAttributes ra) {
         try {
             ra.addFlashAttribute("error", JS.deleteJob(jobs.getId()));
-            ra.addFlashAttribute("msg", "6");
+            ra.addFlashAttribute("msg", "MEDARBEJDER ER BLEVET FJERNET");
             return "redirect:/dashboard/TOF/redigere/"+ caseId;
         } catch (SQLException e) {
             ra.addFlashAttribute("errorCode", e.getErrorCode());

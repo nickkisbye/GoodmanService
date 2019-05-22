@@ -8,14 +8,28 @@
 </header>
 <main class="main">
 
-    <div th:if="${msg == '1'}" th:remove="tag">
-        <div class="msg-n bg-lightgreen">
-            <p>OPGAVEN ER BLEVET OPRETTET</p>
+    <th:block th:switch="${msg}">
+        <div th:case="'OPGAVEN ER BLEVET OPRETTET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
         </div>
-    </div>
-    <div th:if="${msg == '2'}" th:remove="tag">
+        <div th:case="'OPGAVEN ER BLEVET REDIGERET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="'OPGAVEN ER BLEVET OPDATERET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="'MEDARBEJDER ER BLEVET TILFØJET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="*" class="msg-n bg-lightred">
+            <p th:text="${msg}"></p>
+        </div>
+    </th:block>
+
+
+    <!--<div th:if="${msg == 'OPGAVEN ER BLEVET OPRETTET' or msg == 'OPGAVEN ER BLEVET REDIGERET'}" th:remove="tag">
         <div class="msg-n bg-lightgreen">
-            <p>OPGAVEN ER BLEVET REDIGERET</p>
+            <p th:text="${msg}"></p>
         </div>
     </div>
     <div th:if="${msg == '3'}" th:remove="tag">
@@ -43,25 +57,25 @@
             <p th:text="${msg}"></p>
         </div>
     </div>
-
+-->
     <div class="mini-menu">
         <a th:href="@{/dashboard/employee}">
-            <div>
+            <div class="bg-white">
                 TILBAGE
             </div>
         </a>
         <a th:href="@{/dashboard/tilbud}">
-            <div>
+            <div class="bg-white">
                 TILBUD
             </div>
         </a>
         <a th:href="@{/dashboard/opgaver}">
-            <div>
+            <div class="bg-orange cwhite">
                 OGPAVER
             </div>
         </a>
         <a th:href="@{/dashboard/faerdigeopgaver}">
-            <div>
+            <div class="bg-white">
                 FÆRDIGE OPGAVER
             </div>
         </a>
@@ -69,7 +83,7 @@
 
     <div class="container">
 
-        <div th:if="${!edit}" class="container-grid">
+        <div th:if="${!edit and session.level > 40}" class="container-grid">
             <div class="container-header bg-orange">
                 <h1>Opret ny opgave</h1>
             </div>
@@ -99,7 +113,7 @@
             </form>
         </div>
 
-        <div th:if="${edit}" class="container-grid">
+        <div th:if="${edit and session.level > 40}" class="container-grid">
             <h1>Redigere opgaven</h1>
             <form th:action="@{/dashboard/TOF/redigere}" method="POST" th:object="${Case}">
                 <input type="hidden" th:value="${findById.id}" name="id">
@@ -131,7 +145,7 @@
             </form>
         </div>
 
-        <div th:if="${edit}" class="container-grid">
+        <div th:if="${edit and session.level > 40}" class="container-grid">
             <form th:action="@{/dashboard/TOF/NytJob}" method="POST" th:object="${Jobs}">
                 <input type="hidden" th:value="${findById.id}" name="caseId">
                 <select name="employeeId" class="employee-select">
@@ -158,7 +172,7 @@
                 </tr>
             </table>
         </div>
-        <div th:if="${edit}">
+        <div th:if="${edit and session.level > 20}">
             <div class="container-image-upload">
                 <form action="/storage/uploadImage" th:object="${Case}" method="post" enctype="multipart/form-data">
                     <input type="file" name="file" multiple >
@@ -167,17 +181,12 @@
                 </form>
             </div>
         </div>
-        <div th:if="${edit}">
+        <div th:if="${edit and session.level > 20}">
             <div class="container-images">
                 <div th:each="image : ${images}">
                     <a th:href="${image.fileUrl}" target="_blank">
                         <img th:src="${image.fileUrl}" width="175">
                     </a>
-                    <form th:action="@{/dashboard/TOF/fjernBillede/{id}(id=${findById.id})}" method="POST" th:object="${Image}">
-                        <input type="hidden" name="fileUrl" th:value="${image.fileUrl}">
-                        <input type="hidden" name="fileId" th:value="${image.fileId}">
-                        <button type="submit" class="slet-image-button bg-lightred cwhite">SLET</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -190,37 +199,53 @@
                 <th>Kunde navn</th>
                 <th></th>
                 <th></th>
-                <th></th>
-                <th></th>
+                <th th:if="${session.level > 40}"></th>
+                <th th:if="${session.level > 40}"></th>
+
             </tr>
-            <div th:each="case : ${case}" th:remove="tag">
-                <tr>
-                    <td><span th:text="${case.startDate}"></span></td>
-                    <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
-                    <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
-                    <td class="width100"><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
-                    <td class="width100">
-                        <form th:action="@{/dashboard/TOF/slet/{id}(id=${case.id})}" method="POST" th:object="${Case}">
-                            <button type="submit" class="bg-lightred cwhite">Slet</button>
-                        </form>
-                    </td>
-                    <td class="width100">
-                        <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}" class="redigere cwhite bg-orange">Rediger</a>
-                    </td>
-                    <td class="width100">
-                        <form th:action="@{/dashboard/TOF/upgrade/{id}(id=${case.id})}" method="POST" th:object="${Case}">
-                            <input type="hidden"         name="description"  placeholder=""    th:value="${case.description}">
-                            <input type="hidden"         name="price"        placeholder=""    th:value="${case.price}">
-                            <input type="hidden"         name="startDate"    placeholder=""    th:value="${case.startDate}">
-                            <input type="hidden"         name="endDate"      placeholder=""    th:value="${case.endDate}">
-                            <input type="hidden"         name="startTime"    placeholder=""    th:value="${case.startTime}">
-                            <input type="hidden"         name="endTime"      placeholder=""    th:value="${case.endTime}">
-                            <input type="hidden"         name="customerId"   placeholder=""    th:value="${case.customer.id}">
-                            <input type="hidden"         name="mode"         placeholder=""    th:value="3">
-                            <button type="submit" class="bg-lightgreen cwhite">FÆRDIG</button>
-                        </form>
-                    </td>
-                </tr>
+            <div th:if="${session.level < 40 and session.level > 20}" th:remove="tag">
+                <div th:each="case : ${case}" th:remove="tag">
+                    <tr>
+                        <td><span th:text="${case.startDate}"></span></td>
+                        <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
+                        <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
+                        <td class="width100"><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
+                        <td class="width100">
+                            <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}" class="redigere cwhite bg-orange">Tilføj Billede</a>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+            <div th:if="${session.level > 40}" th:remove="tag">
+                <div th:each="case : ${case}" th:remove="tag">
+                    <tr>
+                        <td><span th:text="${case.startDate}"></span></td>
+                        <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
+                        <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
+                        <td class="width100"><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
+                        <td class="width100">
+                            <form th:action="@{/dashboard/TOF/slet/{id}(id=${case.id})}" method="POST" th:object="${Case}">
+                                <button type="submit" class="bg-lightred cwhite">Slet</button>
+                            </form>
+                        </td>
+                        <td class="width100">
+                            <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}" class="redigere cwhite bg-orange">Rediger</a>
+                        </td>
+                        <td class="width100">
+                            <form th:action="@{/dashboard/TOF/upgrade/{id}(id=${case.id})}" method="POST" th:object="${Case}">
+                                <input type="hidden"         name="description"  placeholder=""    th:value="${case.description}">
+                                <input type="hidden"         name="price"        placeholder=""    th:value="${case.price}">
+                                <input type="hidden"         name="startDate"    placeholder=""    th:value="${case.startDate}">
+                                <input type="hidden"         name="endDate"      placeholder=""    th:value="${case.endDate}">
+                                <input type="hidden"         name="startTime"    placeholder=""    th:value="${case.startTime}">
+                                <input type="hidden"         name="endTime"      placeholder=""    th:value="${case.endTime}">
+                                <input type="hidden"         name="customerId"   placeholder=""    th:value="${case.customer.id}">
+                                <input type="hidden"         name="mode"         placeholder=""    th:value="3">
+                                <button type="submit" class="bg-lightgreen cwhite">FÆRDIG</button>
+                            </form>
+                        </td>
+                    </tr>
+                </div>
             </div>
         </table>
     </div>

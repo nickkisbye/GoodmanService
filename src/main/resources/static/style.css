@@ -711,3 +711,7 @@ body {
 .bg-grey {
   background: #888888;
 }
+
+.bg-white {
+  background: white;
+}
