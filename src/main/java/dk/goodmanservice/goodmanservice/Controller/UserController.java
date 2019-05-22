@@ -56,7 +56,7 @@ public class UserController {
     @PostMapping("/dashboard/brugere/create")
     public String opretBruger(@ModelAttribute User user, Model model, RedirectAttributes redirect) {
         try {
-            model.addAttribute("message", US.create(user));
+            redirect.addFlashAttribute("msg", US.create(user));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";

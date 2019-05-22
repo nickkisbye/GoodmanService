@@ -9,7 +9,7 @@ public class User {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private int zip;
+    private Integer zip;
     private String city;
     private int rid;
     private String roleName;
@@ -98,11 +98,11 @@ public class User {
         return level;
     }
 
-    public int getZip() {
+    public Integer getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(Integer zip) {
         this.zip = zip;
     }
 
