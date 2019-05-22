@@ -79,13 +79,16 @@ public class UserController {
     }
 
     @PostMapping("/dashboard/brugere/edit/")
-    public String retBruger(@ModelAttribute User user, RedirectAttributes model) {
-        System.out.println(user.getRid());
+    public String retBruger(@ModelAttribute User user, RedirectAttributes redirect) {
         try {
-            model.addFlashAttribute("user", US.edit(user));
-            model.addFlashAttribute("edit", false);
+            String msg = US.edit(user);
+            redirect.addFlashAttribute("msg", msg);
+
+            if(!msg.equals("REDIGERET")) {
+                return "redirect:/dashboard/brugere/edit/" + user.getId();
+            }
         } catch (SQLException e) {
-            model.addFlashAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
