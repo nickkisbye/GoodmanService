@@ -99,6 +99,7 @@ public class CaseController {
     @PostMapping("/dashboard/TOF/fjernBillede/{id}")
     public String deleteImage(@ModelAttribute Image image, @PathVariable("id") int id, RedirectAttributes redirect) {
         try {
+            redirect.addFlashAttribute("msg", "BILLEDET ER BLEVET FJERNET");
             BS.deleteFileFromS3Bucket(image.getFileUrl(), image.getFileId());
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
