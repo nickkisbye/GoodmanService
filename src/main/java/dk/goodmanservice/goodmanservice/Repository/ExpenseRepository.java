@@ -13,6 +13,7 @@ public class ExpenseRepository implements IRepository<Expense> {
 
     private Connection con;
     private PreparedStatement preparedStatement;
+    private String sql;
 
     public ExpenseRepository() throws SQLException {
             this.con = DriverManager.getConnection(
@@ -23,7 +24,8 @@ public class ExpenseRepository implements IRepository<Expense> {
 
     @Override
     public void create(Expense obj) throws SQLException {
-        String sql = "INSERT INTO expenses (price, description, paid, fk_employee) VALUES (?, ?, ?, ?)";
+        sql = "INSERT INTO expenses (price, description, paid, fk_employee) " +
+                "VALUES (?, ?, ?, ?)";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, obj.getPrice());
         preparedStatement.setString(2, obj.getDescription());
@@ -34,7 +36,9 @@ public class ExpenseRepository implements IRepository<Expense> {
 
     @Override
     public void edit(Expense obj) throws SQLException {
-        String sql = "UPDATE expenses SET price=?, description=?, paid=? WHERE id = '" + obj.getId() + "'";
+        sql = "UPDATE expenses " +
+                "SET price=?, description=?, paid=? " +
+                "WHERE id = '" + obj.getId() + "'";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, obj.getPrice());
         preparedStatement.setString(2, obj.getDescription());
@@ -44,7 +48,8 @@ public class ExpenseRepository implements IRepository<Expense> {
 
     @Override
     public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM expenses WHERE id = ?";
+        sql = "DELETE FROM expenses " +
+                "WHERE id = ?";
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
@@ -53,7 +58,7 @@ public class ExpenseRepository implements IRepository<Expense> {
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
-        String sql = "SELECT expenses.*, users.firstName, users.lastName " +
+        sql = "SELECT expenses.*, users.firstName, users.lastName " +
                 "FROM expenses " +
                 "INNER JOIN users ON expenses.fk_employee = users.id " +
                 "ORDER BY expenses.price";
@@ -64,7 +69,8 @@ public class ExpenseRepository implements IRepository<Expense> {
 
     @Override
     public ResultSet findById(int id) throws SQLException {
-        String sql = "SELECT * FROM expenses WHERE id = ?";
+        sql = "SELECT * FROM expenses " +
+                "WHERE id = ?";
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);

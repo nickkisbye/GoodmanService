@@ -29,7 +29,8 @@ public class CaseRepository implements IRepository<Case> {
     @Override
     public void create(Case obj) throws SQLException {
 
-        sql = "INSERT INTO cases (description, price, creationDate, startDate, endDate, startTime, endTime, fk_mode, fk_customer) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        sql = "INSERT INTO cases (description, price, creationDate, startDate, endDate, startTime, endTime, fk_mode, fk_customer) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Calendar cal = Calendar.getInstance();
         preparedStatement = con.prepareStatement(sql);
@@ -48,7 +49,9 @@ public class CaseRepository implements IRepository<Case> {
     @Override
     public void edit(Case obj) throws SQLException {
 
-        sql = "UPDATE cases SET description=?, price=?, startDate=?, endDate=?, startTime=?, endTime=?, fk_mode=?, fk_customer=? WHERE id = '" + obj.getId() + "'";
+        sql = "UPDATE cases " +
+                "SET description=?, price=?, startDate=?, endDate=?, startTime=?, endTime=?, fk_mode=?, fk_customer=? " +
+                "WHERE id = '" + obj.getId() + "'";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1, obj.getDescription());
@@ -64,7 +67,8 @@ public class CaseRepository implements IRepository<Case> {
 
     @Override
     public void delete(int id) throws SQLException {
-        sql = "DELETE FROM cases WHERE id=?";
+        sql = "DELETE FROM cases " +
+                "WHERE id=?";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
@@ -73,25 +77,19 @@ public class CaseRepository implements IRepository<Case> {
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
+        sql = "SELECT * FROM cases " +
+                "LEFT JOIN users ON cases.fk_customer = users.id " +
+                "LEFT JOIN roles ON users.fk_role = roles.id";
 
         switch (option) {
             case "offer":
-                sql = "SELECT * FROM cases " +
-                        "LEFT JOIN users ON cases.fk_customer = users.id " +
-                        "LEFT JOIN roles ON users.fk_role = roles.id " +
-                        "WHERE fk_mode = 1";
+                sql += " WHERE fk_mode = 1";
                 break;
             case "cases":
-                sql = "SELECT * FROM cases " +
-                        "LEFT JOIN users ON cases.fk_customer = users.id " +
-                        "LEFT JOIN roles ON users.fk_role = roles.id " +
-                        "WHERE fk_mode = 2";
+                sql += " WHERE fk_mode = 2";
                 break;
             case "finished":
-                sql = "SELECT * FROM cases " +
-                        "LEFT JOIN users ON cases.fk_customer = users.id " +
-                        "LEFT JOIN roles ON users.fk_role = roles.id " +
-                        "WHERE fk_mode = 3";
+                sql += " WHERE fk_mode = 3";
                 break;
         }
 
@@ -101,7 +99,9 @@ public class CaseRepository implements IRepository<Case> {
 
     @Override
     public ResultSet findById(int id) throws SQLException {
-        sql = "SELECT * FROM cases INNER JOIN users ON cases.fk_customer = users.id WHERE cases.id = ?";
+        sql = "SELECT * FROM cases " +
+                "INNER JOIN users ON cases.fk_customer = users.id " +
+                "WHERE cases.id = ?";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);

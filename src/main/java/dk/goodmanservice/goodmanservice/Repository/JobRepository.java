@@ -22,7 +22,8 @@ public class JobRepository {
     }
 
     public void createJob(Jobs obj) throws SQLException {
-        sql = "INSERT INTO junc_jobs (fk_case, fk_employee) VALUES (?, ?)";
+        sql = "INSERT INTO junc_jobs (fk_case, fk_employee) " +
+                "VALUES (?, ?)";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, obj.getCaseId());
         preparedStatement.setInt(2, obj.getEmployeeId());
@@ -41,7 +42,8 @@ public class JobRepository {
     }
 
     public void deleteJob(int id) throws SQLException {
-        sql = "DELETE FROM junc_jobs WHERE id=?";
+        sql = "DELETE FROM junc_jobs " +
+                "WHERE id=?";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
@@ -59,7 +61,9 @@ public class JobRepository {
     }
 
     public ResultSet customerOffers(int id) throws SQLException {
-        sql = "SELECT id, description, price, startDate FROM cases WHERE fk_customer = ?";
+        sql = "SELECT id, description, price, startDate " +
+                "FROM cases " +
+                "WHERE fk_customer = ?";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
@@ -68,7 +72,9 @@ public class JobRepository {
     }
 
     public ResultSet customerInvoiceById(int id) throws SQLException {
-        sql = "SELECT * FROM cases INNER JOIN users ON cases.fk_customer = users.id WHERE cases.id = ?";
+        sql = "SELECT * FROM cases " +
+                "INNER JOIN users ON cases.fk_customer = users.id " +
+                "WHERE cases.id = ?";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
@@ -77,7 +83,9 @@ public class JobRepository {
     }
 
     public ResultSet customerInvoice(int id) throws SQLException {
-        sql = "SELECT id, price, description FROM cases WHERE fk_mode = 3 AND fk_customer = ?";
+        sql = "SELECT id, price, description " +
+                "FROM cases " +
+                "WHERE fk_mode = 3 AND fk_customer = ?";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);

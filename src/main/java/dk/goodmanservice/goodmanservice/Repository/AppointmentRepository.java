@@ -51,7 +51,8 @@ public class AppointmentRepository implements IRepository<Appointment> {
 
     @Override
     public void delete(int id) throws SQLException {
-        sql = "DELETE FROM appointments WHERE id = ?";
+        sql = "DELETE FROM appointments " +
+                "WHERE id = ?";
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);

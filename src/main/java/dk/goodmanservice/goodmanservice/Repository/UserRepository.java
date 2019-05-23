@@ -63,24 +63,25 @@ public class UserRepository implements IRepository<User> {
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
+        sql = "SELECT * FROM users " +
+                "INNER JOIN roles ON users.fk_role = roles.id";
         switch (option) {
             case "all":
-                sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id";
-                break;
-            case "employees":
-                sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE fk_role=2";
                 break;
             case "customers":
-                sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE fk_role=1";
+                sql += " WHERE fk_role=1";
                 break;
-            case "boss":
-                sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE fk_role=4";
+            case "employees":
+                sql += " WHERE fk_role=2";
                 break;
             case "manager":
-                sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE fk_role=3";
+                sql += " WHERE fk_role=3";
+                break;
+            case "boss":
+                sql += " WHERE fk_role=4";
                 break;
             case "allEmployees":
-                sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE fk_role=2 OR fk_role=3 OR fk_role=4";
+                sql += " WHERE fk_role=2 OR fk_role=3 OR fk_role=4";
             break;
             case "roles":
                 sql = "SELECT * FROM roles";
@@ -101,8 +102,12 @@ public class UserRepository implements IRepository<User> {
     }
 
     public ResultSet customerSearch(String search) throws SQLException {
-        sql = "SELECT * FROM users INNER JOIN roles ON users.fk_role = roles.id WHERE " +
-                "firstName LIKE ? OR email LIKE ? OR address LIKE ? OR phone LIKE ?";
+        sql = "SELECT * FROM users " +
+                "INNER JOIN roles ON users.fk_role = roles.id " +
+                "WHERE firstName LIKE ? " +
+                "OR email LIKE ? " +
+                "OR address LIKE ? " +
+                "OR phone LIKE ?";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1, "%" + search + "%");

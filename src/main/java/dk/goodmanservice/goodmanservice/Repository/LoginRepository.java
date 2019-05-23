@@ -19,8 +19,9 @@ public class LoginRepository {
     }
 
     public ResultSet login(User obj) throws SQLException {
-        String sql = "SELECT * FROM users INNER JOIN roles " +
-                "ON users.fk_role = roles.id WHERE email=? AND password=md5(?)";
+        String sql = "SELECT * FROM users " +
+                "INNER JOIN roles ON users.fk_role = roles.id " +
+                "WHERE email=? AND password=md5(?)";
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getEmail());
             preparedStatement.setString(2, obj.getPassword());

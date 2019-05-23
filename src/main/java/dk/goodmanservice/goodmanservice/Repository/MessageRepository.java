@@ -27,7 +27,8 @@ public class MessageRepository implements IRepository<Message> {
 
     @Override
     public void create(Message message) throws SQLException {
-        sql = "INSERT INTO posts (msg, fk_user, created_at) VALUES (?,?,?)";
+        sql = "INSERT INTO posts (msg, fk_user, created_at) " +
+                "VALUES (?,?,?)";
 
         Calendar calender = Calendar.getInstance();
 
@@ -45,7 +46,8 @@ public class MessageRepository implements IRepository<Message> {
 
     @Override
     public void delete(int id) throws SQLException {
-        sql = "DELETE FROM posts WHERE id=?";
+        sql = "DELETE FROM posts " +
+                "WHERE id=?";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
@@ -53,13 +55,11 @@ public class MessageRepository implements IRepository<Message> {
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
-        switch (option) {
-            case "all":
-                sql = "SELECT * FROM posts INNER JOIN users ON posts.fk_user = users.id";
-                break;
-            case "latest-10":
-                sql = "SELECT * FROM posts INNER JOIN users ON posts.fk_user = users.id ORDER BY posts.id DESC LIMIT 10";
-                break;
+        sql = "SELECT * FROM posts " +
+                "INNER JOIN users ON posts.fk_user = users.id";
+
+        if(option.equals("latest-10")) {
+            sql += " ORDER BY posts.id DESC LIMIT 10";
         }
         preparedStatement = con.prepareStatement(sql);
         return preparedStatement.executeQuery();

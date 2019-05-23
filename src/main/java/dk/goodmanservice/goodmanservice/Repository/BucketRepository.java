@@ -18,7 +18,8 @@ public class BucketRepository {
     }
 
     public void insertImage(String url, int id) throws SQLException {
-        String sql = "INSERT INTO img (image, fk_cases) VALUES (?,?)";
+        String sql = "INSERT INTO img (image, fk_cases) " +
+                "VALUES (?,?)";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1, url);
         preparedStatement.setInt(2, id);
@@ -26,14 +27,17 @@ public class BucketRepository {
     }
 
     public ResultSet fetchImages(int id) throws SQLException {
-        String sql = "SELECT image, id from img WHERE fk_cases=?";
+        String sql = "SELECT image, id " +
+                "from img " +
+                "WHERE fk_cases=?";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         return preparedStatement.executeQuery();
     }
 
     public void deleteImage(int id) throws SQLException {
-        String sql = "DELETE FROM img WHERE id=?";
+        String sql = "DELETE FROM img " +
+                "WHERE id=?";
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
