@@ -57,10 +57,10 @@
                     <label>By & Postnummer</label>
                     <div class="flex">
                         <input type="text" placeholder="By" name="city" class="date">
-                        <input type="text" placeholder="Postnummer" name="zip" class="time">
+                        <input type="number" placeholder="Postnummer" name="zip" class="time">
                     </div>
                     <label>Telefon Nr.</label>
-                    <input type="text" placeholder="Telefon Nr." name="phoneNumber">
+                    <input type="tel" placeholder="Telefon Nr." name="phoneNumber">
                     <label>Kodeord</label>
                     <input type="password" placeholder="Kodeord" name="password">
                     <label>Rolle</label>
@@ -71,9 +71,24 @@
                 </form>
             </div>
 
+            <br>
+            <th:block th:switch="${msg}">
+                <div th:case="'OPRETTET'" class="msg-n bg-lightgreen nomargin">
+                    <p th:text="${msg}"></p>
+                </div>
+                <div th:case="'REDIGERET'" class="msg-n bg-lightgreen nomargin">
+                    <p th:text="${msg}"></p>
+                </div>
+                <div th:case="*" class="msg-n bg-lightred nomargin">
+                    <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
+                        <p th:text="${msg}"></p>
+                    </div>
+                </div>
+            </th:block>
 
         </section>
     </div>
+
     <div class="container-table">
         <table>
             <tr>

@@ -43,11 +43,25 @@
                 </form>
             </div>
 
-            <p th:text="${msg}"></p>
+            <br>
+            <th:block th:switch="${msg}">
+                <div th:case="'OPRETTET'" class="msg-n bg-lightgreen nomargin">
+                    <p th:text="${msg}"></p>
+                </div>
+                <div th:case="'REDIGERET'" class="msg-n bg-lightgreen nomargin">
+                    <p th:text="${msg}"></p>
+                </div>
+                <div th:case="*" class="msg-n bg-lightred nomargin">
+                    <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
+                        <p th:text="${msg}"></p>
+                    </div>
+                </div>
+            </th:block>
 
 
         </div>
     </div>
+
     <div class="container-table">
         <table>
             <tr>

@@ -25,7 +25,7 @@ public class UserController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user, HttpSession session, RedirectAttributes redirect) {
+    public String login(@ModelAttribute User user, HttpSession session, RedirectAttributes redirect, Model model) {
         try {
             if (loginService.login(user)) {
                 session.setAttribute("email", user.getEmail());
@@ -45,7 +45,8 @@ public class UserController {
 
             } else {
                 session.invalidate();
-                return "index";
+                model.addAttribute("invalid", true);
+                return "login";
             }
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
@@ -53,10 +54,16 @@ public class UserController {
         }
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
+
     @PostMapping("/dashboard/brugere/create")
     public String opretBruger(@ModelAttribute User user, Model model, RedirectAttributes redirect) {
         try {
-            model.addAttribute("message", US.create(user));
+            redirect.addFlashAttribute("msg", US.create(user));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
@@ -79,13 +86,16 @@ public class UserController {
     }
 
     @PostMapping("/dashboard/brugere/edit/")
-    public String retBruger(@ModelAttribute User user, RedirectAttributes model) {
-        System.out.println(user.getRid());
+    public String retBruger(@ModelAttribute User user, RedirectAttributes redirect) {
         try {
-            model.addFlashAttribute("user", US.edit(user));
-            model.addFlashAttribute("edit", false);
+            String msg = US.edit(user);
+            redirect.addFlashAttribute("msg", msg);
+
+            if(!msg.equals("REDIGERET")) {
+                return "redirect:/dashboard/brugere/edit/" + user.getId();
+            }
         } catch (SQLException e) {
-            model.addFlashAttribute("errorCode", e.getErrorCode());
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";

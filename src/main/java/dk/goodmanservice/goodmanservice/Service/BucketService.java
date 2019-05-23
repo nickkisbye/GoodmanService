@@ -22,17 +22,20 @@ public class BucketService {
     @Autowired
     private S3Repository s3Repository;
 
+    @Autowired
+    private Validation V;
+
     public void deleteFileFromS3Bucket(String fileUrl, int id) throws SQLException {
         s3Repository.deleteFileFromS3Bucket(fileUrl, id);
     }
 
-    public void uploadImage(MultipartFile multipartFile, int id) throws SQLException {
-        s3Repository.uploadImage(multipartFile, id);
-    }
-
-    public void generatePdf() throws SQLException {
-        //service tjek
-//        s3Repository.generatePdf();
+    public String uploadImage(MultipartFile multipartFile, int id) throws SQLException {
+        String checkSum = V.validateImage(multipartFile);
+        if(checkSum.equals("1")) {
+            s3Repository.uploadImage(multipartFile, id);
+            return "SUCCESS";
+        }
+       return checkSum;
     }
 
     public List<Image> fetchImages(int id) throws SQLException {

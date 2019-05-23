@@ -5,6 +5,7 @@ import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.Expense;
 import dk.goodmanservice.goodmanservice.Model.User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class Validation {
@@ -47,11 +48,29 @@ public class Validation {
     }
 
     public String validateUser(User obj) {
-        if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
+        if(obj.getFirstName() == null || obj.getLastName() == null || obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
             return "Fornavn eller efternavn må ikke være under 2 karaktere";
-        } else if(obj.getPassword().length() < 8) {
+        } else if(obj.getEmail() == null || obj.getEmail().length() < 2  || !obj.getEmail().contains("@")) {
+            return "Ugyldig Email.";
+        } else if(obj.getAddress() == null || obj.getAddress().length() < 2) {
+            return "Ugyldig Adresse";
+        } else if(obj.getCity() == null || obj.getCity().length() < 2) {
+            return "Ugyldigt Bynavn";
+        } else if(obj.getZip() == null || obj.getZip() < 1000 || obj.getZip() > 10000) {
+            return "Ugyldigt Postnummer";
+        } else if(obj.getPhoneNumber() == null || obj.getPhoneNumber().length() != 8) {
+            return "Ugyldigt Telefon Nr.";
+        } else if(obj.getPassword() == null || obj.getPassword().length() < 8) {
             return "Kodeordet skal være mindst 8 karaktere langt.";
         }
         return "1";
+    }
+
+    public String validateImage(MultipartFile multipartFile) {
+        if(multipartFile.isEmpty()) {
+            return "DU HAR IKKE VALGT NOGET BILLEDE.";
+        } else {
+            return "1";
+        }
     }
 }

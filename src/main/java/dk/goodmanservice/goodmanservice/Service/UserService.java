@@ -43,7 +43,7 @@ public class UserService implements IService<User> {
         String checkSum = V.validateUser(obj);
         if(checkSum.equals("1")) {
             UR.edit(obj);
-            return "OPDATERET";
+            return "REDIGERET";
         }
         return checkSum;
     }

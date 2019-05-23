@@ -54,10 +54,6 @@ public class S3Repository {
         return new Date().getTime() + "-" + multiPart.getOriginalFilename().replace(" ", "_");
     }
 
-    private String generatePdfName() {
-        return new Date().getTime() + "-" + " faktura.pdf";
-    }
-
     private void uploadImageTos3bucket(String fileName, File file) {
         s3client.putObject(new PutObjectRequest(bucketName, fileName, file)
                 .withCannedAcl(CannedAccessControlList.PublicRead));

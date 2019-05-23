@@ -30,7 +30,6 @@ public class UserRepository implements IRepository<User> {
 
     @Override
     public void edit(User obj) throws SQLException {
-        System.out.print(obj.getRid());
         sql = "UPDATE users " +
                 "SET firstName=?, lastName=?, email=?, address=?, " +
                 "phone=?, fk_role=?, password=md5(?), city=?, zip=? " +
