@@ -25,7 +25,7 @@ public class UserController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user, HttpSession session, RedirectAttributes redirect) {
+    public String login(@ModelAttribute User user, HttpSession session, RedirectAttributes redirect, Model model) {
         try {
             if (loginService.login(user)) {
                 session.setAttribute("email", user.getEmail());
@@ -45,12 +45,19 @@ public class UserController {
 
             } else {
                 session.invalidate();
-                return "index";
+                model.addAttribute("invalid", true);
+                return "login";
             }
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
     }
 
     @PostMapping("/dashboard/brugere/create")

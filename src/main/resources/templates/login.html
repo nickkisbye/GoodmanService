@@ -22,6 +22,7 @@
                 <input type="password" name="password" placeholder="password"><br>
                 <button type="submit">Login &nbsp;<i class="fas fa-arrow-right"></i></button>
             </form>
+            <p th:if="${invalid}">Forkerte oplysninger. Prøv igen.</p>
         </div>
     </section>
 </main>

@@ -30,11 +30,6 @@ public class BucketService {
         s3Repository.uploadImage(multipartFile, id);
     }
 
-    public void generatePdf() throws SQLException {
-        //service tjek
-//        s3Repository.generatePdf();
-    }
-
     public List<Image> fetchImages(int id) throws SQLException {
         ResultSet rs = bucketRepository.fetchImages(id);
         List<Image> imageList = new ArrayList<>();

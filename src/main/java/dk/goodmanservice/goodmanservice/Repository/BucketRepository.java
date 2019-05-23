@@ -39,12 +39,4 @@ public class BucketRepository {
         preparedStatement.execute();
     }
 
-    public void insertPdf(String fileUrl, int id) throws SQLException {
-        String sql = "UPDATE TABLE cases SET pdf=? WHERE id=?";
-        preparedStatement = con.prepareStatement(sql);
-        preparedStatement.setString(1, fileUrl);
-        preparedStatement.setInt(2, id);
-        preparedStatement.execute();
-    }
-
 }
