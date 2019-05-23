@@ -24,8 +24,7 @@ public class BucketController {
     @PostMapping("uploadImage")
     public String uploadImage(@RequestPart(value = "file") MultipartFile file, @ModelAttribute Case cases, RedirectAttributes redirect) {
         try {
-            redirect.addFlashAttribute("msg", "BILLEDET ER BLEVET TILFØJET");
-            this.bucketService.uploadImage(file, cases.getId());
+            redirect.addFlashAttribute("msg", this.bucketService.uploadImage(file, cases.getId()));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";

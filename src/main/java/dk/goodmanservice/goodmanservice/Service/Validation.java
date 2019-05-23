@@ -5,6 +5,7 @@ import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.Expense;
 import dk.goodmanservice.goodmanservice.Model.User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class Validation {
@@ -63,5 +64,13 @@ public class Validation {
             return "Kodeordet skal være mindst 8 karaktere langt.";
         }
         return "1";
+    }
+
+    public String validateImage(MultipartFile multipartFile) {
+        if(multipartFile.isEmpty()) {
+            return "DU HAR IKKE VALGT NOGET BILLEDE.";
+        } else {
+            return "1";
+        }
     }
 }
