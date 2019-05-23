@@ -10,7 +10,7 @@
         <div class="nav-right">
             <a th:if="${session.level > 20}" href="/dashboard/employee">
                 <div class="welcome">
-                    <p><i class=""></i><span th:text="${session.username    }" th:remove="tag"></span> <span th:text="${session.lastName}" th:remove="tag"></span></p>
+                    <p><span th:text="${session.firstName}"></span> <span th:text="${session.lastName}"></span></p>
                 </div>
             </a>
         </div>

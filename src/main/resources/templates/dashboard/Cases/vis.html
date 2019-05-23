@@ -1,56 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
 <body>
-<a th:href="@{/dashboard/tilbud}">tilbage til dashboard</a><br>
-<table>
-    <div th:each="case : ${case}" th:remove="tag">
+<header>
+    <div th:replace="dashboard/fragments/header :: header"></div>
+</header>
 
-        <div th:if="${case.mode} == 1" th:remove="tag">
-            <a th:href="@{/dashboard/tilbud}">TILBAGE</a><br>
-            <h2>TILBUD</h2>
+<main class="main">
+    <a th:href="@{/dashboard/tilbud}" th:if="${case.mode == 1}">
+        <div class="back-button">
+            <i class="fas fa-arrow-left"></i> Tilbage
         </div>
-        <div th:if="${case.mode} == 2" th:remove="tag">
-            <a th:href="@{/dashboard/opgaver}">TILBAGE</a><br>
-            <h2>OPGAVE</h2>
+    </a>
+    <a th:href="@{/dashboard/opgaver}" th:if="${case.mode == 2}">
+        <div class="back-button">
+            <i class="fas fa-arrow-left"></i> Tilbage
         </div>
-        <div th:if="${case.mode} == 3" th:remove="tag">
-            <a th:href="@{/dashboard/faerdigeopgaver}">TILBAGE</a><br>
-            <h2>FÆRDIG OPGAVE</h2>
+    </a>
+    <a th:href="@{/dashboard/faerdigeopgaver}" th:if="${case.mode == 3}">
+        <div class="back-button">
+            <i class="fas fa-arrow-left"></i> Tilbage
         </div>
-
-        <tr>
-            <th>Start Dato: </th>
-            <td><span th:text="${case.startDate}"></span> <span th:text="${case.startTime}"></span></td>
-        </tr>
-        <tr>
-            <th>Slut Dato: </th>
-            <td><span th:text="${case.endDate}"></span> <span th:text="${case.endTime}"></span></td>
-        </tr>
-        <tr>
-            <th>Description: </th>
-            <td><span th:text="${case.description}"></span></td>
-        </tr>
-        <tr>
-            <th>Kunde Navn: </th>
-            <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
-        </tr>
-        <tr>
-            <th>Email / Telefon nr.: </th>
-            <td><span th:text="${case.customer.email}"></span> / <span th:text="${case.customer.phoneNumber}"></span></td>
-        </tr>
-        <tr>
-            <th>Addresse: </th>
-            <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
-        </tr>
+    </a>
+    <a th:href="@{/dashboard/tilbud}">TILBAGE</a>
+    <div class="container">
+        <div class="container-grid">
+            <div th:if="${case.mode} == 1" class="container-header bg-yellow">
+                <h1>TILBUD</h1>
+            </div>
+            <div th:if="${case.mode} == 2" class="container-header bg-orange">
+                <h1>OPGAVE</h1>
+            </div>
+            <div th:if="${case.mode} == 3" class="container-header bg-lightgreen">
+                <h1>FÆRDIG OPGAVE</h1>
+            </div>
+            <table class="show">
+                <div th:each="case : ${case}" th:remove="tag">
+                    <tr>
+                        <th>Start Dato: </th>
+                        <td><span th:text="${case.startDate}"></span> <span th:text="${case.startTime}"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Slut Dato: </th>
+                        <td><span th:text="${case.endDate}"></span> <span th:text="${case.endTime}"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Description: </th>
+                        <td><span th:text="${case.description}"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Kunde Navn: </th>
+                        <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Email / Telefon nr.: </th>
+                        <td><span th:text="${case.customer.email}"></span> / <span th:text="${case.customer.phoneNumber}"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Addresse: </th>
+                        <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+        <div class="container-images">
+            <div th:each="image : ${images}">
+                <a th:href="${image.fileUrl}" target="_blank">
+                    <img th:src="${image.fileUrl}" width="175">
+                </a>
+            </div>
+        </div>
     </div>
-</table>
-BILLEDER:
-<div th:each="image : ${images}">
-    <img th:src="${image.fileUrl}" width="80" height="80">
-</div>
+</main>
+<footer>
+    <div th:replace="dashboard/fragments/footer :: footer"></div>
+</footer>
 </body>
 </html>

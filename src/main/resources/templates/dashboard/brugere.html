@@ -8,8 +8,22 @@
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
 <main class="main">
-    <div class="container">
 
+    <th:block th:switch="${msg}">
+        <div th:case="'OPRETTET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="'REDIGERET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="*" class="msg-n bg-lightred">
+            <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
+                <p th:text="${msg}"></p>
+            </div>
+        </div>
+    </th:block>
+
+    <div class="container">
         <section class="container-grid">
             <div class="container-header bg-lightred">
                 <h1>Brugere</h1>
@@ -70,22 +84,6 @@
                     <button type="submit" class="bg-lightgreen">Opret bruger</button>
                 </form>
             </div>
-
-            <br>
-            <th:block th:switch="${msg}">
-                <div th:case="'OPRETTET'" class="msg-n bg-lightgreen nomargin">
-                    <p th:text="${msg}"></p>
-                </div>
-                <div th:case="'REDIGERET'" class="msg-n bg-lightgreen nomargin">
-                    <p th:text="${msg}"></p>
-                </div>
-                <div th:case="*" class="msg-n bg-lightred nomargin">
-                    <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
-                        <p th:text="${msg}"></p>
-                    </div>
-                </div>
-            </th:block>
-
         </section>
     </div>
 
@@ -109,7 +107,7 @@
                 <td th:text="${user.phoneNumber}"></td>
                 <td th:text="${user.roleName}"></td>
                 <td class="width80"><a th:href="@{/dashboard/brugere/delete/{id}(id=${user.id})}" class="redigere cwhite bg-lightred">Slet</a></td>
-                <td class="width80"><a th:href="@{/dashboard/brugere/edit/{id}(id=${user.id})}" class="redigere cwhite bg-orange">Ret</a></td>
+                <td class="width80"><a th:href="@{/dashboard/brugere/edit/{id}(id=${user.id})}" class="redigere cwhite bg-orange">Redigere</a></td>
             </tr>
         </table>
     </div>

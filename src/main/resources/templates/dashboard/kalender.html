@@ -8,8 +8,22 @@
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
 <main class="main">
-    <div class="container">
 
+    <th:block th:switch="${msg}">
+        <div th:case="'OPRETTET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="'REDIGERET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="*" class="msg-n bg-lightred">
+            <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
+                <p th:text="${msg}"></p>
+            </div>
+        </div>
+    </th:block>
+
+    <div class="container">
         <section class="container-grid">
             <div class="container-header bg-lightred">
                 <h1>Kalender & Aftaler</h1>
@@ -79,22 +93,6 @@
                     <button type="submit" class="cwhite bg-lightgreen">Gem</button>
                 </form>
             </div>
-
-            <br>
-            <th:block th:switch="${msg}">
-                <div th:case="'OPRETTET'" class="msg-n bg-lightgreen nomargin">
-                    <p th:text="${msg}"></p>
-                </div>
-                <div th:case="'REDIGERET'" class="msg-n bg-lightgreen nomargin">
-                    <p th:text="${msg}"></p>
-                </div>
-                <div th:case="*" class="msg-n bg-lightred nomargin">
-                    <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
-                        <p th:text="${msg}"></p>
-                    </div>
-                </div>
-            </th:block>
-
         </section>
     </div>
 

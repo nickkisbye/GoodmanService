@@ -94,3 +94,19 @@
   margin-top: -35px;
   border-radius: 0;
 }
+.show {
+  th {
+    width: 200px;
+  }
+}
+.back-button {
+  width: 200px;
+  background: #fff;
+  line-height: 50px;
+  font-size: 20px;
+  padding: 0 20px;
+  margin: -20px 0 40px;
+  i {
+    font-size: 17px;
+  }
+}

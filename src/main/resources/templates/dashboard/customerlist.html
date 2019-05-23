@@ -8,13 +8,13 @@
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
 <main class="main">
-    <div class="container-table nomargin">
+    <div class="container-table">
         <div class="container-header bg-pink">
             <h1>Kundeliste</h1>
         </div>
-        <form method="post" action="/dashboard/kunder">
+        <form method="post" action="/dashboard/kunder" class="msg-form">
             <input type="text" name="search" placeholder="Søg på kunde">
-            <button type="submit">Søg</button>
+            <button type="submit" class="">Søg</button>
         </form>
         <table>
             <tr>

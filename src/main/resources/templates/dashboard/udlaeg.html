@@ -8,6 +8,21 @@
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
 <main class="main">
+
+    <th:block th:switch="${msg}">
+        <div th:case="'OPRETTET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="'REDIGERET'" class="msg-n bg-lightgreen">
+            <p th:text="${msg}"></p>
+        </div>
+        <div th:case="*" class="msg-n bg-lightred">
+            <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
+                <p th:text="${msg}"></p>
+            </div>
+        </div>
+    </th:block>
+
     <div class="container">
         <div class="container-grid">
             <div class="container-header bg-grey">
@@ -42,23 +57,6 @@
                     <button type="submit" class="bg-lightgreen cwhite">Gem</button>
                 </form>
             </div>
-
-            <br>
-            <th:block th:switch="${msg}">
-                <div th:case="'OPRETTET'" class="msg-n bg-lightgreen nomargin">
-                    <p th:text="${msg}"></p>
-                </div>
-                <div th:case="'REDIGERET'" class="msg-n bg-lightgreen nomargin">
-                    <p th:text="${msg}"></p>
-                </div>
-                <div th:case="*" class="msg-n bg-lightred nomargin">
-                    <div th:if="${msg!=null and #strings.length(msg) > 0}" th:remove="tag">
-                        <p th:text="${msg}"></p>
-                    </div>
-                </div>
-            </th:block>
-
-
         </div>
     </div>
 

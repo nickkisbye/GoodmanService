@@ -1,27 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <div th:each="info : ${kunde}">
-
-        <p th:text="${kunde.firstName}"></p>
-        <p th:text="${kunde.lastName}"></p>
-        <p th:text="${kunde.email}"></p>
-        <p th:text="${kunde.address}"></p>
-        <p th:text="${kunde.city}"></p>
-        <p th:text="${kunde.zip}"></p>
-
-    </div>
-    <div th:each="job : ${jobs}">
-
-        <p th:text="${job.description}"></p>
-        <p th:text="${job.price}"></p>
-        <p th:text="${job.startDate}"></p>
-
-    </div>
+    <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
 <body>
-
+<header>
+    <div th:replace="dashboard/fragments/header :: header"></div>
+</header>
+<main class="main">
+    <a th:href="@{/dashboard/kunder}">
+        <div class="back-button">
+            <i class="fas fa-arrow-left"></i> Tilbage
+        </div>
+    </a>
+    <div class="container">
+        <div class="container-grid">
+            <div class="container-header bg-pink">
+                <h1>Kunde oplysninger</h1>
+            </div>
+            <table class="show" th:each="info : ${kunde}">
+                <tr>
+                    <th>Navn</th>
+                    <td th:text="${kunde.firstName + ' ' + kunde.lastName}"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td th:text="${kunde.email}"></td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td th:text="${kunde.address + ', ' + kunde.city + ' ' + kunde.zip}"></td>
+                </tr>
+                <tr>
+                    <th>Telefon nr.</th>
+                    <td th:text="${kunde.phoneNumber}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="container-grid">
+            <div class="container-header bg-pink">
+                <h1>Aktiviteter</h1>
+            </div>
+            <table>
+                <tr>
+                    <th>Ordre nr.</th>
+                    <th>Beskrivelse</th>
+                    <th>Pris</th>
+                    <th>Dato</th>
+                    <th></th>
+                </tr>
+                <tr th:each="job : ${jobs}">
+                    <td th:text="${job.id + 1000}"></td>
+                    <td th:text="${job.description}"></td>
+                    <td th:text="${job.price}"></td>
+                    <td th:text="${job.startDate}"></td>
+                    <td><a th:href="@{/dashboard/TOF/vis/{id}(id=${job.id})}">Vis</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+<footer>
+    <div th:replace="dashboard/fragments/footer :: footer"></div>
+</footer>
 </body>
-
 </html>
