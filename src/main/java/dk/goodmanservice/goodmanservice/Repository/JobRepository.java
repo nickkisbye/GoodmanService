@@ -32,7 +32,7 @@ public class JobRepository {
 
 
     public ResultSet findByIdJobs(int id) throws SQLException {
-        sql = "SELECT * FROM junc_jobs " +
+        sql = "SELECT junc_jobs.fk_employee, junc_jobs.fk_case, junc_jobs.id, users.id, users.firstName, users.lastName FROM junc_jobs " +
                 "INNER JOIN users ON junc_jobs.fk_employee = users.id " +
                 "WHERE junc_jobs.fk_case = ?";
 
@@ -51,7 +51,7 @@ public class JobRepository {
     }
 
     public ResultSet fetchEmployees(int id) throws SQLException {
-        sql =   "SELECT * FROM users " +
+        sql =   "SELECT users.id, users.firstName, users.lastName FROM users " +
                 "LEFT JOIN junc_jobs ON users.id = junc_jobs.fk_employee " +
                 "WHERE junc_jobs.fk_case IS NULL OR fk_case != ? ";
 
@@ -72,7 +72,7 @@ public class JobRepository {
     }
 
     public ResultSet customerInvoiceById(int id) throws SQLException {
-        sql = "SELECT * FROM cases " +
+        sql = "SELECT cases.id, cases.description, cases.price, cases.startDate, cases.endDate, users.firstName, users.lastName, users.email, users.address, users.phone, users.city, users.zip FROM cases " +
                 "INNER JOIN users ON cases.fk_customer = users.id " +
                 "WHERE cases.id = ?";
 

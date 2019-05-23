@@ -69,7 +69,7 @@ public class ExpenseRepository implements IRepository<Expense> {
 
     @Override
     public ResultSet findById(int id) throws SQLException {
-        sql = "SELECT * FROM expenses " +
+        sql = "SELECT expenses.* FROM expenses " +
                 "WHERE id = ?";
 
             preparedStatement = con.prepareStatement(sql);
