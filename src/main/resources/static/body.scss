@@ -18,7 +18,7 @@
 
 .container {
   width: 90%;
-  max-width: 1670px;
+  max-width: 1650px;
   margin: 0 auto;
   .head-tekst {
     border-left: 5px solid $primary-color;
@@ -120,16 +120,28 @@
       &:last-of-type {
         margin-bottom: 0;
       }
-      .pic {
-        background: url("profile.jpg") no-repeat;
+      .pic-1, .pic-2, .pic-3, .pic-4 {
         height: 78%;
         top: 0;
         left: 0;
       }
+      .pic-1 {
+        background: url("pic-1.jpg") no-repeat;
+      }
+      .pic-2 {
+        background: url("pic-2.jpg") no-repeat;
+        margin-left: 50%;
+      }
+      .pic-3 {
+        background: url("pic-3.jpg") no-repeat;
+      }
+      .pic-4 {
+        background: url("pic-4.jpg") no-repeat;
+        margin-left: 50%;
+      }
       .information-tekst {
         width: 60%;
         left: 0;
-        height: 270px;
         bottom: 0;
         background: $dark-gray;
         margin-top: -161px;

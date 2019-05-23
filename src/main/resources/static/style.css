@@ -110,7 +110,7 @@
 
 .container {
   width: 90%;
-  max-width: 1670px;
+  max-width: 1650px;
   margin: 0 auto;
 }
 
@@ -237,17 +237,33 @@
   margin-bottom: 0;
 }
 
-.task .tasks .single-task .pic {
-  background: url("profile.jpg") no-repeat;
+.task .tasks .single-task .pic-1, .task .tasks .single-task .pic-2, .task .tasks .single-task .pic-3, .task .tasks .single-task .pic-4 {
   height: 78%;
   top: 0;
   left: 0;
 }
 
+.task .tasks .single-task .pic-1 {
+  background: url("pic-1.jpg") no-repeat;
+}
+
+.task .tasks .single-task .pic-2 {
+  background: url("pic-2.jpg") no-repeat;
+  margin-left: 50%;
+}
+
+.task .tasks .single-task .pic-3 {
+  background: url("pic-3.jpg") no-repeat;
+}
+
+.task .tasks .single-task .pic-4 {
+  background: url("pic-4.jpg") no-repeat;
+  margin-left: 50%;
+}
+
 .task .tasks .single-task .information-tekst {
   width: 60%;
   left: 0;
-  height: 270px;
   bottom: 0;
   background: rgba(24, 24, 24, 0.67);
   margin-top: -161px;

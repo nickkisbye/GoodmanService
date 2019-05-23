@@ -8,7 +8,7 @@
 </header>
 <main class="main">
 
-    <!--Success og fejl meddelse-->
+    <!--MESSAGES: SUCCESS & FAIL-->
     <th:block th:switch="${msg}">
         <div th:case="'OPGAVEN ER BLEVET OPRETTET'" class="msg-n bg-lightgreen">
             <p th:text="${msg}"></p>
@@ -32,6 +32,7 @@
         </div>
     </th:block>
 
+    <!--TOP MENU BAR-->
     <div class="mini-menu">
         <a th:href="@{/dashboard/employee}">
             <div class="bg-white">
@@ -55,8 +56,8 @@
         </a>
     </div>
 
+    <!--CREATE CASE-->
     <div class="container">
-
         <div th:if="${!edit and session.level > 40}" class="container-grid">
             <div class="container-header bg-orange">
                 <h1>Opret ny opgave</h1>
@@ -87,6 +88,7 @@
             </form>
         </div>
 
+        <!--EDIT CASE-->
         <div th:if="${edit and session.level > 40}" class="container-grid">
             <h1>Redigere opgaven</h1>
             <form th:action="@{/dashboard/TOF/redigere}" method="POST" th:object="${Case}">
@@ -119,6 +121,7 @@
             </form>
         </div>
 
+        <!--JOBS: ADD AND REMOVE EMPLOYEES FROM A CASE-->
         <div th:if="${edit and session.level > 40}" class="container-grid">
             <form th:action="@{/dashboard/TOF/NytJob}" method="POST" th:object="${Jobs}">
                 <input type="hidden" th:value="${findById.id}" name="caseId">
@@ -146,6 +149,8 @@
                 </tr>
             </table>
         </div>
+
+        <!--IMAGE UPLOAD-->
         <div th:if="${edit and session.level > 20}">
             <div class="container-image-upload">
                 <form action="/storage/uploadImage" th:object="${Case}" method="post" enctype="multipart/form-data">
@@ -155,6 +160,8 @@
                 </form>
             </div>
         </div>
+
+        <!--IMAGE VIEW-->
         <div th:if="${edit and session.level > 20}">
             <div class="container-images">
                 <div th:each="image : ${images}">
@@ -165,6 +172,8 @@
             </div>
         </div>
     </div>
+
+    <!--TABLE OF ALL CASES-->
     <div class="container-table">
         <table>
             <tr>
@@ -177,6 +186,7 @@
                 <th th:if="${session.level > 40}"></th>
 
             </tr>
+            <!--TABLE FOR EMPLOYEE-->
             <div th:if="${session.level < 40 and session.level > 20}" th:remove="tag">
                 <div th:each="case : ${case}" th:remove="tag">
                     <tr>
@@ -190,6 +200,7 @@
                     </tr>
                 </div>
             </div>
+            <!--TABLE FOR MANAGERS & LEADERS-->
             <div th:if="${session.level > 40}" th:remove="tag">
                 <div th:each="case : ${case}" th:remove="tag">
                     <tr>
@@ -223,7 +234,6 @@
             </div>
         </table>
     </div>
-
 </main>
 <footer>
     <div th:replace="dashboard/fragments/footer :: footer" th:remove="tag"></div>
