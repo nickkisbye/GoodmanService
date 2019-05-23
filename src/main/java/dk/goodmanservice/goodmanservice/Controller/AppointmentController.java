@@ -69,7 +69,7 @@ public class AppointmentController {
     @PostMapping("/dashboard/appointment/delete/{id}")
     public String deleteAppointment(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
-            AS.delete(id);
+            redirect.addFlashAttribute("msg", AS.delete(id));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";

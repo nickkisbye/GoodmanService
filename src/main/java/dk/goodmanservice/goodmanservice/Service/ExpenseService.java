@@ -45,8 +45,9 @@ public class ExpenseService implements IService<Expense> {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public String delete(int id) throws SQLException {
         ER.delete(id);
+        return "SLETTET";
     }
 
     @Override

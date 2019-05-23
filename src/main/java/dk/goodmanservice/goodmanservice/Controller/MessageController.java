@@ -34,7 +34,7 @@ public class MessageController {
     @GetMapping("/message/delete/{id}")
     public String deleteMsg(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
-            MS.delete(id);
+            redirect.addFlashAttribute("msg", MS.delete(id));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";

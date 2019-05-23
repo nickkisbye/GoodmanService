@@ -104,7 +104,7 @@ public class UserController {
     @GetMapping("/dashboard/brugere/delete/{id}")
     public String sletBruger(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
-           US.delete(id);
+            redirect.addFlashAttribute("msg", US.delete(id));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";

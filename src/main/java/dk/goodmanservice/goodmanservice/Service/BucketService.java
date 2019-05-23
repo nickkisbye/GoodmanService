@@ -25,15 +25,16 @@ public class BucketService {
     @Autowired
     private Validation V;
 
-    public void deleteFileFromS3Bucket(String fileUrl, int id) throws SQLException {
+    public String deleteFileFromS3Bucket(String fileUrl, int id) throws SQLException {
         s3Repository.deleteFileFromS3Bucket(fileUrl, id);
+        return "BILLEDET ER BLEVET FJERNET";
     }
 
     public String uploadImage(MultipartFile multipartFile, int id) throws SQLException {
         String checkSum = V.validateImage(multipartFile);
         if(checkSum.equals("1")) {
             s3Repository.uploadImage(multipartFile, id);
-            return "SUCCESS";
+            return "BILLEDET ER BLEVET TILFØJET";
         }
        return checkSum;
     }

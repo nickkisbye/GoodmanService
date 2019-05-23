@@ -45,8 +45,9 @@ public class CaseService implements IService<Case>{
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public String delete(int id) throws SQLException {
         CR.delete(id);
+        return "OPGAVEN ER BLEVET SLETTET";
     }
 
     @Override
@@ -77,9 +78,7 @@ public class CaseService implements IService<Case>{
             cList.add(c);
         }
         return cList;
-
     }
-
 
     @Override
     public Case findById(int id) throws SQLException {

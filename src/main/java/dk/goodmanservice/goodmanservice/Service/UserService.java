@@ -49,8 +49,9 @@ public class UserService implements IService<User> {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public String delete(int id) throws SQLException {
         UR.delete(id);
+        return "SLETTET";
     }
 
     @Override

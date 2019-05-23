@@ -44,11 +44,11 @@ public class JobService {
 
     public String createJob(Jobs obj) throws SQLException {
         JR.createJob(obj);
-        return "success";
+        return "MEDARBEJDER ER BLEVET TILFØJET";
     }
     public String deleteJob(int id) throws SQLException {
         JR.deleteJob(id);
-        return "success";
+        return "MEDARBEJDER ER BLEVET FJERNET";
     }
     public List<User> fetchEmployees(int id)throws SQLException {
         rs = JR.fetchEmployees(id);

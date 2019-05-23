@@ -39,8 +39,9 @@ public class MessageService implements IService<Message> {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public String delete(int id) throws SQLException {
         MR.delete(id);
+        return "SLETTET";
     }
 
     @Override

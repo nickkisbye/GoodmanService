@@ -45,8 +45,9 @@ public class AppointmentService implements IService<Appointment> {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public String delete(int id) throws SQLException {
         AR.delete(id);
+        return "SLETTET";
     }
 
     @Override

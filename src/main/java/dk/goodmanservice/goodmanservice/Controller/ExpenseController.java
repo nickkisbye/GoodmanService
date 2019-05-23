@@ -69,7 +69,7 @@ public class ExpenseController {
     @PostMapping("/dashboard/expenses/delete/{id}")
     public String deleteExpense(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
-            ES.delete(id);
+            redirect.addFlashAttribute("msg", ES.delete(id));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
