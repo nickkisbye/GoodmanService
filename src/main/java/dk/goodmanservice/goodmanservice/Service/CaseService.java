@@ -18,29 +18,30 @@ public class CaseService implements IService<Case>{
 
     @Autowired
     private IRepository<Case> CR;
-    private ResultSet rs;
 
     @Autowired
-    private Validation v;
+    private Validation V;
+
+    private ResultSet rs;
 
     @Override
     public String create(Case obj) throws SQLException {
-        if(v.validateCase(obj).equals("1")) {
+        String checkSum = V.validateCase(obj);
+        if(checkSum.equals("1")) {
             CR.create(obj);
-            return "1";
-        } else {
-            return v.validateCase(obj);
+            return "OPGAVEN ER BLEVET OPRETTET";
         }
+        return checkSum;
     }
 
     @Override
     public String edit(Case obj) throws SQLException {
-        if(v.validateCase(obj).equals("1")) {
+        String checkSum = V.validateCase(obj);
+        if(checkSum.equals("1")) {
             CR.edit(obj);
-            return "2";
-        } else {
-            return v.validateCase(obj);
+            return "OPGAVEN ER BLEVET REDIGERET";
         }
+        return checkSum;
     }
 
     @Override

@@ -22,31 +22,30 @@ public class UserService implements IService<User> {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private Validation V;
     
     private ResultSet resultSet;
 
     @Override
     public String create(User obj) throws SQLException {
-        if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
-            return "Fornavn eller efternavn må ikke være under 2 karaktere";
-        } else if(obj.getPassword().length() < 8) {
-            return "Kodeordet skal være mindst 8 karaktere";
-        } else {
+        String checkSum = V.validateUser(obj);
+        if(checkSum.equals("1")) {
             UR.create(obj);
-            return "success";
+            return "OPRETTET";
         }
+        return checkSum;
     }
 
     @Override
     public String edit(User obj) throws SQLException {
-        if (obj.getFirstName().length() < 2 || obj.getLastName().length() < 2) {
-            return "Fornavn eller efternavn må ikke være under 2 karaktere";
-        } else if(obj.getPassword().length() < 8) {
-            return "Kodeordet skal være mindst 8 karaktere";
-        } else {
+        String checkSum = V.validateUser(obj);
+        if(checkSum.equals("1")) {
             UR.edit(obj);
-            return "success";
+            return "REDIGERET";
         }
+        return checkSum;
     }
 
     @Override

@@ -67,9 +67,30 @@
       height: 80px;
       line-height: 25px;
       text-align: center;
-      background-color: #fff;
+      font-size: 18px;
       padding: 30px;
       border: 1px solid $border-color;
     }
   }
+}
+.container-image-upload {
+  width: 100%;
+  background: white;
+  padding: 30px;
+  border: 1px solid $border-color;
+}
+.container-images{
+  width: 100%;
+  background: white;
+  padding: 30px;
+  border: 1px solid $border-color;
+  display: grid;
+  grid-template-rows: auto;
+  grid-column-gap: 9px;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(3, 1.5fr);
+}
+.slet-image-button {
+  margin-top: -35px;
+  border-radius: 0;
 }

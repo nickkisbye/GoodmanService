@@ -19,30 +19,29 @@ public class ExpenseService implements IService<Expense> {
     @Autowired
     private IRepository<Expense> ER;
 
+    @Autowired
+    private Validation V;
+
     private ResultSet resultSet;
 
     @Override
     public String create(Expense obj) throws SQLException {
-        String check = checker(obj);
-        if(check.equals("success")) {
+        String checkSum = V.validateExpense(obj);
+        if(checkSum.equals("1")) {
             ER.create(obj);
+            return "OPRETTET";
         }
-        return check;
-    }
-
-    private String checker(Expense obj) {
-        if(obj.getPrice() == null || obj.getPrice() < 1) {
-            return "Invalid Price";
-        } else if(obj.getDescription() == null || obj.getDescription().length() < 1) {
-            return "Invalid Description";
-        }
-        return "success";
+        return checkSum;
     }
 
     @Override
     public String edit(Expense obj) throws SQLException {
-        ER.edit(obj);
-        return "success";
+        String checkSum = V.validateExpense(obj);
+        if(checkSum.equals("1")) {
+            ER.edit(obj);
+            return "REDIGERET";
+        }
+        return checkSum;
     }
 
     @Override
