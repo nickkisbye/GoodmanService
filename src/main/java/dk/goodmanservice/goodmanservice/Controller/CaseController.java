@@ -215,7 +215,7 @@ public class CaseController {
                 case 3:
                     return "redirect:/dashboard/faerdigeopgaver";
                 default:
-                    return "redirect:/dashboard/error";
+                    return "redirect:/error";
             }
         } catch (SQLException e) {
             ra.addFlashAttribute("errorCode", e.getErrorCode());
