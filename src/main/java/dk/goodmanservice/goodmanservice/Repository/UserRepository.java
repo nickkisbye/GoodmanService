@@ -87,7 +87,9 @@ public class UserRepository implements IRepository<User> {
                 sql = "SELECT * FROM roles";
                 break;
         }
-
+        if(!option.equals("roles")) {
+            sql += " ORDER BY firstName";
+        }
             preparedStatement = con.prepareStatement(sql);
             return preparedStatement.executeQuery();
     }
@@ -105,6 +107,7 @@ public class UserRepository implements IRepository<User> {
         sql = "SELECT * FROM users " +
                 "INNER JOIN roles ON users.fk_role = roles.id " +
                 "WHERE firstName LIKE ? " +
+                "OR lastName LIKE ? " +
                 "OR email LIKE ? " +
                 "OR address LIKE ? " +
                 "OR phone LIKE ?";
@@ -114,6 +117,7 @@ public class UserRepository implements IRepository<User> {
         preparedStatement.setString(2, "%" + search + "%");
         preparedStatement.setString(3, "%" + search + "%");
         preparedStatement.setString(4, "%" + search + "%");
+        preparedStatement.setString(5, "%" + search + "%");
 
         return preparedStatement.executeQuery();
     }

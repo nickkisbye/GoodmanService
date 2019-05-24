@@ -56,10 +56,11 @@ public class MessageRepository implements IRepository<Message> {
     @Override
     public ResultSet fetch(String option) throws SQLException {
         sql = "SELECT * FROM posts " +
-                "INNER JOIN users ON posts.fk_user = users.id";
+                "INNER JOIN users ON posts.fk_user = users.id " +
+                "ORDER BY posts.id DESC";
 
         if(option.equals("latest-10")) {
-            sql += " ORDER BY posts.id DESC LIMIT 10";
+            sql += " LIMIT 10";
         }
         preparedStatement = con.prepareStatement(sql);
         return preparedStatement.executeQuery();

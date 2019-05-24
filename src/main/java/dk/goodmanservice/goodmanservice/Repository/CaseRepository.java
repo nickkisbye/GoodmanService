@@ -77,7 +77,7 @@ public class CaseRepository implements IRepository<Case> {
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
-        sql = "SELECT cases.id, cases.startDate, cases.endDate, cases.startTime, cases.endTime, cases.description, cases.price, cases.fk_mode, users.id, users.firstName, users.lastName, users.address, users.city, users.zip, roles.level FROM cases " +
+        sql = "SELECT cases.*, users.id, users.firstName, users.lastName, users.address, users.city, users.zip, roles.level FROM cases " +
                 "LEFT JOIN users ON cases.fk_customer = users.id " +
                 "LEFT JOIN roles ON users.fk_role = roles.id";
 
@@ -92,14 +92,14 @@ public class CaseRepository implements IRepository<Case> {
                 sql += " WHERE fk_mode = 3";
                 break;
         }
-
+            sql += " ORDER BY startDate";
         preparedStatement = con.prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 
     @Override
     public ResultSet findById(int id) throws SQLException {
-        sql = "SELECT cases.id, cases.startDate, cases.endDate, cases.startTime, cases.endTime, cases.description, cases.price, cases.fk_mode, users.id, users.firstName, users.lastName, users.address, users.city, users.zip, users.email, users.phone FROM cases " +
+        sql = "SELECT cases.*, users.id, users.firstName, users.lastName, users.address, users.city, users.zip, users.email, users.phone FROM cases " +
                 "INNER JOIN users ON cases.fk_customer = users.id " +
                 "WHERE cases.id = ?";
 

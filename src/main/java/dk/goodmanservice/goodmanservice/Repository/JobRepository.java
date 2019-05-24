@@ -53,7 +53,8 @@ public class JobRepository {
     public ResultSet fetchEmployees(int id) throws SQLException {
         sql =   "SELECT users.id, users.firstName, users.lastName FROM users " +
                 "LEFT JOIN junc_jobs ON users.id = junc_jobs.fk_employee " +
-                "WHERE junc_jobs.fk_case IS NULL OR fk_case != ? ";
+                "WHERE junc_jobs.fk_case IS NULL OR fk_case != ? " +
+                "ORDER BY users.firstName";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);
@@ -63,7 +64,8 @@ public class JobRepository {
     public ResultSet customerOffers(int id) throws SQLException {
         sql = "SELECT id, description, price, startDate " +
                 "FROM cases " +
-                "WHERE fk_customer = ?";
+                "WHERE fk_customer = ? " +
+                "ORDER BY startDate";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, id);

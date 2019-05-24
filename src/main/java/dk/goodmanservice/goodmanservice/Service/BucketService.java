@@ -50,7 +50,4 @@ public class BucketService {
         }
         return imageList;
     }
-
-
-
 }
