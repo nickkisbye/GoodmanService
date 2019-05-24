@@ -20,12 +20,13 @@
   }
   .nav-right {
     height: 100%;
+    display: flex;
     .welcome {
       height: 100%;
       padding: 20px;
-      &:hover {
+    }
+    .hover {
         background-color: #f3f3f3;
-      }
     }
   }
 }

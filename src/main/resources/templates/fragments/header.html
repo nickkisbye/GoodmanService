@@ -8,7 +8,9 @@
                 <a th:href="@{/}"><li>FORSIDE</li></a>
                 <a th:href="@{/beregner}"><li>BEREGNER</li></a>
                 <a th:href="@{/#kontakt}"><li>KONTAKT</li></a>
-                <a th:href="@{/login}"><li class="login">LOGIN</li></a>
+                <a th:if="${session.level < 1}" th:href="@{/login}"><li class="login">LOGIN</li></a>
+                <a th:if="${session.level > 20}" th:href="@{/dashboard/employee}"><li class="login">DASHBOARD</li></a>
+                <a th:if="${session.level = 10}" th:href="@{/dashboard/custuomer}"><li class="login">DASHBOARD</li></a>
             </ul>
         </div>
     </nav>

@@ -8,9 +8,12 @@
             </a>
         </div>
         <div class="nav-right">
-            <a th:if="${session.level > 20}" href="/dashboard/employee">
-                <div class="welcome">
-                    <p><span th:text="${session.firstName}"></span> <span th:text="${session.lastName}"></span></p>
+            <div class="welcome">
+                <p><span th:text="${session.firstname}"></span> <span th:text="${session.lastname}"></span></p>
+            </div>
+            <a th:href="@{/logout}">
+                <div class="welcome hover">
+                    <i class="fas fa-door-open"></i>
                 </div>
             </a>
         </div>
