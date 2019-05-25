@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,9 +18,6 @@ public class UserService implements IService<User> {
 
     @Autowired
     private IRepository<User> UR;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private Validation V;
@@ -104,7 +100,7 @@ public class UserService implements IService<User> {
     }
 
     public List<User> customerSearch(String search) throws SQLException {
-        resultSet = userRepository.customerSearch(search);
+        resultSet = ((UserRepository)UR).customerSearch(search);
         List<User> userList = new ArrayList<>();
 
             while (resultSet.next()) {

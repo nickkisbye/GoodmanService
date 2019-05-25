@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,21 +27,22 @@ public class BucketService {
     private Validation V;
 
     public String deleteFileFromS3Bucket(String fileUrl, int id) throws SQLException {
-        s3Repository.deleteFileFromS3Bucket(fileUrl, id);
+        s3Repository.deleteFileFromS3Bucket(fileUrl);
+        bucketRepository.deleteImage(id);
         return "BILLEDET ER BLEVET FJERNET";
     }
 
-    public String uploadImage(MultipartFile multipartFile, int id) throws SQLException {
+    public String uploadImage(MultipartFile multipartFile, int id) throws SQLException, IOException {
         String checkSum = V.validateImage(multipartFile);
         if(checkSum.equals("1")) {
-            s3Repository.uploadImage(multipartFile, id);
+            bucketRepository.insertImage(s3Repository.uploadImage(multipartFile), id);
             return "BILLEDET ER BLEVET TILFØJET";
         }
        return checkSum;
     }
 
     public List<Image> fetchImages(int id) throws SQLException {
-        ResultSet rs = bucketRepository.fetchImages(id);
+        ResultSet rs =  bucketRepository.fetchImages(id);
         List<Image> imageList = new ArrayList<>();
         while (rs.next()) {
             Image image = new Image();

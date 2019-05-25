@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 @Controller
@@ -27,6 +28,9 @@ public class BucketController {
             redirect.addFlashAttribute("msg", this.bucketService.uploadImage(file, cases.getId()));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
+            return "redirect:/error";
+        } catch (IOException e) {
+            redirect.addFlashAttribute("errorCode", e.getMessage());
             return "redirect:/error";
         }
 

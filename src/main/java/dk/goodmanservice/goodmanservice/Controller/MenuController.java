@@ -20,9 +20,6 @@ public class MenuController {
     private StatisticService SS;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private IService<Message> MS;
 
     @Autowired
@@ -110,7 +107,7 @@ public class MenuController {
     @PostMapping("/dashboard/kunder")
     public String soegKunde(@RequestParam("search") String search, Model model, RedirectAttributes redirect) {
         try {
-            model.addAttribute("customers", userService.customerSearch(search));
+            model.addAttribute("customers", ((UserService)US).customerSearch(search));
         } catch (SQLException e) {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";

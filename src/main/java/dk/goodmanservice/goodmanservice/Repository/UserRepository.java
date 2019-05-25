@@ -110,7 +110,7 @@ public class UserRepository implements IRepository<User> {
                 "OR lastName LIKE ? " +
                 "OR email LIKE ? " +
                 "OR address LIKE ? " +
-                "OR phone LIKE ?";
+                "OR phone LIKE ? ";
 
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1, "%" + search + "%");

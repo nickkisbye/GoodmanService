@@ -9,22 +9,17 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import java.io.*;
-import java.sql.SQLException;
 import java.util.Date;
 
 @Repository
 public class S3Repository {
 
     private AmazonS3 s3client;
-
-    @Autowired
-    private BucketRepository bucketRepository;
 
     private String endpointUrl = "http://s3.eu-central-1.amazonaws.com";
 
@@ -57,25 +52,19 @@ public class S3Repository {
                 .withCannedAcl(CannedAccessControlList.PublicRead));
     }
 
-    public void uploadImage(MultipartFile multipartFile, int id) throws SQLException {
+    public String uploadImage(MultipartFile multipartFile) throws IOException {
 
-        String fileUrl = "";
-        try {
-            File file = convertMultiPartToFile(multipartFile);
-            String fileName = generateFileName(multipartFile);
-            fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
-            uploadImageTos3bucket(fileName, file);
-            file.delete();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-            bucketRepository.insertImage(fileUrl, id);
+        String fileUrl;
+        File file = convertMultiPartToFile(multipartFile);
+        String fileName = generateFileName(multipartFile);
+        fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
+        uploadImageTos3bucket(fileName, file);
+        file.delete();
+        return fileUrl;
     }
 
-    public String deleteFileFromS3Bucket(String fileUrl, int id) throws SQLException {
-        bucketRepository.deleteImage(id);
+    public void deleteFileFromS3Bucket(String fileUrl) {
         String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
         s3client.deleteObject(new DeleteObjectRequest(bucketName, fileName));
-        return "Successfully deleted";
     }
 }

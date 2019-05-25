@@ -26,12 +26,14 @@
                 <th></th>
             </tr>
             <tr th:each="customer : ${customers}">
-                <td th:text="${customer.firstName}"></td>
-                <td th:text="${customer.lastName}"></td>
-                <td th:text="${customer.email}"></td>
-                <td th:text="${customer.address}"></td>
-                <td th:text="${customer.phoneNumber}"></td>
-                <td><a th:href="@{/dashboard/kunder/{id}(id=${customer.id})}">Se mere</a></td>
+                <div th:if="${customer.rid == 1}">
+                    <td th:text="${customer.firstName}"></td>
+                    <td th:text="${customer.lastName}"></td>
+                    <td th:text="${customer.email}"></td>
+                    <td th:text="${customer.address}"></td>
+                    <td th:text="${customer.phoneNumber}"></td>
+                    <td><a th:href="@{/dashboard/kunder/{id}(id=${customer.id})}">Se mere</a></td>
+                </div>
             </tr>
         </table>
     </div>
