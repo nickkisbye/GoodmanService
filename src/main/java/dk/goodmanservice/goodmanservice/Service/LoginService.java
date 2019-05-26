@@ -14,6 +14,11 @@ public class LoginService {
     @Autowired
     private LoginRepository loginRepository;
 
+    /**
+     Tjekker for om der er en user i databasen.
+     Hvis der er det, sætter den users værdier og returner true.
+     */
+
     public boolean login(User user) throws SQLException {
             ResultSet rs = loginRepository.login(user);
             if(rs.next()) {

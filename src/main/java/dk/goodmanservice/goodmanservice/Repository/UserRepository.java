@@ -37,6 +37,10 @@ public class UserRepository implements IRepository<User> {
         executeUser(sql, obj);
     }
 
+    /**
+     Denne metode bruges både i create og edit metoden, for at formindske gentagelser.
+     */
+
     private void executeUser(String sql, User obj) throws SQLException {
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, obj.getFirstName());
@@ -60,6 +64,11 @@ public class UserRepository implements IRepository<User> {
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
     }
+
+    /**
+     "option" parses igennem fra Controller til UserService og UserService til UserRepository.
+     "option" definerer hvad vi skal bruge fra databasen.
+     */
 
     @Override
     public ResultSet fetch(String option) throws SQLException {
@@ -102,6 +111,10 @@ public class UserRepository implements IRepository<User> {
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
     }
+
+    /**
+     Denne metode bruges til vores søgefunktion.
+     */
 
     public ResultSet customerSearch(String search) throws SQLException {
         sql = "SELECT * FROM users " +

@@ -17,6 +17,10 @@ public class BucketRepository {
                 "Ly02_scr-4ds");
     }
 
+    /**
+     Denne metode indsætter url'en og et case id i vores img table, så der skabes en relation mellem disse.
+     */
+
     public void insertImage(String url, int id) throws SQLException {
         String sql = "INSERT INTO img (image, fk_cases) " +
                 "VALUES (?,?)";
@@ -26,6 +30,10 @@ public class BucketRepository {
         preparedStatement.execute();
     }
 
+    /**
+     Henter alle billederne ud der hører til det id der blivet parset igennem.
+     */
+
     public ResultSet fetchImages(int id) throws SQLException {
         String sql = "SELECT image, id " +
                 "from img " +
@@ -34,6 +42,10 @@ public class BucketRepository {
         preparedStatement.setInt(1, id);
         return preparedStatement.executeQuery();
     }
+
+    /**
+     sletter billedet fra en bestemt case.
+     */
 
     public void deleteImage(int id) throws SQLException {
         String sql = "DELETE FROM img " +

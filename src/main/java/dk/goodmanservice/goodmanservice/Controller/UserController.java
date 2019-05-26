@@ -24,6 +24,10 @@ public class UserController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     Hvis loginService.login er true, så sætter denne metode alle de nødvendige sessions.
+     */
+
     @PostMapping("/login")
     public String login(@ModelAttribute User user, HttpSession session, RedirectAttributes redirect, Model model) {
         try {
@@ -53,6 +57,10 @@ public class UserController {
             return "redirect:/error";
         }
     }
+
+    /**
+     Denne metode bliver kaldt hvis brugeren logger ud, og invaliderer alle sessions.
+     */
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {

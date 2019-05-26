@@ -25,6 +25,11 @@ public class MessageRepository implements IRepository<Message> {
                     "Ly02_scr-4ds");
     }
 
+    /**
+     Denne metode opretter et opslag i databasen.
+     Calender.getInstance(); opretter den nuværende dato og sætter det ind i datbasen.
+     */
+
     @Override
     public void create(Message message) throws SQLException {
         sql = "INSERT INTO posts (msg, fk_user, created_at) " +
@@ -38,6 +43,10 @@ public class MessageRepository implements IRepository<Message> {
         preparedStatement.setString(3, dateformat.format(calender.getTime()));
         preparedStatement.execute();
     }
+
+    /**
+     Bruges ikke, men er der hvis systemet skal udvides.
+     */
 
     @Override
     public void edit(Message message) throws SQLException {
@@ -53,6 +62,11 @@ public class MessageRepository implements IRepository<Message> {
         preparedStatement.execute();
     }
 
+    /**
+     Denne metode henter alle opslag fra databasen. Hvis option er sat til "latest-10",
+     hiver den kun de seneste 10 beskeder ud.
+     */
+
     @Override
     public ResultSet fetch(String option) throws SQLException {
         sql = "SELECT * FROM posts " +
@@ -65,6 +79,10 @@ public class MessageRepository implements IRepository<Message> {
         preparedStatement = con.prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
+
+    /**
+     Bruges ikke, men er der hvis systemet skal udvides.
+     */
 
     @Override
     public ResultSet findById(int id) throws SQLException {

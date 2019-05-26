@@ -24,6 +24,12 @@ public class UserService implements IService<User> {
     
     private ResultSet resultSet;
 
+    /**
+     UserService sørger for forretningslogikken i de kald der sker, når en bruger bliver oprettet eller rettet i.
+     UserService henter også data ud fra "fetch" metoden. Indholdet af kaldet varierer alt efter hvilken "option" der er
+     blevet parset igennem.
+     */
+
     @Override
     public String create(User obj) throws SQLException {
         String checkSum = V.validateUser(obj);
@@ -49,6 +55,10 @@ public class UserService implements IService<User> {
         UR.delete(id);
         return "SLETTET";
     }
+
+    /**
+     "option" bliver parset igennem fra Controlleren og ned til Repository laget.
+     */
 
     @Override
     public List<User> fetch(String option) throws SQLException {
@@ -98,6 +108,11 @@ public class UserService implements IService<User> {
             }
             return user;
     }
+
+    /**
+     Da customerSearch ikke hører til UserRepository interfacet, har vi måtte caste interfacet, så den stadig kan
+     finde ud af det.
+     */
 
     public List<User> customerSearch(String search) throws SQLException {
         resultSet = ((UserRepository)UR).customerSearch(search);

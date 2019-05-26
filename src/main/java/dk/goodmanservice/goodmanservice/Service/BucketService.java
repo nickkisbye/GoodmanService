@@ -26,11 +26,24 @@ public class BucketService {
     @Autowired
     private Validation V;
 
+    /**
+     BucketService sørger for al forretningslogikken der bliver sendt til AWS og vores database.
+     */
+
+    /**
+    Når vi sletter et billede fra S3-serveren, laver vi også et kald der sletter billede URL'en fra databasen.
+     */
+
     public String deleteFileFromS3Bucket(String fileUrl, int id) throws SQLException {
         s3Repository.deleteFileFromS3Bucket(fileUrl);
         bucketRepository.deleteImage(id);
         return "BILLEDET ER BLEVET FJERNET";
     }
+
+    /**
+     uploadImage metoden til AWS returnerer en URL-string, som vi sætter ind i datbasen, så vi senere kan hente
+     den ud og få vist billedet.
+     */
 
     public String uploadImage(MultipartFile multipartFile, int id) throws SQLException, IOException {
         String checkSum = V.validateImage(multipartFile);
@@ -40,6 +53,10 @@ public class BucketService {
         }
        return checkSum;
     }
+
+    /**
+     fetchImages henter billed URL'en fra databasen, så billedet kan vises
+     */
 
     public List<Image> fetchImages(int id) throws SQLException {
         ResultSet rs =  bucketRepository.fetchImages(id);

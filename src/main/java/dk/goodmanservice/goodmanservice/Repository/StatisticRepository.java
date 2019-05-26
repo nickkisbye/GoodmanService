@@ -18,6 +18,11 @@ public class StatisticRepository {
                 "Ly02_scr-4ds");
     }
 
+    /**
+     StatisticRepository bliver udelukkende brugt til at hive data ud til økonomi siden.
+     Alle metoderne returnerer et ResultSet.
+     */
+
     public ResultSet totalPriceSum() throws SQLException {
         sql = "SELECT SUM(price) as total_price FROM cases WHERE fk_mode = 3";
         preparedStatement = con.prepareStatement(sql);

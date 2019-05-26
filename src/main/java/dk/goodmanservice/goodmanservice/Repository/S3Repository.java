@@ -35,6 +35,10 @@ public class S3Repository {
         s3client = AmazonS3ClientBuilder.standard().withRegion(Regions.EU_CENTRAL_1).withCredentials(new AWSStaticCredentialsProvider(credentials)).build();
     }
 
+    /**
+     Denne metode tager en MultipartFile ind fra vores form og konverterer den om til et File objekt og returnerer det.
+     */
+
     private File convertMultiPartToFile(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         FileOutputStream fos = new FileOutputStream(convFile);
@@ -43,14 +47,28 @@ public class S3Repository {
         return convFile;
     }
 
+    /**
+     Denne metode genererer et filnavn baseret på den nuværende tid. På den måde vil vores filnavn altid være unikt.
+     */
+
     private String generateFileName(MultipartFile multiPart) {
         return new Date().getTime() + "-" + multiPart.getOriginalFilename().replace(" ", "_");
     }
+
+    /**
+     Denne metode pusher vores filobjekt af sted til AWS.
+     */
 
     private void uploadImageTos3bucket(String fileName, File file) {
         s3client.putObject(new PutObjectRequest(bucketName, fileName, file)
                 .withCannedAcl(CannedAccessControlList.PublicRead));
     }
+
+    /**
+     Denne metode instantierer file objektet med convertMultiPartToFile metoden.
+     Derefter uploader den billedet til AWS og returnerer den String som vi skal bruge
+     til at putte ind i databasen.
+     */
 
     public String uploadImage(MultipartFile multipartFile) throws IOException {
 

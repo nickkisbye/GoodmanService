@@ -18,6 +18,10 @@ public class MessageService implements IService<Message> {
     @Autowired
     private IRepository<Message> MR;
 
+    /**
+     MessageService sørger for forretningslogikken i de opslag, som medarbejderne skriver.
+     */
+
     @Override
     public String create(Message message) throws SQLException {
         if (message.getMsg().length() < 1 || message.getMsg().length() > 80) {
@@ -43,6 +47,11 @@ public class MessageService implements IService<Message> {
         MR.delete(id);
         return "SLETTET";
     }
+
+    /**
+     fetch metoden tager en String ind som definerer hvad der skal vælges fra databasen, denne option parses videre
+     til repositoriet.
+     */
 
     @Override
     public List<Message> fetch(String option) throws SQLException {

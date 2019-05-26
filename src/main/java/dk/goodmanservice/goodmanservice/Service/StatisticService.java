@@ -17,6 +17,11 @@ public class StatisticService {
     @Autowired
     private StatisticRepository SR;
 
+    /**
+     StatisticService sørger for at lave de forskellige kald og putte det ind i en liste.
+     option i Switch case bliver parset igennem som parameter på metoden.
+     */
+
     public List<Statistic> fetch(String option) throws SQLException {
         List<Statistic> sList = new ArrayList<>();
         ResultSet rs;
