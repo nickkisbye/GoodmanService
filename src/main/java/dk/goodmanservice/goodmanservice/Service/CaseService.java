@@ -24,6 +24,11 @@ public class CaseService implements IService<Case>{
 
     private ResultSet rs;
 
+    /**
+     CaseService søgre for at tjekke på alle de værdier der kommer ind og udgiver en fejl, hvis der er skrevet noget forkert.
+     CaseService henter den også data og indsætter det i et model objekt, som vi senere kan kalde på i vores html.
+     */
+
     @Override
     public String create(Case obj) throws SQLException {
         String checkSum = V.validateCase(obj);

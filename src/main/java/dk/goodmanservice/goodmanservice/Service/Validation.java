@@ -10,6 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class Validation {
 
+    /**
+     Validation validere på de værdier som bliver skrevet ind i forme og giver en fejl besked vores noget er skrevet forkert ind.
+     returnere " 1 " tilbage hvis der er intet galt i de indsatte værdier.
+     */
     public String validateAppointment(Appointment obj) {
         if(obj.getDescription() == null || obj.getDescription().length() <= 3) {
             return "BESKRIVELSE ER FOR KORT, PRØV IGEN.";

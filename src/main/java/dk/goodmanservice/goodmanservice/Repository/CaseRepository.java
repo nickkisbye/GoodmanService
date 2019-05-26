@@ -13,6 +13,10 @@ import java.util.Calendar;
 @Component("CR")
 public class CaseRepository implements IRepository<Case> {
 
+    /**
+     bruger IRepository Interface for CRUD
+     */
+
     private Connection con;
     private PreparedStatement preparedStatement;
     private String sql;
@@ -74,6 +78,10 @@ public class CaseRepository implements IRepository<Case> {
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
     }
+
+    /**
+     Option: bruges i controllers til at kalde på specifik data
+     */
 
     @Override
     public ResultSet fetch(String option) throws SQLException {

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalcService {
 
+    /**
+    Bruges til at regne på isolerings beløb. Har en switch til at skifte mellem de forskellige priser og ganger vores beløb og kvadrat-meter.
+     */
     public int iCalc(Calculator calc) {
         int result = 0;
 

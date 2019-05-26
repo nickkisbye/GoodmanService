@@ -22,6 +22,10 @@ public class JobService {
     private JobRepository JR;
     private ResultSet rs;
 
+    /**
+     JobService søgre for at tjekke på det data som bliver indsat og giver en system besked til brugeren.
+     JobService henter data fra databasen og indsætter det i model objekt.
+     */
     public List<Jobs> findByIdJobs(int id) throws SQLException {
         rs = JR.findByIdJobs(id);
         List<Jobs> jList = new ArrayList<>();

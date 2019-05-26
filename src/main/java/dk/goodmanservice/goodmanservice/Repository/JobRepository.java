@@ -21,6 +21,9 @@ public class JobRepository {
                 "Ly02_scr-4ds");
     }
 
+    /**
+     Tilføjer en employee (medarbejder) til en opgave igennem vores junk table.
+     */
     public void createJob(Jobs obj) throws SQLException {
         sql = "INSERT INTO junc_jobs (fk_case, fk_employee) " +
                 "VALUES (?, ?)";
@@ -30,7 +33,9 @@ public class JobRepository {
         preparedStatement.execute();
     }
 
-
+    /**
+     Finder alle jobs for en specifik opgave.
+     */
     public ResultSet findByIdJobs(int id) throws SQLException {
         sql = "SELECT junc_jobs.fk_employee, junc_jobs.fk_case, junc_jobs.id, users.id, users.firstName, users.lastName FROM junc_jobs " +
                 "INNER JOIN users ON junc_jobs.fk_employee = users.id " +
@@ -41,6 +46,9 @@ public class JobRepository {
         return preparedStatement.executeQuery();
     }
 
+    /**
+     Fjerner et job fra en opgave.
+     */
     public void deleteJob(int id) throws SQLException {
         sql = "DELETE FROM junc_jobs " +
                 "WHERE id=?";
@@ -50,10 +58,13 @@ public class JobRepository {
         preparedStatement.execute();
     }
 
+    /**
+    Henter en liste over alle medarbejdere (employees), som ikke allerede er sat på opgaven.
+     */
     public ResultSet fetchEmployees(int id) throws SQLException {
         sql =   "SELECT users.id, users.firstName, users.lastName FROM users " +
                 "LEFT JOIN junc_jobs ON users.id = junc_jobs.fk_employee " +
-                "WHERE junc_jobs.fk_case IS NULL OR fk_case != ? " +
+                "WHERE junc_jobs.fk_case IS NULL AND users.fk_role > 1 OR fk_case != ? AND users.fk_role > 1 " +
                 "ORDER BY users.firstName";
 
         preparedStatement = con.prepareStatement(sql);
@@ -61,6 +72,9 @@ public class JobRepository {
         return preparedStatement.executeQuery();
     }
 
+    /**
+    Henter en liste over alle tilbud (offers) som en bestemt kunde (customer) har.
+     */
     public ResultSet customerOffers(int id) throws SQLException {
         sql = "SELECT id, description, price, startDate " +
                 "FROM cases " +
@@ -73,6 +87,9 @@ public class JobRepository {
         return preparedStatement.executeQuery();
     }
 
+    /**
+    Henter en liste over alle informationer om en bestemt opgave.
+     */
     public ResultSet customerInvoiceById(int id) throws SQLException {
         sql = "SELECT cases.id, cases.description, cases.price, cases.startDate, cases.endDate, users.firstName, users.lastName, users.email, users.address, users.phone, users.city, users.zip FROM cases " +
                 "INNER JOIN users ON cases.fk_customer = users.id " +
@@ -84,6 +101,9 @@ public class JobRepository {
         return preparedStatement.executeQuery();
     }
 
+    /**
+    Henter færdige opgaver for en bestemt kunde (customer)
+     */
     public ResultSet customerInvoice(int id) throws SQLException {
         sql = "SELECT id, price, description " +
                 "FROM cases " +

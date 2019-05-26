@@ -18,6 +18,9 @@ public class LoginRepository {
                     "Ly02_scr-4ds");
     }
 
+    /**
+    Sammenligner email og password med allerede eksiterende brugere i databasen for at tjekke på login oplysninger er korrekte.
+     */
     public ResultSet login(User obj) throws SQLException {
         String sql = "SELECT * FROM users " +
                 "INNER JOIN roles ON users.fk_role = roles.id " +
