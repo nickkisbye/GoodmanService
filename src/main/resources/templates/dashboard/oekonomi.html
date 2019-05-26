@@ -1,19 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
 <body>
 <header>
+    <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
-<main>
+<main class="main">
+    <div class="oko">
+        <div class="oko-grid-contariner" th:each="t : ${total}">
+            <div class="head-box bg-lightgreen">
+                <p class="head-txt">Total omsætning</p>
+            </div>
+            <p class="content-txt"><span th:text="${t.priceSum}"></span> kr.</p>
+        </div>
 
-<div th:each="t : ${total}">
-    <strong>Total omsætning:</strong>
-    <p th:text="${t.priceSum}"></p>
-</div>
-    <strong>Omsætning måneder:</strong>
+
+        <div class="oko-grid-contariner">
+            <div class="head-box bg-yellow">
+                <p class="head-txt">Omsætning måneder</p>
+            </div>
+            <table th:each="m : ${monthly}">
+                <tr>
+                    <th th:text="${m.monthName}"></th>
+                    <td th:text="${m.priceSum} + ' kr.'"></td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="oko-grid-contariner" th:each="y : ${yearly}">
+            <div class="head-box bg-purple">
+                <p class="head-txt">Omsætning i år <span th:text="${y.yearNumber}"></span></p>
+            </div>
+            <p class="content-txt"><span th:text="${y.priceSum}"></span> kr.</p>
+        </div>
+        <div class="oko-grid-contariner" th:each="a : ${average}">
+            <div class="head-box bg-greyblue">
+                <p class="head-txt">Gennemsnitspris pr. ordre</p>
+            </div>
+            <p class="content-txt"><span th:text="${a.priceSum}"></span> kr.</p>
+        </div>
+        <div class="oko-grid-contariner" th:each="employee : ${employeelist}">
+            <div class="head-box bg-purple">
+                <p class="head-txt">Top 10</p>
+            </div>
+            <p class="content-txt" th:text="${employee.employeeFirstName}"></p>
+            <p class="content-txt" th:text="${employee.employeeLastName}"></p>
+            <p class="content-txt" th:text="${employee.priceSum}"></p>
+        </div>
+        <div class="oko-grid-contariner" th:each="e : ${employee}">
+            <div class="head-box bg-purple">
+                <p class="head-txt">Bedste medarbejder</p>
+            </div>
+            <p th:text="${e.employeeFirstName}"></p>
+            <p th:text="${e.employeeLastName}"></p>
+            <p th:text="${e.priceSum}"></p>
+        </div>
+
+    </div>
+
+
 <div th:each="m : ${monthly}">
-
+    <strong>Omsætning måneder:</strong>
     <p th:text="${m.monthName} + ' ' + ${m.priceSum}"></p>
 </div>
 <div th:each="y : ${yearly}">
@@ -36,9 +86,16 @@
     <p th:text="${e.employeeLastName}"></p>
     <p th:text="${e.priceSum}"></p>
 </div>
-
+    <script type="application/javascript">
+        function numberWithCommas(x) {
+            var parts = x.toString().split(".");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return parts.join(".");
+        }
+    </script>
 </main>
 <footer>
+    <div th:replace="dashboard/fragments/footer :: footer"></div>
 </footer>
 </body>
 </html>

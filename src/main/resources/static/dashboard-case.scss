@@ -110,3 +110,42 @@
     font-size: 17px;
   }
 }
+.oko {
+  display: grid;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(3, 1.5fr);
+  margin-top: -20px;
+  table, td, tr, th {
+    background: none;
+    border: none;
+    font-size: 20px;
+  }
+  td {
+    font-size: 30px;
+  }
+  th {
+    width: 200px;
+    font-size: 30px;
+  }
+  .oko-grid-contariner {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border: 1px solid $border-color;
+  }
+  .head-box {
+    width: calc(100% + 40px);
+    margin: -20px 0 20px -20px;
+    padding: 20px;
+  }
+  .head-txt {
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+  }
+  .content-txt {
+    font-size: 35px;
+  }
+}

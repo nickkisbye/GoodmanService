@@ -194,12 +194,15 @@ body {
     .header-container .nav-left .dashboard-logo:hover {
       background-color: #f3f3f3; }
   .header-container .nav-right {
-    height: 100%; }
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
     .header-container .nav-right .welcome {
       height: 100%;
       padding: 20px; }
-      .header-container .nav-right .welcome:hover {
-        background-color: #f3f3f3; }
+    .header-container .nav-right .hover {
+      background-color: #f3f3f3; }
 
 body {
   background: #f3f3f3 !important; }
@@ -451,3 +454,38 @@ body {
   margin: -20px 0 40px; }
   .back-button i {
     font-size: 17px; }
+
+.oko {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  -ms-grid-columns: (1.5fr)[3];
+  grid-template-columns: repeat(3, 1.5fr);
+  margin-top: -20px; }
+  .oko table, .oko td, .oko tr, .oko th {
+    background: none;
+    border: none;
+    font-size: 20px; }
+  .oko td {
+    font-size: 30px; }
+  .oko th {
+    width: 200px;
+    font-size: 30px; }
+  .oko .oko-grid-contariner {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.0625); }
+  .oko .head-box {
+    width: calc(100% + 40px);
+    margin: -20px 0 20px -20px;
+    padding: 20px; }
+  .oko .head-txt {
+    font-weight: bold;
+    font-size: 25px;
+    color: white; }
+  .oko .content-txt {
+    font-size: 35px; }
