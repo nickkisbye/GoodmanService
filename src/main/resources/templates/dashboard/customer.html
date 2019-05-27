@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:if="${session.level == 10}">
 <head>
     <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
@@ -7,7 +7,7 @@
 <header>
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
-<main>
+<main th:if="${session.level == 10}">
     <section class="customer-dashboard-container">
         <div class="customer-dashboard-item">
             <h2>Tilbud</h2>
