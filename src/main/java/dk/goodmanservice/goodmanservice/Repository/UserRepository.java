@@ -131,7 +131,12 @@ public class UserRepository implements IRepository<User> {
         preparedStatement.setString(3, "%" + search + "%");
         preparedStatement.setString(4, "%" + search + "%");
         preparedStatement.setString(5, "%" + search + "%");
-
         return preparedStatement.executeQuery();
     }
+
+    /*public ResultSet checkEmail(User user) throws SQLException {
+        sql = "SELECT ";
+        preparedStatement = con.prepareStatement(sql);
+
+    }*/
 }
