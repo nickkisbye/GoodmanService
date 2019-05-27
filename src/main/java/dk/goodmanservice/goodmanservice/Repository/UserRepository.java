@@ -134,9 +134,4 @@ public class UserRepository implements IRepository<User> {
         return preparedStatement.executeQuery();
     }
 
-    /*public ResultSet checkEmail(User user) throws SQLException {
-        sql = "SELECT ";
-        preparedStatement = con.prepareStatement(sql);
-
-    }*/
 }
