@@ -15,6 +15,11 @@ public class ExpenseRepository implements IRepository<Expense> {
     private PreparedStatement preparedStatement;
     private String sql;
 
+    /**
+     * ExpenseRepository står for CRUD på Expenses og laver udtræk og indsæt til databasen,
+     * opbygningen kommer fra vores Interface.
+     */
+
     public ExpenseRepository() throws SQLException {
             this.con = DriverManager.getConnection(
                     "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
@@ -55,6 +60,11 @@ public class ExpenseRepository implements IRepository<Expense> {
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
     }
+
+    /**
+     * option er med i metode-deklarationen for at overholde Interfacet, men bliver i realiteten ikke brugt i denne klasse,
+     * da der ikke er nødvendighed for andre specifikke udtræk.
+     */
 
     @Override
     public ResultSet fetch(String option) throws SQLException {

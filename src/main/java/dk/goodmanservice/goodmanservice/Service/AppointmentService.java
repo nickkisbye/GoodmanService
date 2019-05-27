@@ -24,6 +24,12 @@ public class AppointmentService implements IService<Appointment> {
 
     private ResultSet resultSet;
 
+    /**
+     * AppointmentService benytter sig af vores CRUD Interface og sørger for inmplementeringen af disse,
+     * det hele fungerer meget standardiseret og er meget lig vores andre Serviceklasser, denne benytter sig også
+     * af Validation til tjek på indkomne værdier.
+     */
+
     @Override
     public String create(Appointment obj) throws SQLException {
         String checkSum = V.validateAppointment(obj);
