@@ -2,6 +2,7 @@ package dk.goodmanservice.goodmanservice.Service;
 
 import dk.goodmanservice.goodmanservice.Model.Case;
 import dk.goodmanservice.goodmanservice.Model.User;
+import dk.goodmanservice.goodmanservice.Repository.CaseRepository;
 import dk.goodmanservice.goodmanservice.Repository.IRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -59,6 +60,34 @@ public class CaseService implements IService<Case>{
     public List<Case> fetch(String option) throws SQLException {
 
         rs = CR.fetch(option);
+        List<Case> cList = new ArrayList<>();
+
+        while (rs.next()) {
+            Case c = new Case();
+            User user = new User();
+            c.setId(rs.getInt("cases.id"));
+            c.setStartDate(rs.getString("cases.startDate"));
+            c.setEndDate(rs.getString("cases.endDate"));
+            c.setDescription(rs.getString("cases.description"));
+            c.setPrice(rs.getInt("cases.price"));
+            c.setMode(rs.getInt("cases.fk_mode"));
+            c.setStartTime(rs.getString("cases.startTime"));
+            c.setEndTime(rs.getString("cases.endTime"));
+            user.setId(rs.getInt("users.id"));
+            user.setFirstName(rs.getString("firstName"));
+            user.setLastName(rs.getString("lastName"));
+            user.setAddress(rs.getString("address"));
+            user.setCity(rs.getString("city"));
+            user.setZip(rs.getInt("zip"));
+            user.setLevel(rs.getInt("level"));
+            c.setCustomer(user);
+            cList.add(c);
+        }
+        return cList;
+    }
+
+    public List<Case> fetchById(int id, String option) throws SQLException {
+        rs = ((CaseRepository)CR).fetchById(id, option);
         List<Case> cList = new ArrayList<>();
 
         while (rs.next()) {

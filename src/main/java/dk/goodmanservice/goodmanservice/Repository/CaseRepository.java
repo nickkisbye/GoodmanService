@@ -29,6 +29,28 @@ public class CaseRepository implements IRepository<Case> {
                     "Ly02_scr-4ds");
     }
 
+    public ResultSet fetchById(int id, String option) throws SQLException {
+        sql = "SELECT cases.*, users.id, users.firstName, users.lastName, users.address, users.city, users.zip, roles.level FROM cases " +
+                "LEFT JOIN users ON cases.fk_customer = users.id " +
+                "LEFT JOIN roles ON users.fk_role = roles.id " +
+                "LEFT JOIN junc_jobs ON cases.id = junc_jobs.fk_case ";
+
+        switch (option) {
+            case "offer":
+                sql += " WHERE fk_mode = 1 AND fk_employee = ?";
+                break;
+            case "cases":
+                sql += " WHERE fk_mode = 2 AND fk_employee = ?";
+                break;
+            case "finished":
+                sql += " WHERE fk_mode = 3 AND fk_employee = ?";
+                break;
+        }
+        sql += " ORDER BY startDate";
+        preparedStatement = con.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        return preparedStatement.executeQuery();
+    }
 
     @Override
     public void create(Case obj) throws SQLException {

@@ -5,6 +5,7 @@ import dk.goodmanservice.goodmanservice.Model.Image;
 import dk.goodmanservice.goodmanservice.Model.Jobs;
 import dk.goodmanservice.goodmanservice.Model.User;
 import dk.goodmanservice.goodmanservice.Service.BucketService;
+import dk.goodmanservice.goodmanservice.Service.CaseService;
 import dk.goodmanservice.goodmanservice.Service.IService;
 import dk.goodmanservice.goodmanservice.Service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 @Controller
@@ -37,9 +39,10 @@ public class CaseController {
      * TILBUD ONLY
      **/
     @GetMapping("/dashboard/tilbud")
-    public String offer(Model model, RedirectAttributes redirect) {
+    public String offer(Model model, RedirectAttributes redirect, HttpSession session) {
         try {
             model.addAttribute("case", CS.fetch("offer"));
+            model.addAttribute("caseById", ((CaseService)CS).fetchById((int)session.getAttribute("id"),"offer"));
             model.addAttribute("users", US.fetch("customers"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
@@ -52,9 +55,10 @@ public class CaseController {
      * OPGAVER ONLY
      **/
     @GetMapping("/dashboard/opgaver")
-    public String cases(Model model, RedirectAttributes redirect) {
+    public String cases(Model model, RedirectAttributes redirect, HttpSession session) {
         try {
             model.addAttribute("case", CS.fetch("cases"));
+            model.addAttribute("caseById", ((CaseService)CS).fetchById((int)session.getAttribute("id"),"cases"));
             model.addAttribute("users", US.fetch("customers"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
@@ -67,9 +71,10 @@ public class CaseController {
      * FÆRDIGE OPGAVER ONLY
      **/
     @GetMapping("/dashboard/faerdigeopgaver")
-    public String done(Model model, RedirectAttributes redirect) {
+    public String done(Model model, RedirectAttributes redirect, HttpSession session) {
         try {
             model.addAttribute("case", CS.fetch("finished"));
+            model.addAttribute("caseById", ((CaseService)CS).fetchById((int)session.getAttribute("id"),"finished"));
             model.addAttribute("users", US.fetch("customers"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {

@@ -183,14 +183,14 @@
             </tr>
             <!--TABLE FOR EMPLOYEE-->
             <div th:if="${session.level < 40 and session.level > 20}" th:remove="tag">
-                <div th:each="case : ${case}" th:remove="tag">
+                <div th:each="ca : ${caseById}" th:remove="tag">
                     <tr>
-                        <td><span th:text="${case.startDate}"></span></td>
-                        <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
-                        <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
-                        <td class="width100"><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
+                        <td><span th:text="${ca.startDate}"></span></td>
+                        <td><span th:text="${ca.customer.address}"></span>, <span th:text="${ca.customer.zip}"></span> <span th:text="${ca.customer.city}"></span></td>
+                        <td><span th:text="${ca.customer.firstName}"></span> <span th:text="${ca.customer.lastName}"></span></td>
+                        <td class="width100"><a th:href="@{/dashboard/TOF/vis/{id}(id=${ca.id})}">Vis mere</a></td>
                         <td class="width160">
-                            <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}" class="redigere cwhite bg-orange">Tilføj Billede</a>
+                            <a th:href="@{/dashboard/TOF/redigere/{id}(id=${ca.id})}" class="redigere cwhite bg-orange">Tilføj Billede</a>
                         </td>
                     </tr>
                 </div>
