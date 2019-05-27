@@ -73,8 +73,12 @@ public class UserController {
         try {
             redirect.addFlashAttribute("msg", US.create(user));
         } catch (SQLException e) {
-            redirect.addFlashAttribute("msg", "Email eksisterer allerede i systemet");
-            return "redirect:/dashboard/brugere";
+            if(e.getErrorCode() == 1062) {
+                redirect.addFlashAttribute("msg", "Email eksisterer allerede i systemet");
+                return "redirect:/dashboard/brugere";
+            }
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
+            return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
     }
@@ -87,8 +91,8 @@ public class UserController {
             model.addAttribute("roles", US.fetch("roles"));
             model.addAttribute("edit", true);
         } catch (SQLException e) {
-            redirect.addFlashAttribute("msg", "Email eksisterer allerede i systemet");
-            return "redirect:/dashboard/brugere";
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
+            return "redirect:/error";
         }
         return "/dashboard/brugere";
     }
@@ -103,8 +107,12 @@ public class UserController {
                 return "redirect:/dashboard/brugere/edit/" + user.getId();
             }
         } catch (SQLException e) {
-            redirect.addFlashAttribute("msg", "Email eksisterer allerede i systemet");
-            return "redirect:/dashboard/brugere";
+            if(e.getErrorCode() == 1062) {
+                redirect.addFlashAttribute("msg", "Email eksisterer allerede i systemet");
+                return "redirect:/dashboard/brugere";
+            }
+            redirect.addFlashAttribute("errorCode", e.getErrorCode());
+            return "redirect:/error";
         }
         return "redirect:/dashboard/brugere";
     }
