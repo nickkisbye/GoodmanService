@@ -94,6 +94,9 @@ table {
   display: -ms-flexbox;
   display: flex; }
 
+.width160 {
+  width: 160px; }
+
 .width100 {
   width: 100px; }
 
@@ -193,15 +196,25 @@ body {
     font-size: 20px; }
     .header-container .nav-left .dashboard-logo:hover {
       background-color: #f3f3f3; }
+  .header-container .back {
+    height: 100%;
+    padding: 12px 20px; }
+  .header-container .welcome {
+    height: 100%;
+    padding: 20px; }
+  .header-container .nav-left {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .header-container .font {
+    font-size: 30px; }
   .header-container .nav-right {
     height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
-    .header-container .nav-right .welcome {
-      height: 100%;
-      padding: 20px; }
-    .header-container .nav-right .hover {
+    .header-container .nav-right .hover:hover {
       background-color: #f3f3f3; }
 
 body {
@@ -404,8 +417,8 @@ body {
   grid-template-rows: auto;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  -ms-grid-columns: (1.5fr)[4];
-  grid-template-columns: repeat(4, 1.5fr);
+  -ms-grid-columns: (1.5fr)[3];
+  grid-template-columns: repeat(3, 1.5fr);
   margin-top: -20px;
   margin-bottom: 40px; }
   .mini-menu a {

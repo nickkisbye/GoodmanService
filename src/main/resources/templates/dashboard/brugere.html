@@ -7,7 +7,7 @@
 <header>
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
-<main class="main">
+<main class="main" th:if="${session.level > 70}">
 
     <th:block th:switch="${msg}">
         <div th:case="'OPRETTET'" class="msg-n bg-lightgreen">

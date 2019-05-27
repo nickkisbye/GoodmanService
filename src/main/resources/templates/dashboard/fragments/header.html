@@ -1,6 +1,11 @@
 <div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml" th:remove="tag">
     <nav class="header-container">
         <div class="nav-left">
+            <a th:href="@{/}">
+                <div class="back hover font">
+                    <i class="fas fa-angle-left"></i>
+                </div>
+            </a>
             <a th:href="@{/dashboard/employee}">
                 <div class="dashboard-logo">
                     <h1>Dashboard</h1>

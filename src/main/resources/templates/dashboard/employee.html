@@ -95,7 +95,7 @@
                     </div>
                 </a>
             </div>
-            <div class="dashboard-item">
+            <div class="dashboard-item" th:if="${session.level > 70}">
                 <a href="/dashboard/brugere">
                     <div class="dashboard-item-head bg-lightred">Brugere</div>
                     <div class="dashboard-item-body">

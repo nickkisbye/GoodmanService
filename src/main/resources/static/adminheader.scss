@@ -18,15 +18,29 @@
       }
     }
   }
-  .nav-right {
+  .back {
+    height: 100%;
+    padding: 12px 20px;
+  }
+  .welcome {
+    height: 100%;
+    padding: 20px;
+  }
+  .nav-left {
     height: 100%;
     display: flex;
-    .welcome {
-      height: 100%;
-      padding: 20px;
-    }
+  }
+  .font {
+    font-size: 30px;
+  }
+  .nav-right{
+    height: 100%;
+    display: flex;
     .hover {
-        background-color: #f3f3f3;
+        &:hover {
+          background-color: #f3f3f3;
+        }
+
     }
   }
 }

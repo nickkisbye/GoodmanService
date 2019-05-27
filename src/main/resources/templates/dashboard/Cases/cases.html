@@ -34,11 +34,6 @@
 
     <!--TOP MENU BAR-->
     <div class="mini-menu">
-        <a th:href="@{/dashboard/employee}">
-            <div class="bg-white">
-                TILBAGE
-            </div>
-        </a>
         <a th:href="@{/dashboard/tilbud}">
             <div class="bg-white">
                 TILBUD
@@ -194,7 +189,7 @@
                         <td><span th:text="${case.customer.address}"></span>, <span th:text="${case.customer.zip}"></span> <span th:text="${case.customer.city}"></span></td>
                         <td><span th:text="${case.customer.firstName}"></span> <span th:text="${case.customer.lastName}"></span></td>
                         <td class="width100"><a th:href="@{/dashboard/TOF/vis/{id}(id=${case.id})}">Vis mere</a></td>
-                        <td class="width100">
+                        <td class="width160">
                             <a th:href="@{/dashboard/TOF/redigere/{id}(id=${case.id})}" class="redigere cwhite bg-orange">Tilføj Billede</a>
                         </td>
                     </tr>
