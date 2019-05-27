@@ -54,7 +54,7 @@
     <!--CREATE CASE-->
     <div class="container">
         <div th:if="${!edit and session.level > 40}" class="container-grid">
-            <div class="container-header bg-orange">
+            <div class="container-header bg-lightgreen">
                 <h1>Opret en færdig opgave</h1>
             </div>
             <form th:action="@{/dashboard/TOF}" method="POST" th:object="${Case}">
