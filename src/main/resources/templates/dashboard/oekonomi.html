@@ -13,50 +13,53 @@
             <div class="head-box bg-lightgreen">
                 <p class="head-txt">Total omsætning</p>
             </div>
-            <p class="content-txt"><span th:text="${t.priceSum}"></span> kr.</p>
-        </div>
-
-
-        <div class="oko-grid-contariner">
-            <div class="head-box bg-yellow">
-                <p class="head-txt">Omsætning måneder</p>
-            </div>
-            <table th:each="m : ${monthly}">
-                <tr>
-                    <th th:text="${m.monthName}"></th>
-                    <td th:text="${m.priceSum} + ' kr.'"></td>
-                </tr>
-            </table>
-        </div>
-        <div class="oko-grid-contariner" th:each="y : ${yearly}">
-            <div class="head-box bg-purple">
-                <p class="head-txt">Omsætning i år <span th:text="${y.yearNumber}"></span></p>
-            </div>
-            <p class="content-txt"><span th:text="${y.priceSum}"></span> kr.</p>
+            <p class="content-txt txt-center"><span th:text="${t.priceSum}"></span> kr.</p>
         </div>
         <div class="oko-grid-contariner" th:each="a : ${average}">
             <div class="head-box bg-greyblue">
                 <p class="head-txt">Gennemsnitspris pr. ordre</p>
             </div>
-            <p class="content-txt"><span th:text="${a.priceSum}"></span> kr.</p>
+            <p class="content-txt txt-center"><span th:text="${a.priceSum}"></span> kr.</p>
         </div>
-        <div class="oko-grid-contariner" th:each="employee : ${employeelist}">
+        <div class="oko-grid-contariner" th:each="y : ${yearly}">
             <div class="head-box bg-purple">
-                <p class="head-txt">Top 10</p>
+                <p class="head-txt">Omsætning i år <span th:text="${y.yearNumber}"></span></p>
             </div>
-            <p class="content-txt" th:text="${employee.employeeFirstName}"></p>
-            <p class="content-txt" th:text="${employee.employeeLastName}"></p>
-            <p class="content-txt" th:text="${employee.priceSum}"></p>
+            <p class="content-txt txt-center"><span th:text="${y.priceSum}"></span> kr.</p>
         </div>
-        <div class="oko-grid-contariner" th:each="e : ${employee}">
-            <div class="head-box bg-purple">
+        <div class="oko-grid-contariner" >
+            <div class="head-box bg-lightred">
                 <p class="head-txt">Bedste medarbejder</p>
             </div>
-            <p th:text="${e.employeeFirstName}"></p>
-            <p th:text="${e.employeeLastName}"></p>
-            <p th:text="${e.priceSum}"></p>
+            <table>
+                <tr  th:each="e : ${employee}">
+                    <th th:text="${e.employeeFirstName + ' ' + e.employeeLastName}"></th>
+                    <td th:text="${e.priceSum + ' kr.'}"></td>
+                </tr>
+            </table>
         </div>
-
+        <div class="oko-grid-contariner">
+            <div class="head-box bg-yellow">
+                <p class="head-txt">Omsætning måneder</p>
+            </div>
+            <table>
+                <tr th:each="m : ${monthly}">
+                    <th th:text="${m.monthName}"></th>
+                    <td th:text="${m.priceSum} + ' kr.'"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="oko-grid-contariner" >
+            <div class="head-box bg-lightblue">
+                <p class="head-txt">Top 10</p>
+            </div>
+            <table>
+                <tr th:each="employee : ${employeelist}">
+                    <th th:text="${employee.employeeFirstName + ' ' + employee.employeeLastName}"></th>
+                    <td th:text="${employee.priceSum + ' kr.'}"></td>
+                </tr>
+            </table>
+        </div>
     </div>
     <script type="application/javascript">
         function numberWithCommas(x) {
