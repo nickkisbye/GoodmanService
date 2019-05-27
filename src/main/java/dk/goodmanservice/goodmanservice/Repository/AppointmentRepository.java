@@ -14,6 +14,11 @@ public class AppointmentRepository implements IRepository<Appointment> {
     private PreparedStatement preparedStatement;
     private String sql;
 
+    /**
+     * AppointmentRepository står for al kontakt med databasen med alt der omhandler Appointments,
+     * opbygningen er standard CRUD som kommer fra vores Interface.
+     */
+
     public AppointmentRepository() throws SQLException {
             this.con = DriverManager.getConnection(
                     "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb?serverTimezone=CET",
@@ -58,6 +63,10 @@ public class AppointmentRepository implements IRepository<Appointment> {
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
     }
+
+    /**
+     * option bliver her ikke brugt men holdes i metode-deklarationen for at overholde Interfacet.
+     */
 
     @Override
     public ResultSet fetch(String option) throws SQLException {

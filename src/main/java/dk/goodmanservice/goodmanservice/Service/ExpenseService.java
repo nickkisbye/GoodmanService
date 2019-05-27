@@ -24,6 +24,12 @@ public class ExpenseService implements IService<Expense> {
 
     private ResultSet resultSet;
 
+    /**
+     * ExpenseService benytter sig af vores CRUD Interface og sørger udelukkende for inmplementeringen af disse,
+     * dette betyder at det er en meget standard Serviceklasse som bare sørger for opsætning fra og videregivelse til -Repo.
+     * Validation er også med til at sørge for at de værdier der kommer hertil bliver ordentligt tjekket inden de når Repo og Databasen.
+     */
+
     @Override
     public String create(Expense obj) throws SQLException {
         String checkSum = V.validateExpense(obj);
