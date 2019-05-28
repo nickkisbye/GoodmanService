@@ -62,15 +62,9 @@ public class AppointmentService implements IService<Appointment> {
         List<Appointment> appointmentList = new ArrayList<>();
 
         while (resultSet.next()) {
-            Appointment appointment = new Appointment();
+            Appointment appointment = appointmentFiller();
             User employee = new User();
             User customer = new User();
-                appointment.setId(resultSet.getInt("id"));
-                appointment.setDescription(resultSet.getString("description"));
-                appointment.setDate(resultSet.getString("date"));
-                appointment.setTime(resultSet.getString("time"));
-                appointment.setEmployeeId(resultSet.getInt("fk_employee"));
-                appointment.setCustomerId(resultSet.getInt("fk_customer"));
 
                 employee.setFirstName(resultSet.getString("eFirstName"));
                 employee.setLastName(resultSet.getString("eLastName"));
@@ -89,16 +83,27 @@ public class AppointmentService implements IService<Appointment> {
     @Override
     public Appointment findById(int id) throws SQLException {
         resultSet = AR.findById(id);
-        Appointment appointment = new Appointment();
+        Appointment appointment = null;
 
         while (resultSet.next()) {
-            appointment.setId(resultSet.getInt("id"));
-            appointment.setDescription(resultSet.getString("description"));
-            appointment.setDate(resultSet.getString("date"));
-            appointment.setTime(resultSet.getString("time"));
-            appointment.setEmployeeId(resultSet.getInt("fk_employee"));
-            appointment.setCustomerId(resultSet.getInt("fk_customer"));
+            appointment = appointmentFiller();
         }
+        return appointment;
+    }
+
+    /**
+     * Reducerer redundans på opsætning af objekter.
+     */
+
+    private Appointment appointmentFiller() throws SQLException {
+        Appointment appointment = new Appointment();
+        appointment.setId(resultSet.getInt("id"));
+        appointment.setDescription(resultSet.getString("description"));
+        appointment.setDate(resultSet.getString("date"));
+        appointment.setTime(resultSet.getString("time"));
+        appointment.setEmployeeId(resultSet.getInt("fk_employee"));
+        appointment.setCustomerId(resultSet.getInt("fk_customer"));
+
         return appointment;
     }
 }

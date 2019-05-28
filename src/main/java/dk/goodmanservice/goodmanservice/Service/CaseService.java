@@ -58,87 +58,73 @@ public class CaseService implements IService<Case>{
 
     @Override
     public List<Case> fetch(String option) throws SQLException {
-
         rs = CR.fetch(option);
-        List<Case> cList = new ArrayList<>();
-
-        while (rs.next()) {
-            Case c = new Case();
-            User user = new User();
-            c.setId(rs.getInt("cases.id"));
-            c.setStartDate(rs.getString("cases.startDate"));
-            c.setEndDate(rs.getString("cases.endDate"));
-            c.setDescription(rs.getString("cases.description"));
-            c.setPrice(rs.getInt("cases.price"));
-            c.setMode(rs.getInt("cases.fk_mode"));
-            c.setStartTime(rs.getString("cases.startTime"));
-            c.setEndTime(rs.getString("cases.endTime"));
-            user.setId(rs.getInt("users.id"));
-            user.setFirstName(rs.getString("firstName"));
-            user.setLastName(rs.getString("lastName"));
-            user.setAddress(rs.getString("address"));
-            user.setCity(rs.getString("city"));
-            user.setZip(rs.getInt("zip"));
-            user.setLevel(rs.getInt("level"));
-            c.setCustomer(user);
-            cList.add(c);
-        }
-        return cList;
+        return caseSetup();
     }
 
     public List<Case> fetchById(int id, String option) throws SQLException {
         rs = ((CaseRepository)CR).fetchById(id, option);
-        List<Case> cList = new ArrayList<>();
-
-        while (rs.next()) {
-            Case c = new Case();
-            User user = new User();
-            c.setId(rs.getInt("cases.id"));
-            c.setStartDate(rs.getString("cases.startDate"));
-            c.setEndDate(rs.getString("cases.endDate"));
-            c.setDescription(rs.getString("cases.description"));
-            c.setPrice(rs.getInt("cases.price"));
-            c.setMode(rs.getInt("cases.fk_mode"));
-            c.setStartTime(rs.getString("cases.startTime"));
-            c.setEndTime(rs.getString("cases.endTime"));
-            user.setId(rs.getInt("users.id"));
-            user.setFirstName(rs.getString("firstName"));
-            user.setLastName(rs.getString("lastName"));
-            user.setAddress(rs.getString("address"));
-            user.setCity(rs.getString("city"));
-            user.setZip(rs.getInt("zip"));
-            user.setLevel(rs.getInt("level"));
-            c.setCustomer(user);
-            cList.add(c);
-        }
-        return cList;
+        return caseSetup();
     }
 
     @Override
     public Case findById(int id) throws SQLException {
-        ResultSet rs = CR.findById(id);
-        Case c = new Case();
+        rs = CR.findById(id);
+        Case c = null;
 
         while (rs.next()) {
-            User user = new User();
-            c.setId(rs.getInt("cases.id"));
-            c.setStartDate(rs.getString("cases.startDate"));
-            c.setEndDate(rs.getString("cases.endDate"));
-            c.setDescription(rs.getString("cases.description"));
-            c.setPrice(rs.getInt("cases.price"));
-            c.setMode(rs.getInt("cases.fk_mode"));
-            c.setStartTime(rs.getString("cases.startTime"));
-            c.setEndTime(rs.getString("cases.endTime"));
-            user.setId(rs.getInt("users.id"));
-            user.setFirstName(rs.getString("firstName"));
+            c = caseFiller();
+            User user = userFiller();
+
             user.setPhoneNumber(rs.getString("phone"));
             user.setEmail(rs.getString("email"));
-            user.setLastName(rs.getString("lastName"));
-            user.setAddress(rs.getString("address"));
-            user.setCity(rs.getString("city"));
-            user.setZip(rs.getInt("zip"));
-            c.setCustomer(user);
+            c.setCustomer(userFiller());
         }
         return c;
+    }
+
+    /**
+     * 3 Metoder under bruges til at reducere redundans igennem al opsætning.
+     */
+
+    private Case caseFiller() throws SQLException {
+        Case c = new Case();
+        c.setId(rs.getInt("cases.id"));
+        c.setStartDate(rs.getString("cases.startDate"));
+        c.setEndDate(rs.getString("cases.endDate"));
+        c.setDescription(rs.getString("cases.description"));
+        c.setPrice(rs.getInt("cases.price"));
+        c.setMode(rs.getInt("cases.fk_mode"));
+        c.setStartTime(rs.getString("cases.startTime"));
+        c.setEndTime(rs.getString("cases.endTime"));
+
+        return c;
+    }
+
+    private User userFiller() throws SQLException {
+        User user = new User();
+        user.setId(rs.getInt("users.id"));
+        user.setFirstName(rs.getString("firstName"));
+        user.setLastName(rs.getString("lastName"));
+        user.setAddress(rs.getString("address"));
+        user.setCity(rs.getString("city"));
+        user.setZip(rs.getInt("zip"));
+
+        return user;
+    }
+
+    private List<Case> caseSetup() throws SQLException {
+        List<Case> cList = new ArrayList<>();
+
+        while (rs.next()) {
+            Case c = caseFiller();
+            User user = userFiller();
+
+            user.setLevel(rs.getInt("level"));
+            c.setCustomer(user);
+
+            cList.add(c);
+        }
+        return cList;
     }
 }
