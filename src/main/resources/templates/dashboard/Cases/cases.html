@@ -163,7 +163,9 @@
                     <a th:href="${image.fileUrl}" target="_blank">
                         <img th:src="${image.fileUrl}" width="175">
                     </a>
-                    <form th:action="@{/dashboard/TOF/fjernBillede/{id}(id=${image.id}}" method="POST">
+                    <form th:action="@{/dashboard/TOF/fjernBillede/{id}(id=${findById.id})}" method="POST" th:object="${image}">
+                        <input type="hidden" th:value="${image.fileId}" name="fileId">
+                        <input type="hidden" th:value="${image.fileUrl}" name="fileUrl">
                         <button class="slet-image-button bg-lightred cwhite" type="submit">Slet</button>
                     </form>
                 </div>
@@ -172,7 +174,7 @@
     </div>
 
     <!--TABLE OF ALL CASES-->
-    <div class="container-table">
+    <div class="container-table" th:if="${session.level > 30 || session.level == 30 && !edit}">
         <table>
             <tr>
                 <th>Dato</th>
