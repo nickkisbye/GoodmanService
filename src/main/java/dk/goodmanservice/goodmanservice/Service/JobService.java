@@ -97,7 +97,7 @@ public class JobService {
             user.setFirstName(rs.getString("users.firstName"));
             user.setLastName(rs.getString("users.lastName"));
             user.setEmail(rs.getString("users.email"));
-            user.setAddress("users.address");
+            user.setAddress(rs.getString("users.address"));
             user.setPhoneNumber(rs.getString("users.phone"));
             user.setCity(rs.getString("users.city"));
             user.setZip(rs.getInt("users.zip"));

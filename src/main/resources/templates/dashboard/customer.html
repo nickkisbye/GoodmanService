@@ -7,31 +7,35 @@
 <header>
     <div th:replace="dashboard/fragments/header :: header"></div>
 </header>
-<main th:if="${session.level == 10}">
-    <section class="customer-dashboard-container">
-        <div class="customer-dashboard-item">
-            <h2>Tilbud</h2>
+<main th:if="${session.level == 10}" class="main">
+    <div class="container">
+        <div class="container-grid">
+            <div class="container-header bg-lightgreen">
+                <h1>Tilbud</h1>
+            </div>
             <table>
                 <tr>
                     <th>
-                    Beskrivelse
+                        Beskrivelse
                     </th>
                     <th>
-                    Pris
+                        Pris
                     </th>
                     <th>
-                    Start dato
+                        Start dato
                     </th>
                 </tr>
-                <tr th:each="offer : ${offers}">
+                <tr th:each="offer : ${offers}" >
                     <td th:text="${offer.description}"></td>
-                    <td th:text="${offer.price}"></td>
+                    <td th:text="${offer.price + ' kr.'}"></td>
                     <td th:text="${offer.startDate}"></td>
                 </tr>
             </table>
         </div>
-        <div class="customer-dashboard-item">
-            <h2>Faktura</h2>
+        <div class="container-grid">
+            <div class="container-header bg-orange">
+                <h1>Faktura</h1>
+            </div>
             <table>
                 <tr>
                     <th>
@@ -44,13 +48,13 @@
                     </th>
                 </tr>
                 <tr th:each="invoice : ${invoices}">
-                    <td th:text="${invoice.id}"></td>
-                    <td th:text="${invoice.price}"></td>
+                    <td th:text="${invoice.id + 1000}"></td>
+                    <td th:text="${invoice.price + ' kr.'}"></td>
                     <td><a th:href="@{/dashboard/customer/{id}(id=${invoice.id})}">Se mere</a></td>
                 </tr>
             </table>
         </div>
-    </section>
+    </div>
 </main>
 <footer>
     <div th:replace="dashboard/fragments/footer :: footer"></div>

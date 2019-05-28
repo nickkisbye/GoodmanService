@@ -1,24 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:if="${session.level == 10}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="dashboard/fragments/head :: head"></div>
 </head>
 <body>
-<div th:each="info : ${invoice}">
-    <p th:text="${info.id}"></p>
-    <p th:text="${info.description}"></p>
-    <p th:text="${info.price}"></p>
-    <p th:text="${info.startDate}"></p>
-    <p th:text="${info.endDate}"></p>
-    <p th:text="${info.customer.firstName}"></p>
-    <p th:text="${info.customer.lastName}"></p>
+<header>
+    <div th:replace="dashboard/fragments/header :: header"></div>
+</header>
+<main class="main">
 
-    <p th:text="${info.customer.email}"></p>
-    <p th:text="${info.customer.address}"></p>
-    <p th:text="${info.customer.phoneNumber}"></p>
-    <p th:text="${info.customer.city}"></p>
-    <p th:text="${info.customer.zip}"></p>
-</div>
+    <button class="back-button" onclick="goBack()"><i class="fas fa-arrow-left"></i> Tilbage</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <div class="container">
+        <div class="container-grid">
+            <div class="container-header bg-orange">
+                <h1>Faktura informationer</h1>
+            </div>
+            <table>
+                <div th:each="info : ${invoice}" th:tag="remove">
+                    <tr>
+                        <th>Faktura Nr.</th>
+                        <td th:text="${info.id + 1000}"></td>
+                    </tr>
+                    <tr>
+                        <th>Pris</th>
+                        <td th:text="${info.price + ' kr.'}"></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td th:text="${info.description}"></td>
+                    </tr>
+                    <tr>
+                        <th>Start Dato</th>
+                        <td th:text="${info.startDate}"></td>
+                    </tr>
+                    <tr>
+                        <th>Slut Dato</th>
+                        <td th:text="${info.endDate}"></td>
+                    </tr>
+                    <tr>
+                        <th>Navn</th>
+                        <td th:text="${info.customer.firstName + ' ' + info.customer.lastName}"></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td th:text="${info.customer.email}"></td>
+                    </tr>
+                    <tr>
+                        <th>Telefon nr.</th>
+                        <td th:text="${info.customer.phoneNumber}"></td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td th:text="${info.customer.address + ', ' + info.customer.city + ' ' + info.customer.zip}"></td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div th:replace="dashboard/fragments/footer :: footer"></div>
+</footer>
 </body>
 </html>

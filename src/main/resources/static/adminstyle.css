@@ -359,7 +359,8 @@ body {
   background-color: #fff;
   color: #495057;
   text-align: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.0625); }
+  border-top: 1px solid rgba(0, 0, 0, 0.0625);
+  bottom: 0px; }
 
 .main {
   width: 100%;
