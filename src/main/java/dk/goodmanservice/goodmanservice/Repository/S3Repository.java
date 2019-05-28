@@ -30,6 +30,7 @@ public class S3Repository {
     private String secretKey = "";
 
 
+
     @PostConstruct
     private void initializeAmazon() {
         AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secretKey);
