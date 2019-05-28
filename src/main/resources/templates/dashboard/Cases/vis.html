@@ -73,7 +73,7 @@
                 </div>
             </table>
         </div>
-        <div class="container-images">
+        <div class="container-grid">
             <div th:if="${case.mode} == 1" class="container-header bg-yellow">
                 <h1>BILLEDER</h1>
             </div>
@@ -83,12 +83,15 @@
             <div th:if="${case.mode} == 3" class="container-header bg-lightgreen">
                 <h1>BILLEDER</h1>
             </div>
-            <div th:each="image : ${images}">
-                <a th:href="${image.fileUrl}" target="_blank">
-                    <img th:src="${image.fileUrl}" width="175">
-                </a>
+            <div class="container-images-vis">
+                <div th:each="image : ${images}">
+                    <a th:href="${image.fileUrl}" target="_blank">
+                        <img th:src="${image.fileUrl}" width="175">
+                    </a>
+                </div>
             </div>
         </div>
+
     </div>
 </main>
 <footer>

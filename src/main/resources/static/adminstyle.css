@@ -452,6 +452,18 @@ body {
   -ms-grid-columns: (1.5fr)[3];
   grid-template-columns: repeat(3, 1.5fr); }
 
+.container-images-vis {
+  width: 100%;
+  background: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  grid-column-gap: 9px;
+  grid-row-gap: 20px;
+  -ms-grid-columns: (1.5fr)[3];
+  grid-template-columns: repeat(3, 1.5fr); }
+
 .slet-image-button {
   margin-top: -35px;
   border-radius: 0; }
