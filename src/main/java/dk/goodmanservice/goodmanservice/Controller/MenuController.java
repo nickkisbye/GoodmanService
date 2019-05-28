@@ -37,6 +37,11 @@ public class MenuController {
         return "index";
     }
 
+    @PostMapping("/")
+    public String form() {
+        return "index";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";
