@@ -163,6 +163,9 @@
                     <a th:href="${image.fileUrl}" target="_blank">
                         <img th:src="${image.fileUrl}" width="175">
                     </a>
+                    <form th:action="@{/dashboard/TOF/fjernBillede/{id}(id=${image.id}}" method="POST">
+                        <button class="slet-image-button bg-lightred cwhite" type="submit">Slet</button>
+                    </form>
                 </div>
             </div>
         </div>
