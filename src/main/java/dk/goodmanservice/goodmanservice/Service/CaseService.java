@@ -78,7 +78,7 @@ public class CaseService implements IService<Case>{
 
             user.setPhoneNumber(rs.getString("phone"));
             user.setEmail(rs.getString("email"));
-            c.setCustomer(userFiller());
+            c.setCustomer(user);
         }
         return c;
     }
