@@ -43,27 +43,36 @@ public class MenuController {
     }
 
     @GetMapping("/dashboard/employee")
-    public String employee(Model model, RedirectAttributes redirect) {
-        try {
-            model.addAttribute("messages", MS.fetch("latest-10"));
-        } catch (SQLException e) {
-            redirect.addFlashAttribute("errorCode", e.getErrorCode());
-            return "redirect:/error";
+    public String employee(Model model, RedirectAttributes redirect, HttpSession session) {
+        Integer id = (Integer) session.getAttribute("id");
+        if (id == null) {
+            return "redirect:/";
+        } else {
+            try {
+                model.addAttribute("messages", MS.fetch("latest-10"));
+            } catch (SQLException e) {
+                redirect.addFlashAttribute("errorCode", e.getErrorCode());
+                return "redirect:/error";
+            }
+            return "dashboard/employee";
         }
-        return "dashboard/employee";
     }
 
     @GetMapping("/dashboard/customer")
     public String customer(HttpSession session, Model model, RedirectAttributes redirect) {
-        int id = (int) session.getAttribute("id");
-        try {
-            model.addAttribute("offers", JS.customerOffers(id));
-            model.addAttribute("invoices", JS.customerInvoice(id));
-        } catch (SQLException e) {
-            redirect.addFlashAttribute("errorCode", e.getErrorCode());
-            return "redirect:/error";
+        Integer id = (Integer) session.getAttribute("id");
+        if (id == null) {
+            return "redirect:/";
+        } else {
+            try {
+                model.addAttribute("offers", JS.customerOffers(id));
+                model.addAttribute("invoices", JS.customerInvoice(id));
+            } catch (SQLException e) {
+                redirect.addFlashAttribute("errorCode", e.getErrorCode());
+                return "redirect:/error";
+            }
+            return "dashboard/customer";
         }
-        return "dashboard/customer";
     }
 
     @GetMapping("/dashboard/customer/{id}")

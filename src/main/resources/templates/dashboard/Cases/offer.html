@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:if="${session.level >= 30}">
 <head>
     <div th:replace="dashboard/fragments/head :: head" th:remove="tag"></div>
 </head>
