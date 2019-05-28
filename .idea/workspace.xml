@@ -3,19 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bcb930df-6d99-4a77-b6d3-dcc1cbd960e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/done.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/offer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/offer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/vis.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/vis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/brugere.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/brugere.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/customerlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/customerlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/kundeView.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/kundeView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/oekonomi.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/oekonomi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard/viewInvoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard/viewInvoice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/S3Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/S3Repository.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -78,7 +66,7 @@
           <entry key="csv" value="2" />
           <entry key="gitignore" value="1" />
           <entry key="html" value="73" />
-          <entry key="java" value="181" />
+          <entry key="java" value="182" />
           <entry key="properties" value="2" />
           <entry key="scss" value="3" />
           <entry key="xml" value="4" />
@@ -89,7 +77,7 @@
           <entry key="CLASS" value="1" />
           <entry key="CSS" value="2" />
           <entry key="HTML" value="73" />
-          <entry key="JAVA" value="181" />
+          <entry key="JAVA" value="182" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="Properties" value="2" />
           <entry key="SCSS" value="3" />
@@ -104,7 +92,7 @@
           <entry key="java" value="12601" />
           <entry key="properties" value="42" />
           <entry key="scss" value="211" />
-          <entry key="txt" value="239" />
+          <entry key="txt" value="247" />
           <entry key="xml" value="62" />
         </counts>
       </usages-collector>
@@ -112,7 +100,7 @@
         <counts>
           <entry key="HTML" value="2126" />
           <entry key="JAVA" value="12590" />
-          <entry key="PLAIN_TEXT" value="278" />
+          <entry key="PLAIN_TEXT" value="286" />
           <entry key="Properties" value="42" />
           <entry key="SCSS" value="211" />
           <entry key="SQL" value="11" />
@@ -132,6 +120,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/S3Repository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/CaseController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -141,10 +138,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-640">
+            <state relative-caret-position="80">
               <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
             </state>
           </provider>
@@ -164,15 +161,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="16">
               <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/kalender.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="1" column="86" selection-start-line="1" selection-start-column="86" selection-end-line="1" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -280,7 +268,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/employee.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/fragments/header.html" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/S3Repository.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/customer.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html" />
@@ -294,6 +281,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/oekonomi.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/udlaeg.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard/viewInvoice.html" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/S3Repository.java" />
       </list>
     </option>
   </component>
@@ -551,12 +539,9 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/adminstyle.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/static/dashboard-case.scss</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/cases.html</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/done.html</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/offer.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/vis.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -759,14 +744,7 @@
       <workItem from="1558867278648" duration="829000" />
       <workItem from="1558968360344" duration="2201000" />
       <workItem from="1558994264926" duration="3921000" />
-      <workItem from="1559034290052" duration="3754000" />
-    </task>
-    <task id="LOCAL-00025" summary="Fixed controller error">
-      <created>1557416859540</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1557416859540</updated>
+      <workItem from="1559034290052" duration="6027000" />
     </task>
     <task id="LOCAL-00026" summary="xml change?">
       <created>1557416974733</created>
@@ -1104,17 +1082,24 @@
       <option name="project" value="LOCAL" />
       <updated>1558998187421</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="sessions">
+      <created>1559040015767</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1559040015769</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168554000" />
+    <option name="totallyTimeSpent" value="170827000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1124,8 +1109,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.33802816" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.33802816" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1157,7 +1142,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed controller error" />
     <MESSAGE value="xml change?" />
     <MESSAGE value="dashboard menu" />
     <MESSAGE value="Appointments create and edit working" />
@@ -1182,7 +1166,8 @@
     <MESSAGE value="email duplikation" />
     <MESSAGE value="session" />
     <MESSAGE value="session login" />
-    <option name="LAST_COMMIT_MESSAGE" value="session login" />
+    <MESSAGE value="sessions" />
+    <option name="LAST_COMMIT_MESSAGE" value="sessions" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/opgaver.html" />
@@ -1376,13 +1361,6 @@
         <state relative-caret-position="-11264" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/S3Repository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard/Cases/offer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1511,8 +1489,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Controller/AppointmentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-640">
+        <state relative-caret-position="80">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/goodmanservice/goodmanservice/Repository/S3Repository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
