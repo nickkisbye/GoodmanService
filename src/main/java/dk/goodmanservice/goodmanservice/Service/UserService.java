@@ -74,16 +74,9 @@ public class UserService implements IService<User> {
             }
         } else {
             while (resultSet.next()) {
-                User user = new User();
-                user.setPhoneNumber(resultSet.getString("phone"));
-                user.setFirstName(resultSet.getString("firstName"));
-                user.setLastName(resultSet.getString("lastName"));
-                user.setEmail(resultSet.getString("email"));
-                user.setAddress(resultSet.getString("address"));
-                user.setRid(resultSet.getInt("fk_role"));
+                User user = userFiller();
                 user.setRoleName(resultSet.getString("roles.role_name"));
                 user.setLevel(resultSet.getInt("level"));
-                user.setId(resultSet.getInt("id"));
                 userList.add(user);
             }
         }
@@ -92,21 +85,13 @@ public class UserService implements IService<User> {
 
     @Override
     public User findById(int id) throws SQLException {
-        User user = new User();
         resultSet = UR.findById(id);
+        User user = null;
 
-            if (resultSet.next()) {
-                user.setPhoneNumber(resultSet.getString("phone"));
-                user.setFirstName(resultSet.getString("firstName"));
-                user.setLastName(resultSet.getString("lastName"));
-                user.setEmail(resultSet.getString("email"));
-                user.setAddress(resultSet.getString("address"));
-                user.setRid(resultSet.getInt("fk_role"));
-                user.setId(resultSet.getInt("id"));
-                user.setCity(resultSet.getString("city"));
-                user.setZip(resultSet.getInt("zip"));
-            }
-            return user;
+        while (resultSet.next()) {
+            user = userFiller();
+        }
+        return user;
     }
 
     /**
@@ -119,19 +104,30 @@ public class UserService implements IService<User> {
         List<User> userList = new ArrayList<>();
 
             while (resultSet.next()) {
-                User users = new User();
-                users.setPhoneNumber(resultSet.getString("phone"));
-                users.setFirstName(resultSet.getString("firstName"));
-                users.setLastName(resultSet.getString("lastName"));
-                users.setEmail(resultSet.getString("email"));
-                users.setAddress(resultSet.getString("address"));
-                users.setRid(resultSet.getInt("fk_role"));
-                users.setRoleName(resultSet.getString("roles.role_name"));
-                users.setLevel(resultSet.getInt("level"));
-                users.setId(resultSet.getInt("id"));
-                userList.add(users);
+                User user = userFiller();
+                user.setRoleName(resultSet.getString("roles.role_name"));
+                user.setLevel(resultSet.getInt("level"));
+                userList.add(user);
             }
-
         return userList;
+    }
+
+    /**
+     * Brugt til at fjerne redundans fra opsætningen af en User.
+     */
+
+    private User userFiller() throws SQLException {
+        User user = new User();
+        user.setId(resultSet.getInt("id"));
+        user.setFirstName(resultSet.getString("firstName"));
+        user.setLastName(resultSet.getString("lastName"));
+        user.setEmail(resultSet.getString("email"));
+        user.setPhoneNumber(resultSet.getString("phone"));
+        user.setAddress(resultSet.getString("address"));
+        user.setCity(resultSet.getString("city"));
+        user.setZip(resultSet.getInt("zip"));
+        user.setRid(resultSet.getInt("fk_role"));
+
+        return user;
     }
 }

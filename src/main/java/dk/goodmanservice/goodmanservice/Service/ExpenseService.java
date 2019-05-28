@@ -62,14 +62,8 @@ public class ExpenseService implements IService<Expense> {
         List<Expense> expenseList = new ArrayList<>();
 
         while (resultSet.next()) {
-            Expense expense = new Expense();
+            Expense expense = expenseFiller();
             User employee = new User();
-
-            expense.setId(resultSet.getInt("id"));
-            expense.setPrice(resultSet.getInt("price"));
-            expense.setDescription(resultSet.getString("description"));
-            expense.setPaid(resultSet.getBoolean("paid"));
-            expense.setEmployeeId(resultSet.getInt("fk_employee"));
 
             employee.setFirstName(resultSet.getString("firstName"));
             employee.setLastName(resultSet.getString("lastName"));
@@ -84,15 +78,26 @@ public class ExpenseService implements IService<Expense> {
     @Override
     public Expense findById(int id) throws SQLException {
         resultSet = ER.findById(id);
-        Expense expense = new Expense();
+        Expense expense = null;
 
         while (resultSet.next()) {
-            expense.setId(resultSet.getInt("id"));
-            expense.setPrice(resultSet.getInt("price"));
-            expense.setDescription(resultSet.getString("description"));
-            expense.setPaid(resultSet.getBoolean("paid"));
-            expense.setEmployeeId(resultSet.getInt("fk_employee"));
+            expense = expenseFiller();
         }
+        return expense;
+    }
+
+    /**
+     * Brugt til at minimere redundans på opsætning af Expense objekter.
+     */
+
+    private Expense expenseFiller() throws SQLException {
+        Expense expense = new Expense();
+        expense.setId(resultSet.getInt("id"));
+        expense.setPrice(resultSet.getInt("price"));
+        expense.setDescription(resultSet.getString("description"));
+        expense.setPaid(resultSet.getBoolean("paid"));
+        expense.setEmployeeId(resultSet.getInt("fk_employee"));
+
         return expense;
     }
 }
