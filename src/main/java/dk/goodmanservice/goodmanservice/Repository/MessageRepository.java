@@ -1,6 +1,7 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -9,21 +10,20 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * Lavet af Nick
+ */
+
 @Repository
 @Component("MR")
 public class MessageRepository implements IRepository<Message> {
 
     private PreparedStatement preparedStatement;
-    private Connection con;
     private String sql;
     private DateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-    public MessageRepository() throws SQLException {
-            this.con = DriverManager.getConnection(
-                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
-                    "goodmanservicedb",
-                    "Ly02_scr-4ds");
-    }
+    @Autowired
+    private DBConnect db;
 
     /**
      Denne metode opretter et opslag i databasen.
@@ -37,7 +37,7 @@ public class MessageRepository implements IRepository<Message> {
 
         Calendar calender = Calendar.getInstance();
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setString(1,message.getMsg());
         preparedStatement.setInt(2, message.getUserId());
         preparedStatement.setString(3, dateformat.format(calender.getTime()));
@@ -57,7 +57,7 @@ public class MessageRepository implements IRepository<Message> {
     public void delete(int id) throws SQLException {
         sql = "DELETE FROM posts " +
                 "WHERE id=?";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
     }
@@ -76,7 +76,7 @@ public class MessageRepository implements IRepository<Message> {
         if(option.equals("latest-10")) {
             sql += " LIMIT 10";
         }
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 

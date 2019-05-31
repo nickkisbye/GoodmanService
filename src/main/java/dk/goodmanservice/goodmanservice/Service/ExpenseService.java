@@ -12,6 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lavet af Markus
+ */
+
 @Service
 @Component("ES")
 public class ExpenseService implements IService<Expense> {

@@ -14,6 +14,11 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+/**
+ * Lavet af Nick med hjælp fra guide på internettet.
+ * Se bilag i rapporten for at komme til linket.
+ */
+
 @Service
 public class BucketService {
 

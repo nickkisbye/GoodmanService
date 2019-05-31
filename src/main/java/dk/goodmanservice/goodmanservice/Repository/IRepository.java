@@ -3,6 +3,10 @@ package dk.goodmanservice.goodmanservice.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Lavet af Markus, Joachim, Nick
+ */
+
 public interface IRepository<T> {
 
     void create(T obj) throws SQLException;

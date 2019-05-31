@@ -3,6 +3,10 @@ package dk.goodmanservice.goodmanservice.Model;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/**
+ * Lavet af Joachim
+ */
+
 public class Case {
 
     private int id;

@@ -15,6 +15,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lavet af Joachim
+ */
+
 @Service
 public class JobService {
 
@@ -57,7 +61,6 @@ public class JobService {
     public List<User> fetchEmployees(int id)throws SQLException {
         rs = JR.fetchEmployees(id);
         List<User> uList = new ArrayList<>();
-
         while(rs.next()) {
             User u = new User();
             u.setId(rs.getInt("users.id"));

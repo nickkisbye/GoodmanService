@@ -1,5 +1,9 @@
 package dk.goodmanservice.goodmanservice.Model;
 
+/**
+ * Lavet af Joachim, Nick
+ */
+
 public class Image {
 
     private int fileId;

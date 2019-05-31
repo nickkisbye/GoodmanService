@@ -14,6 +14,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLException;
 
+/**
+ * Lavet af Nick
+ */
+
 @Controller
 public class MessageController {
 

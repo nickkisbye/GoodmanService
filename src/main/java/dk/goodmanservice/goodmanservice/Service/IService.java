@@ -3,6 +3,10 @@ package dk.goodmanservice.goodmanservice.Service;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Lavet af Markus, Joachim, Nick
+ */
+
 public interface IService<T> {
 
     String create(T obj) throws SQLException;

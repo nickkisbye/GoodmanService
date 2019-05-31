@@ -7,6 +7,10 @@ import dk.goodmanservice.goodmanservice.Model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Lavet af Joachim og Markus
+ */
+
 @Service
 public class Validation {
 

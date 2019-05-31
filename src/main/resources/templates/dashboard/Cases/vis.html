@@ -18,24 +18,9 @@
         }
     </script>
 
-    <!--<a th:href="@{/dashboard/tilbud}" th:if="${case.mode} == 1">
-        <div class="back-button">
-            <i class="fas fa-arrow-left"></i> Tilbage
-        </div>
-    </a>
-    <a th:href="@{/dashboard/opgaver}" th:if="${case.mode} == 2">
-        <div class="back-button">
-            <i class="fas fa-arrow-left"></i> Tilbage
-        </div>
-    </a>
-    <a th:href="@{/dashboard/faerdigeopgaver}" th:if="${case.mode} == 3">
-        <div class="back-button">
-            <i class="fas fa-arrow-left"></i> Tilbage
-        </div>
-    </a>-->
     <div class="container">
         <div class="container-grid">
-            <div th:if="${case.mode} == 1" class="container-header bg-yellow">
+            <div th:if="${case.mode} == 1" class="container-header bg-purple">
                 <h1>TILBUD</h1>
             </div>
             <div th:if="${case.mode} == 2" class="container-header bg-orange">
@@ -55,7 +40,7 @@
                         <td><span th:text="${case.endDate}"></span> <span th:text="${case.endTime}"></span></td>
                     </tr>
                     <tr>
-                        <th>Description: </th>
+                        <th>Beskrivelse: </th>
                         <td><span th:text="${case.description}"></span></td>
                     </tr>
                     <tr>
@@ -74,7 +59,7 @@
             </table>
         </div>
         <div class="container-grid">
-            <div th:if="${case.mode} == 1" class="container-header bg-yellow">
+            <div th:if="${case.mode} == 1" class="container-header bg-purple">
                 <h1>BILLEDER</h1>
             </div>
             <div th:if="${case.mode} == 2" class="container-header bg-orange">

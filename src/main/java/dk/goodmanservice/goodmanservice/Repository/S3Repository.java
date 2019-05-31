@@ -16,6 +16,11 @@ import javax.annotation.PostConstruct;
 import java.io.*;
 import java.util.Date;
 
+/**
+ * Lavet af Nick med hjælp fra guide på internettet.
+ * Se bilag i rapporten for at komme til linket.
+ */
+
 @Repository
 public class S3Repository {
 

@@ -1,5 +1,9 @@
 package dk.goodmanservice.goodmanservice.Model;
 
+/**
+ * Lavet af Markus
+ */
+
 public class Appointment {
 
     private int id;

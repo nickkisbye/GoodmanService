@@ -1,5 +1,9 @@
 package dk.goodmanservice.goodmanservice.Model;
 
+/**
+ * Lavet af Joachim
+ */
+
 public class Calculator {
 
     private int mTwo;

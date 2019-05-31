@@ -1,37 +1,37 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Appointment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
+/**
+ * Lavet af Markus
+ */
+
 @Repository
 @Component("AR")
 public class AppointmentRepository implements IRepository<Appointment> {
 
-    private Connection con;
     private PreparedStatement preparedStatement;
     private String sql;
+
+    @Autowired
+    private DBConnect db;
 
     /**
      * AppointmentRepository står for al kontakt med databasen med alt der omhandler Appointments,
      * opbygningen er standard CRUD som kommer fra vores Interface.
      */
 
-    public AppointmentRepository() throws SQLException {
-            this.con = DriverManager.getConnection(
-                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb?serverTimezone=CET",
-                    "goodmanservicedb",
-                    "Ly02_scr-4ds");
-    }
-
     @Override
     public void create(Appointment obj) throws SQLException {
         sql = "INSERT INTO appointments (description, date, time, fk_employee, fk_customer) " +
                 "VALUES (?, ?, ?, ?, ?)";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             executeAppointment(obj);
     }
 
@@ -41,7 +41,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
                 "SET description = ?, date = ?, time=?, fk_employee = ?, fk_customer = ? " +
                 "WHERE id = '" + obj.getId() + "'";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             executeAppointment(obj);
     }
 
@@ -59,7 +59,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
         sql = "DELETE FROM appointments " +
                 "WHERE id = ?";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
     }
@@ -76,7 +76,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
                 "LEFT JOIN users as u2 ON appointments.fk_customer = u2.id " +
                 "ORDER BY appointments.date";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
             return preparedStatement.executeQuery();
     }
 
@@ -85,7 +85,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
         sql = "SELECT * FROM appointments " +
                 "WHERE id = ?";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
     }

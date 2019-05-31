@@ -3,6 +3,10 @@ package dk.goodmanservice.goodmanservice.Service;
 import dk.goodmanservice.goodmanservice.Model.Calculator;
 import org.springframework.stereotype.Service;
 
+/**
+ * Lavet af Joachim
+ */
+
 @Service
 public class CalcService {
 

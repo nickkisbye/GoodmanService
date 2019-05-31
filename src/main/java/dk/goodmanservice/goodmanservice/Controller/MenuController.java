@@ -13,6 +13,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
+/**
+ * Lavet af Markus, Joachim, Nick
+ */
+
 @Controller
 public class MenuController {
 

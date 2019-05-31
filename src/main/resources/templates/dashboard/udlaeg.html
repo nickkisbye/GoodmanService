@@ -73,7 +73,7 @@
             <div th:each="e:${expenses}">
                 <div th:if="${e.employeeId == session.id OR session.level >= 80}">
                     <tr>
-                        <td th:text="${e.price}"></td>
+                        <td th:text="${e.price + ' kr.'}"></td>
                         <td th:text="${e.description}"></td>
                         <td th:text="${e.employee.firstName} + ' ' + ${e.employee.lastName}"></td>
                         <td class="width100"><a th:href="@{/dashboard/expenses/edit/{id}(id=${e.id})}" class="redigere cwhite bg-orange">Rediger</a></td>
