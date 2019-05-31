@@ -1,22 +1,22 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
+/**
+ * Lavet af Nick
+ */
+
 @Repository
 public class StatisticRepository {
 
-    private Connection con;
     private PreparedStatement preparedStatement;
     private String sql;
 
-    public StatisticRepository() throws SQLException {
-        this.con = DriverManager.getConnection(
-                "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
-                "goodmanservicedb",
-                "Ly02_scr-4ds");
-    }
+    @Autowired
+    private DBConnect db;
 
     /**
      StatisticRepository bliver udelukkende brugt til at hive data ud til økonomi siden.
@@ -25,7 +25,7 @@ public class StatisticRepository {
 
     public ResultSet totalPriceSum() throws SQLException {
         sql = "SELECT SUM(price) as total_price FROM cases WHERE fk_mode = 3";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 
@@ -34,7 +34,7 @@ public class StatisticRepository {
                 " FROM cases WHERE YEAR(endDate) = YEAR(current_timestamp()) AND fk_mode = 3" +
                 " GROUP BY MONTH(endDate)" +
                 " ORDER BY MONTH(endDate)";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 
@@ -43,13 +43,13 @@ public class StatisticRepository {
                 " FROM cases WHERE YEAR(endDate) = YEAR(current_timestamp()) AND fk_mode = 3" +
                 " GROUP BY YEAR(endDate)" +
                 " ORDER BY YEAR(endDate)";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 
     public ResultSet averageEarnings() throws SQLException {
         sql = "SELECT AVG(price) as average_price from cases WHERE fk_mode = 3";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 
@@ -59,7 +59,7 @@ public class StatisticRepository {
                 " INNER JOIN cases AS C ON junc_jobs.fk_case = C.id WHERE C.fk_mode = 3" +
                 " GROUP BY U.firstName" +
                 " ORDER BY SUM(C.price) DESC LIMIT 10";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 
@@ -69,7 +69,7 @@ public class StatisticRepository {
                 " INNER JOIN cases AS C ON junc_jobs.fk_case = C.id WHERE C.fk_mode = 3" +
                 " GROUP BY U.firstName" +
                 " ORDER BY SUM(C.price) DESC LIMIT 1";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 

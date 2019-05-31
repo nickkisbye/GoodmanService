@@ -1,6 +1,7 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Case;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +9,10 @@ import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+/**
+ * Lavet af Joachim
+ */
 
 @Repository
 @Component("CR")
@@ -17,17 +22,12 @@ public class CaseRepository implements IRepository<Case> {
      bruger IRepository Interface for CRUD
      */
 
-    private Connection con;
     private PreparedStatement preparedStatement;
     private String sql;
     private DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-    public CaseRepository() throws SQLException {
-            this.con = DriverManager.getConnection(
-                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb?serverTimezone=CET",
-                    "goodmanservicedb",
-                    "Ly02_scr-4ds");
-    }
+    @Autowired
+    private DBConnect db;
 
     public ResultSet fetchById(int id, String option) throws SQLException {
         sql = "SELECT cases.*, users.id, users.firstName, users.lastName, users.address, users.city, users.zip, roles.level FROM cases " +
@@ -47,7 +47,7 @@ public class CaseRepository implements IRepository<Case> {
                 break;
         }
         sql += " ORDER BY startDate";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
         return preparedStatement.executeQuery();
     }
@@ -59,7 +59,7 @@ public class CaseRepository implements IRepository<Case> {
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Calendar cal = Calendar.getInstance();
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setString(1, obj.getDescription());
         preparedStatement.setInt(2, obj.getPrice());
         preparedStatement.setString(3, sdf.format(cal.getTime()));
@@ -79,7 +79,7 @@ public class CaseRepository implements IRepository<Case> {
                 "SET description=?, price=?, startDate=?, endDate=?, startTime=?, endTime=?, fk_mode=?, fk_customer=? " +
                 "WHERE id = '" + obj.getId() + "'";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setString(1, obj.getDescription());
         preparedStatement.setInt(2, obj.getPrice());
         preparedStatement.setString(3, obj.getStartDate());
@@ -96,7 +96,7 @@ public class CaseRepository implements IRepository<Case> {
         sql = "DELETE FROM cases " +
                 "WHERE id=?";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
     }
@@ -123,7 +123,7 @@ public class CaseRepository implements IRepository<Case> {
                 break;
         }
             sql += " ORDER BY startDate";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         return preparedStatement.executeQuery();
     }
 
@@ -133,7 +133,7 @@ public class CaseRepository implements IRepository<Case> {
                 "INNER JOIN users ON cases.fk_customer = users.id " +
                 "WHERE cases.id = ?";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
         return preparedStatement.executeQuery();
     }

@@ -1,5 +1,9 @@
 package dk.goodmanservice.goodmanservice.Model;
 
+/**
+ * Lavet af Nick
+ */
+
 public class Message {
 
     private int id;

@@ -110,7 +110,10 @@
                 <td th:text="${user.zip}"></td>
                 <td th:text="${user.phoneNumber}"></td>
                 <td th:text="${user.roleName}"></td>
-                <td class="width80"><a th:href="@{/dashboard/brugere/delete/{id}(id=${user.id})}" class="redigere cwhite bg-lightred">Slet</a></td>
+
+                <td class="width80"><form th:action="@{/dashboard/brugere/delete/{id}(id=${user.id})}" method="post">
+                    <button type="submit" class="bg-lightred cwhite">Slet</button>
+                </form></td>
                 <td class="width80"><a th:href="@{/dashboard/brugere/edit/{id}(id=${user.id})}" class="redigere cwhite bg-orange">Redigere</a></td>
             </tr>
         </table>

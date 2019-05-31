@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Lavet af Markus
+ */
+
 @Controller
 public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
 

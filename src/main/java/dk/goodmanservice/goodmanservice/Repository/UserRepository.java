@@ -1,24 +1,24 @@
 package dk.goodmanservice.goodmanservice.Repository;
 import dk.goodmanservice.goodmanservice.Model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
+/**
+ * Lavet af Nick
+ */
+
 @Repository
 @Component("UR")
 public class UserRepository implements IRepository<User> {
 
-    private Connection con;
     private PreparedStatement preparedStatement;
     private String sql;
 
-    public UserRepository() throws SQLException {
-            this.con = DriverManager.getConnection(
-                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
-                    "goodmanservicedb",
-                    "Ly02_scr-4ds");
-    }
+    @Autowired
+    private DBConnect db;
 
     @Override
     public void create(User obj) throws SQLException {
@@ -42,7 +42,7 @@ public class UserRepository implements IRepository<User> {
      */
 
     private void executeUser(String sql, User obj) throws SQLException {
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             preparedStatement.setString(1, obj.getFirstName());
             preparedStatement.setString(2, obj.getLastName());
             preparedStatement.setString(3, obj.getEmail());
@@ -60,7 +60,7 @@ public class UserRepository implements IRepository<User> {
     public void delete(int id) throws SQLException {
         sql = "DELETE FROM users WHERE id=?";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
     }
@@ -96,10 +96,12 @@ public class UserRepository implements IRepository<User> {
                 sql = "SELECT * FROM roles";
                 break;
         }
-        if(!option.equals("roles")) {
+        if(option.equals("customers")) {
             sql += " ORDER BY firstName";
+        } else if(!option.equals("roles")) {
+            sql += " ORDER BY fk_role";
         }
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             return preparedStatement.executeQuery();
     }
 
@@ -107,7 +109,7 @@ public class UserRepository implements IRepository<User> {
     public ResultSet findById(int id) throws SQLException {
         sql = "SELECT * FROM users WHERE id=?";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
     }
@@ -125,7 +127,7 @@ public class UserRepository implements IRepository<User> {
                 "OR address LIKE ? " +
                 "OR phone LIKE ? ";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setString(1, "%" + search + "%");
         preparedStatement.setString(2, "%" + search + "%");
         preparedStatement.setString(3, "%" + search + "%");

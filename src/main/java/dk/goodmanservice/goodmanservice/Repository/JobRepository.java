@@ -1,25 +1,26 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Jobs;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.Calendar;
 
+/**
+ * Lavet af Joachim
+ */
+
 @Repository
 public class JobRepository {
 
-    private Connection con;
     private PreparedStatement preparedStatement;
     private String sql;
 
-    public JobRepository() throws SQLException {
-        this.con = DriverManager.getConnection(
-                "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
-                "goodmanservicedb",
-                "Ly02_scr-4ds");
-    }
+    @Autowired
+    private DBConnect db;
+
 
     /**
      Tilføjer en employee (medarbejder) til en opgave igennem vores junk table.
@@ -27,7 +28,7 @@ public class JobRepository {
     public void createJob(Jobs obj) throws SQLException {
         sql = "INSERT INTO junc_jobs (fk_case, fk_employee) " +
                 "VALUES (?, ?)";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, obj.getCaseId());
         preparedStatement.setInt(2, obj.getEmployeeId());
         preparedStatement.execute();
@@ -41,7 +42,7 @@ public class JobRepository {
                 "INNER JOIN users ON junc_jobs.fk_employee = users.id " +
                 "WHERE junc_jobs.fk_case = ?";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
         return preparedStatement.executeQuery();
     }
@@ -53,7 +54,7 @@ public class JobRepository {
         sql = "DELETE FROM junc_jobs " +
                 "WHERE id=?";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
     }
@@ -63,12 +64,13 @@ public class JobRepository {
      */
     public ResultSet fetchEmployees(int id) throws SQLException {
         sql =   "SELECT users.id, users.firstName, users.lastName FROM users " +
-                "LEFT JOIN junc_jobs ON users.id = junc_jobs.fk_employee " +
-                "WHERE junc_jobs.fk_case IS NULL AND users.fk_role > 1 OR fk_case != ? AND users.fk_role > 1 " +
+                "LEFT JOIN junc_jobs ON users.id = junc_jobs.fk_employee AND fk_case = ? " +
+                "WHERE (junc_jobs.fk_case IS NULL AND users.fk_role > 1) OR (fk_case != ? AND users.fk_role > 1) " +
                 "ORDER BY users.firstName";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
+        preparedStatement.setInt(2, id);
         return preparedStatement.executeQuery();
     }
 
@@ -81,7 +83,7 @@ public class JobRepository {
                 "WHERE fk_customer = ? " +
                 "ORDER BY startDate";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
 
         return preparedStatement.executeQuery();
@@ -95,7 +97,7 @@ public class JobRepository {
                 "INNER JOIN users ON cases.fk_customer = users.id " +
                 "WHERE cases.id = ?";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
 
         return preparedStatement.executeQuery();
@@ -109,7 +111,7 @@ public class JobRepository {
                 "FROM cases " +
                 "WHERE fk_mode = 3 AND fk_customer = ?";
 
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, id);
 
         return preparedStatement.executeQuery();

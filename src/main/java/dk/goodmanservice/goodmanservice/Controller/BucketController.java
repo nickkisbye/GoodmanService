@@ -11,6 +11,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Lavet af Nick
+ */
+
 @Controller
 @RequestMapping("/storage/")
 public class BucketController {

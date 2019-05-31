@@ -26,7 +26,7 @@
     <div class="container">
         <section class="container-grid">
             <div class="container-header bg-lightred">
-                <h1>Kalender & Aftaler</h1>
+                <h1>Aftaler</h1>
             </div>
             <div th:if="${session.level > 40 and !edit}">
                 <form th:action="@{/dashboard/appointment/create}" method="post" th:object="${Appointment}">

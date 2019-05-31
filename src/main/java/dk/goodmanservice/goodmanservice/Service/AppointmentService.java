@@ -12,6 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lavet af Markus
+ */
+
 @Service
 @Component("AS")
 public class AppointmentService implements IService<Appointment> {

@@ -15,6 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
+/**
+ * Lavet af Nick
+ */
+
 @Controller
 public class UserController {
 
@@ -94,7 +98,7 @@ public class UserController {
             redirect.addFlashAttribute("errorCode", e.getErrorCode());
             return "redirect:/error";
         }
-        return "/dashboard/brugere";
+        return "dashboard/brugere";
     }
 
     @PostMapping("/dashboard/brugere/edit/")
@@ -117,7 +121,7 @@ public class UserController {
         return "redirect:/dashboard/brugere";
     }
 
-    @GetMapping("/dashboard/brugere/delete/{id}")
+    @PostMapping("/dashboard/brugere/delete/{id}")
     public String sletBruger(@PathVariable("id") int id, RedirectAttributes redirect) {
         try {
             redirect.addFlashAttribute("msg", US.delete(id));

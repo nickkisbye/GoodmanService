@@ -20,6 +20,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
+/**
+ * Lavet af Joachim
+ */
+
 @Controller
 public class CaseController {
 

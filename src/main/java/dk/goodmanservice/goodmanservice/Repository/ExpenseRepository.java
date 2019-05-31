@@ -1,37 +1,36 @@
 package dk.goodmanservice.goodmanservice.Repository;
 
 import dk.goodmanservice.goodmanservice.Model.Expense;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
+/**
+ * Lavet af Markus
+ */
 
 @Repository
 @Component("ER")
 public class ExpenseRepository implements IRepository<Expense> {
 
-    private Connection con;
     private PreparedStatement preparedStatement;
     private String sql;
+
+    @Autowired
+    private DBConnect db;
 
     /**
      * ExpenseRepository står for CRUD på Expenses og laver udtræk og indsæt til databasen,
      * opbygningen kommer fra vores Interface.
      */
 
-    public ExpenseRepository() throws SQLException {
-            this.con = DriverManager.getConnection(
-                    "jdbc:mysql://den1.mysql5.gear.host/goodmanservicedb",
-                    "goodmanservicedb",
-                    "Ly02_scr-4ds");
-    }
-
     @Override
     public void create(Expense obj) throws SQLException {
         sql = "INSERT INTO expenses (price, description, paid, fk_employee) " +
                 "VALUES (?, ?, ?, ?)";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, obj.getPrice());
         preparedStatement.setString(2, obj.getDescription());
         preparedStatement.setBoolean(3, obj.getPaid());
@@ -44,7 +43,7 @@ public class ExpenseRepository implements IRepository<Expense> {
         sql = "UPDATE expenses " +
                 "SET price=?, description=?, paid=? " +
                 "WHERE id = '" + obj.getId() + "'";
-        preparedStatement = con.prepareStatement(sql);
+        preparedStatement = db.getConnection().prepareStatement(sql);
         preparedStatement.setInt(1, obj.getPrice());
         preparedStatement.setString(2, obj.getDescription());
         preparedStatement.setBoolean(3, obj.getPaid());
@@ -56,7 +55,7 @@ public class ExpenseRepository implements IRepository<Expense> {
         sql = "DELETE FROM expenses " +
                 "WHERE id = ?";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
     }
@@ -71,9 +70,9 @@ public class ExpenseRepository implements IRepository<Expense> {
         sql = "SELECT expenses.*, users.firstName, users.lastName " +
                 "FROM expenses " +
                 "INNER JOIN users ON expenses.fk_employee = users.id " +
-                "ORDER BY expenses.price";
+                "ORDER BY expenses.id DESC";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             return preparedStatement.executeQuery();
     }
 
@@ -82,7 +81,7 @@ public class ExpenseRepository implements IRepository<Expense> {
         sql = "SELECT expenses.* FROM expenses " +
                 "WHERE id = ?";
 
-            preparedStatement = con.prepareStatement(sql);
+            preparedStatement = db.getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeQuery();
     }
