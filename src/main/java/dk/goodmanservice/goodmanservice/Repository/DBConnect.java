@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Lavet af Markus, Joachim, Nick
+ * Lavet af Nick
  */
 
 /**
@@ -19,13 +19,10 @@ public class DBConnect {
 
     private Connection connection;
 
-    public DBConnect() {
-        try {
+    public DBConnect() throws SQLException {
+
             this.connection = DriverManager.getConnection(
                     "");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public Connection getConnection() {

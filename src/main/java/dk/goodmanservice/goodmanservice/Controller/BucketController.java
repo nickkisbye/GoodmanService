@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Lavet af Markus, Joachim, Nick
+ * Lavet af Nick
  */
 
 @Controller
