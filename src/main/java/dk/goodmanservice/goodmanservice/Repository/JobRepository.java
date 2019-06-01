@@ -80,7 +80,7 @@ public class JobRepository {
     public ResultSet customerOffers(int id) throws SQLException {
         sql = "SELECT id, description, price, startDate " +
                 "FROM cases " +
-                "WHERE fk_customer = ? " +
+                "WHERE fk_mode = 1 AND fk_customer = ? " +
                 "ORDER BY startDate";
 
         preparedStatement = db.getConnection().prepareStatement(sql);
