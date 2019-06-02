@@ -28,11 +28,11 @@ public class S3Repository {
 
     private String endpointUrl = "http://s3.eu-central-1.amazonaws.com";
 
-    private String bucketName = "";
+    private String bucketName = "goodmanservice";
 
     private String accessKey = "";
 
-    private String secretKey = "NcL3GPWW/Q3VFk+o9AM5Ux68waAxeWY2UeVnTTJZ";
+    private String secretKey = "";
 
 
 
