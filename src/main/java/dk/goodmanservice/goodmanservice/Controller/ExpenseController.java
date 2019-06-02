@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 /**
@@ -28,9 +29,13 @@ public class ExpenseController {
     private IService<User> US;
 
     @GetMapping("/dashboard/expenses")
-    public String expenses(Model model, RedirectAttributes redirect) {
+    public String expenses(Model model, RedirectAttributes redirect, HttpSession session) {
         try {
-            model.addAttribute("expenses", ES.fetch("all"));
+            if((int) session.getAttribute("level") > 70) {
+                model.addAttribute("expenses", ES.fetch("all"));
+            } else {
+                model.addAttribute("expenses", ES.fetch((String) session.getAttribute("id")));
+            }
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {

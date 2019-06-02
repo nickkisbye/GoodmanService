@@ -69,8 +69,13 @@ public class ExpenseRepository implements IRepository<Expense> {
     public ResultSet fetch(String option) throws SQLException {
         sql = "SELECT expenses.*, users.firstName, users.lastName " +
                 "FROM expenses " +
-                "INNER JOIN users ON expenses.fk_employee = users.id " +
-                "ORDER BY expenses.id DESC";
+                "INNER JOIN users ON expenses.fk_employee = users.id ";
+
+         if(!option.equals("all")) {
+             sql += "WHERE fk_employee = '" + option + "'";
+         }
+
+        sql += " ORDER BY expenses.id DESC";
 
             preparedStatement = db.getConnection().prepareStatement(sql);
             return preparedStatement.executeQuery();
