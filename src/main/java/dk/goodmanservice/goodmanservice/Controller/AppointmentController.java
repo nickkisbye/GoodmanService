@@ -34,7 +34,7 @@ public class AppointmentController {
             if((int) session.getAttribute("level") > 70) {
                 model.addAttribute("appointments", AS.fetch("all"));
             } else {
-                model.addAttribute("expenses", AS.fetch((String) session.getAttribute("id")));
+                model.addAttribute("appointments", AS.fetch(session.getAttribute("id").toString()));
             }
             model.addAttribute("appointments", AS.fetch("all"));
             model.addAttribute("users", US.fetch("all"));
@@ -47,10 +47,14 @@ public class AppointmentController {
     }
 
     @GetMapping("/dashboard/appointments/edit/{id}")
-    public String appointmentById(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
+    public String appointmentById(@PathVariable("id") int id, Model model, RedirectAttributes redirect, HttpSession session) {
         try {
             model.addAttribute("appointment", AS.findById(id));
-            model.addAttribute("appointments", AS.fetch("all"));
+            if((int) session.getAttribute("level") > 70) {
+                model.addAttribute("appointments", AS.fetch("all"));
+            } else {
+                model.addAttribute("appointments", AS.fetch(session.getAttribute("id").toString()));
+            }
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", true);
         } catch (SQLException e) {

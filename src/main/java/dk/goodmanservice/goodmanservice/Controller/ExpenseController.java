@@ -34,7 +34,7 @@ public class ExpenseController {
             if((int) session.getAttribute("level") > 70) {
                 model.addAttribute("expenses", ES.fetch("all"));
             } else {
-                model.addAttribute("expenses", ES.fetch((String) session.getAttribute("id")));
+                model.addAttribute("expenses", ES.fetch(session.getAttribute("id").toString()));
             }
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", false);
@@ -46,10 +46,14 @@ public class ExpenseController {
     }
 
     @GetMapping("/dashboard/expenses/edit/{id}")
-    public String expenseById(@PathVariable("id") int id, Model model, RedirectAttributes redirect) {
+    public String expenseById(@PathVariable("id") int id, Model model, RedirectAttributes redirect, HttpSession session) {
         try {
             model.addAttribute("expense", ES.findById(id));
-            model.addAttribute("expenses", ES.fetch("all"));
+            if((int) session.getAttribute("level") > 70) {
+                model.addAttribute("expenses", ES.fetch("all"));
+            } else {
+                model.addAttribute("expenses", ES.fetch(session.getAttribute("id").toString()));
+            }
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", true);
         } catch (SQLException e) {
