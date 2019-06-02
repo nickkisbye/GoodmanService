@@ -22,9 +22,7 @@ public class DBConnect {
     public DBConnect() throws SQLException {
 
             this.connection = DriverManager.getConnection(
-                    "jdbc:mysql://goodmanservice.cfhhlscq0cmm.eu-central-1.rds.amazonaws.com/goodmanservice?autoReconnect=true",
-                    "goodmanservice",
-                    "password123");
+                    "");
     }
 
     public Connection getConnection() {
