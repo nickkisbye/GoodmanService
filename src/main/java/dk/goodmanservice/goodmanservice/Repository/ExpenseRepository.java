@@ -61,8 +61,7 @@ public class ExpenseRepository implements IRepository<Expense> {
     }
 
     /**
-     * option er med i metode-deklarationen for at overholde Interfacet, men bliver i realiteten ikke brugt i denne klasse,
-     * da der ikke er nødvendighed for andre specifikke udtræk.
+     * option bliver her brugt til kun at hente det data ud for den bruger der er logget ind
      */
 
     @Override

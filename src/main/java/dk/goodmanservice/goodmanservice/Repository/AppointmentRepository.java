@@ -65,7 +65,7 @@ public class AppointmentRepository implements IRepository<Appointment> {
     }
 
     /**
-     * option bliver her ikke brugt men holdes i metode-deklarationen for at overholde Interfacet.
+     * option bliver her brugt til kun at hente det data ud for den bruger der er logget ind
      */
 
     @Override

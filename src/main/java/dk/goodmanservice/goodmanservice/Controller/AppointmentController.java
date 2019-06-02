@@ -36,7 +36,6 @@ public class AppointmentController {
             } else {
                 model.addAttribute("appointments", AS.fetch(session.getAttribute("id").toString()));
             }
-            model.addAttribute("appointments", AS.fetch("all"));
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", false);
         } catch (SQLException e) {
