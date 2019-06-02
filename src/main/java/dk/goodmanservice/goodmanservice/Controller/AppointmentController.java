@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 /**
@@ -28,8 +29,13 @@ public class AppointmentController {
     private IService<User> US;
 
     @GetMapping("/dashboard/appointments")
-    public String appointments(Model model, RedirectAttributes redirect) {
+    public String appointments(Model model, RedirectAttributes redirect, HttpSession session) {
         try {
+            if((int) session.getAttribute("level") > 70) {
+                model.addAttribute("appointments", AS.fetch("all"));
+            } else {
+                model.addAttribute("expenses", AS.fetch((String) session.getAttribute("id")));
+            }
             model.addAttribute("appointments", AS.fetch("all"));
             model.addAttribute("users", US.fetch("all"));
             model.addAttribute("edit", false);

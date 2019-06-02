@@ -73,8 +73,13 @@ public class AppointmentRepository implements IRepository<Appointment> {
         sql = "SELECT appointments.*, u1.firstName AS eFirstName, u1.lastName AS eLastName, u2.firstName AS cFirstName, u2.lastName AS cLastName " +
                 "FROM appointments " +
                 "LEFT JOIN users as u1 ON appointments.fk_employee = u1.id " +
-                "LEFT JOIN users as u2 ON appointments.fk_customer = u2.id " +
-                "ORDER BY appointments.date";
+                "LEFT JOIN users as u2 ON appointments.fk_customer = u2.id";
+
+        if(!option.equals("all")) {
+            sql += " WHERE appointments.fk_employee = '" + option + "'";
+        }
+
+        sql += " ORDER BY appointments.date";
 
         preparedStatement = db.getConnection().prepareStatement(sql);
             return preparedStatement.executeQuery();

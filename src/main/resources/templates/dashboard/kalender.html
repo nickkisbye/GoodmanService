@@ -107,7 +107,6 @@
                 <th></th>
             </tr>
             <div th:each="a:${appointments}">
-                <div th:if="${a.employeeId == session.id OR a.customerId == session.id OR session.level >= 80}">
                     <tr>
                         <td th:text="${a.description}"></td>
                         <td th:text="${a.date} + ' ' + ${a.time}"></td>
@@ -123,7 +122,6 @@
                         </td>
                     </tr>
                 </div>
-            </div>
         </table>
     </div>
 </main>

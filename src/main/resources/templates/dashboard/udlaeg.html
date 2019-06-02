@@ -71,7 +71,6 @@
                 <th></th>
             </tr>
             <div th:each="e:${expenses}">
-                <div th:if="${e.employeeId == session.id OR session.level >= 80}">
                     <tr>
                         <td th:text="${e.price + ' kr.'}"></td>
                         <td th:text="${e.description}"></td>
@@ -87,7 +86,6 @@
                         </td>
                     </tr>
                 </div>
-            </div>
         </table>
     </div>
 </main>
